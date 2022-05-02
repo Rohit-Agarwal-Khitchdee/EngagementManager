@@ -41,6 +41,7 @@ Blocks and sub-blocks can be summarized, functions and structures can be summari
 Summarization or de-summarization is done using Ctrl-S or Command-S.
 It is very efficient and blends in well with code-editing and navigation
 since there is no mouse involved in the operation.
+
 By using these 3 techniques, 
 it is possible to view this entire 5000 line codebase in a single page
 then open a block or sub-block, open a function or structure inside it
