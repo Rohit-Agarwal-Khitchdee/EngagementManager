@@ -36,7 +36,7 @@ We use 3 techniques to manage a codefile of this size.
 1. We define 2 sectional constructs above the C++ language level --
 the Block and the Sub-Block.
 Special demarcators inside comments are used to define blocks and sub-blocks.
-2. We layout the source code in a 3 column format
+2. We display the source code in a 3 column format
 with a wide center column that is used to work on the code
 and 2 narrower columns to see what was before and after the code currently being worked on.
 This makes is possible to view roughtly 150 lines of code at a time
@@ -61,7 +61,7 @@ and see if they are effective on understanding this 5000 line codebase.
 # Building and Running the app:
 
 The app is based on the wxWidgets cross-platform UI library.
-To build it you first have to download and build the wxWidgets library.
+To build this app you first have to download and build the wxWidgets library.
 We recommend using the current development version of wxWidgets which is 3.1.6.
 You can get help for setting up wxWidgets on your PC from this forum:
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82
@@ -78,7 +78,7 @@ This will build the modal app.
 
 Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.
-You download the source code.
+You download the source code for wxWidgets.
 Then you goto %wxWidgetsDir%/build/msw/
 You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).
@@ -120,7 +120,7 @@ In other words, this file can be edited to produce an app,
 keeping the parts are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
 There are no libraries involved and all the core functions provided by the toolkit
-are visible as source making debugging easier.
+are visible as source code making debugging easier.
 
 The core parts of this toolkit are:
 1. ModalWindow which derives from wxWindow,
