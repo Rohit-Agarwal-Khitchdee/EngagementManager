@@ -50,3 +50,45 @@ The purpose of posting this codebase at this stage
 is to get people to use these codebase navigation techniques
 and see if they are effective on understanding this 5000 line codebase. 
 
+Building and Running the app:
+
+The app is based on the wxWidgets cross-platform UI library.
+To build it you first have to download and build the wxWidgets library.
+The build process for the library depends on your platform:
+
+OSX: 
+We recommend building the library from source.
+The simplest way is to download the source for wxWidgets.
+Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj
+You should be able to build and run this sample.
+It builds the wxWidgets library from source as part of its build process.
+Then you can edit the project settings to replace minimal.cpp with modal.cpp.
+This will build the modal app.
+
+Windows:
+We recommend Visual Studio 2022 Community edition as the IDE.
+You download the source code.
+Then you goto %wxWidgetsDir%/build/msw/
+You open wx_vc17.sln in Visual Studio 2022
+Build Debug and Release configurations (not dll but statically linked libraries).
+This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).
+Follow the instruction at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105
+to create a new VS project and add modal.cpp to it.
+This should build the modal app.
+
+Linux:
+We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.
+Create a new wxWidgets based project and add modal.cpp to it.
+This should build the modal app.
+
+Running the app:
+When you run the app,
+it will ask you for the full path of modal.cpp.
+When you enter this path,
+it will load modal.cpp, parse it and display its blocks.
+The arrow keys are for moving up and down the lines in the display.
+PgUp and PgDn have their usual function.
+To open a block you go to the block's line using the arrow keys
+then you press Ctrl-S (Win, Linux) or Command-S (OSX)
+To close a block, you go to the first line in the block an press Ctrl-S.
+Any line that ends in {...} is summarized (closed) and can be opened using Ctrl-S 
