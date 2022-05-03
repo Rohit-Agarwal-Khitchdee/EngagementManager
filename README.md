@@ -58,7 +58,7 @@ The purpose of posting this codebase at this stage
 is to get people to use these codebase navigation techniques
 and see if they are effective on understanding this 5000 line codebase. 
 
-Building and Running the app:
+# Building and Running the app:
 
 The app is based on the wxWidgets cross-platform UI library.
 To build it you first have to download and build the wxWidgets library.
@@ -104,7 +104,7 @@ then you press Ctrl-S (Win, Linux) or Command-S (OSX)
 To close a block, you go to the first line in the block an press Ctrl-S.
 Any line that ends in {...} is summarized (closed) and can be opened using Ctrl-S 
 
-Future Plans:
+# Future Plans:
 1. We plan to add source editing features to the source editor mode.
 2. Then add the ability to compile a modal source code file and correct compilation errors.
 This will be based on gcc (Win, Linux) and g++ on OSX.
@@ -113,7 +113,7 @@ This will be based on gdb (Win, Linux) and lldb on OSX.
 4. We plan to create modalWin32, a native version of the modal UI toolkit for Win32.
 5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
 
-Using this source code toolkit to build your own wxWidgets based modal app:
+# Using this source code toolkit to build your own wxWidgets based modal app:
 
 modalwx.cpp serves as a source code toolkit for creating a wxWidgets based modal app.
 The core parts of this toolkit are:
@@ -151,7 +151,7 @@ but which implements the functionaly needed for browsing code.
 SModeSrcEdr uses SModeMsg, SModeLineInp, SModeSetSel and SModeFileSel in its implementation
 to realize the desired behavior of its UI.
 
-Designing a mode of operation:
+# Designing a mode of operation:
 
 The main task in creating a wxWidgets based modal app is
 designing a mode of operation that specifically caters to the app's primary function.
