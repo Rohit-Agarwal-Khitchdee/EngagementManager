@@ -16,7 +16,7 @@ discarding parts that are not needed and adding new parts specific to the app.
 There are no libraries involved and all the core functions provided by the toolkit
 are visible as source code making debugging easier.
 
-The modal UI toolkit consists of a ModeManager C++ structure
+The toolkit consists of a ModeManager C++ structure
 that interfaces with the windowing system.
 In the case of wxWidgets, it interfaces with the wxWindow class.
 And a few modes of operation designed for commun GUI functions
@@ -42,6 +42,7 @@ We use 3 techniques to manage a codefile of this size.
 1. We define 2 sectional constructs above the C++ language level --
 the Block and the Sub-Block.
 Special demarcators inside comments are used to define blocks and sub-blocks.
+Blocks and sub-blocks serve the purpose of coarse, high-level navigation.
 2. We display the source code in a 3 column format
 with a wide center column that is used to work on the code
 and 2 narrower columns to see what was before and after the code currently being worked on.
@@ -62,7 +63,7 @@ Then close that block, open another block and study it.
 There is no other navigational mechanism needed.
 The purpose of posting this codebase at this stage 
 is to get people to use these codebase navigation techniques
-and see if they are effective on understanding this 5000 line codebase. 
+and see if they are effective in understanding this 5000 line codebase. 
 
 # Building and Running the app:
 
@@ -120,8 +121,6 @@ This will be based on gdb (Win, Linux) and lldb on OSX.
 5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
 
 # Using this source code toolkit to build your own wxWidgets based modal app:
-
-modalwx.cpp serves as a source code toolkit for creating a wxWidgets based modal app.
 
 The core parts of this toolkit are:
 1. ModalWindow which derives from wxWindow,
@@ -214,6 +213,6 @@ These data structures are used by the intent handlers of SModeSrcEdr
 to display the relevant data. SModeSrcEdr contains pointers to these data structures.
 
 # Modal UIs and WIMP
-Since a modal UI is implemented entriely within a wxWindow subclass, 
+Since a modal UI is implemented entirely within a wxWindow subclass, 
 it is possible to incorporate a ModalUI window into a regular WIMP style app
 using wxAUI.
