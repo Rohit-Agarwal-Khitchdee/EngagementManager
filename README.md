@@ -153,7 +153,7 @@ d)   SModeFileSel : a mode extension for selecting a file from the file system
 A modal app defines its own mode of operation 
 which implements the desired UI function of that app.
 For example modalwx.cpp defines SModeSrcEdr, a mode extension that is not part of the toolkit
-but which implements the functionaly needed for browsing code.
+but which implements the functionality needed for browsing code.
 SModeSrcEdr uses SModeMsg, SModeLineInp, SModeSetSel and SModeFileSel in its implementation
 to realize the desired behavior of its UI.
 
