@@ -138,13 +138,64 @@ It contains a Union UModeExtension for representing mode specific extensions
 to the base mode.
 The Modal Toolkit provides a few extensions to the base mode for common UI operations.
 These are:
-a.   SModeMsg : a mode extension for displaying a user message
-b.   SModeLineInp : a mode extension getting a line of user input 
-c.   SModeSetSel : a mode extension for getting a choice from the user
+a)   SModeMsg : a mode extension for displaying a user message
+b)   SModeLineInp : a mode extension getting a line of user input 
+c)   SModeSetSel : a mode extension for getting a choice from the user
 from a set of selections.
-d.   SModeFileSel : a mode extension for selecting a file from the file system
+d)   SModeFileSel : a mode extension for selecting a file from the file system
 A modal app defines its own mode of operation 
 which implements the desired UI function of that app.
 For example modalwx.cpp defines SModeSrcEdr, a mode extension that is not part of the toolkit
-but which implements the functionaly needed for brwosing code.
+but which implements the functionaly needed for browsing code.
+SModeSrcEdr uses SModeMsg, SModeLineInp, SModeSetSel and SModeFileSel in its implementation
+to realize the desired behavior of its UI.
+
+Designing a mode of operation:
+
+The main task in creating a wxWidgets based modal app is
+designing a mode of operation.
+modalwx.cpp and its design of the SModeSrcEdr mode of operation
+serves as a template for designing a mode of operation for some other purpose.
+While a mode operation defines the behavior of the app during an interaction session with the user,
+the behavior of the app at any given instant is defined by an intent dispatcher.
+An intent is the user's intention of performing some action 
+in the context of the current mode of operation.
+The user expresses this intent through a specific kybd gesture.
+This gesture is detected by the OS as a key event,
+dispatched to the wxWindow currently in focus which is a ModalWindow.
+The ModalWindow in its key event handler dispatcher the key event to the mode manager
+which determines the mode at the top of its mode stack and dispathes the event to that mode.
+The mode has a fnKybd_map which processes this event.
+In its fnKybd_map function, the mode determines the intent of the user
+based on the key strokes it receives
+and dispatches the intent to be processed by a corresponding intent handler.
+Desgining a mode therefore involves designing a set of user intents,
+each one of which is identified by specific user keystrokes,
+and implementing the apps expected behavior in response to a given user intent
+in an intent handler.
+An intent handler will do some processing associated with its expected behavior
+and then provide feedback to the user by updating the display in some way.
+The display update happens in 2 phases.
+In the first phase, when the intent handler is called by fnKybd_map,
+the intent handler determines the region of the screen it intends to update
+and sends the OS a display update request via wxWindow::Refresh.
+The OS processes this request and sends a paint event to the wxWindow with this region info.
+The ModalWindow's handler for this paint event, dispatches this paint event
+to the currently active intent handler in the currently active mode.
+Which means the intent handler that initiated the refresh request
+gets called in a second phase during which it does the actual drawing to update the display.
+Every intent handler therefore has 2 phases of operation
+PH_NOTIFY when is called by fnKybd_map 
+and PH_EXECUTE when it is called by ModalWindow::OnPaint.
+Once an app designer has designed all the intents for a given mode of operation,
+they initialize the intent handler functions for each intent in SMode::load_intents.
+In a typical app, while the most frequently used intents will have "direct-mapped" controls
+which means they are activated directly by keystrokes or keystroke sequences.
+Less frequently used user intents can be mapped to (indirect) onscreen screen controls.
+For this the toolkit provides another mode of operation called SModeIntDisp which 
+is an intent dispatcher for intents controlled by on-screen controls.
+If you press Ctrl or Command, the SModeSrcEdr launches an in intent dispatcher mode
+for things such as setting font sizes.
+
+
 
