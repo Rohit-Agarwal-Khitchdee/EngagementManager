@@ -15,7 +15,8 @@ The modal UI toolkit consists of a ModeManager C++ structure
 that interfaces with the windowing system.
 In the case of wxWidgets, it interfaces with the wxWindow class.
 And a few modes of operation designed for commun GUI functions
-such as text input, message display and selection and file selection.
+such as text input, message display, selection from a set of choices
+and selection of a file from the platfrom's file selection.
 Modes are pushed onto and popped off the mode manager.
 This file (modalwx.cpp) also contains a mode of operation
 designed for editing the source code for a modal app.
