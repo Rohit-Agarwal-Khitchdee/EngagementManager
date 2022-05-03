@@ -111,3 +111,39 @@ This will be based on gcc (Win, Linux) and g++ on OSX.
 This will be based on gdb (Win, Linux) and lldb on OSX.
 4. We plan to create modalWin32, a native version of the modal UI toolkit for Win32.
 5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
+
+Building your own wxWidgets based modal app:
+modalwx.cpp serves as a source code toolkit for creating a wxWidgets based modal app.
+The core parts of this toolkit are:
+1. ModalWindow which derives from wxWindow,
+and contains an SModeManager that manages the modes of a modal UI.
+You instantiate a ModalWindow, instantiate a ModeManager and add it to the ModalWindow.
+Then you push a starting mode onto the mode manager
+that will be the mode of operation when the app launches and the ModalWindow is shown.
+Over the course of the app's operation, you push and pop modes on the ModeManager.
+2. SModeManager which is a c++ struct for managing the modes of operation of a modal UI.
+SModeManager is initialized with the screen size and a font
+that will be passed to all modes of operation.
+It contains a stack of modes and methods to push and pop modes and get the current mode.
+It also contains a method to serialize its current state to a file.
+This enables the app to save the current state of the UI when it exits
+and reload it when the app is relaunched.
+ModalWindow calls modal_init in its constructor
+which initializes the mode manager member variable of ModalWindow.
+ModalWindow calls modal_exit in its destructor
+which serializes the mode manager and then frees it.
+3. SMode which is a C++ struct for representing the base properties of a mode of operation.
+It contains a Union UModeExtension for representing mode specific extensions
+to the base mode.
+The Modal Toolkit provides a few extensions to the base mode for common UI operations.
+These are:
+a.   SModeMsg : a mode extension for displaying a user message
+b.   SModeLineInp : a mode extension getting a line of user input 
+c.   SModeSetSel : a mode extension for getting a choice from the user
+from a set of selections.
+d.   SModeFileSel : a mode extension for selecting a file from the file system
+A modal app defines its own mode of operation 
+which implements the desired UI function of that app.
+For example modalwx.cpp defines SModeSrcEdr, a mode extension that is not part of the toolkit
+but which implements the functionaly needed for brwosing code.
+
