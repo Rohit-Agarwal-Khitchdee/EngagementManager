@@ -10,6 +10,7 @@ The advantage of a kybd only GUI
 is that it is simpler to design and simpler to use.
 Engineering apps such as CAD tools
 that involve a lot of interaction benefit most from kybd only UIs.
+
 The modal UI toolkit consists of a ModeManager C++ structure
 that interfaces with the windowing system.
 In the case of wxWidgets, it interfaces with the wxWindow class.
