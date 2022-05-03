@@ -33,7 +33,7 @@ we use a large single .cpp file that contains a large number of functions.
 The source editor mode implemented here is designed
 to navigate this large set of C functions (this is a 5000+ line codefile).
 We use 3 techniques to manage a codefile of this size.
-1. We define 2 constructs above the C++ language level --
+1. We define 2 sectional constructs above the C++ language level --
 the Block and the Sub-Block.
 Special demarcators inside comments are used to define blocks and sub-blocks.
 2. We layout the source code in a 3 column format
