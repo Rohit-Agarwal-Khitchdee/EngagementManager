@@ -102,3 +102,12 @@ To open a block you go to the block's line using the arrow keys
 then you press Ctrl-S (Win, Linux) or Command-S (OSX)
 To close a block, you go to the first line in the block an press Ctrl-S.
 Any line that ends in {...} is summarized (closed) and can be opened using Ctrl-S 
+
+Future Plans:
+1. We plan to add source editing features to the source editor mode.
+2. Then add the ability to compile a modal source code file and correct compilation errors.
+This will be based on gcc (Win, Linux) and g++ on OSX.
+3. Then add the ability to debug a modal app.
+This will be based on gdb (Win, Linux) and lldb on OSX.
+4. We plan to create modalWin32, a native version of the modal UI toolkit for Win32.
+5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
