@@ -113,6 +113,7 @@ This will be based on gdb (Win, Linux) and lldb on OSX.
 5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
 
 Building your own wxWidgets based modal app:
+
 modalwx.cpp serves as a source code toolkit for creating a wxWidgets based modal app.
 The core parts of this toolkit are:
 1. ModalWindow which derives from wxWindow,
