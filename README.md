@@ -201,7 +201,7 @@ which means they are activated directly by keystrokes or keystroke sequences.
 Less frequently used user intents can be mapped to (indirect) onscreen screen controls.
 For this the toolkit provides another mode of operation called SModeIntDisp which 
 is an intent dispatcher for intents controlled by on-screen controls.
-If you press Ctrl or Command, the SModeSrcEdr launches an in intent dispatcher mode
+If you press Ctrl or Command, the SModeSrcEdr launches an intent dispatcher mode
 for things such as setting font sizes.
 
 In addition to designing the interaction part of a mode of operation
