@@ -113,7 +113,7 @@ This will be based on gdb (Win, Linux) and lldb on OSX.
 4. We plan to create modalWin32, a native version of the modal UI toolkit for Win32.
 5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
 
-Building your own wxWidgets based modal app:
+Using this source code toolkit to build your own wxWidgets based modal app:
 
 modalwx.cpp serves as a source code toolkit for creating a wxWidgets based modal app.
 The core parts of this toolkit are:
@@ -154,7 +154,7 @@ to realize the desired behavior of its UI.
 Designing a mode of operation:
 
 The main task in creating a wxWidgets based modal app is
-designing a mode of operation.
+designing a mode of operation that specifically caters to the app's primary function.
 modalwx.cpp and its design of the SModeSrcEdr mode of operation
 serves as a template for designing a mode of operation for some other purpose.
 While a mode operation defines the behavior of the app during an interaction session with the user,
@@ -166,11 +166,11 @@ This gesture is detected by the OS as a key event,
 dispatched to the wxWindow currently in focus which is a ModalWindow.
 The ModalWindow in its key event handler dispatcher the key event to the mode manager
 which determines the mode at the top of its mode stack and dispathes the event to that mode.
-The mode has a fnKybd_map which processes this event.
+The mode has a fnKybd_map function which processes this event.
 In its fnKybd_map function, the mode determines the intent of the user
-based on the key strokes it receives
+based on the key strokes it received
 and dispatches the intent to be processed by a corresponding intent handler.
-Desgining a mode therefore involves designing a set of user intents,
+Desigining a mode therefore involves designing a set of user intents,
 each one of which is identified by specific user keystrokes,
 and implementing the apps expected behavior in response to a given user intent
 in an intent handler.
@@ -198,5 +198,12 @@ is an intent dispatcher for intents controlled by on-screen controls.
 If you press Ctrl or Command, the SModeSrcEdr launches an in intent dispatcher mode
 for things such as setting font sizes.
 
+In addition to designing the interaction part of a mode of operation
+the app designer also has to create representations for they data they intend to process.
+They need to attach these data structures to the mode of operation they are designing.
+SModeSrcEdr, for example, creates several data structures to represent and process
+modal source code files.
+These data structures are used by the intent handlers of SModeSrcEdr
+to display the relevant data. SModeSrcEdr contains pointers to these data structures.
 
 
