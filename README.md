@@ -70,7 +70,7 @@ OSX:
 We recommend building the library from source.
 The simplest way is to download the source for wxWidgets.
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj
-You should be able to build and run this sample.
+You should be able to build and run this sample in XCode.
 It builds the wxWidgets library from source as part of its build process.
 Then you can edit the project settings to replace minimal.cpp with modalwx.cpp.
 This will build the modal app.
