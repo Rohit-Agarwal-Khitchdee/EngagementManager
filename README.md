@@ -82,7 +82,7 @@ Then you goto %wxWidgetsDir%/build/msw/
 You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).
-Follow the instruction at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105
+Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105
 to create a new VS project and add modalwx.cpp to it.
 This should build the modal app.
 
