@@ -51,7 +51,7 @@ By using these 3 techniques,
 it is possible to view this entire 5000 line codebase in a single page
 then open a block or sub-block, open a function or structure inside it
 and study the details of the implementation.
-Then close that block, ope another block and study it.
+Then close that block, open another block and study it.
 There is no other navigational mechanism needed.
 The purpose of posting this codebase at this stage 
 is to get people to use these codebase navigation techniques
