@@ -72,7 +72,7 @@ The simplest way is to download the source for wxWidgets.
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj
 You should be able to build and run this sample.
 It builds the wxWidgets library from source as part of its build process.
-Then you can edit the project settings to replace minimal.cpp with modal.cpp.
+Then you can edit the project settings to replace minimal.cpp with modalwx.cpp.
 This will build the modal app.
 
 Windows:
@@ -83,12 +83,12 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).
 Follow the instruction at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105
-to create a new VS project and add modal.cpp to it.
+to create a new VS project and add modalwx.cpp to it.
 This should build the modal app.
 
 Linux:
 We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.
-Create a new bare-bones wxWidgets based project and add modal.cpp to it.
+Create a new bare-bones wxWidgets based project and add modalwx.cpp to it.
 This should build the modal app.
 
 Running the app:
