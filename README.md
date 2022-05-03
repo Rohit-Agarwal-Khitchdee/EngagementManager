@@ -213,4 +213,7 @@ modal source code files.
 These data structures are used by the intent handlers of SModeSrcEdr
 to display the relevant data. SModeSrcEdr contains pointers to these data structures.
 
-
+# Modal UIs and WIMP
+Since a modal UI is implemented entriely within a wxWindow subclass, 
+it is possible to incorporate a ModalUI window into a regular WIMP style app
+using wxAUI.
