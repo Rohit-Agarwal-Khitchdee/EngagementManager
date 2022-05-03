@@ -27,7 +27,7 @@ By design, all of a modal app's source code
 is contained in a single .cpp file.
 This is unlike a typical codebase that has several different .cpp
 files with associated .h files.
-Instead of several small .cpp files that are navigated using a project directory borwser,
+Instead of several small .cpp files that are navigated using a project directory browser,
 we use a large single .cpp file that contains a large number of functions.  
 The source editor mode implemented here is designed
 to navigate this large set of C functions (this is a 5000+ line codefile).
