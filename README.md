@@ -115,10 +115,12 @@ This will be based on gdb (Win, Linux) and lldb on OSX.
 
 # Using this source code toolkit to build your own wxWidgets based modal app:
 
-modalwx.cpp serves as a source code toolkit for creating a wxWidgets based modal app.
+modalwx.cpp serves as a source code "toolkit" for creating a wxWidgets based modal app.
 In other words, this file can be edited to produce an app,
 keeping the parts are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
+There are no libraries involved and all the core functions provided by the toolkit
+are visible as source making debugging easier.
 
 The core parts of this toolkit are:
 1. ModalWindow which derives from wxWindow,
