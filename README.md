@@ -67,7 +67,7 @@ is to get people to use these codebase navigation techniques
 and see if they are effective in understanding this 5000 line codebase. 
 This serves as an introduction to this source-code toolkit.
 
-Modalwx.cpp, when viewed in an IDE is rather large and unwieldy. 
+ModalWX.cpp, when viewed in an IDE is rather large and unwieldy. 
 We are working on adding a source code editor to it 
 so that it becomes easier to edit it and create a Modal app based on it.
 Modal app codefiles are designed to be viewed using ModalWX
