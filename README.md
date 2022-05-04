@@ -40,9 +40,8 @@ This is unlike a typical codebase that has several different .cpp
 files with associated .h files.
 Instead of several small .cpp files that are navigated using a project directory browser,
 we use a large single .cpp file that contains a large number of functions.  
-The source editor mode implemented here is designed
-to navigate this large set of C functions (this is a 5000+ line codefile).
-We use 3 techniques to manage a codefile of this size.
+The navigate this large set of C functions (this is a 5000+ line codefile),
+we use 3 techniques:
 1. We define 2 sectional constructs above the C++ language level --
 the Block and the Sub-Block.
 Special demarcators inside comments are used to define blocks and sub-blocks.
@@ -72,7 +71,8 @@ The entire screen is used to display source code.
 The purpose of posting this codebase at this stage 
 is to get people to use these codebase navigation techniques
 and see if they are effective in understanding this 5000 line codebase. 
-This serves as an introduction to this source-code toolkit.
+This serves as an introduction to this source-code toolkit
+while the final toolkit will have code-editing features as well.
 
 ModalWX.cpp, when viewed in an IDE is rather large and unwieldy. 
 Once we add a source code editor to it 
