@@ -31,10 +31,10 @@ This file (modalwx.cpp) also contains a mode of operation
 designed for editing the source code for a Modal app.
 At present it only implements source code navigation features.
 Source code editing, codebase compilation and debugging features will be added
-to make this a full-blown IDE for writing cross-platform Modal apps.
+to make this a full-blown IDE.
 The approach we have taken in the design of this source code editor
-is to target the narrow domain of modal source code.
-By design, all of a modal app's source code
+is to target the narrow domain of Modal source code.
+By design, all of a Modal app's source code
 is contained in a single .cpp file.
 This is unlike a typical codebase that has several different .cpp
 files with associated .h files.
@@ -57,8 +57,10 @@ Any sectional element in the code can be summarized.
 Blocks and sub-blocks, functions and structures, enums and
 comment blocks can all be summarized.
 Summarization or de-summarization is done using Ctrl-S or Command-S.
-It is very efficient and blends in well with code-editing and navigation
-since there is no mouse involved in the operation.
+It is very efficient and blends in well with code-editing and navigation.
+The developer is already using the kybd for these functions
+and since summarisation is also kybd controlled,
+they do not have to switch over to the mouse at all.
 
 By using these 3 techniques, 
 it is possible to view this entire 5000 line codebase in a single page
@@ -77,7 +79,7 @@ so that it becomes easier to edit it and create a Modal app based on it.
 Modal app codefiles are designed to be viewed using ModalWX
 since the block and sub-block level constructs are only parsed by ModalWX
 and code folding, while available on all IDEs, is not commonly used
-since it is mouse based and not convenient.
+since it is mouse-based, time-consuming, breaks the flow and is hence not convenient.
 
 # Building and Running the app:
 
