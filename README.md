@@ -18,7 +18,7 @@ This is a source-code toolkit in the sense that this file can be edited to produ
 keeping the parts that are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
 There are no libraries involved and all the core functions provided by the toolkit
-are visible as source code making debugging easier.
+are visible as source code, making debugging easier.
 
 The toolkit consists of a ModeManager C++ structure
 that interfaces with the windowing system.
