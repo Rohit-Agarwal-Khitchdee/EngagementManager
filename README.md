@@ -10,8 +10,8 @@ Unlike a WIMP GUI where the screen is functionally divided into windows and subw
 in a Modal GUI, functional division is over time.
 At any given time, one mode is painting to the entire screen,
 and at different times, different operational modes are running the UI.
-The advantage of a Modal kybd-only GUI
-is that it is simpler to design and simpler to use.
+The advantage of a Modal GUI is 
+that it is simpler to design and simpler to use.
 Engineering apps such as CAD tools and developer tools
 that involve a lot of app-user interaction benefit most from Modal UIs.
 This is a source-code toolkit in the sense that this file can be edited to produce an app,
@@ -27,7 +27,7 @@ And a few modes of operation designed for commun GUI functions
 such as text input, message display, selection from a set of choices
 and selection of a file from the platfrom's file system.
 Modes are pushed onto and popped off the mode manager.
-This file (modalwx.cpp) also contains a mode of operation
+This file (ModalWX.cpp) also contains a mode of operation
 designed for editing the source code for a Modal app.
 At present it only implements source code navigation features.
 Source code editing, codebase compilation and debugging features will be added
@@ -48,15 +48,15 @@ the Block and the Sub-Block.
 Special demarcators inside comments are used to define blocks and sub-blocks.
 Blocks and sub-blocks serve the purpose of coarse, high-level navigation.
 2. We display the source code in a 3 column format
-with a wide center column that is used to work on the code
-and 2 narrower columns to see the preceding and following code sections.
+with a wider center column that is used to work on the code
+and 2 narrower side columns to see the preceding and following code sections.
 This makes is possible to view roughtly 150 lines of code at a time
 which covers even the longest functions.
 3. We use kybd based code folding (which we call summarization).
 Any sectional element in the code can be summarized.
 Blocks and sub-blocks, functions and structures, enums and
 comment blocks can all be summarized.
-Summarization or de-summarization is done using Ctrl-S or Command-S.
+Summarization or de-summarization is done using Ctrl-S (Command-S on OSX).
 It is very efficient and blends in well with code-editing and navigation.
 The developer is already using the kybd for these functions
 and since summarisation is also kybd controlled,
@@ -68,18 +68,19 @@ then open a block or sub-block, open a function or structure inside it
 and study the details of the implementation.
 Then close that block, open another block and study it.
 There is no other navigational mechanism needed.
+The entire screen is used to display source code.
 The purpose of posting this codebase at this stage 
 is to get people to use these codebase navigation techniques
 and see if they are effective in understanding this 5000 line codebase. 
 This serves as an introduction to this source-code toolkit.
 
 ModalWX.cpp, when viewed in an IDE is rather large and unwieldy. 
-We are working on adding a source code editor to it 
-so that it becomes easier to edit it and create a Modal app based on it.
+Once we add a source code editor to it 
+it will become easier to edit it and create a Modal app based on it.
 Modal app codefiles are designed to be viewed using ModalWX
 since the block and sub-block level constructs are only parsed by ModalWX
 and code folding, while available on all IDEs, is not commonly used
-since it is mouse-based, time-consuming, breaks the flow and is hence not convenient.
+since it is mouse-based, time-consuming, breaks the flow and hence, is not convenient.
 
 # Building and Running the app:
 
@@ -96,8 +97,8 @@ The simplest way is to download the source for wxWidgets.
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj
 You should be able to build and run this sample in XCode.
 It builds the wxWidgets library from source as part of its build process.
-Then you can edit the project settings to replace minimal.cpp with modalwx.cpp.
-This will build the modal app.
+Then you can edit the project settings to replace minimal.cpp with ModalWX.cpp.
+This will build the Modal app.
 
 Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.
@@ -107,24 +108,25 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105
-to create a new VS project and add modalwx.cpp to it.
-This should build the modal app.
+to create a new VS project and add ModalWX.cpp to it.
+This should build the Modal app.
 
 Linux:
 We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.
-Create a new bare-bones wxWidgets based project and add modalwx.cpp to it.
-This should build the modal app.
+Create a new bare-bones wxWidgets based project and add ModalWX.cpp to it.
+This should build the Modal app.
 
 Running the app:
 
 When you run the app,
-it will ask you for the full path of modalwx.cpp.
+it will ask you for the full path of ModalWX.cpp.
+This path will depend on your platform.
 When you enter this path,
-it will load modalwx.cpp, parse it and display its blocks.
+it will load ModalWX.cpp, parse it and display its blocks.
 The arrow keys are for moving up and down the lines in the display.
 PgUp and PgDn have their usual function.
 To open a block you go to the block's line using the arrow keys
-then you press Ctrl-S (Win, Linux) or Command-S (OSX)
+then you press Ctrl-S (Command-S on OSX)
 To close a block, you go to the first line in the block an press Ctrl-S.
 Any line that ends in {...} is summarized (closed) and can be opened using Ctrl-S 
 
@@ -187,36 +189,38 @@ b)   SModeLineInp : a mode extension getting a line of user input
 c)   SModeSetSel : a mode extension for getting a choice from the user
 from a set of selections.
 d)   SModeFileSel : a mode extension for selecting a file from the file system
+
 A modal app defines its own mode of operation 
 which implements the desired UI function of that app.
-For example modalwx.cpp defines SModeSrcEdr, a mode extension that is not part of the toolkit
-but which implements the functionality needed for browsing a modal app's source code.
+For example ModalWX.cpp defines SModeSrcEdr, a mode extension that is not part of the toolkit
+but which implements the functionality needed for browsing a Modal app's source code.
 SModeSrcEdr uses SModeMsg, SModeLineInp, SModeSetSel and SModeFileSel in its implementation
 to realize the desired behavior of its UI.
 
 # Designing a mode of operation:
 
-The main task in creating a wxWidgets based modal app is
+The main task in creating a Modal app is
 designing a mode of operation that specifically caters to the app's primary function.
 ModalWX.cpp and its design of the SModeSrcEdr mode of operation
 serves as a template for designing a mode of operation for some other purpose.
 While a mode operation defines the behavior of the app during an interaction session with the user,
 the behavior of the app at any given instant is defined by an intent dispatcher.
-An intent is the user's intention of performing some action 
+An intent is the user's intention of performing some specific action 
 in the context of the current mode of operation.
 The user expresses this intent through a specific kybd gesture.
 This gesture is detected by the OS as a key event,
 dispatched to the wxWindow currently in focus which is a ModalWindow.
-The ModalWindow in its key event handler dispatcher the key event to the mode manager
+The ModalWindow in its key event handler dispatches the key event to the mode manager
 which determines the mode at the top of its mode stack and dispathes the event to that mode.
 The mode has a fnKybd_map function which processes this event.
 In its fnKybd_map function, the mode determines the intent of the user
 based on the key strokes it received
 and dispatches the intent to be processed by a corresponding intent handler.
-Desigining a mode therefore involves designing a set of user intents,
+Designing a mode therefore involves designing a set of user intents,
 each one of which is identified by specific user keystrokes,
 and implementing the apps expected behavior in response to a given user intent
 in an intent handler.
+Typically, user intents are designed and implemented sequentially.
 An intent handler will do some processing associated with its expected behavior
 and then provide feedback to the user by updating the display in some way.
 The display update happens in 2 phases.
@@ -231,6 +235,7 @@ gets called in a second phase during which it does the actual drawing to update 
 Every intent handler therefore has 2 phases of operation
 PH_NOTIFY when is called by fnKybd_map 
 and PH_EXECUTE when it is called by ModalWindow::OnPaint.
+SMode contains fnIntent_dispatch[MAX_INTENTS], a fixed size array of intent dispatch functions.
 Once an app designer has designed all the intents for a given mode of operation,
 they initialize the intent handler functions for each intent in SMode::load_intents.
 In a typical app, while the most frequently used intents will have "direct-mapped" controls
