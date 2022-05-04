@@ -45,7 +45,7 @@ we use 3 techniques:
 1. We define 2 sectional constructs above the C++ language level --
 the Block and the Sub-Block.
 Special demarcators inside comments are used to define blocks and sub-blocks.
-Blocks and sub-blocks serve the purpose of coarse, high-level navigation.
+Blocks and sub-blocks serve the function of coarse, high-level navigation.
 2. We display the source code in a 3 column format
 with a wider center column that is used to work on the code
 and 2 narrower side columns to see the preceding and following code sections.
