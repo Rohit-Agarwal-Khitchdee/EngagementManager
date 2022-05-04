@@ -1,5 +1,5 @@
 # ModalWX
-A source-code toolkit for designing Modal (kybd-only) UIs for PCs 
+A 'source-code toolkit' for designing Modal (kybd-only) UIs for PCs 
 using the wxWidgets cross-platform GUI library.
 In a kybd-only GUI, the kybd serves the dual functions of
 text entry and screen-space selection.
