@@ -232,6 +232,27 @@ These data structures are used by the intent handlers of SModeSrcEdr
 to display the relevant data. SModeSrcEdr contains pointers to these data structures.
 
 # Modal UIs and WIMP
+WIMP UIs have been around a long time and a broad set of controls is available
+for developers to quickly put together a UI
+with not a lot of code involved since the controls encapsulate the needed functionality.
+By contrast, writing a modal UI requires a lot of coding
+specially in terms of graphic drawing.
+Only a few off-the-shelf controls are available to assist the process.
+On the other hand, modal UIs give a developer a lot more control
+over the outcome of the design process since very little is canned or mandated.
+They are also simpler to code.
+Once you get familiar with the drawing options offered by wxDC,
+creating a new Mode of operation becomes fairly straightforward.
+Also, in terms of visual layout they offer the entire screen for the app's display
+since there are no menus or other visual elements to take away screen space.
+The SModeSrcEdr mode demonstrates this in its ability to view large segments of code
+all on a single screen as compared WIMP based code editors
+such as XCode, Visual Studio, Code Blocks and CodeLite.
+Modal UIs could be suitably used for Graphing tools, Big data processing tools
+or anywhere else where you need greater control over the screen-space
+and where your users are willing to learn your kybd-only control conventions.
+
 Since a modal UI is implemented entirely within a wxWindow subclass, 
 it is possible to incorporate a ModalUI window into a regular WIMP style app
-using wxAUI.
+using wxAUI with the Modal UI in one layer and a WIMP UI in another layer.
+Effectively mixing these 2 styles of UI design.
