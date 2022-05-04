@@ -198,7 +198,7 @@ to realize the desired behavior of its UI.
 
 The main task in creating a wxWidgets based modal app is
 designing a mode of operation that specifically caters to the app's primary function.
-modalwx.cpp and its design of the SModeSrcEdr mode of operation
+ModalWX.cpp and its design of the SModeSrcEdr mode of operation
 serves as a template for designing a mode of operation for some other purpose.
 While a mode operation defines the behavior of the app during an interaction session with the user,
 the behavior of the app at any given instant is defined by an intent dispatcher.
