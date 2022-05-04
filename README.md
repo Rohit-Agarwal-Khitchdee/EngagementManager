@@ -1,16 +1,16 @@
 # ModalWX
-A source-code toolkit for designing Modal (kybd only) UIs for PCs 
+A source-code toolkit for designing Modal (kybd-only) UIs for PCs 
 using the wxWidgets cross-platform GUI library.
-In a kybd only GUI, the kybd serves the dual functions of
+In a kybd-only GUI, the kybd serves the dual functions of
 text entry and screen-space selection.
 Such a GUI is therefore neccesarily "modal"
 in that it has modes of operation 
 in which the meaning of keystrokes possibly changes.
-The advantage of a modal kybd only GUI
+The advantage of a Modal kybd-only GUI
 is that it is simpler to design and simpler to use.
 Engineering apps such as CAD tools and developer tools
 that involve a lot of app-user interaction benefit most from kybd only UIs.
-This is a toolkit in the sense that this file can be edited to produce an app,
+This is a source-code toolkit in the sense that this file can be edited to produce an app,
 keeping the parts that are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
 There are no libraries involved and all the core functions provided by the toolkit
@@ -21,13 +21,13 @@ that interfaces with the windowing system.
 In the case of wxWidgets, it interfaces with the wxWindow class.
 And a few modes of operation designed for commun GUI functions
 such as text input, message display, selection from a set of choices
-and selection of a file from the platfrom's file selection.
+and selection of a file from the platfrom's file system.
 Modes are pushed onto and popped off the mode manager.
 This file (modalwx.cpp) also contains a mode of operation
-designed for editing the source code for a modal app.
+designed for editing the source code for a Modal app.
 At present it only implements source code navigation features.
-We plan to add source code editing, codebase compilation and debugging features
-to make this a full-blown IDE for writing cross-platform modal apps.
+Source code editing, codebase compilation and debugging features will be added
+to make this a full-blown IDE for writing cross-platform Modal apps.
 The approach we have taken in the design of this source code editor
 is to target the narrow domain of modal source code.
 By design, all of a modal app's source code
@@ -45,12 +45,13 @@ Special demarcators inside comments are used to define blocks and sub-blocks.
 Blocks and sub-blocks serve the purpose of coarse, high-level navigation.
 2. We display the source code in a 3 column format
 with a wide center column that is used to work on the code
-and 2 narrower columns to see what was before and after the code currently being worked on.
+and 2 narrower columns to see the preceding and following code sections.
 This makes is possible to view roughtly 150 lines of code at a time
 which covers even the longest functions.
 3. We use kybd based code folding (which we call summarization).
-Blocks and sub-blocks can be summarized, functions and structures can be summarized.
-Comment blocks can be summarized.
+Any sectional element in the code can be summarized.
+Blocks and sub-blocks, functions and structures, enums and
+comment blocks can all be summarized.
 Summarization or de-summarization is done using Ctrl-S or Command-S.
 It is very efficient and blends in well with code-editing and navigation
 since there is no mouse involved in the operation.
@@ -64,6 +65,7 @@ There is no other navigational mechanism needed.
 The purpose of posting this codebase at this stage 
 is to get people to use these codebase navigation techniques
 and see if they are effective in understanding this 5000 line codebase. 
+This serves as an introduction to this source-code toolkit.
 
 # Building and Running the app:
 
@@ -102,9 +104,9 @@ This should build the modal app.
 Running the app:
 
 When you run the app,
-it will ask you for the full path of modal.cpp.
+it will ask you for the full path of modalwx.cpp.
 When you enter this path,
-it will load modal.cpp, parse it and display its blocks.
+it will load modalwx.cpp, parse it and display its blocks.
 The arrow keys are for moving up and down the lines in the display.
 PgUp and PgDn have their usual function.
 To open a block you go to the block's line using the arrow keys
@@ -119,12 +121,14 @@ if there is a URL at that line, a browser is opened to view the URL.
 If there is a symbol such as a struct or function at the cursor,
 the app navigates to that symbol's location in the file.
 Ctrl-left arrow brings you back in this case.
-More navigational features can be added using this mechanism.
+If there is nothing at the cursor location,
+a text entry field is popped up which currently takes line number input.
+More navigational features will be added using this mechanism.
 
 If you press just Ctrl, it pops up a small menu of features
 which can be selected using the arrow keys.
 Most of these are currently unimplemented.
-One of these allow you to change the font size.
+One of these allows you to change the font size.
 
 When you exit the app, it saves its current state in a file called state.hxp.
 When you reload the app, it reads this file to load the state at last exit.
