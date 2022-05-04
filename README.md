@@ -112,14 +112,14 @@ then you press Ctrl-S (Win, Linux) or Command-S (OSX)
 To close a block, you go to the first line in the block an press Ctrl-S.
 Any line that ends in {...} is summarized (closed) and can be opened using Ctrl-S 
 
-Additional features:
+Additional controls:
 
 If you press Ctrl-right arrow with the cursor at any given line,
-if there is a URL at that line, a borwser is opened to view the URL.
+if there is a URL at that line, a browser is opened to view the URL.
 If there is a symbol such as a struct or function at the cursor,
 the app navigates to that symbol's location in the file.
 Ctrl-left arrow brings you back in this case.
-More naviagtional features can be added using this mechanism.
+More navigational features can be added using this mechanism.
 
 If you press just Ctrl, it pops up a small menu of features
 which can be selected using the arrow keys.
@@ -132,7 +132,7 @@ If you delete this file, the app loads afresh.
 
 # Future Plans:
 1. We plan to add source editing features to the source editor mode.
-2. Then add the ability to compile a modal source code file and correct compilation errors.
+2. Then add the ability to compile a Modal source code file and correct compilation errors.
 This will be based on gcc (Win, Linux) and g++ on OSX.
 3. Then add the ability to debug a modal app.
 This will be based on gdb (Win, Linux) and lldb on OSX.
