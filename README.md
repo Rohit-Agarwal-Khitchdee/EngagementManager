@@ -100,6 +100,7 @@ Create a new bare-bones wxWidgets based project and add modalwx.cpp to it.
 This should build the modal app.
 
 Running the app:
+
 When you run the app,
 it will ask you for the full path of modal.cpp.
 When you enter this path,
@@ -124,6 +125,10 @@ If you press just Ctrl, it pops up a small menu of features
 which can be selected using the arrow keys.
 Most of these are currently unimplemented.
 One of these allow you to change the font size.
+
+When you exit the app, it saves its current state in a file called state.hxp.
+When you reload the app, it reads this file to load the state at last exit.
+If you delete this file, the app loads afresh.
 
 # Future Plans:
 1. We plan to add source editing features to the source editor mode.
