@@ -136,8 +136,8 @@ If you delete this file, the app loads afresh.
 This will be based on gcc (Win, Linux) and g++ on OSX.
 3. Then add the ability to debug a modal app.
 This will be based on gdb (Win, Linux) and lldb on OSX.
-4. We plan to create modalWin32, a native version of the modal UI toolkit for Win32.
-5. We plan to create modalX a native version of the modal UI toolkit for X-Windows on Linux.
+4. We plan to create ModalWin32, a native version of the Modal UI toolkit for Win32.
+5. We plan to create ModalX a native version of the Modal UI toolkit for X-Windows on Linux.
 
 # Using this source code toolkit to build your own wxWidgets based modal app:
 
