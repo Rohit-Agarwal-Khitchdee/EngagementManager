@@ -8,10 +8,10 @@ in that it has modes of operation
 in which the meaning of keystrokes possibly changes.
 The advantage of a kybd only GUI
 is that it is simpler to design and simpler to use.
-Engineering apps such as CAD tools
-that involve a lot of interaction benefit most from kybd only UIs.
+Engineering apps such as CAD tools and developer tools
+that involve a lot of app-user interaction benefit most from kybd only UIs.
 This is a toolkit in the sense that this file can be edited to produce an app,
-keeping the parts are needed for the app being produced,
+keeping the parts that are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
 There are no libraries involved and all the core functions provided by the toolkit
 are visible as source code making debugging easier.
