@@ -13,7 +13,7 @@ and at different times, different operational modes are running the UI.
 The advantage of a Modal kybd-only GUI
 is that it is simpler to design and simpler to use.
 Engineering apps such as CAD tools and developer tools
-that involve a lot of app-user interaction benefit most from kybd only UIs.
+that involve a lot of app-user interaction benefit most from Modal UIs.
 This is a source-code toolkit in the sense that this file can be edited to produce an app,
 keeping the parts that are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
