@@ -1,12 +1,12 @@
 # ModalWX
-A toolkit for designing Modal (kybd only) UIs for PCs 
+A source-code toolkit for designing Modal (kybd only) UIs for PCs 
 using the wxWidgets cross-platform GUI library.
 In a kybd only GUI, the kybd serves the dual functions of
 text entry and screen-space selection.
 Such a GUI is therefore neccesarily "modal"
 in that it has modes of operation 
 in which the meaning of keystrokes possibly changes.
-The advantage of a kybd only GUI
+The advantage of a modal kybd only GUI
 is that it is simpler to design and simpler to use.
 Engineering apps such as CAD tools and developer tools
 that involve a lot of app-user interaction benefit most from kybd only UIs.
