@@ -1,11 +1,11 @@
 # ModalWX
-A 'source-code toolkit' for designing Modal (kybd-only) UIs for PCs 
+A 'source-code toolkit' for designing kybd-only UIs for PCs 
 based on wxWidgets.
 In a kybd-only GUI, the kybd serves the dual functions of
 text entry and screen-space selection.
 Such a GUI is therefore neccesarily "modal"
 in that it has modes of operation 
-in which the meaning of keystrokes possibly changes.
+in which the meaning of keystrokes possibly changes over the course of the interaction.
 Unlike a WIMP GUI where the screen is functionally divided into windows and subwindows,
 in a Modal GUI, functional division is over time.
 At any given time, one mode is painting to the entire screen,
@@ -151,6 +151,7 @@ When you reload the app, it reads this file to load the state at last exit.
 If you delete this file, the app loads afresh.
 
 # Future Plans:
+
 1. We plan to add source editing features to the source editor mode.
 2. Then add the ability to compile a Modal source code file and correct compilation errors.
 This will be based on gcc (Win, Linux) and g++ on OSX.
@@ -255,6 +256,7 @@ These data structures are used by the intent handlers of SModeSrcEdr
 to display the relevant data. SModeSrcEdr contains pointers to these data structures.
 
 # Modal UIs and WIMP UIs
+
 WIMP UIs have been around a long time and a broad set of controls is available
 for developers to quickly put together a UI
 with not a lot of code involved since the controls encapsulate the needed functionality.
@@ -265,7 +267,7 @@ On the other hand, Modal UIs give a developer a lot more control
 over the outcome of the design process since very little is canned or mandated.
 They are also simpler to code.
 Once you get familiar with the drawing options offered by wxDC,
-creating a new Mode of Operation becomes fairly straightforward.
+creating a new Mode of Operation is fairly straightforward.
 Also, in terms of visual layout they offer the entire screen for the app's display
 since there are no menus or other visual elements to take away screen space.
 The SModeSrcEdr mode demonstrates this in its ability to view large segments of code
