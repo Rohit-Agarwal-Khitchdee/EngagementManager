@@ -286,7 +286,17 @@ it is possible to incorporate a Modal UI window into a regular WIMP style app
 using wxAUI with the Modal UI in one layer and a WIMP UI in another layer.
 Effectively mixing these 2 styles of UI design.
 
-# Code Quality
+# A note on code quality
 I've only just gotten this code to work.
 This code has not been tested and is very brittle.
 It's posted as a proof-of-concept demo.
+However, being a soucre code toolkit,
+and since the code is small and relatively simple,
+you can add error-checking to core parts
+and do a lot of testing on your targeted platforms
+to make it production suitable.
+wxWidgets, which this code uses to access platform features
+is a fairly robust and well tested library.
+We also plan to create native versions for Win32 and X windows
+which will remove this dependency on Windows and Linux.
+
