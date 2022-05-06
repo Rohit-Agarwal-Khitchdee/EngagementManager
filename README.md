@@ -221,6 +221,7 @@ The mode has a fnKybd_map function which processes this event.
 In its fnKybd_map function, the mode determines the intent of the user
 based on the key strokes it received
 and dispatches the intent to be processed by a corresponding intent handler.
+![alt text](http://hexmap.khitchdee.net/Modal-operation.png)
 Designing a mode therefore involves designing a set of user intents,
 each one of which is identified by specific user keystrokes,
 and implementing the apps expected behavior in response to a given user intent
