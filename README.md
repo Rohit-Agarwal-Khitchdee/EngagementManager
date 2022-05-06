@@ -294,13 +294,13 @@ Effectively mixing these 2 styles of UI design.
 I've only just gotten this code to work.
 This code has not been tested and is very brittle.
 It's posted as a proof-of-concept demo.
-However, being a soucre code toolkit,
+However, being a source code toolkit,
 and since the code is small and relatively simple,
 you can add error-checking to core parts
 and do a lot of testing on your targeted platforms
-to make it production suitable.
+to make it suitable for deployment in a production environment.
 wxWidgets, which this code uses to access platform features
 is a fairly robust and well tested library.
-We also plan to create native versions for Win32 and X-Windows
+We also plan to create native versions of Modal for Win32 and X-Windows
 which will remove this dependency (on Windows and Linux).
 
