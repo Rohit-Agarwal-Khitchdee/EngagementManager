@@ -301,6 +301,6 @@ and do a lot of testing on your targeted platforms
 to make it production suitable.
 wxWidgets, which this code uses to access platform features
 is a fairly robust and well tested library.
-We also plan to create native versions for Win32 and X windows
-which will remove this dependency on Windows and Linux.
+We also plan to create native versions for Win32 and X-Windows
+which will remove this dependency (on Windows and Linux).
 
