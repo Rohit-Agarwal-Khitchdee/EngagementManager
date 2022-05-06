@@ -10,10 +10,15 @@ Unlike a WIMP GUI where the screen is functionally divided into windows and subw
 in a Modal GUI, functional division is over time.
 At any given time, one mode is painting to the entire screen,
 and at different times, different operational modes are running the UI.
+
 The advantage of a Modal GUI is 
-that it is simpler to design and simpler to use.
+that each screen in the UI is simpler and less cluttered.
+The app has access to all of the screen space
+in the absence of Menus and sub-windows.
+A Modal UI is simpler to design and simpler to use.
 Engineering apps such as CAD tools and developer tools
 that involve a lot of app-user interaction benefit most from Modal UIs.
+
 This is a source-code toolkit in the sense that this file can be edited to produce an app,
 keeping the parts that are needed for the app being produced,
 discarding parts that are not needed and adding new parts specific to the app.
