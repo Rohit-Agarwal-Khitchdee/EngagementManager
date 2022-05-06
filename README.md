@@ -204,8 +204,12 @@ The main task in creating a Modal app is
 designing a mode of operation that specifically caters to the app's primary function.
 ModalWX.cpp and its design of the SModeSrcEdr mode of operation
 serves as a template for designing a mode of operation for some other purpose.
-While a mode operation defines the behavior of the app during an interaction session with the user,
-the behavior of the app at any given instant is defined by an intent dispatcher.
+
+## User intents and intent handlers:
+
+While a mode of operation defines the behavior of the app 
+during an interaction session with the user,
+the behavior of the app at any given instant is defined by an intent handler.
 An intent is the user's intention of performing some specific action 
 in the context of the current mode of operation.
 The user expresses this intent through a specific kybd gesture.
