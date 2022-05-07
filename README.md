@@ -45,7 +45,7 @@ This is unlike a typical codebase that has several different .cpp
 files with associated .h files.
 Instead of several small .cpp files that are navigated using a project directory browser,
 we use a large single .cpp file that contains a large number of functions.  
-The navigate this large set of C functions (this is a 5000+ line codefile),
+To navigate this large set of C functions (this is a 5000+ line codefile),
 we use 3 techniques:
 1. We define 2 sectional constructs above the C++ language level --
 the Block and the Sub-Block.
