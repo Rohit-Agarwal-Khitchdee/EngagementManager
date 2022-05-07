@@ -163,7 +163,7 @@ If you delete this file, the app loads afresh.
 This will be based on gcc (Win, Linux) and g++ on OSX.
 3. Then add the ability to debug a modal app.
 This will be based on gdb (Win, Linux) and lldb on OSX.
-4. We plan to add more features to improve course code navigation.
+4. We plan to add features to improve source code navigation.
 5. We plan to create ModalWin32, a native version of the Modal UI toolkit for Win32.
 6. We plan to create ModalX a native version of the Modal UI toolkit for X-Windows on Linux.
 7. We plan to create a toolkit based on Modal called Hex-map 
