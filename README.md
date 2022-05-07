@@ -92,8 +92,8 @@ Once we add a source code editor, and build and debug features to it
 it will become easier to edit it and create a Modal app based on it.
 Modal app codefiles are designed to be viewed using ModalWX
 since the block and sub-block level constructs are only parsed by ModalWX
-and code folding, while available on all IDEs, is not commonly used
-since it is mouse-based, time-consuming, breaks the flow and hence, is not convenient.
+and code folding, while available on all IDEs, is not convenient ot use
+since it is mouse-based, time-consuming, and breaks the flow.
 
 # Building and Running the app:
 
