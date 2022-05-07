@@ -76,6 +76,8 @@ it is possible to view this entire 5000 line codebase in a single page
 then open a block or sub-block, open a function or structure inside it
 and study the details of the implementation.
 Then close that block, open another block and study it.
+i.e. At any given time, the developer only keeps open 
+the section of code they are currently interested in.
 There is no other navigational mechanism needed.
 The entire screen is used to display source code.
 The purpose of posting this codebase at this stage 
