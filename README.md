@@ -143,8 +143,9 @@ If there is a symbol such as a struct or function at the cursor,
 the app navigates to that symbol's location in the file.
 Ctrl-left arrow brings you back in this case.
 If there is nothing at the cursor location,
-a text entry field is popped up which currently takes line number input.
-More navigational features will be added using this mechanism.
+a text entry search field is popped up which currently accepts a line number 
+or a symbol in the codefile as input.
+More navigational features will be added using this search mechanism.
 
 If you press just Ctrl, it pops up a small menu of features
 which can be selected using the arrow keys.
