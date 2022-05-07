@@ -135,10 +135,12 @@ This should build the Modal app.
 When you run the app,
 it will ask you for the full path of ModalWX.cpp.
 This path will depend on your platform.
-When you enter this path,
-it will load ModalWX.cpp, parse it and display its blocks.
 If you enter an incorrect path, it will bring up a file selector
 to select the file from the file system.
+The file selector takes inputs from the arrow keys and PgUp PgDn
+and selection of a dir or file is using return(enter).
+Once you have entered the correct path,
+it will load ModalWX.cpp, parse it and display its blocks.
 The arrow keys, PgUp and PgDn move the caret.
 To open a block you move the caret to the block's line
 then you press Ctrl-S (Command-S on OSX)
