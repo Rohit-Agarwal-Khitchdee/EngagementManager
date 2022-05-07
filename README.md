@@ -88,7 +88,7 @@ while the final toolkit will have code-editing features as well
 and the ability to build and debug using platform-specific tools.
 
 ModalWX.cpp, when viewed in an IDE is rather large and unwieldy. 
-Once we add a source code editor, and build and debug system to it 
+Once we add a source code editor, and build and debug features to it 
 it will become easier to edit it and create a Modal app based on it.
 Modal app codefiles are designed to be viewed using ModalWX
 since the block and sub-block level constructs are only parsed by ModalWX
