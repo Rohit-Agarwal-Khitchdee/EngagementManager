@@ -85,7 +85,7 @@ is to get people to use these codebase navigation techniques
 and see if they are effective in understanding this 5000 line codebase. 
 This serves as an introduction to this source-code toolkit
 while the final toolkit will have code-editing features as well
-and the ability to build and debug using platform specific tools.
+and the ability to build and debug using platform-specific tools.
 
 ModalWX.cpp, when viewed in an IDE is rather large and unwieldy. 
 Once we add a source code editor, and build and debug system to it 
