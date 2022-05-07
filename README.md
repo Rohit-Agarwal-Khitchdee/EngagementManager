@@ -5,7 +5,8 @@ text entry and screen-space selection.
 Such a GUI is therefore neccesarily "modal"
 in that it has modes of operation 
 in which the meaning of keystrokes possibly changes over the course of the interaction.
-Unlike a WIMP GUI where the screen is functionally divided spatially into windows and subwindows,
+Unlike a WIMP GUI where the screen is functionally divided spatially 
+into menus, windows and subwindows,
 in a Modal GUI, functional division is over time.
 At any given time, one mode is painting to the entire screen,
 and kybd input semantics are associated with that mode
