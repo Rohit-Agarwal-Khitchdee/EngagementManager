@@ -162,7 +162,7 @@ More navigational features will be added using this search mechanism.
 If you press just Ctrl, it pops up a small menu of features
 which can be selected using the Up/Down arrow keys.
 Most of these are currently unimplemented.
-One of these allows you to change the font size.
+One of these allows you to adjust the font size.
 
 When you exit the app, it saves its current state in a file called state.hxp.
 When you reload the app, it reads this file to load the state at last exit.
@@ -208,15 +208,15 @@ The Modal Toolkit provides a few extensions to the base mode for common UI opera
 These are:
 a)   SModeMsg : a mode extension for displaying a user message
 b)   SModeLineInp : a mode extension getting a line of user input 
-c)   SModeSetSel : a mode extension for getting a choice from the user
-from a set of selections.
+c)   SModeLevAdj : a mode extension for enabling the user to adjust
+some level.
 d)   SModeFileSel : a mode extension for selecting a file from the file system
 
 Each modal app defines its own mode extension
 which implements the primary UI function of that app.
 For example ModalWX.cpp defines SModeSrcEdr, 
 a mode extension for browsing a Modal app's source code.
-SModeSrcEdr uses SModeMsg, SModeLineInp, SModeSetSel and SModeFileSel in its implementation
+SModeSrcEdr uses SModeMsg, SModeLineInp, SModeLevAdj and SModeFileSel in its implementation
 to realize the desired behavior of its UI.
 
 # Designing a mode of operation:
@@ -316,6 +316,7 @@ Effectively mixing these 2 styles of UI design.
 
 # A note on code quality
 I've only just gotten this code to work.
+There are a lot of hardcoded values in the code. 
 This code has not been tested and is very brittle.
 It's posted as a proof-of-concept demo.
 However, being a source code toolkit,
