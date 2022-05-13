@@ -72,7 +72,7 @@ and since summarisation is also kybd controlled,
 they do not have to switch over to the mouse at all.
 
 By using these 3 techniques, 
-it is possible to view this entire 5000 line codebase in a single page
+it is possible to view this entire 6000 line codebase in a single page
 then open a block or sub-block, open a function or structure inside it
 and study the details of the implementation.
 Then close that block, open another block and study it.
