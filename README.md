@@ -225,7 +225,7 @@ a mode extension for browsing a Modal app's source code.
 SModeSrcEdr uses SModeMsg, SModeLineInp, SModeLevAdj and SModeFileSel in its implementation
 to realize the desired behavior of its UI.
 
-# Designing a mode of operation:
+# How a Modal UI operates / Designing a mode of operation:
 
 The main task in creating a Modal app is
 designing a mode of operation that specifically caters to the app's primary function.
