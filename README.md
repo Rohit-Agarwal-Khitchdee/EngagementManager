@@ -160,9 +160,15 @@ or a symbol in the codefile as input.
 More navigational features will be added using this search mechanism.
 
 If you press just Ctrl, it pops up a small menu of features
-which can be selected using the Up/Down arrow keys.
+which can be selected using the Up/Down arrow keys
+and exectued using Return(Enter)
 Most of these are currently unimplemented.
 One of these allows you to adjust the font size.
+This is useful for OSX where the font size maybe off depending on your screen.
+You adjust fontsize using the arrow keys and escape when you're done.
+
+Pressing escape in any operational context (mode) exits that context.
+If that context (mode) happens to be the primary mode, it exits the app.
 
 When you exit the app, it saves its current state in a file called state.hxp.
 When you reload the app, it reads this file to load the state at last exit.
@@ -316,7 +322,8 @@ Effectively mixing these 2 styles of UI design.
 
 # A note on code quality
 I've only just gotten this code to work.
-There are a lot of hardcoded values in the code. 
+There are a several hardcoded values in the code
+and several places where error conditions are not checked.
 This code has not been tested and is very brittle.
 It's posted as a proof-of-concept demo.
 However, being a source code toolkit,
