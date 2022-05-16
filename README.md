@@ -5,12 +5,7 @@ text entry and screen-space selection.
 Such a GUI is therefore neccesarily "modal"
 in that it has modes of operation 
 in which the meaning of keystrokes possibly changes over the course of the interaction.
-Unlike a WIMP GUI where the screen is functionally divided spatially 
-into menus, windows and subwindows,
-in a Modal GUI, functional division is over time.
-At any given time, one mode is painting to the entire screen,
-and kybd input semantics are associated with that mode
-and at different times, different operational modes are running the UI.
+Hence the name.
 
 The advantage of a Modal GUI is 
 that each screen in the UI is simpler and less cluttered.
@@ -18,8 +13,24 @@ The app has access to all of the screen space
 in the absence of Menus and sub-windows.
 A Modal UI is simpler to design and simpler to use.
 The focus of a Modal UI is on the primary interaction between the user and the app.
-Engineering apps such as CAD tools and developer tools
-that involve a lot of app-user interaction benefit most from Modal UIs.
+Except for graphics apps that require pixel accurate screen-space selection,
+any app can be written using a Modal UI.
+
+# Evaluating ModalWX
+1. Build and run the app. This is described in a section.
+2. If you are on OSX, the fontsize might be too small.
+To adjust it, press the Command key once.
+This will pop-up a set of 5 options as shown below.
+![alt text](https://hex-map.khitchdee.net/ModalWX-Ctrl-Popup.png)
+Use the down arrow key to select "Adjust Fontsize".
+Press Enter(Return).
+You will get a message:
+"Arrow to adjust fontsize, Esc to exit"
+Use the arrow keys to adjust fontsize.
+This is a live ajdustment.
+Once you are satisfied, press escape.
+3. At this point, your screen should look like:
+![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
 
 This is a source-code toolkit in the sense that this file can be edited to produce an app,
 keeping the parts that are needed for the app being produced,
@@ -135,11 +146,21 @@ This should build the Modal app.
 When you run the app,
 it will ask you for the full path of ModalWX.cpp.
 This path will depend on your platform.
+![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)
 If you enter an incorrect path, it will bring up a file selector
 to select the file from the file system.
-The file selector takes inputs from the arrow keys and PgUp PgDn
-and selection of a file is using return(enter).
-Once you have entered the correct path,
+![alt text](https://hex-map.khitchdee.net/ModalWX-file-selector.png)
+The file selector has upto 5 vertical panels on the screen.
+Each panel represents the contents of a directory.
+The active panel has a white outline rectangle highlighting the current selection
+while the other panels have black outline rectangles.
+To change your selection in the active panel, use up and down arrow.
+To open a currently selected directory, use right arrow.
+To open or navigate to a parent directory, use left arrow.
+To commit to a selection (it has to be ModalWX.cpp in this case)
+press Enter(Return).
+If you make an invalid selection, it gets you back to the file selector.
+Once you have correctly selected ModalWX.cpp,
 it will load ModalWX.cpp, parse it and display its blocks.
 The arrow keys, PgUp and PgDn move the caret.
 To open a block you move the caret to the block's line
