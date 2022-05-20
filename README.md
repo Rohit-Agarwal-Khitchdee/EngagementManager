@@ -3,10 +3,12 @@ A 'source-code toolkit' for designing efficient workstation UIs based on wxWidge
 Modal UIs are kybd-only and do not break screen-space into sub-windows.
 Modal UIs are efficient for 2 reasons:
 1. Not having to use the mouse in the interaction is the primary contributor.
-This app demonstrates this.
+This app is a source-code navigation/editing app. 
+A comparison with your IDE of choice such as XCode, Visual Studio, Code::Blocks
+or CodeLite demonstrates this efficiency advantage.
 2. Not breaking screen-space into sub-windows means each screen is a lot simpler
 and the app gets to use the entire screen for its layout.
-Instead of a spatial segregation of screen-space, a temporal segration is used.
+Instead of a spatial segregation of screen-space, a temporal segregation is used.
 Different modes of operation run the UI at different times.
 So app complexity is distributed over time, not screen-space.
 
@@ -17,9 +19,11 @@ such as graphics design tools.
 ## ModalWX Code Walkthrough
 We guide you through a sequence of steps
 that explain how this code works, how it is navigated
-and what it takes it takes to write a Modal app based on wxWidgets
-using this toolkit.
+and what it takes it takes to write a Modal app using this toolkit.
 The only pre-requisite is familiarity with C++.
+At the end of this walkthough you will be able to evaluate
+whether ModalWX would be a better way to design your next workstation app
+compared to a WIMP-based design.
 
 1. Build and run the app. This is described in a section below.
 2. If you are on OSX, the fontsize might be too small.
