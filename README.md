@@ -14,7 +14,14 @@ Modal UIs can replace WIMP GUIs in almost all cases
 except where fine-grained screen-space selection is needed
 such as graphics design tools.
 
-## ModalWX Walkthrough / Evaluating ModalWX for your next workstation app
+## ModalWX Code Walkthrough
+We guide you through a sequence of steps
+that explain how this code works, how it is navigated
+and what it takes it takes to write a Modal app based on wxWidgets
+using this toolkit.
+You only need to be familiar with the C++ language.
+There are no other pre-requisites.
+
 1. Build and run the app. This is described in a section below.
 2. If you are on OSX, the fontsize might be too small.
 To adjust it, press the Command key once.
