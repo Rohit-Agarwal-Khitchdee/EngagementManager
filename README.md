@@ -1,23 +1,21 @@
 # ModalWX
-A 'source-code toolkit' for designing kybd-only PC UIs based on wxWidgets.
-In a kybd-only GUI, the kybd serves the dual functions of
-text entry and screen-space selection.
-Such a GUI is therefore neccesarily "modal"
-in that it has modes of operation 
-in which the meaning of keystrokes possibly changes over the course of the interaction.
-Hence the name.
+A 'source-code toolkit' for designing efficient workstation UIs based on wxWidgets.
+Modal UIs are kybd-only and do not break screen-space into sub-windows.
+Modal UIs are efficient for 2 reasons:
+1. Not having to use the mouse in the interaction is the primary contributor.
+This app demonstrates this.
+2. Not breaking screen-space into sub-windows means each screen is a lot simpler
+and the app gets to use the entire screen for its layout.
+Instead of a spatial segregation of screen-space, a temporal segration is used.
+Different modes of operation run the UI at different times.
+So app complexity is distributed over time, not screen-space.
 
-The advantage of a Modal GUI is 
-that each screen in the UI is simpler and less cluttered.
-The app has access to all of the screen space
-in the absence of Menus and sub-windows.
-A Modal UI is simpler to design and simpler to use.
-The focus of a Modal UI is on the primary interaction between the user and the app.
-Except for graphics apps that require pixel accurate screen-space selection,
-any app can be written using a Modal UI.
+Modal UIs can replace WIMP GUIs in almost all cases
+except where fine-grained screen-space selection is needed
+such as graphics design tools.
 
-# Evaluating ModalWX
-1. Build and run the app. This is described in a section.
+# ModalWX Walkthrough
+1. Build and run the app. This is described in a section below.
 2. If you are on OSX, the fontsize might be too small.
 To adjust it, press the Command key once.
 This will pop-up a set of 5 options as shown below.
