@@ -19,8 +19,7 @@ We guide you through a sequence of steps
 that explain how this code works, how it is navigated
 and what it takes it takes to write a Modal app based on wxWidgets
 using this toolkit.
-You only need to be familiar with the C++ language.
-There are no other pre-requisites.
+The only pre-requisite is familiarity with C++.
 
 1. Build and run the app. This is described in a section below.
 2. If you are on OSX, the fontsize might be too small.
