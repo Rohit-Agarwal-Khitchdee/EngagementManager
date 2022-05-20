@@ -104,7 +104,7 @@ since the block and sub-block level constructs are only parsed by ModalWX
 and code folding, while available on all IDEs, is not convenient ot use
 since it is mouse-based, time-consuming, and breaks the flow.
 
-# Building and Running the app:
+## Building and Running the app:
 
 The app is based on the wxWidgets cross-platform UI library.
 To build this app you first have to download and build the wxWidgets library.
@@ -114,7 +114,7 @@ You can get help for setting up wxWidgets on your PC from this forum:
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82
 The build process for the library depends on your platform:
 
-## OSX: 
+### OSX: 
 We recommend building the library from source.
 The simplest way is to download the source for wxWidgets.
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj
@@ -123,7 +123,7 @@ It builds the wxWidgets library from source as part of its build process.
 Then you can edit the project settings to replace minimal.cpp with ModalWX.cpp.
 This will build the Modal app.
 
-## Windows:
+### Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.
 You download the source code for wxWidgets.
 Then you goto %wxWidgetsDir%/build/msw/
@@ -134,12 +134,12 @@ Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p
 to create a new VS project and add ModalWX.cpp to it.
 This should build the Modal app.
 
-## Linux:
+### Linux:
 We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.
 Create a new bare-bones wxWidgets based project and add ModalWX.cpp to it.
 This should build the Modal app.
 
-## Running the app (UI controls):
+### Running the app (UI controls):
 
 When you run the app,
 it will ask you for the full path of ModalWX.cpp.
@@ -193,18 +193,9 @@ When you exit the app, it saves its current state in a file called state.hxp.
 When you reload the app, it reads this file to load the state at last exit.
 If you delete this file, the app loads afresh.
 
-# Future Plans:
+## Next Step:
 
-1. We plan to add source editing features to the source editor mode.
-2. Then add the ability to compile a Modal source code file and correct compilation errors.
-This will be based on gcc (Win, Linux) and g++ on OSX.
-3. Then add the ability to debug a modal app.
-This will be based on gdb (Win, Linux) and lldb on OSX.
-4. We plan to add more source code navigation features.
-5. We plan to create ModalWin32, a native version of the Modal UI toolkit for Win32.
-6. We plan to create ModalX a native version of the Modal UI toolkit for X-Windows on Linux.
-7. We plan to create a toolkit based on Modal called Hex-map 
-for designing kybd-only apps on a hexagonal grid.
+Adding source editing features to the source editor mode.
 
 # Using this source code toolkit to build your own wxWidgets based modal app:
 
