@@ -14,7 +14,7 @@ Modal UIs can replace WIMP GUIs in almost all cases
 except where fine-grained screen-space selection is needed
 such as graphics design tools.
 
-# ModalWX Walkthrough / Evaluating ModalWX for your next workstation app
+## ModalWX Walkthrough / Evaluating ModalWX for your next workstation app
 1. Build and run the app. This is described in a section below.
 2. If you are on OSX, the fontsize might be too small.
 To adjust it, press the Command key once.
