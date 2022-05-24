@@ -26,25 +26,20 @@ whether ModalWX would be a better way to design your next workstation app
 compared to a WIMP-based design.
 
 1. Build and run the app. This is described in a section below.
+At this point, your screen should look like this:
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
-2. If you are on OSX, the fontsize might be too small.
+2. OSX font size adjustment.
+If you are on OSX, the fontsize might be too small.
 To adjust it, press the Command key once.
-This will pop-up a set of 5 options as shown below.
-![alt text](https://hex-map.khitchdee.net/ModalWX-Ctrl-Popup.png)
+This will pop-up a set of 5 options.
 Use the down arrow key to select "Adjust Fontsize".
 Press Enter(Return).
 You will get a message:
-"Arrow to adjust fontsize, Esc to exit"
+"arrows to adjust fontsize, esc to exit"
 Use the arrow keys to adjust fontsize.
 This is a live ajdustment.
 Once you are satisfied, press escape.
-3. At this point, your screen should look like:
-
-This is a source-code toolkit in the sense that this file can be edited to produce an app,
-keeping the parts that are needed for the app being produced,
-discarding parts that are not needed and adding new parts specific to the app.
-There are no libraries involved and all the core functions provided by the toolkit
-are visible as source code, making debugging easier.
+3. The app's interface with wxWidgets.
 
 The toolkit consists of:
 1. A ModeManager C++ structure that manages the modes of operation
