@@ -26,6 +26,7 @@ whether ModalWX would be a better way to design your next workstation app
 compared to a WIMP-based design.
 
 1. Build and run the app. This is described in a section below.
+![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
 2. If you are on OSX, the fontsize might be too small.
 To adjust it, press the Command key once.
 This will pop-up a set of 5 options as shown below.
@@ -38,7 +39,6 @@ Use the arrow keys to adjust fontsize.
 This is a live ajdustment.
 Once you are satisfied, press escape.
 3. At this point, your screen should look like:
-![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
 
 This is a source-code toolkit in the sense that this file can be edited to produce an app,
 keeping the parts that are needed for the app being produced,
