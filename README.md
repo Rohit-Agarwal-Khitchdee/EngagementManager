@@ -2,8 +2,8 @@
 A toolkit for designing efficient workstation UIs based on wxWidgets.
 Modal UIs are kybd-only and do not break screen-space into sub-windows.
 They are efficient for 2 reasons:
-1. Not having to siwtch to the mouse in the interaction.
-This app is a source-code navigation/editing app. 
+1. Not having to switch to the mouse in the interaction.
+This app, a source-code navigation/editing app, demostrates this. 
 A comparison with your IDE of choice such as XCode, Visual Studio, Code::Blocks
 or CodeLite demonstrates this efficiency advantage.
 2. Not breaking screen-space into sub-windows means each screen is a lot simpler
@@ -40,7 +40,7 @@ You will get a message:
 Use the arrow keys to adjust fontsize.
 This is a live ajdustment.
 Once you are satisfied, press escape.
-3. The app's interface with wxWidgets.
+3. Modal's interface with wxWidgets -- the ModeManager.
 4. Modes of Operation.
 
 The toolkit consists of:
