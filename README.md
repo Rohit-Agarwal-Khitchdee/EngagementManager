@@ -1,8 +1,8 @@
 # ModalWX
-A 'source-code toolkit' for designing efficient workstation UIs based on wxWidgets.
+A toolkit for designing efficient workstation UIs based on wxWidgets.
 Modal UIs are kybd-only and do not break screen-space into sub-windows.
-Modal UIs are efficient for 2 reasons:
-1. Not having to use the mouse in the interaction is the primary contributor.
+They are efficient for 2 reasons:
+1. Not having to siwtch to the mouse in the interaction.
 This app is a source-code navigation/editing app. 
 A comparison with your IDE of choice such as XCode, Visual Studio, Code::Blocks
 or CodeLite demonstrates this efficiency advantage.
@@ -11,10 +11,11 @@ and the app gets to use the entire screen for its layout.
 Instead of a spatial segregation of screen-space, a temporal segregation is used.
 Different modes of operation run the UI at different times.
 So app complexity is distributed over time, not screen-space.
+Several simpler screens improves efficiency over fewer more complex screens.
 
 Modal UIs can replace WIMP GUIs in almost all cases
 except where fine-grained screen-space selection is needed
-such as graphics design tools.
+such as graphic design tools.
 
 ## ModalWX Code Walkthrough
 We guide you through a sequence of steps
@@ -40,6 +41,7 @@ Use the arrow keys to adjust fontsize.
 This is a live ajdustment.
 Once you are satisfied, press escape.
 3. The app's interface with wxWidgets.
+4. Modes of Operation.
 
 The toolkit consists of:
 1. A ModeManager C++ structure that manages the modes of operation
