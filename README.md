@@ -3,7 +3,7 @@ A toolkit for building efficient (PC) workstation UIs based on wxWidgets.
 Modal UIs are kybd-only and do not break screen-space into sub-windows.
 They are efficient for 2 reasons:
 1. Not having to switch to the mouse in the interaction.
-2. Not breaking screen-space into sub-windows means each screen is a lot simpler
+2. Not breaking screen-space into sub-windows means each screen is simpler
 and the app gets to use the entire screen for its layout.
 Instead of a spatial segregation of screen-space, a temporal segregation is used.
 Different modes of operation run the UI at different times.
