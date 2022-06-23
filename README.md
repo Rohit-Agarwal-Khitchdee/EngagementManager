@@ -10,10 +10,12 @@ They are simpler and more efficient for both developer and user.
 This app is a source-code navigation/editing app. 
 A comparison with your IDE of choice such as XCode, or Visual Studio
 in the ability to navigate code demonstrates this efficiency advantage.
-This is the only file needed to run the app.
+ModalWX.cpp (~500KB) is the only file needed to run the app.
 The app only caters to C/C++ Modal apps and does not have editing, build or debug features.
 Adding these features will likely double its size to 1M.
-That compares with several 10s of MBytes for all of the above tools.
+That compares with several 10s of MBytes for all of the above tools
+which demonstrates that there's a lot less code needed
+implying simplicity for the developer.
 
 Modal UIs can replace WIMP GUIs in almost all cases
 except where fine-grained screen-space selection is needed
@@ -75,11 +77,6 @@ press Enter(Return).
 If you make an invalid selection, it gets you back to the file selector.
 Once you have correctly selected ModalWX.cpp,
 it will load ModalWX.cpp, parse it and display its blocks.
-The arrow keys, PgUp and PgDn move the caret.
-To open a block you move the caret to the block's line
-then you press Ctrl-S (Command-S on OSX)
-To close a block, you move the caret to the first line in the block an press Ctrl-S.
-Any line that ends in {...} is summarized (closed) and can be opened using Ctrl-S 
 
 ## ModalWX Code Walkthrough
 We guide you through a sequence of steps
@@ -109,12 +106,11 @@ Once you are satisfied, press escape.
 
 ## Next Step:
 
-Modal specific navigational features.
-Source editing.
-Build.
-Debug.
+1. Modal specific navigational features and source code editing.
+2. Build.
+3. Debug.
 
-We estimate this will take 3 months
+I estimate this will take 3 months
 
 # Modal UIs and WIMP UIs
 
