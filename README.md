@@ -9,21 +9,24 @@ WIMP UIs are non-modal even though they may contain modal elements such as dialo
 ModalWX extends wxWidgets with the ability to create "Modal" GUIs.
 
 Modal GUIs do not layout the screen spatially using windows.
-Instead they layout the screen temporally using "modes of operation".
+Instead they layout the app's interaction time temporally using "modes of operation".
 Each mode of operation paints to the entire screen 
-and has exclusive control over kybd input.
+and has exclusive control over kybd input while it has focus.
 There is one primary mode that the Modal app launches with.
 Subsequently, over the app's lifetime, different modes may pop-up
 in front of the primary mode and then go away -- i.e. they are transient.
 Much like dialogs in WIMP.
 Modal apps benefit from not having to deal with windows, and layout issues.
+This results in simpler, less cluttered screens.
 They also benefit from not needing to use the mouse in the GUI.
+This improves the interaction efficiency of the UI and makes it simpler to design.
 They are simpler and more efficient for both developer and user.
 
 From a WIMP app designer's perspective,
 a Modal app is like a WIMP app with a bunch of kybd short-cuts
-and no presence of mouse-based control.
+and mouse-based control disabled.
 i.e. all control is via kybd shortcuts.
+Since it is modal, the number of shortcuts needed per mode is small.
 
 This app is a source-code navigation/editing app. 
 A comparison with your IDE of choice such as XCode, or Visual Studio
