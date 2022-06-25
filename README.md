@@ -5,7 +5,9 @@ The smallest windows are controls such as clickable Buttons.
 The mouse is used to select space on-screen, 
 making it easy to navigate this spatial organization of the screen.
 WIMP UIs are non-modal even though they may contain modal elements such as dialogs.
+
 ModalWX is an extension to wxWidgets that enables the creation of "Modal" GUIs using wxWidgets.
+
 Modal GUIs do not layout the screen spatially using windows.
 Instead they layout the screen temporally using "modes of operation".
 Each mode of operation paints to the entire screen.
