@@ -1,12 +1,12 @@
 # ModalWX
-wxWidgets is a GUI toolkit for building WIMP style GUIs.
+wxWidgets is a cross-platform GUI toolkit for building WIMP style GUIs.
 Such GUIs divide the screen spatially into Windows.
 The smallest windows are controls such as clickable Buttons.
 The mouse is used to select space on-screen, 
 making it easy to navigate this spatial organization of the screen.
 WIMP UIs are non-modal even though they may contain modal elements such as dialogs.
 
-ModalWX is an extension to wxWidgets that enables the creation of "Modal" GUIs using wxWidgets.
+ModalWX extends wxWidgets with the ability to create "Modal" GUIs.
 
 Modal GUIs do not layout the screen spatially using windows.
 Instead they layout the screen temporally using "modes of operation".
