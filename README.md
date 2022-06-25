@@ -20,7 +20,7 @@ Modal apps benefit from not having to deal with windows, and layout issues.
 This results in simpler, less cluttered screens.
 They also benefit from not needing to use the mouse in the GUI.
 This improves the interaction efficiency of the UI and makes it simpler to design.
-They are simpler and more efficient for both developer and user.
+Modal UIs are simpler and more efficient for both developer and user.
 
 From a WIMP app designer's perspective,
 a Modal app is like a WIMP app with a bunch of kybd short-cuts
