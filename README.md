@@ -58,7 +58,7 @@ To build this app you first have to download and build the wxWidgets library.
 
 We recommend using the current development version of wxWidgets which is 3.1.6.  
 You can get help for setting up wxWidgets on your PC from this forum:  
-https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82. 
+https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82.  
 The build process for the library depends on your platform:  
 
 ### OSX: 
