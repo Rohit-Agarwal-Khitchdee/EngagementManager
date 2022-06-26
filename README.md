@@ -1,55 +1,55 @@
 # ModalWX
 (reading time ~ 3 min)  
-wxWidgets is a cross-platform GUI toolkit for building WIMP style GUIs.
-Such GUIs divide the screen spatially into Windows.
-The smallest windows are controls such as clickable Buttons
-which serve as the units of the GUI.
-The mouse is used to select space on-screen, 
-making it easy to navigate this spatial organization of the screen.
-WIMP UIs are non-modal even though they may contain modal elements such as dialogs.
+wxWidgets is a cross-platform GUI toolkit for building WIMP style GUIs.  
+Such GUIs divide the screen spatially into Windows.  
+The smallest windows are controls such as clickable Buttons   
+which serve as the units of the GUI.  
+The mouse is used to select space on-screen,   
+making it easy to navigate this spatial organization of the screen.  
+WIMP UIs are non-modal even though they may contain modal elements such as dialogs.  
 
-ModalWX extends wxWidgets with the ability to create "Modal" GUIs.
+ModalWX extends wxWidgets with the ability to create "Modal" GUIs.  
 
-Modal GUIs do not layout the screen spatially using windows.
-Instead they layout the app's interaction time temporally using "modes of operation".
-Each mode of operation paints to the entire screen 
-and has exclusive control over kybd input while it has focus.
-A mode defines a set a "user intents"
-which is the user's expression of their intent to do something
-expressed as a specific kybd-based input gesture.
-A mode implements an intent handler for each intent it defines.
-This intent handler performs the action the user wants and updates the screen.
-An intent (and it's handler) is the unit of the UI in a Modal UI,
-much like a control is in a WIMP GUI.
-There is one primary mode that a Modal app launches with.
-Subsequently, over the app's lifetime, different modes may pop-up
-in front of the primary mode and then go away -- i.e. they are transient.
-Much like dialogs in WIMP.
-Modal apps benefit from not having to deal with windows, and layout issues.
-This results in simpler, less cluttered screens.
-They also benefit from not needing to use the mouse in the GUI.
-This improves the interaction efficiency of the UI and makes it simpler to design.
-Modal UIs are simpler and more efficient for both developer and user.
+Modal GUIs do not layout the screen spatially using windows.  
+Instead they layout the app's interaction time temporally using "modes of operation".  
+Each mode of operation paints to the entire screen   
+and has exclusive control over kybd input while it has focus.  
+A mode defines a set a "user intents",    
+which is the user's expression of their intent to do something   
+expressed as a specific kybd-based input gesture.  
+A mode implements an intent handler for each intent it defines.  
+This intent handler performs the action the user wants and updates the screen.  
+An intent (and it's handler) is the unit of the UI in a Modal UI,  
+much like a control is in a WIMP GUI.  
+There is one primary mode that a Modal app launches with.  
+Subsequently, over the app's lifetime, different modes may pop-up   
+in front of the primary mode and then go away -- i.e. they are transient,  
+Much like dialogs in WIMP.  
+Modal apps benefit from not having to deal with windows, and layout issues.    
+This results in simpler, less cluttered screens.  
+They also benefit from not needing to use the mouse in the GUI.  
+This improves the interaction efficiency of the UI and makes it simpler to design.  
+Modal UIs are simpler and more efficient for both developer and user.  
 
-From a WIMP app designer's perspective,
-a Modal app is like a WIMP app with a bunch of kybd short-cuts
-and mouse-based control disabled.
-i.e. all control is via kybd shortcuts.
-Since it is modal, the number of shortcuts needed per mode is small.
+From a WIMP app designer's perspective,  
+a Modal app is like a WIMP app with a bunch of kybd short-cuts  
+and mouse-based control disabled.  
+i.e. all control is via kybd shortcuts.  
+Since it is modal, the number of shortcuts needed per mode is small.  
 
-This app is a source-code navigation/editing app. 
-A comparison with your IDE of choice such as XCode, or Visual Studio
-in the ability to navigate code demonstrates this efficiency advantage.
-ModalWX.cpp (~500KB) is the only file needed to run the app.
-The app only caters to C/C++ Modal apps and does not have editing, build or debug features.
-Adding these features will likely double its size to 1M.
-That compares with several 10s of MBytes for all of the above tools
-which demonstrates that there's a lot less code needed
-implying simplicity for the developer.
+This app is a source-code navigation/editing app.  
+A comparison with your IDE of choice such as XCode, Visual Studio, or Code::Blocks   
+in the ability to navigate code demonstrates this efficiency advantage.  
+ModalWX.cpp (~500KB) is the only file needed to run the app.  
+The app only caters to C/C++ Modal apps and does not have editing, build or debug features.  
+Adding these features will likely double its size to 1M.  
+That compares with 10s of MBytes for all of the above tools  
+which demonstrates that there's a lot less code needed. 
+implying simplicity for the developer.  
 
-Modal UIs can replace WIMP GUIs in almost all cases
-except where fine-grained screen-space selection is needed
-such as graphic design tools.
+Modal UIs can replace WIMP GUIs in almost all cases  
+except where fine-grained screen-space selection is needed  
+such as graphic design tools.  
 
 ## Building and Running the app:
 
