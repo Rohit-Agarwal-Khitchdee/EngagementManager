@@ -13,10 +13,10 @@ ModalWX extends wxWidgets with the ability to create "Modal" GUIs.
 Modal GUIs do not layout the screen spatially using windows.  
 Instead they layout the app's interaction time temporally using "modes of operation".  
 Each mode of operation paints to the entire screen   
-and has exclusive control over kybd input while it has focus.  
+and has exclusive control over user input while it has focus.  
 A mode defines a set a "user intents",    
 which is the user's expression of their intent to do something   
-expressed as a specific kybd-based input gesture.  
+expressed as a specific input gesture.  
 A mode implements an intent handler for each intent it defines.  
 This intent handler performs the action the user wants and updates the screen.  
 An intent (and it's handler) is the unit of the UI in a Modal UI,  
