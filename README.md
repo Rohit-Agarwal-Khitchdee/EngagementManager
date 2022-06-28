@@ -52,6 +52,7 @@ except where fine-grained screen-space selection is needed
 such as graphic design tools.  
 
 ## Building and Running the app:
+(interaction time ~1hr) 
 
 The app is based on the wxWidgets cross-platform UI library.  
 To build this app you first have to download and build the wxWidgets library.  
@@ -87,7 +88,6 @@ Create a new bare-bones wxWidgets based project and add ModalWX.cpp to it.
 This should build the Modal app.  
 
 ### Running the app (UI controls):
-
 When you run the app,  
 it will ask you for the full path of ModalWX.cpp.  
 This path will depend on your platform.  
@@ -97,6 +97,8 @@ to select the file from the file system.
 ![alt text](https://hex-map.khitchdee.net/ModalWX-file-selector.png)  
 The file selector has upto 5 vertical panels on the screen.  
 Each panel represents the contents of a directory.  
+The left most panel is closest to the root directory.  
+Each panel is the contents of a directory from the left adjacent panel. 
 The active panel has a white outline rectangle highlighting the current selection  
 while the other panels have black outline rectangles.  
 To change your selection in the active panel, use up and down arrow.  
@@ -135,7 +137,6 @@ Once you are satisfied, press escape.
 4. Modes of Operation.  
 
 ## Next Development Step:
-
 1. Modal specific navigational features and source code editing.  
 2. Build.  
 3. Debug.  
@@ -143,7 +144,6 @@ Once you are satisfied, press escape.
 I estimate this will take 3 months.  
 
 ## Modal UIs and WIMP UIs
-
 WIMP UIs have been around a long time and a broad set of controls is available  
 for developers to quickly put together a UI  
 with not a lot of code involved since the controls encapsulate the needed functionality.  
@@ -184,12 +184,12 @@ for C/Win32 and C/X-Windows and ObjectiveC/Cocoa
 which will remove this dependency.  
 
 ## Contributing to ModalWX
-We've written about 9000 lines of code so far.  
-So we have fairly stable code design, development and coding conventions.  
-We welcome contributions in any form.  
+I've written about 9000 lines of code so far.  
+So I have fairly stable code design, code documentation and coding conventions.  
+I welcome all contributions.    
 Since this is an IDE, relatively simple and has a small and well-documented codebase   
 it is amenable to customisations.  
-We welcome developers sharing their customisations with this project.  
+I welcome developers sharing their customisations with this project.  
 Some areas where work could be done are
 1. A different approach to parsing source code files.  
 2. Dictionary based text input.
