@@ -184,7 +184,7 @@ for C/Win32 and C/X-Windows and ObjectiveC/Cocoa
 which will remove this dependency.  
 
 ## Contributing to ModalWX
-We've written aboutt 9000 lines of code so far.  
+We've written about 9000 lines of code so far.  
 So we have fairly stable code design, development and coding conventions.  
 We welcome contributions in any form.  
 Since this is an IDE, it is amenable to customisations.  
