@@ -184,5 +184,19 @@ for C/Win32 and C/X-Windows and ObjectiveC/Cocoa
 which will remove this dependency.  
 
 # Contributing to ModalWX
-Good starting projects would include  
-Modal for C/Win32, Modal for C/XWindows and Modal for ObjectiveC/Cocoa
+We've written aboutt 9000 lines of code so far.  
+So we have fairly stable code design, development and coding conventions.  
+We welcome contributions in any form.  
+Since this is an IDE, it is amenable to customisations.  
+We welcome developers sharing their customisations with this project.  
+Some areas where work could be done are
+1. A different approach to parsing source code files.  
+2. Dictionary based text input.
+3. More pop-up modes to simplify not-so-common or domain-specific UI tasks.  
+Some larger projects would include  
+- Modal for C/Win32, which is an implementation of the Modal toolkit  
+for the Win32 API.  
+- Modal for C/XWindows, which is an implementation of the Modal toolkit  
+for X Windows on Linux.  
+- Modal for ObjectiveC/Cocoa, an implementation of the Modal toolkit in ObjectiveC  
+targeting Cocoa on OSX.
