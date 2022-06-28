@@ -187,7 +187,8 @@ which will remove this dependency.
 We've written about 9000 lines of code so far.  
 So we have fairly stable code design, development and coding conventions.  
 We welcome contributions in any form.  
-Since this is an IDE, it is amenable to customisations.  
+Since this is an IDE, relatively simple and has a small and well-documented codebase   
+it is amenable to customisations.  
 We welcome developers sharing their customisations with this project.  
 Some areas where work could be done are
 1. A different approach to parsing source code files.  
