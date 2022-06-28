@@ -142,7 +142,7 @@ Once you are satisfied, press escape.
 
 I estimate this will take 3 months.  
 
-# Modal UIs and WIMP UIs
+## Modal UIs and WIMP UIs
 
 WIMP UIs have been around a long time and a broad set of controls is available  
 for developers to quickly put together a UI  
@@ -166,7 +166,7 @@ it is possible to incorporate a Modal UI window into a regular WIMP style app
 using wxAUI with the Modal UI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
-# A note on code quality
+## A note on code quality
 I've only just gotten this code to work.  
 There are a several hardcoded values in the code  
 and several places where error conditions are not checked.  
@@ -183,7 +183,7 @@ We also have longer-term plans to create native versions of Modal
 for C/Win32 and C/X-Windows and ObjectiveC/Cocoa  
 which will remove this dependency.  
 
-# Contributing to ModalWX
+## Contributing to ModalWX
 We've written aboutt 9000 lines of code so far.  
 So we have fairly stable code design, development and coding conventions.  
 We welcome contributions in any form.  
