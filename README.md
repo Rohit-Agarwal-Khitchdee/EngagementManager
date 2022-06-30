@@ -91,6 +91,10 @@ This should build the Modal app.
 When you run the app,  
 it will ask you for the full path of ModalWX.cpp.  
 This path will depend on your platform.  
+Examples:  
+OSX -- /Users/<username>/Modal/ModalWX.cpp  
+Win -- C:\Modal\ModalWX.cpp
+Linux -- /Home/Modal/ModalWX.cpp
 ![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)  
 If you enter an incorrect path, it will bring up a file selector  
 to select the file from the file system.  
