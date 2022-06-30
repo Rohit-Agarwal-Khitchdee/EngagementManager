@@ -131,6 +131,7 @@ If you are on OSX, the fontsize might be too small.
 To adjust it, press the Command key once.  
 This will pop-up a set of 5 options.  
 Use the down arrow key to select "Adjust Fontsize".  
+![alt text](https://hex-map.khitchdee.net/ModalWX-adjust-fontsize.png)  
 Press Enter(Return).  
 You will get a message:  
 "arrows to adjust fontsize, esc to exit"  
