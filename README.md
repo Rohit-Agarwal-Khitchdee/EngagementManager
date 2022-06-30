@@ -138,10 +138,10 @@ You will get a message:
 Use the arrow keys to adjust fontsize.  
 This is a live ajdustment.  
 Once you are satisfied, press escape.  
-3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.
-  3(a). App init
-  3(b). App lifetime -- Paint and Kybd event handling
-  3(c). App exit == Modal shutdown and app state serialisation
+3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.  
+  3(a). App init  
+  3(b). App lifetime -- Paint and Kybd event handling  
+  3(c). App exit == Modal shutdown and app state serialisation  
 4. Inside Modal -- Modes of Operation and User Intents   
 
 ## Next Development Step:
