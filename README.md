@@ -98,7 +98,7 @@ Linux -- /Home/Modal/ModalWX.cpp
 ![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)  
 If you enter an incorrect path, it will bring up a file selector  
 to select the file from the file system.  
-![alt text](https://hex-map.khitchdee.net/ModalWX-file-selector.png)  
+![alt text](https://hex-map.khitchdee.net/ModalWX-file-seletor.png)  
 The file selector has upto 5 vertical panels on the screen.  
 Each panel represents the contents of a directory.  
 The left most panel is closest to the root directory.  
