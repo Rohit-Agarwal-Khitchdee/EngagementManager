@@ -172,7 +172,6 @@ Once you are satisfied, press escape.
   Go back again that's MyFrame's constructor  
   Go back again and we're at the entry point to the app.  
   Goto line 640 and press Ctrl-S, this summarizes MyApp::OnInit().    
-  
   So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame
   which creates a ModalWindow::wxWindow, which contains a ModeManager  
   that serves as the interface between wxWidgets and Modal.  
@@ -180,7 +179,6 @@ Once you are satisfied, press escape.
   The Modal App designer initializes modal in this fn by creating a primary mode  
   in this case SModeSrcEdr and pushing it into the ModeManager  
   before returning the ModeManager to ModalWindow.  
-  
   3(b). App lifetime -- Paint and Kybd event handling  
   (i) Goto line 690 and open it.  
   This is where all key down events are handled by ModalWindow.  
@@ -199,33 +197,31 @@ Once you are satisfied, press escape.
   You can read the comments inside 452.  
   Open 471, then 472, then 473.  
   The mode manager conatins a stack of modes  
-  and displays each modes disp_state in back to front order (bottom to top of stack). 
-  Close 473, close 472, close 471.
-  Go back.
-  Now goto 682 disp_update and Ctrl-right
-  Open 487
+  and displays each modes disp_state in back to front order (bottom to top of stack).  
+  Close 473, close 472, close 471.  
+  Go back.  
+  Now goto 682 disp_update and Ctrl-right.  
+  Open 487.  
   Note that disp_update only calls the mode at the top of the mode stack, the current mode.  
-  Close 487 and go back.
-  Close 673.
-  
+  Close 487 and go back.  
+  Close 673.  
   So during execution stage, wxWidgets send key down and paint events to ModalWindow.  
   ModalWindow delegates these to the modemanager  
-  which dispatches them appropriately to modes it manages.
-  
-  3(c). App exit -- Modal shutdown and app state serialisation  
+  which dispatches them appropriately to modes it manages.  
+  3(c). App exit -- Modal shutdown and app state serialisation.    
   When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
-  which results in ~ModalWIndow being called.
+  which results in ~ModalWIndow being called.  
   Open 667. ~ModalWindow calls modal_exit().  
   Ctrl_right to modal_exit().  
-  Open 8756 and then 8759.
+  Open 8756 and then 8759.  
   modal_exit serializes the mode manager and all the modes it contains to a state file.  
   Next time the app is launched, it reads state from this file   
   to reload the last operational state of the app.  
   It also free's the mode manager which in turn free's all the modes it contains.  
   The mode manager and the modes are all created on the heap.  
-  Close 8759. Close 8756 and go back.
-  Press Escape to exit the app.
-  Then relaunch the app. You should be back where you left off.  
+  Close 8759. Close 8756 and go back.  
+  Press Escape to exit the app.  
+  Then relaunch the app. You should be back where you left off.    
   
 4. Inside Modal -- Modes of Operation and User Intents   
 
