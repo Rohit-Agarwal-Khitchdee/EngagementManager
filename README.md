@@ -140,7 +140,41 @@ This is a live ajdustment.
 Once you are satisfied, press escape.  
 3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.  
   3(a). App init  
+  i. Use the down arrow key to goto line 610: WX CLASS FUNCTION DEFINITIONS{...}. 
+  All lines in this color are "sub-Blocks". 
+  This line is a sub-block of line 105: WX INTERFACING BOILERPLATE. 
+  That line is a BLOCK. All lines in that color are BLOCKS.  
+  Press Ctrl-S(Command-S on OSX) at line 610.  
+  This will open the sub-block.  
+  ii. Goto Line 640: bool MyApp::OnInit(){...}  
+  Open the comment line just above it (line 634) and read it.  
+  Then open line 640.  
+  Read through this code, then close the comment -- goto line 634 and Ctrl-S.  
+  Goto line 646 and move the caret to MyFrame (the one after the new).  
+  Press Ctrl-Right Arrow.  
+  This will take you the constructor of MyFrame.  
+  Goto line 656 move the caret over ModalWindow and Ctrl-Right. 
+  ModalWindow is a subclass of wxWindow defined in the sub-block WX BRIDGE STRUCTURES AND FUNCTIONS. 
+  Goto line 662 and move the caret over modal_init and Ctrl-Right.  
+  modal_init is where the modal toolkit is initalised.  
+  Note that goto using ctrl-right goes to the destination, expands it  
+  and collapses the previous viewing context.  
+  Goto line 8738, this is a summarised if block. 
+  open it read it and close it.  
+  Any line that end in {...} is summarized and can be opened.  
+  Goto line 8745 and move the caret over load_UI_state and Ctrl-Right  
+  load_UI_state is an acillary fn that creates a SModeSrcEdr mode,    
+  creates a SModeManager, pushes the mode onto the mode manager,   
+  and returns the mode manager.  
+  This is returned by modal_init() to the calling ModalWindow.  
+  Now press Ctrl-Left Arrow this takes you back to modal_init.  
+  Go back again (Ctrl-left) that's ModalWindow's constructor  
+  Go back again that's MyFrame's constructor  
+  Go back again and we're at the entry point to the app.  
+  Goto line 640 and press Ctrl-S, this summarizes MyApp::OnInit().  
+  
   3(b). App lifetime -- Paint and Kybd event handling  
+  
   3(c). App exit == Modal shutdown and app state serialisation  
 4. Inside Modal -- Modes of Operation and User Intents   
 
