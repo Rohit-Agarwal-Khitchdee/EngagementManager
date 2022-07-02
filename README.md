@@ -212,7 +212,7 @@ Once you are satisfied, press escape.
   When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
   which results in ~ModalWIndow being called.  
   Open 667. ~ModalWindow calls modal_exit().  
-  Ctrl_right to modal_exit().  
+  Ctrl-right to modal_exit().  
   Open 8756 and then 8759.  
   modal_exit serializes the mode manager and all the modes it contains to a state file.  
   Next time the app is launched, it reads state from this file   
