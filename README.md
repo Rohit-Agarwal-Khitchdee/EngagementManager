@@ -171,8 +171,8 @@ Once you are satisfied, press escape.
   Go back again (Ctrl-left) that's ModalWindow's constructor  
   Go back again that's MyFrame's constructor  
   Go back again and we're at the entry point to the app.  
-  Goto line 640 and press Ctrl-S, this summarizes MyApp::OnInit().    
-  So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame
+  Goto line 640 and press Ctrl-S, this summarizes MyApp::OnInit().  
+  So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
   which creates a ModalWindow::wxWindow, which contains a ModeManager  
   that serves as the interface between wxWidgets and Modal.  
   ModalWindow initializes Modal using a designated modal_init() fn.  
