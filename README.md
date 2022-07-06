@@ -140,27 +140,27 @@ This is a live ajdustment.
 Once you are satisfied, press escape.  
 3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.  
   3(a). App init  
-  i. Use the down arrow key to goto line 617: WX CLASS FUNCTION DEFINITIONS{...}.  
+  i. Use the down arrow key to goto line 638: WX CLASS FUNCTION DEFINITIONS{...}.  
   All lines in this color are "sub-Blocks".  
   This line is a sub-block of line 105: WX INTERFACING BOILERPLATE.  
   That line is a BLOCK. All lines in that color are BLOCKS.  
-  Press Ctrl-S(Command-S on OSX) at line 617.  
+  Press Ctrl-S(Command-S on OSX) at line 638.  
   This will open the sub-block.  
-  ii. Goto Line 647: bool MyApp::OnInit(){...}  
-  Open the comment line just above it (line 641) and read it.  
-  Then open line 647.  
-  Read through this code, then close the comment -- goto line 641 and Ctrl-S.  
-  Goto line 653 and move the caret to MyFrame (the one after the new).  
+  ii. Goto Line 668: bool MyApp::OnInit(){...}  
+  Open the comment line just above it (line 662) and read it.  
+  Then open line 668.  
+  Read through this code, then close the comment -- goto line 662 and Ctrl-S.  
+  Goto line 674 and move the caret to MyFrame (the one after the new).  
   Press Ctrl-Right Arrow.  
   This will take you the constructor of MyFrame.  
-  Goto line 663 move the caret over ModalWindow and Ctrl-Right.  
+  Goto line 684 move the caret over ModalWindow and Ctrl-Right.  
   ModalWindow is a subclass of wxWindow defined in the sub-block WX BRIDGE STRUCTURES AND FUNCTIONS. 
-  Goto line 669 and move the caret over modal_init and Ctrl-Right.  
+  Goto line 690 and move the caret over modal_init and Ctrl-Right.  
   modal_init is where the modal toolkit is initalised.  
   Note that goto using ctrl-right goes to the destination, expands it  
   and collapses the previous viewing context.  
   Also, any line that ends in {...} is summarized and can be opened.  
-  Goto line 8844 and move the caret over load_UI_state and Ctrl-Right  
+  Goto line 8869 and move the caret over load_UI_state and Ctrl-Right  
   load_UI_state is an acillary fn that creates a SModeSrcEdr mode,  
   creates a SModeManager, pushes the mode onto the mode manager,   
   and returns the mode manager.  
@@ -169,7 +169,7 @@ Once you are satisfied, press escape.
   Go back again (Ctrl-left) that's ModalWindow's constructor  
   Go back again that's MyFrame's constructor  
   Go back again and we're at the entry point to the app.  
-  Goto line 647 and press Ctrl-S, this summarizes MyApp::OnInit().  
+  Goto line 668 and press Ctrl-S, this summarizes MyApp::OnInit().  
   So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
   which creates a ModalWindow::wxWindow, which contains a ModeManager  
   that serves as the interface between wxWidgets and Modal.  
@@ -179,52 +179,64 @@ Once you are satisfied, press escape.
   before returning the ModeManager to ModalWindow.  
   
   3(b). App lifetime -- Paint and Kybd event handling  
-  (i) Goto line 697 and open it.  
+  (i) Goto line 720 and open it.  
   This is where all key down events are handled by ModalWindow.  
-  Goto line 699 and move the caret to kybd_map and Ctrl-right  
+  Goto line 722 and move the caret to kybd_map and Ctrl-right  
   That takes you to the modemanager's kybd_map fn.  
   This function set's pWin->m_bUsrActn which tells Modal  
   that the user has done something.  
-  Then call's the kybd_map fn of the mode at the top of the mode stack  
+  Then, call's the kybd_map fn of the mode at the top of the mode stack  
   which is the currently active mode.  
-  (ii) Go Back (Ctrl-left) and close 697.  
-  Open 680 -- this is the paint event handler for ModalWindow.  
+  (ii) Go Back (Ctrl-left) and close 720.  
+  Open 701 -- this is the paint event handler for ModalWindow.  
   This fn calls either disp_state if the event was not caused by the user  
   in which the state of the entire app needs to be reloaded.  
   or disp_update in which case the mode decides what needs to be updated.  
-  Goto 686 and move over disp_state Ctrl-right.  
+  Open 706, then goto 707 and move over disp_state, Ctrl-right.  
   You can read the comments inside 457 then close it.  
-  Open 476, then 477, then 478.  
+  Open 476, then 477, then 478, then 482.  
   The mode manager contains a stack of modes  
   and displays each modes disp_state in back to front order (bottom to top of stack).  
-  Close 478, close 476, close 476.  
+  Close 482, close 478, close 476, close 476.  
   Go back.  
-  Now goto 682 disp_update and Ctrl-right.  
-  Open 487.  
+  Now goto 712 disp_update and Ctrl-right.  
+  Open 492.  
   Note that disp_update only calls the mode at the top of the mode stack, the current mode.  
-  Close 487 and go back.  
-  Close 680.  
-  So during execution stage, wxWidgets send key down and paint events to ModalWindow.  
+  Close 492 and go back.  
+  Close 701.  
+  So during execution stage, wxWidgets sends key down and paint events to ModalWindow.  
   ModalWindow delegates these to the modemanager  
   which dispatches them appropriately to modes it manages.  
   
   3(c). App exit -- Modal shutdown and app state serialisation.    
   When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
   which results in ~ModalWIndow being called.  
-  Open 674. ~ModalWindow calls modal_exit().  
+  Open 695. ~ModalWindow calls modal_exit().  
   Ctrl-right to modal_exit().  
-  Open 8656 and then 8860.  
+  Open 8881 and then 8885.  
   modal_exit serializes the mode manager and all the modes it contains to a state file.  
   Next time the app is launched, it reads state from this file   
   to reload the last operational state of the app.  
   It also free's the mode manager which in turn free's all the modes it contains.  
   The mode manager and the modes are all created on the heap.  
-  Close 8760. Close 8856 and go back.  
+  Close 8885. Close 8881 and go back.  
   Press Escape to exit the app.  
-  Then relaunch the app. You should be back where you left off.    
+  Then relaunch the app. You should be back where you left off.  
+  Close 695 then close 638. PgUp. 
+  You're back at the app's start-screen.
   
 4. Inside Modal -- Modes of Operation and User Intents   
-
+  Modal has been designed in such a way that for the most part
+  the developer does not need to have anything to do with it's operational context
+  in this case wxWidgets.
+  The UI design of a Modal app is purely using modal constructs
+  namely the mode of operation and the user intent handler.
+  A modal app developer is concerned with Modal Init and Exit,
+  their app's data and the primary mode of operation they design.
+  This design may use UI elements from the toolkit.
+  This app is a modal source code editor and navigator.
+  We will walkthrough the design of SModeSrcEdr which is its primary mode of operation
+  and the user intent handlers that are part of this mode's design.
 ## Next Development Step:
 1. Modal specific navigational features and source code editing.  
 2. Build.  
