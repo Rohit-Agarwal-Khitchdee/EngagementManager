@@ -282,6 +282,23 @@ Once you are satisfied, press escape.
   Close 7211.  
   Now we'll peep inside some of these mode behavior implementation fns.  
   Goto 7173 and Ctrl-right over src_edr_map.  
+  Open 7326.  Open 7331. Open 7333.  
+  Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
+  Close 7333. Close 7331. Close 7326.  
+  Let's look at that intent handler.  
+  Goto 7754: (SUB_BLOCK) INTENT_HANDLERS and open it  
+  Open 7759: src_edr_update_caret  
+  This is the intent handler for SEI_UPDATE_CARET.  
+  You may study this code.  
+  Then close 7759 and thne 7754.  
+  Finally we'll look at src_edr_disp_state.  
+  Close the BASE_DEFINITIONS SUB_BLOCK.  
+  You will find src_edr_disp_state inside SUB_BLOCK MODE IMPLEMENTATION FNs.  
+  
+  
+  
+  
+  
   
   
   
