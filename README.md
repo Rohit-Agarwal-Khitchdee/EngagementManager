@@ -152,7 +152,7 @@ Once you are satisfied, press escape.
   Press Ctrl-Right Arrow.  
   This will take you the constructor of MyFrame.  
   Goto line 689 move the caret over ModalWindow and Ctrl-Right.  
-  ModalWindow is a subclass of wxWindow defined in the sub-block WX BRIDGE STRUCTURES AND FUNCTIONS. 
+  ModalWindow is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
   Goto line 695 and move the caret over modal_init and Ctrl-Right.  
   modal_init is where the modal toolkit is initalised.  
   Note that goto using ctrl-right goes to the destination, expands it  
