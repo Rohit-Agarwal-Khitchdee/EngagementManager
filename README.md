@@ -300,7 +300,7 @@ Once you are satisfied, press escape.
 2. Build.  
 3. Debug.  
 
-I estimate this will take 3 months.  
+I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
 
 ## Modal UIs and WIMP UIs
 WIMP UIs have been around a long time and a broad set of controls is available  
