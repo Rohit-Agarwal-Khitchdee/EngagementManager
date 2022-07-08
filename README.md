@@ -1,5 +1,5 @@
 # ModalWX
-(reading time ~ 3 min)  
+(reading time ~ 3 min)    
 wxWidgets is a cross-platform GUI toolkit for building WIMP style GUIs.  
 Such GUIs divide the screen spatially into Windows.  
 The smallest windows are controls such as clickable Buttons   
