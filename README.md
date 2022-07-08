@@ -159,6 +159,7 @@ Once you are satisfied, press escape.
   Note that goto using ctrl-right goes to the destination, expands it  
   and collapses the previous viewing context.  
   Also, any line that ends in {...} is summarized and can be opened.  
+  Conversely, any line that end's in a { can be summarized.
   Goto line 8903 and move the caret over load_UI_state and Ctrl-Right  
   load_UI_state is an acillary fn that creates a SModeSrcEdr mode,  
   creates a SModeManager, pushes the mode onto the mode manager,   
