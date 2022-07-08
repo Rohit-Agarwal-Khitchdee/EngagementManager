@@ -115,7 +115,7 @@ Once you have correctly selected ModalWX.cpp,
 it will load ModalWX.cpp, parse it and display its blocks.  
 
 ## ModalWX Code Walkthrough
-  (interaction time ~30min)
+  (interaction time ~30min)  
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C.  
