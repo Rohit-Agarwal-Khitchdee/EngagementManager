@@ -176,8 +176,7 @@ Once you are satisfied, press escape.
   ModalWindow initializes Modal using a designated modal_init() fn.  
   The Modal App designer initializes modal in this fn by creating a primary mode  
   in this case SModeSrcEdr and pushing it into the ModeManager  
-  before returning the ModeManager to ModalWindow.  
-  
+  before returning the ModeManager to ModalWindow.   
   3(b). App lifetime -- Paint and Kybd event handling  
   (i) Goto line 723 and open it.  
   This is where all key down events are handled by ModalWindow.  
