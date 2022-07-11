@@ -265,11 +265,11 @@ Once you are satisfied, press escape.
       Called by fnKybd_map to initiate intent handling  
     and by modemanager::disp_update to complete display update of the screen.
 
-     - The base SMode struct's init provides implementations for 1, 4, and 5.  
-    A concrete mode provides for the rest and may override the base 1,4 and 5.  
+     - The base SMode struct's init provides implementations for (i), (iv), and (v).  
+    A concrete mode provides for the rest and may override the base (i), (iv) and (v).  
     Now go back to new_src_edr (Ctrl-left).  
     Open 7294. Goto 7296 and Ctrl-right on init.  
-    As you can see, SModeSrcEdr's init loads 1,2,3,4 and 6 fn ptrs   
+    As you can see, SModeSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
     with it's own implementation.  
     It also loads all the intent handler fns.  
     Open 7150. This is an enumeration of the intent handlers for SModeSrcEdr.  
