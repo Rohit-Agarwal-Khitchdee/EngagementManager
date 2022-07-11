@@ -138,14 +138,14 @@ Use the arrow keys to adjust fontsize.
 This is a live ajdustment.  
 Once you are satisfied, press escape.  
 3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.  
-  3(a). App init  
-  i. Use the down arrow key to goto line 642: WX CLASS FUNCTION DEFINITIONS{...}.  
+   - App init  
+     - Use the down arrow key to goto line 642: WX CLASS FUNCTION DEFINITIONS{...}.  
   All lines in this color are "sub-Blocks".  
   This line is a sub-block of line 105: WX INTERFACING BOILERPLATE.  
   That line is a BLOCK. All lines in that color are BLOCKS.  
   Press Ctrl-S(Command-S on OSX) at line 642.  
   This will open the sub-block.  
-  ii. Goto Line 673: bool MyApp::OnInit(){...}  
+     - Goto Line 673: bool MyApp::OnInit(){...}  
   Open the comment line just above it (line 667) and read it.  
   Then open line 673.  
   Read through this code, then close the comment -- goto line 667 and Ctrl-S.  
@@ -177,8 +177,8 @@ Once you are satisfied, press escape.
   The Modal App designer initializes modal in this fn by creating a primary mode  
   in this case SModeSrcEdr and pushing it into the ModeManager  
   before returning the ModeManager to ModalWindow.   
-  3(b). App lifetime -- Paint and Kybd event handling  
-  (i) Goto line 723 and open it.  
+   - App lifetime -- Paint and Kybd event handling  
+     - Goto line 723 and open it.  
   This is where all key down events are handled by ModalWindow.  
   Goto line 725 and move the caret to kybd_map and Ctrl-right  
   That takes you to the modemanager's kybd_map fn.  
@@ -186,7 +186,7 @@ Once you are satisfied, press escape.
   that the user has done something.  
   Then, call's the kybd_map fn of the mode at the top of the mode stack  
   which is the currently active mode.  
-  (ii) Go Back (Ctrl-left) and close 723.  
+     - Go Back (Ctrl-left) and close 723.  
   Open 706 -- this is the paint event handler for ModalWindow.  
   This fn calls either disp_state if the event was not caused by the user  
   in which the state of the entire app needs to be reloaded.  
@@ -206,8 +206,7 @@ Once you are satisfied, press escape.
   So during execution stage, wxWidgets sends key down and paint events to ModalWindow.  
   ModalWindow delegates these to the modemanager  
   which dispatches them appropriately to modes it manages.  
-  
-  3(c). App exit -- Modal shutdown and app state serialisation.    
+   - App exit -- Modal shutdown and app state serialisation.    
   When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
   which results in ~ModalWIndow being called.  
   Open 700. ~ModalWindow calls modal_exit().  
