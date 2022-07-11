@@ -224,7 +224,7 @@ Once you are satisfied, press escape.
   You're back at the app's start-screen.  
   
 4. Inside Modal -- Modes of Operation and User Intents   
-  Modal has been designed in such a way that for the most part  
+   - Modal has been designed in such a way that for the most part  
   the developer does not need to have anything to do with it's operational context  
   in this case wxWidgets.  
   The UI design of a Modal app is purely using modal constructs  
@@ -236,7 +236,7 @@ Once you are satisfied, press escape.
   We will walkthrough the design of SModeSrcEdr which is its primary mode of operation  
   and the user intent handlers that are part of this mode's design.  
   
-  Open 8859: INITIALIZING AND EXITING MODAL (BLOCK).  
+   - Open 8859: INITIALIZING AND EXITING MODAL (BLOCK).  
   Open 8878 modal_init  
   Goto 8903 and Ctrl-right load_UI_state  
   Goto 8871 and Ctrl-right new_src_edr  
@@ -265,7 +265,7 @@ Once you are satisfied, press escape.
     Called by fnKybd_map to initiate intent handling  
   and by modemanager::disp_update to complete display update of the screen.
   
-  The base SMode struct's init provides implementations for 1, 4, and 5.  
+   - The base SMode struct's init provides implementations for 1, 4, and 5.  
   A concrete mode provides for the rest and may override the base 1,4 and 5.  
   Now go back to new_src_edr (Ctrl-left).  
   Open 7294. Goto 7296 and Ctrl-right on init.  
