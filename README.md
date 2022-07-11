@@ -1,4 +1,19 @@
-# ModalWX
+# Modal  
+## Why bother?
+Today's WIMP based UIs clutter the screen with a lot of information (feature creep).  
+Modal GUIs are like keyboard-only GUIs.  
+Some of their controls are encoded in kybd actions (think shortcuts)  
+making frequently used interactions more efficient.  
+They may also have on-screen controls like WIMP GUIs  
+so functionally, you're not sacrificing anything going Modal and kybd-only.  
+Being modal means, instead of organising the screen spatially using Windows,  
+they organize interaction-time (temporally) using "Modes of operation".  
+At any given time, a simple mode of operation is running the GUI.  
+This leads to less cluttered screens, and more efficient interactions.  
+Any app designed using WIMP can be redesigned using a Modal GUI.  
+And doing so will make it simpler, more efficient and easier to use.  
+
+## Modal Overview
 (reading time ~ 3 min)    
 wxWidgets is a cross-platform GUI toolkit for building WIMP style GUIs.  
 Such GUIs divide the screen spatially into Windows.  
@@ -20,7 +35,8 @@ expressed as a specific input gesture.
 A mode implements an intent handler for each intent it defines.  
 This intent handler performs the action the user wants and updates the screen.  
 An intent (and it's handler) is the unit of the UI in a Modal UI,  
-much like a control is in a WIMP GUI.  
+much like a control is in a WIMP GUI.
+
 There is one primary mode that a Modal app launches with.  
 Subsequently, over the app's lifetime, different modes may pop-up   
 in front of the primary mode and then go away -- i.e. they are transient,  
