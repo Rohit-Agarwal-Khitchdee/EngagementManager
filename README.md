@@ -225,75 +225,75 @@ Once you are satisfied, press escape.
   
 4. Inside Modal -- Modes of Operation and User Intents   
    - Modal has been designed in such a way that for the most part  
-  the developer does not need to have anything to do with it's operational context  
-  in this case wxWidgets.  
-  The UI design of a Modal app is purely using modal constructs  
-  namely the mode of operation and the user intent handler.  
-  A modal app developer is concerned with Modal Init and Exit,  
-  their app's data and the primary mode of operation they design.  
-  This design may use UI elements from the toolkit.  
-  This app is a modal source code editor and navigator.  
-  We will walkthrough the design of SModeSrcEdr which is its primary mode of operation  
-  and the user intent handlers that are part of this mode's design.  
+    the developer does not need to have anything to do with it's operational context  
+    in this case wxWidgets.  
+    The UI design of a Modal app is purely using modal constructs  
+    namely the mode of operation and the user intent handler.  
+    A modal app developer is concerned with Modal Init and Exit,  
+    their app's data and the primary mode of operation they design.  
+    This design may use UI elements from the toolkit.  
+    This app is a modal source code editor and navigator.  
+    We will walkthrough the design of SModeSrcEdr which is its primary mode of operation  
+    and the user intent handlers that are part of this mode's design.  
   
    - Open 8859: INITIALIZING AND EXITING MODAL (BLOCK).  
-  Open 8878 modal_init  
-  Goto 8903 and Ctrl-right load_UI_state  
-  Goto 8871 and Ctrl-right new_src_edr  
-  Note we are inside the BLOCK: THIS APP'S PRIMARY MODE, THE SOURCE EDITOR  
-  and the SUB_BLOCK: BASE DEFINITIONS  
-  This is where the SModeSrcEdr struct is defined  
-  and fns to "new", free and load from a file are defined.  
-  Open 7291, goto 7292 and Ctrl-right pBase->init  
-  This is where an SMode struct is initialized.  
-  Open the comment block 209, read the comments in it then close it.  
-  The base mode struct has the following fn ptrs:  
-  1. fnKey_up  
-    This fn is called when a key up event occurs  
-  2. fnKybd_map  
-    Key down event. It maps the event to an intent and dispatches it  
-  to an entry in the fnIntentHandlers  
-  3. fnDisp_state  
-    Paint event, It paints the base state of the mode asscoaited with its data.  
-  4. fnOn_load  
-    Called when the mode is pushed onto the modemanager
-  5. fnOn_unload
-    Called when the mode is popped off the modemanager  
-  6. fnSerialize  
-    Called by the mode manager when mode's state needs to be loaded or stored.  
-  7. fnIntentHandler[40]  
-    Called by fnKybd_map to initiate intent handling  
-  and by modemanager::disp_update to complete display update of the screen.
-  
-   - The base SMode struct's init provides implementations for 1, 4, and 5.  
-  A concrete mode provides for the rest and may override the base 1,4 and 5.  
-  Now go back to new_src_edr (Ctrl-left).  
-  Open 7294. Goto 7296 and Ctrl-right on init.  
-  As you can see, SModeSrcEdr's init loads 1,2,3,4 and 6 fn ptrs   
-  with it's own implementation.  
-  It also loads all the intent handler fns.  
-  Open 7150. This is an enumeration of the intent handlers for SModeSrcEdr.  
-  They all start wiht SEI_ to make them globally unique.  
-  Close 7150.  
-  PgDn to 7233 void load_intents() {}  
-  Open 7233. This is where the intent handlers are loaded.  
-  Close 7233.  
-  Now we'll peep inside some of these mode behavior implementation fns.  
-  Goto 7195 and Ctrl-right over src_edr_map.  
-  Open 7351. Open 7356. Open 7358.  
-  Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
-  Close 7358. Close 7356. Close 7351.  
-  Let's look at that intent handler.  
-  Go back. Go Back. Go Back. Go Back.  
-  Close 8878: modal_init().  
-  Close 8859: (BLOCK) INITIALIZING AND EXITING MODAL  
-  Goto 7782: (SUB_BLOCK) INTENT_HANDLERS and open it  
-  Open 7787: src_edr_update_caret   
-  This is the intent handler for SEI_UPDATE_CARET.  
-  You may study this code.  
-  Then close 7787 and then 7782.  
-  Finally we'll look at src_edr_disp_state.  
-  You will find src_edr_disp_state inside 7735: SUB_BLOCK MODE IMPLEMENTATION FNs.  
+    Open 8878 modal_init  
+    Goto 8903 and Ctrl-right load_UI_state  
+    Goto 8871 and Ctrl-right new_src_edr  
+    Note we are inside the BLOCK: THIS APP'S PRIMARY MODE, THE SOURCE EDITOR  
+    and the SUB_BLOCK: BASE DEFINITIONS  
+    This is where the SModeSrcEdr struct is defined  
+    and fns to "new", free and load from a file are defined.  
+    Open 7291, goto 7292 and Ctrl-right pBase->init  
+    This is where an SMode struct is initialized.  
+    Open the comment block 209, read the comments in it then close it.  
+    The base mode struct has the following fn ptrs:  
+    1. fnKey_up  
+      This fn is called when a key up event occurs  
+    2. fnKybd_map  
+      Key down event. It maps the event to an intent and dispatches it  
+    to an entry in the fnIntentHandlers  
+    3. fnDisp_state  
+      Paint event, It paints the base state of the mode asscoaited with its data.  
+    4. fnOn_load  
+      Called when the mode is pushed onto the modemanager
+    5. fnOn_unload
+      Called when the mode is popped off the modemanager  
+    6. fnSerialize  
+      Called by the mode manager when mode's state needs to be loaded or stored.  
+    7. fnIntentHandler[40]  
+      Called by fnKybd_map to initiate intent handling  
+    and by modemanager::disp_update to complete display update of the screen.
+
+     - The base SMode struct's init provides implementations for 1, 4, and 5.  
+    A concrete mode provides for the rest and may override the base 1,4 and 5.  
+    Now go back to new_src_edr (Ctrl-left).  
+    Open 7294. Goto 7296 and Ctrl-right on init.  
+    As you can see, SModeSrcEdr's init loads 1,2,3,4 and 6 fn ptrs   
+    with it's own implementation.  
+    It also loads all the intent handler fns.  
+    Open 7150. This is an enumeration of the intent handlers for SModeSrcEdr.  
+    They all start wiht SEI_ to make them globally unique.  
+    Close 7150.  
+    PgDn to 7233 void load_intents() {}  
+    Open 7233. This is where the intent handlers are loaded.  
+    Close 7233.  
+    Now we'll peep inside some of these mode behavior implementation fns.  
+    Goto 7195 and Ctrl-right over src_edr_map.  
+    Open 7351. Open 7356. Open 7358.  
+    Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
+    Close 7358. Close 7356. Close 7351.  
+    Let's look at that intent handler.  
+    Go back. Go Back. Go Back. Go Back.  
+    Close 8878: modal_init().  
+    Close 8859: (BLOCK) INITIALIZING AND EXITING MODAL  
+    Goto 7782: (SUB_BLOCK) INTENT_HANDLERS and open it  
+    Open 7787: src_edr_update_caret   
+    This is the intent handler for SEI_UPDATE_CARET.  
+    You may study this code.  
+    Then close 7787 and then 7782.  
+    Finally we'll look at src_edr_disp_state.  
+    You will find src_edr_disp_state inside 7735: SUB_BLOCK MODE IMPLEMENTATION FNs.  
 
 ## Next Development Step:
 1. Modal specific navigational features and source code editing.  
