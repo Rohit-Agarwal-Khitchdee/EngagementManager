@@ -41,20 +41,22 @@ This intent handler performs the action the user wants and updates the screen.
 An intent (and it's handler) is the unit of the UI in a Modal UI,  
 much like a control is in a WIMP GUI.
 
-There is one primary mode that a Modal app launches with.  
-Subsequently, over the app's lifetime, different modes may pop-up   
-in front of the primary mode and then go away -- i.e. they are transient,  
-Much like dialogs in WIMP.  
-Modal apps benefit from not having to deal with windows, and layout issues.    
-This results in simpler, less cluttered screens.  
-They also benefit from not needing to use the mouse in the GUI.  
-This improves the interaction efficiency of the UI and makes it simpler to design.  
-Modal UIs are simpler and more efficient for both developer and user.  
+Modal GUIs are designed around the paradigm  
+"focus on what the user wants to do right now (not later)"  
+At any given time there is one primary mode of operation  
+which corresponds to the primary activity the user is currently involved in.  
+Within this primary mode, transient modes may pop-up and then go away.  
+In terms of interaction "intensity"  
+all interactions that require high intensity and immediacy  
+are direct-mapped to kybd based controls.  
+Lower intensity interactions that are less frequently needed  
+are indirect-mapped to transient modes.  
+Direct mapped interactions lead to improved interface efficiency  
+while indirect-mapped interactions give the interface breadth.  
 
 From a WIMP app designer's perspective,  
-a Modal app is like a WIMP app with a bunch of kybd short-cuts  
-and mouse-based control disabled.  
-i.e. all control is via kybd shortcuts.  
+a Modal app is like a WIMP app with kybd short-cuts and mouse-based control disabled.  
+i.e. all critical control is via kybd shortcuts.  
 Since it is modal, the number of shortcuts needed per mode is small.  
 
 This app is a source-code navigation/editing app.  
@@ -66,10 +68,6 @@ Adding these features will likely double its size to 1M.
 That compares with 10s of MBytes for all of the above tools  
 which demonstrates that there's a lot less code needed. 
 implying simplicity for the developer.  
-
-Modal UIs can replace WIMP GUIs in almost all cases  
-except where fine-grained screen-space selection is needed  
-such as graphic design tools.  
 
 ## Building and Running the app:
 (interaction time ~1hr) 
