@@ -321,7 +321,7 @@ Once you are satisfied, press escape.
 1. Modal specific navigational features and source code editing.  
 2. Build.  
 3. Debug.  
-
+This will make ModalWX a standalone IDE for building Modal apps based on wxWidgets.  
 I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
 
 ## Modal UIs and WIMP UIs
