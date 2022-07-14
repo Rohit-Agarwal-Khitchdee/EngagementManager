@@ -41,7 +41,7 @@ This intent handler performs the action the user wants and updates the screen.
 An intent (and it's handler) is the unit of the UI in a Modal UI,  
 much like a control is in a WIMP GUI.
 
-Modal GUIs are designed around the paradigm  
+Modal GUIs are designed around the paradigm:  
 
 _"focus on what the user wants to do right now (not later)"_   
 
