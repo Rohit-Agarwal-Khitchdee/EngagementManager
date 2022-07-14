@@ -19,15 +19,17 @@ And doing so will make it simpler, more efficient and easier to use.
 
 ## Modal Overview
 (reading time ~ 3 min)    
-wxWidgets is a cross-platform GUI toolkit for building WIMP style GUIs.  
-Such GUIs divide the screen spatially into Windows.  
+WIMP GUIs divide the screen spatially into Windows.  
 The smallest windows are controls such as clickable Buttons   
 which serve as the units of the GUI.  
 The mouse is used to select space on-screen,   
 making it easy to navigate this spatial organization of the screen.  
 WIMP UIs are non-modal even though they may contain modal elements such as dialogs.  
 
-ModalWX extends wxWidgets with the ability to create "Modal" GUIs.  
+Modal extends WIMP with the ability to create "Modal" GUIs.  
+Extends in the sense that a Modal GUI can be created using a WIMP platform.  
+wxWidgets is a cross-platform toolkit for creating WIMP style GUIs.  
+ModalWX extends wxWidgets with the ability to create Modal GUIs.  
 
 Modal GUIs do not layout the screen spatially using windows.  
 Instead they layout the app's interaction time temporally using "modes of operation".  
