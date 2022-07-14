@@ -42,7 +42,7 @@ An intent (and it's handler) is the unit of the UI in a Modal UI,
 much like a control is in a WIMP GUI.
 
 Modal GUIs are designed around the paradigm  
-"focus on what the user wants to do right now (not later)"  
+_"focus on what the user wants to do right now (not later)"_  
 At any given time there is one primary mode of operation  
 which corresponds to the primary activity the user is currently involved in.  
 Within this primary mode, transient modes may pop-up and then go away.  
