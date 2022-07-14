@@ -1,6 +1,10 @@
 # Modal  
 ## Why bother?
-Today's WIMP based UIs clutter the screen with a lot of information (feature creep).  
+Today's WIMP based UIs clutter the screen with a lot of information (feature creep). 
+They are also not mechanically efficient  
+since the user has to switch between kybd and mouse in the interaction.  
+Madal GUIs, by design, address these problems.  
+
 Modal GUIs are like keyboard-only GUIs.  
 Some of their controls are encoded in kybd actions (think shortcuts)  
 making frequently used interactions more efficient.  
