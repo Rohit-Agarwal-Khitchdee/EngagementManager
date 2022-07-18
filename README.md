@@ -113,7 +113,7 @@ and type: wxWidgets GUI Application (wxFrame, using wxCrafter)
 with Build System: Default  
 Build the project.  
 If it does not build, you need to install wxWidgets.  
-Follow the instructions at:
+Follow the instructions at:  
 https://docs.codelite.org/wxWidgets/repo320/
 to install wxWidgets 3.2.0  
 Now your project should build.  
