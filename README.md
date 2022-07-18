@@ -120,11 +120,12 @@ Now your project should build.
 Run the project, you should see a small minimized window  
 with title My Frame and File and Help menu items.  
 Close this window.  
-Open your project and delet all the src, resources and include files.  
-Then go to src, right click, add an existing file.  
+Open your project and delete all the src, resource and include files.  
+At this point your project is empty but configured for wxWidgets.   
+Go to src, right click, add an existing file.  
 Add ModalWX.cpp and build the project.  
 You should get 33 warnings and no errors.  
-Run the project.  This should run Modal.  
+Run the project. This should run Modal.  
 
 ### Running the app (UI controls):
 When you run the app,  
