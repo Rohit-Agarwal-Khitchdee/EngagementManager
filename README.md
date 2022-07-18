@@ -79,7 +79,7 @@ implying simplicity for the developer.
 The app is based on the wxWidgets cross-platform UI library.  
 To build this app you first have to download and build the wxWidgets library.  
 
-We recommend using the current development version of wxWidgets which is 3.1.6.  
+We recommend using the current development version of wxWidgets which is 3.2.0.  
 You can get help for setting up wxWidgets on your PC from this forum:  
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82.  
 The build process for the library depends on your platform:  
@@ -106,8 +106,25 @@ This should build the Modal app.
 
 ### Linux:
 We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.  
-Create a new bare-bones wxWidgets based project and add ModalWX.cpp to it.  
-This should build the Modal app.  
+After installing codelite from codelite.org,  
+run Codelite and create a new workspace of type C++.  
+Then add a new project to the workspace of Category: GUI  
+and type: wxWidgets GUI Application (wxFrame, using wxCrafter)  
+with Build System: Default  
+Build the project.  
+If it does not build, you need to install wxWidgets.  
+Follow the instructions at:
+https://docs.codelite.org/wxWidgets/repo320/
+to install wxWidgets 3.2.0  
+Now your project should build.  
+Run the project, you should see a small minimized window  
+with title My Frame and File and Help menu items.  
+Close this window.  
+Open your project and delet all the src, resources and include files.  
+Then go to src, right click, add an existing file.  
+Add ModalWX.cpp and build the project.  
+You should get 33 warnings and no errors.  
+Run the project.  This should run Modal.  
 
 ### Running the app (UI controls):
 When you run the app,  
