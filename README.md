@@ -1,4 +1,4 @@
-# Modal  
+# Modal GUIs
 ## Why bother?
 Today's WIMP based UIs clutter the screen with a lot of information (feature creep).  
 They are also not mechanically efficient  
