@@ -1,7 +1,7 @@
 # Modal GUIs
 ## Why bother?
-![Less cluttered screens]
-(https://hex-map.khitchdee.net/Modal-advantage.png)
+![Less cluttered screens]  
+(https://hex-map.khitchdee.net/Modal-advantage.png)  
 Today's WIMP based UIs clutter the screen with a lot of information (feature creep).  
 They are also not mechanically efficient  
 since the user has to switch between kybd and mouse in the interaction.  
