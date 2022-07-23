@@ -1,25 +1,6 @@
 # Modal GUIs
 ## Why bother?
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMP_Modal.png)  
-Today's WIMP based UIs clutter the screen with a lot of information (feature creep).  
-They are also not mechanically efficient  
-since the user has to switch between kybd and mouse in the interaction.  
-Modal GUIs, by design, address these problems.  
-
-Modal GUIs do not use windows.  
-An application's controls, instead, are laid out over time  
-in a series of simple (full) screens.  
-Since each screen is simple, it is not neccesary to use the mouse  
-for screen-space selection.  
-Some of their controls are encoded in kybd actions (think shortcuts)  
-making frequently used interactions more efficient.  
-These encoded controls have to be learned by the user.  
-They may also have on-screen controls like WIMP GUIs  
-which do not have to be learned, but are slower to access.  
-So functionally, you're not sacrificing anything going Modal and kybd-only.  
-
-Any app designed using WIMP can be redesigned using a Modal GUI.  
-And doing so will make it simpler, more efficient and easier to use.  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPorModal.png)  
 
 ## Modal Overview
 (reading time ~ 3 min)    
