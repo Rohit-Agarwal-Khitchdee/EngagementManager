@@ -58,7 +58,7 @@ That compares with 10s of MBytes for all of the above tools
 which demonstrates that there's a lot less code needed. 
 implying simplicity for the developer.  
 
-## Building and Running the app (ModalWX.cpp):
+## Building and Running the app (an app for navigating a Modal codefile, such as ModalWX.cpp):
 (interaction time ~1hr) 
 
 The app is based on the wxWidgets cross-platform UI library.  
@@ -113,6 +113,8 @@ You should get 33 warnings and no errors.
 Run the project. This should run Modal.  
 
 ### Running the app (UI controls):
+The app's function is to navigate a Modal codefile.    
+ModalWX.cpp is an example of a Modal codefile.  
 When you run the app,  
 it will ask you for the full path of ModalWX.cpp.  
 This path will depend on your platform.  
