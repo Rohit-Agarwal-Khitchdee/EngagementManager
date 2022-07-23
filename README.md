@@ -1,6 +1,6 @@
 # Modal GUIs
 ## Why bother?
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvModal.png?v23-07-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMP_vs_Modal.png?v23-07-2022)  
 
 ## Modal Overview
 (reading time ~ 3 min)    
