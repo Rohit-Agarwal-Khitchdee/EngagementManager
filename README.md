@@ -12,7 +12,7 @@ in a series of simple (full) screens.
 Since each screen is simple, it is not neccesary to use the mouse  
 for screen-space selection.  
 Some of their controls are encoded in kybd actions (think shortcuts)  
-making frequently used interactions more efficient.
+making frequently used interactions more efficient.  
 These encoded controls have to be learned by the user.  
 They may also have on-screen controls like WIMP GUIs  
 which do not have to be learned, but are slower to access.  
