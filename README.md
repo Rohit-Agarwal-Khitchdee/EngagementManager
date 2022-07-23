@@ -145,7 +145,8 @@ We guide you through a sequence of steps
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C.  
 At the end of this walkthough you will be able to evaluate  
-whether ModalWX offers a better way to navigate a codebase.  
+whether ModalWX offers a better way to navigate a codebase  
+compared to the IDE you currently use.  
 
 1. Build and run the app. as described in the preceding section.  
 At this point, your screen should look like this:  
