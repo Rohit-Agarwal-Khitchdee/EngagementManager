@@ -58,7 +58,7 @@ That compares with 10s of MBytes for all of the above tools
 which demonstrates that there's a lot less code needed. 
 implying simplicity for the developer.  
 
-## Building and Running the app:
+## Building and Running the app (ModalWX.cpp):
 (interaction time ~1hr) 
 
 The app is based on the wxWidgets cross-platform UI library.  
