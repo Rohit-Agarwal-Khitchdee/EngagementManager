@@ -11,11 +11,6 @@ The mouse is used to select space on-screen,
 making it easy to navigate this spatial organization of the screen.  
 WIMP UIs are non-modal even though they may contain modal elements such as dialogs.  
 
-Modal extends WIMP with the ability to create "Modal" GUIs.  
-Extends in the sense that a Modal GUI can be created using a WIMP platform.  
-wxWidgets is a cross-platform toolkit for creating WIMP style GUIs.  
-ModalWX extends wxWidgets with the ability to create Modal GUIs.  
-
 Modal GUIs do not layout the screen spatially using windows.  
 Instead they layout the app's interaction time temporally using "modes of operation".  
 Each mode of operation paints to the entire screen   
