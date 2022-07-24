@@ -54,6 +54,9 @@ That compares with 10s of MBytes for all of the above tools
 which demonstrates that there's a lot less code needed. 
 implying simplicity for the developer.  
 
+Screenshot of the ModalWX app navigating ModalWX.cpp
+![alt text](https://hex-map.khitchdee.net/ModalWX navigating ModalWX.cpp.png)  
+
 ## Building and Running the app (an app for navigating a Modal codefile, such as ModalWX.cpp):
 (interaction time ~1hr) 
 
