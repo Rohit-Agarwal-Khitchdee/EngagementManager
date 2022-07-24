@@ -42,6 +42,7 @@ From a WIMP app designer's perspective,
 a Modal app is like a WIMP app with kybd short-cuts and mouse-based control disabled.  
 i.e. all critical control is via kybd shortcuts.  
 Since it is modal, the number of shortcuts needed per mode is small.  
+Since kybd short-cuts have no visual presence, the screens get de-cluttered.  
 
 This app is a source-code navigation/editing app.  
 A comparison with your IDE of choice such as XCode, Visual Studio, or Code::Blocks   
