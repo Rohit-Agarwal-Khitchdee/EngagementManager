@@ -3,14 +3,6 @@
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-26-2022)  
 
 ## Modal Overview
-(reading time ~ 3 min)    
-WIMP GUIs divide the screen spatially into Windows.  
-The smallest windows are controls such as clickable Buttons   
-which serve as the units of the GUI.  
-The mouse is used to select space on-screen,   
-making it easy to navigate this spatial organization of the screen.  
-WIMP UIs are non-modal even though they may contain modal elements such as dialogs.  
-
 Modal GUIs do not layout the screen spatially using windows.  
 Instead they layout the app's interaction time temporally using "modes of operation".  
 Each mode of operation paints to the entire screen   
@@ -23,7 +15,7 @@ This intent handler performs the action the user wants and updates the screen.
 An intent (and it's handler) is the unit of the UI in a Modal UI,  
 much like a control is in a WIMP GUI.
 
-Modal GUIs are designed around the paradigm:  
+Modal GUIs are designed around around a temporal paradigm:  
 
 _"focus on what the user wants to do right now (not later)"_   
 
@@ -38,20 +30,14 @@ are indirect-mapped to transient modes.
 Direct mapped interactions lead to improved interface efficiency  
 while indirect-mapped interactions give the interface breadth.  
 
-From a WIMP app designer's perspective,  
-a Modal app is like a WIMP app with kybd short-cuts and mouse-based control disabled.  
-i.e. all critical control is via kybd shortcuts.  
-Since it is modal, the number of shortcuts needed per mode is small.  
-Since kybd short-cuts have no visual presence, the screens get de-cluttered.  
-
-This app is a source-code navigation/editing app.  
+This app (ModalWX.cpp) is a source-code navigation/editing app.  
 A comparison with your IDE of choice such as XCode, Visual Studio, or Code::Blocks   
 in the ability to navigate code demonstrates this efficiency advantage.  
 ModalWX.cpp (~500KB) is the only file needed to run the app.  
 The app only caters to C/C++ Modal apps and does not have editing, build or debug features.  
 Adding these features will likely double its size to 1M.  
 That compares with 10s of MBytes for all of the above tools  
-which demonstrates that there's a lot less code needed. 
+which demonstrates that there's a lot less code needed  
 implying simplicity for the developer.  
 
 Screenshot of the ModalWX app navigating ModalWX.cpp.  
