@@ -1,5 +1,6 @@
 # Modal GUIs
 ## Why bother?
+Less cluttered screens
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-28-2022)  
 
 ## Modal Overview
