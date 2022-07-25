@@ -55,8 +55,10 @@ which demonstrates that there's a lot less code needed.
 implying simplicity for the developer.  
 
 Screenshot of the ModalWX app navigating ModalWX.cpp.  
-Note that the enitre client area is used for navigating the source code.  
+Note that the enitre client area is used for displaying source code.  
 Using a 3 column format, 120 lines can be displayed at a time.  
+There also no on-screen navigational controls  
+because all navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
 ## Building and Running the app (an app for navigating a Modal codefile, such as ModalWX.cpp):
