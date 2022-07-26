@@ -1,5 +1,5 @@
 # Modal GUIs
-## Why bother? Less cluttered screens
+## Why bother? User's time saved, more screen-space for primary task
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-28-2022)  
 
 ## Modal Overview
