@@ -4,25 +4,21 @@ Less cluttered screens
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-28-2022)  
 
 ## Modal Overview
-Modal GUIs do not layout the screen spatially using windows.  
-Instead they layout the app's interaction time temporally using "modes of operation".  
+Modal GUIs layout the app's interaction time temporally as "modes of operation".  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user input while it has focus.  
-A mode defines a set a "user intents",    
+A mode contains a set a "user intents",    
 which is the user's expression of their intent to do something   
-expressed as a specific input gesture.  
-A mode implements an intent handler for each intent it defines.  
-This intent handler performs the action the user wants and updates the screen.  
-An intent (and it's handler) is the unit of the UI in a Modal UI,  
-much like a control is in a WIMP GUI.
+expressed as a specific input gesture,  
+and an intent handler, that performs the desired action, for each intent it defines.  
 
-Modal GUIs are designed around around a temporal paradigm:  
+Modal GUIs are designed around around the temporal paradigm:  
 
 _"focus on what the user wants to do right now (not later)"_   
 
 At any given time there is one primary mode of operation  
 which corresponds to the primary activity the user is currently involved in.  
-Within this primary mode, transient modes may pop-up and then go away.  
+Within this primary interaction context, transient modes may pop-up and then go away.  
 In terms of interaction "intensity"  
 all interactions that require high intensity and immediacy  
 are direct-mapped to kybd based controls.  
@@ -31,19 +27,20 @@ are indirect-mapped to transient modes.
 Direct mapped interactions lead to improved interface efficiency  
 while indirect-mapped interactions give the interface breadth.  
 
-This app (ModalWX.cpp) is a source-code navigation/editing app.  
-A comparison with your IDE of choice such as XCode, Visual Studio, or Code::Blocks   
-in the ability to navigate code demonstrates this efficiency advantage.  
-ModalWX.cpp (~500KB) is the only file needed to run the app.  
-The app only caters to C/C++ Modal apps and does not have editing, build or debug features.  
-Adding these features will likely double its size to 1M.  
-That compares with 10s of MBytes for all of the above tools  
-which demonstrates that there's a lot less code needed  
-implying simplicity for the developer.  
+This app (ModalWX.cpp) is a source-code navigation/editing app
+that serves 3 purposes for this source-code toolkit.  
+1. It enables the dev to navigate and understand the source code.  
+2. It serves as a template for designing a modal app.  
+Specifically, the SModeSrcEdr mode extension has to be replaced  
+with a mode extension designed by the dev  
+and the data strcuts used by SModeSrcEdr have to be replaced  
+with app-specific data structs.
+3. It demonstrates the efficiency advantage of a Modal UI.  
+This app can be compared with the WIMP based IDE you currently use.  
 
-Screenshot of the ModalWX app navigating ModalWX.cpp.  
-Note that the enitre client area is used for displaying source code.  
-Using a 3 column format, 120 lines can be displayed at a time.  
+Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
+Note that the entire client area is used for displaying source code.  
+Using a 3 column format, ~120 lines can be displayed at a time.  
 There also no on-screen navigational controls  
 because all navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
@@ -82,16 +79,14 @@ This should build the Modal app.
 ### Linux:
 We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.  
 After installing codelite from codelite.org,  
-run Codelite and create a new workspace of type C++.  
+Follow the instructions at:  
+https://docs.codelite.org/wxWidgets/repo320/
+to install wxWidgets 3.2.0.    
+Now, run Codelite and create a new workspace of type C++.  
 Then add a new project to the workspace of Category: GUI  
 and type: wxWidgets GUI Application (wxFrame, using wxCrafter)  
 with Build System: Default  
 Build the project.  
-If it does not build, you need to install wxWidgets.  
-Follow the instructions at:  
-https://docs.codelite.org/wxWidgets/repo320/
-to install wxWidgets 3.2.0  
-Now your project should build.  
 Run the project, you should see a small minimized window  
 with title My Frame and File and Help menu items.  
 Close this window.  
@@ -99,7 +94,7 @@ Open your project and delete all the src, resource and include files.
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
 Add ModalWX.cpp and build the project.  
-You should get 33 warnings and no errors.  
+You may get several warnings but no errors.  
 Run the project. This should run Modal.  
 
 ### Running the app (UI controls):
@@ -139,6 +134,8 @@ The only pre-requisite is familiarity with C.
 At the end of this walkthough you will be able to evaluate  
 whether ModalWX offers a better way to navigate a codebase  
 compared to the IDE you currently use.  
+Also, it will enable you to understand the code in this toolkit.  
+This will enable you to design and produce your own Modal GUI app.  
 
 1. Build and run the app. as described in the preceding section.  
 At this point, your screen should look like this:  
@@ -312,6 +309,8 @@ Once you are satisfied, press escape.
     Then close 7787 and then 7782.  
     Finally we'll look at src_edr_disp_state.  
     You will find src_edr_disp_state inside 7735: SUB_BLOCK MODE IMPLEMENTATION FNs.  
+
+## Building your own Modal App
 
 ## Next Development Step:
 1. Modal specific navigational features and source code editing.  
