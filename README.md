@@ -1,6 +1,6 @@
 # Modal GUIs
 ## Why bother? User's time saved, more screen-space for primary task
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-28-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-29-2022)  
 
 ## Modal Overview
 Modal GUIs layout the app's interaction time temporally as "modes of operation".  
