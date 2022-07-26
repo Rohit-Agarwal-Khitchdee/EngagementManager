@@ -36,7 +36,7 @@ with a mode extension designed by the dev
 and the data structs used by SModeSrcEdr have to be replaced  
 with app-specific data structs.
 3. It demonstrates the efficiency advantage of a Modal UI.  
-This app can be compared with the WIMP based IDE you currently use.  
+Compare the navigation efficiency of this app with the WIMP based IDE you currently use.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
