@@ -33,7 +33,7 @@ that serves 3 purposes for this source-code toolkit.
 2. It serves as a template for designing a modal app.  
 Specifically, the SModeSrcEdr mode extension has to be replaced  
 with a mode extension designed by the dev  
-and the data strcuts used by SModeSrcEdr have to be replaced  
+and the data structs used by SModeSrcEdr have to be replaced  
 with app-specific data structs.
 3. It demonstrates the efficiency advantage of a Modal UI.  
 This app can be compared with the WIMP based IDE you currently use.  
