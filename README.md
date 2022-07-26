@@ -11,10 +11,6 @@ which is the user's expression of their intent to do something
 expressed as a specific input gesture,  
 and an intent handler, that performs the desired action, for each intent it defines.  
 
-Modal GUIs are designed around around the temporal paradigm:  
-
-_"focus on what the user wants to do right now (not later)"_   
-
 At any given time there is one primary mode of operation  
 which corresponds to the primary activity the user is currently involved in.  
 Within this primary interaction context, transient modes may pop-up and then go away.  
