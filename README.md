@@ -310,7 +310,7 @@ Once you are satisfied, press escape.
     Finally we'll look at src_edr_disp_state.  
     You will find src_edr_disp_state inside 7735: SUB_BLOCK MODE IMPLEMENTATION FNs.  
 
-## Building your own Modal App
+## Building your own Modal GUI App
 
 ## Next Development Step:
 1. Modal specific navigational features and source code editing.  
