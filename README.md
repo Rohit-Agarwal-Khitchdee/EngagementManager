@@ -40,9 +40,11 @@ There are also no on-screen navigational controls
 because all navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
-## Building and Running the app (an app for navigating a Modal codefile, such as ModalWX.cpp):
+## Building and Running the ModalWX app:
 (interaction time ~1hr) 
 
+The ModalWX app is a naviagtion tool for Modal source code.  
+A future version will be a standalone IDE.  
 The app is based on the wxWidgets cross-platform UI library.  
 To build this app you first have to download and build the wxWidgets library.  
 
