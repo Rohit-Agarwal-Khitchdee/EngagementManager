@@ -26,17 +26,17 @@ This app (ModalWX.cpp) is a source-code navigation/editing app
 that serves 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand the source code.  
 2. It serves as a template for designing a modal app.  
-Specifically, the SModeSrcEdr mode extension has to be replaced  
-with a mode extension designed by the dev  
+Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
+with a primary mode designed by the dev  
 and the data structs used by SModeSrcEdr have to be replaced  
-with app-specific data structs.
+with their app-specific data structs.
 3. It demonstrates the efficiency advantage of a Modal UI.  
-Compare the navigation efficiency of this app with the WIMP based IDE you currently use.  
+Compare the navigation efficiency of this app with the IDE you currently use.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 lines can be displayed at a time.  
-There also no on-screen navigational controls  
+There are also no on-screen navigational controls  
 because all navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
