@@ -3,10 +3,10 @@
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-29-2022)  
 
 ## Modal Overview
-Modal GUIs layout the app's interaction time temporally as "modes of operation".  
+Modal GUIs slice the app's interaction time temporally into "modes of operation".  
 Each mode of operation paints to the entire screen   
-and has exclusive control over user input while it has focus.  
-A mode contains a set a "user intents",    
+and has exclusive control over user-input while it has focus.  
+A mode is time-sliced into a set a "user intents",    
 which is the user's expression of their intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the desired action, for each intent it defines.  
@@ -19,19 +19,16 @@ all interactions that require high intensity and immediacy
 are direct-mapped to keystroke sequence driven controls.  
 Lower intensity interactions that are less frequently needed  
 are indirect-mapped to transient, pop-up modes.  
-Direct mapped interactions lead to improved interface efficiency  
-while indirect-mapped interactions give the interface breadth.  
 
-This app (ModalWX.cpp) is a source-code navigation/editing app
+This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app
 that serves 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand the source code.  
-2. It serves as a template for designing a modal app.  
+2. Its source code serves as a template for designing a modal GUI app.  
 Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
 with a primary mode designed by the dev  
 and the data structs used by SModeSrcEdr have to be replaced  
 with their app-specific data structs.
-3. It demonstrates the efficiency advantage of a Modal UI.  
-Compare the navigation efficiency of this app with the IDE you currently use.  
+3. It's source-code navigation efficiency can be compared with the IDE you currently use.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
@@ -43,7 +40,7 @@ because all navigational controls are direct-mapped to keystroke sequences.
 ## Building and Running the ModalWX app:
 (interaction time ~1hr) 
 
-The ModalWX app is a naviagtion tool for Modal source code.  
+The ModalWX app is Modal GUI based navigation tool for Modal source code.  
 A future version will be a standalone IDE.  
 The app is based on the wxWidgets cross-platform UI library.  
 To build this app you first have to download and build the wxWidgets library.  
