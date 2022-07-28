@@ -228,10 +228,10 @@ Once you are satisfied, press escape.
   You're back at the app's start-screen.  
   
 4. Inside Modal -- Modes of Operation and User Intents   
-   - Modal has been designed in such a way that for the most part  
+   - The Modal GUI toolkit has been designed in such a way that for the most part  
     the developer does not need to have anything to do with it's operational context  
-    in this case wxWidgets.  
-    The UI design of a Modal app is purely using modal constructs  
+    in this case the wxWidgets WIMP GUI.  
+    The GUI design of a Modal app is purely using modal constructs  
     namely the mode of operation and the user intent handler.  
     A modal app developer is concerned with Modal Init and Exit,  
     their app's data and the primary mode of operation they design.  
@@ -240,17 +240,17 @@ Once you are satisfied, press escape.
     We will walkthrough the design of SModeSrcEdr which is its primary mode of operation  
     and the user intent handlers that are part of this mode's design.  
   
-   - Open 8859: INITIALIZING AND EXITING MODAL (BLOCK).  
-    Open 8878 modal_init  
-    Goto 8903 and Ctrl-right load_UI_state  
-    Goto 8871 and Ctrl-right new_src_edr  
+   - Open INITIALIZING AND EXITING MODAL (BLOCK).  
+    Open modal_init  
+    Goto load_UI_state  
+    Goto new_src_edr  
     Note we are inside the BLOCK: THIS APP'S PRIMARY MODE, THE SOURCE EDITOR  
     and the SUB_BLOCK: BASE DEFINITIONS  
     This is where the SModeSrcEdr struct is defined  
     and fns to "new", free and load from a file are defined.  
-    Open 7291, goto 7292 and Ctrl-right pBase->init  
+    Goto pBase->init  
     This is where an SMode struct is initialized.  
-    Open the comment block 209, read the comments in it then close it.  
+    Open the comment block above (311), read the comments in it then close it.  
     The base mode struct has the following fn ptrs:  
     1. fnKey_up  
       This fn is called when a key up event occurs  
@@ -272,32 +272,33 @@ Once you are satisfied, press escape.
      - The base SMode struct's init provides implementations for (i), (iv), and (v).  
     A concrete mode provides for the rest and may override the base (i), (iv) and (v).  
     Now go back to new_src_edr (Ctrl-left).  
-    Open 7294. Goto 7296 and Ctrl-right on init.  
+    pSrcEdr->init.  
     As you can see, SModeSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
     with it's own implementation.  
     It also loads all the intent handler fns.  
-    Open 7150. This is an enumeration of the intent handlers for SModeSrcEdr.  
+    Open the enum{...} at 7247. This is an enumeration of the intent handlers for SModeSrcEdr.  
     They all start wiht SEI_ to make them globally unique.  
-    Close 7150.  
-    PgDn to 7233 void load_intents() {}  
-    Open 7233. This is where the intent handlers are loaded.  
-    Close 7233.  
+    Close the enum.  
+    PgDn to void load_intents() {...}  
+    Open it. This is where the intent handlers are loaded. Close it.
+  
     Now we'll peep inside some of these mode behavior implementation fns.  
-    Goto 7195 and Ctrl-right over src_edr_map.  
-    Open 7351. Open 7356. Open 7358.  
+    Scroll up to SrcEdr->init() and goto src_edr_map.  
+    Open 7456.  
     Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
-    Close 7358. Close 7356. Close 7351.  
+    Close 7456.  
     Let's look at that intent handler.  
     Go back. Go Back. Go Back. Go Back.  
-    Close 8878: modal_init().  
-    Close 8859: (BLOCK) INITIALIZING AND EXITING MODAL  
-    Goto 7782: (SUB_BLOCK) INTENT_HANDLERS and open it  
-    Open 7787: src_edr_update_caret   
+    Close modal_init().  
+    Close(BLOCK) INITIALIZING AND EXITING MODAL  
+    Open (BLOCK) THIS APP'S PRIMARY MODE, (SUB_BLOCK) INTENT_HANDLERS  
+    Open src_edr_update_caret   
     This is the intent handler for SEI_UPDATE_CARET.  
-    You may study this code.  
-    Then close 7787 and then 7782.  
+    You may study this code then close it and its sub-block and block.  
+
     Finally we'll look at src_edr_disp_state.  
-    You will find src_edr_disp_state inside 7735: SUB_BLOCK MODE IMPLEMENTATION FNs.  
+    You will find src_edr_disp_state inside  
+    BLOCK THIS APP'S PRIMARY MODE SUB_BLOCK MODE IMPLEMENTATION FNs.  
 
 ## Building your own Modal GUI App
 
@@ -308,24 +309,7 @@ Once you are satisfied, press escape.
 This will make ModalWX a standalone IDE for building Modal apps based on wxWidgets.  
 I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
 
-## Modal UIs and WIMP UIs
-WIMP UIs have been around a long time and a broad set of controls is available  
-for developers to quickly put together a UI  
-with not a lot of code involved since the controls encapsulate the needed functionality.  
-By contrast, writing a Modal UI requires a lot of coding  
-specially in terms of graphic drawing for your app's primary mode.  
-Only a few off-the-shelf controls are available to assist the process.  
-On the other hand, Modal UIs give a developer a lot more control  
-over the outcome of the design process since very little is canned or mandated.  
-They are also simpler to code.  
-Once you get familiar with the drawing options offered by wxDC,  
-creating a new Mode of Operation is fairly straightforward.  
-Also, in terms of visual layout they offer the entire screen for the app's display  
-since there are no menus or other visual elements to take away screen space.  
-The SModeSrcEdr mode demonstrates this in its ability to view large segments of code  
-all on a single screen as compared WIMP based code editors  
-such as XCode, Visual Studio, Code Blocks and CodeLite.  
-
+## Modal & WIMP mix and match
 Since a Modal UI is implemented entirely within a wxWindow subclass,  
 it is possible to incorporate a Modal UI window into a regular WIMP style app  
 using wxAUI with the Modal UI in one layer and a WIMP UI in another layer.  
