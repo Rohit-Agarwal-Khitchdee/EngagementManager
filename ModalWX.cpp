@@ -1,36 +1,29 @@
 // PREAMBLE: Modal UI Toolkit for wxWidgets
 // Modal GUIs do not layout the screen spatially using windows.
-// Instead they layout the app's interaction time temporally
-// using "modes of operation".
+// Instead they time-slice the app's interaction time 
+// into "modes of operation".
 // Each mode of operation paints to the entire screen
 // and has exclusive control of kybd input
 // which is the only form of input needed in a Modal app.
-// Mouse input is not needed or used.
-// Modal apps benefit from not having to deal with windows, and layout issues.
-// They also benefit from not needing to use the mouse in the GUI.
-// They are simpler and more efficient for both developer and user.
 //
-// A mode of operation is the GUI's behavior
+// A mode of operation defines the GUI's behavior
 // in terms of its visual response to kybd inputs.
 // Modes can be loaded into and unloaded from the GUI
 // via a mode manager that both manages the modes of the Modal GUI
 // and interfaces with the wxWidgets wxWindow class.
-// At any given time during an interaction with a Modal app
-// there is a "primary" mode operational
-// which reflects the primary activity that the user is involved in
-// within a primary mode's operational context
+// At any given time there is a "primary" mode operational
+// reflecting the primary activity that the user is involved in
+// within a primary mode's operational context (time-slice)
 // transient "accessory" modes may be popped up
 // to enable the collection of some additional input from the user
 // or to switch the primary mode to a different one.
-// Accessory modes are much like Dialogs in a WIMP app.
+//
 // The toolkit defines an abstract base mode struct
 // and a handful of generally useful, accessory  mode structs,
 // This file implements a primary mode called SModeSrcEditor
 // for editing and navigating a Modal C source-code file.
 // This serves as a template for an app designer
 // to produce their own mode in a Modal app.
-// The SrcEditor mode provides a UI to navigate and understand Modal source-code
-// starting with this file, ModalWX.cpp, which is the first Modal source-code file.
 //
 // THE SOURCE EDITOR MODE : A TEMPLATE FOR DESIGNING A MODE
 // The approach we have taken in the design of this source-code editor
@@ -58,20 +51,19 @@
 // Blocks and sub-blocks, functions and structures, enums and comment blocks can all be summarized.
 // Any line that ends in a {...} is summarized and can be opened.
 // Summarisation is very efficient and blends in well with code-editing and navigation. 
-// The developer is already using the kybd for these functions 
-// and since summarisation is also kybd controlled,
+// Since the developer is already using the kybd for these functions 
 // they do not have to switch over to the mouse at all.
 //
 // 4. We provide the ability to directly navigate to any symbol (struct, class or fn)
 // by moving the caret to a symbol's name and pressing Ctrl-Right.
 // If there is a symbol at the caret location,
-// the current editor view-context is collapsed, 
-// and the editor goes to and expands the symbols definition.
+// the current editor view-context is "collapsed", 
+// and the editor goes to and expands the symbol's definition.
 // If there is no symbol at the caret location
 // A text entry field is opened into which the name of a symbol can be typed in.
 // A history of such goto's is maintained.
 // Pressing Ctrl-Left returns from the goto by collapsing it
-// and returning to and expading the previous context.
+// and returning to and expanding the previous context.
 // This is similar to the functionalty provided by other IDEs 
 // but it's kybd based and hence more efficient.
 //
@@ -88,15 +80,9 @@
 // The way you navigate a Modal codefile using this app is
 // you open a section to study its code,
 // then you close it, open another section and study its code.  
+// You only keep open the section you're currently working on.
 //
-// 3. Ctrl-Right serves as a goto.
-// It's behavior depends on what is under the caret.
-// If a function name or Class or Struct name is under the caret
-// the app closes the current section
-// and goes to and opens the section associated with the symbol.
-// If a known symbol is not under the caret, a text entry field is popped up
-// into which the desired destination can be typed in.
-// Ctrl-Left returns from the goto by closing it and re-opening the earlier location.
+// 3. Ctrl-Right and Ctrl-left serves as a goto and back as described earlier.
 //
 // 4. Pressing and releasing Ctrl pop's up a small menu of selectable commands.
 // Only the last of these, "adjust fontsize", is implemented.
@@ -170,9 +156,8 @@ void src_edr_update_caret(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
 void src_edr_start_sel(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
 void src_edr_update_sel(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
 void src_edr_un_sel(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
-void src_edr_cut_sel(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
-void src_edr_paste_sel(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
-void src_edr_undo(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
+void src_edr_cutpaste_sel(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
+void src_edr_undoredo(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
 void src_edr_summarize(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
 void src_edr_goto(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
 void src_edr_control(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC);
@@ -187,34 +172,35 @@ void src_edr_input_codefile(SMode* pMode, int phase, ModalWindow* pWin, wxDC& DC
 SModeManager* modal_init(int scrnWidth, int scrnHeight);
 void modal_exit(SModeManager* pModeManager);
 
+#define ABS(x) ((x)>0?(x):-(x))
+
 // BLOCK: WX INTERFACING BOILERPLATE
-// Modal interfaces with the wxWindow class of wxWidgets.
-// The ModeManager that manages a Modal UI is concerned with 
-// receiving kybd events
+// Modal's SModeManager interfaces with the wxWindow class of wxWidgets.
+// The ModeManager is concerned with receiving kybd events
 // sending screen redraw (refresh) requests
 // and receiving notifications (events) for redrawing the screen.
 // It is also concerned with being initialized on app init
 // and being called to exit when the user exits the app
 // ModalWindow, a subclass of wxWindow provides all the interfacing needed.
-// It inits the Modal toolkit in it constructor
-// which retruns a loaded mode manager.
-// and exits the Modal toolkit in its destructor
+// It calls modal_init() in its constructor
+// which returns a loaded mode manager,
+// and calls modal_exit() in its destructor
+// which serialzes the mode manager to disk and then free's the ModeManager
 // It also dispatches kybd and paint events to the mode manager
 // and provides access to wxWindow::Refresh methods to send redraw requests
 // SUBBLOCK: WX BRIDGE STRUCTURES AND FUNCTIONS
-// ModalWindow is declared here
+// this ifdef is for debugging heap corruption errors on Windows
 #ifdef __WXMSW__
   #define _CRTDBG_MAP_ALLOC
   #define _CRT_SECURE_NO_WARNINGS
   #include <stdlib.h>
   #include <crtdbg.h>
 #endif
-
 // The Modal Window is a subclass of wxWindow that interfaces with the ModeManager
 // It contains a ModeManager member struct
 // this struct get's initialized in ModalWindow's constructor
 // via a call to modal_init()
-// and closed in ModalWindow's destructor via modal_exit()
+// and serialized to disk and freed in ModalWindow's destructor via modal_exit()
 // ModalWindow passes key events to the ModeManager
 // and also wxPaint events
 // modes (contained in the mode manager) also use wxWindow::Refresh()
@@ -243,11 +229,10 @@ EVT_KILL_FOCUS(ModalWindow::OnLostFocus)
 wxEND_EVENT_TABLE()
 
 // SUBBLOCK: MODAL'S BASE STRUCTURES -- MODE-MANAGER AND MODE
-// The base structs of the Modal toolkit -- SMode and SModeManager
 
-// the maximum number of "user intents" any given mode can accomodate
+// The maximum number of "user intents" any given mode can accomodate
 #define MAX_INTENTS 40
-// mode types
+// Mode types
 enum {
   MODE_BASE=0,
   // these are accessory modes provided by the toolkit
@@ -262,9 +247,9 @@ enum {
 // union for extending the base mode structure
 // it is contained by the base Mode structure
 // If you define a new mode for your app,
-// it mode-specific  data structure needs to be added here
+// it's mode extension needs to be added here
 // for example, this app added SModeSrcEdr
-// You also need to add code to free this mode-specific data struct
+// You also need to add code to free this mode extension
 // in the implementation of free_mode()
 // and an element to the mode types enum
 typedef union UModeExtension {
@@ -277,21 +262,20 @@ typedef union UModeExtension {
   // app specific primary modes are added here
   SModeSrcEdr * pSrcEdr; 
 } UModeExtension;
-// A mode (of operation) is the primary UI construct of the Modal Toolkit
+// A mode (of operation) is represented by the SMode struct
 // SMode is a struct that is like an abstract class.
-// It contains several fn ptrs that have to be loaded
+// It contains several fn ptrs that have to be loaded by a concrete mode.
 // and it contains a ptr to a union UModeExtension
-// that a conrete extension of SMode uses to define it's specific behavior.
-// SMode has function pointers for all the functions need in its primary operation
+// A concrete mode is defnied by this extension
+// and by the specific implementation fns it loads into its base mode.
+// SMode's loadable fn ptrs are for all the functions need in its primary operation
 // such as responding to kybd and display events
 // load or unload events when it is loaded or unloaded from the mode manager
 // and a serialization fn for when its state is stored/loaded to/from disk
-// A concrete extension of SMode has to provide implementations for all of these fns
-// and load them into the SMode fn ptrs.
 //
 // USER INTENTS: HOW A MODE IS DESIGNED
 // A mode is designed as a set of "user intents".
-// The designer determines what user keystroke combinations
+// The mode designer determines what user keystroke combinations
 // will correspond to what app function.
 // Each one of these is called a User Intent.
 // The designer defines these intents 
@@ -300,33 +284,32 @@ typedef union UModeExtension {
 // By convention, a mode extension loads these in a load_intents() fn
 // that is called by its init() fn
 // A mode extension, in it's kybd_map() processor
-// determines and sets current user intent (index)
+// determines and sets current user intent (an index)
 // and dispatches processing to the mode's intent handler array.
-// that intent handler does the processing needed to handle that user intent
+// That intent handler does the processing needed to handle that user intent
 // then either refresh's a part of or all of the screen using wxWindow::Refresh().
-// this generates a wxPaint event that get's send down by ModalWindow to the mode manager.
-// the modemanager determines the currently operating mode and intent
+// This generates a wxPaint event that get's send down by ModalWindow to the mode manager.
+// The mode manager determines the currently operating mode and intent
 // and dispatches the display processing to that mode intent_handler fn
-// the intent handler therefore has 2 phases of operation
-// the first when the mode's kybd_map() fn calls it (PH_NOTIFY)
-// and the second when the modemanager's paint evt handler calls it (PH_EXEC). 
+// The intent handler therefore has 2 phases of operation --
+// the first when the mode's kybd_map() fn calls it (phase PH_NOTIFY)
+// and the second when the modemanager's paint evt handler calls it (phase PH_EXEC). 
 //
 // THE MODE'S DISPLAY STATE: INITIAL DRAWING
 // Every mode must maintain a display state
 // which is displayed when the mode is first loaded by the modemanager
 // or in response to an OS event such as switching out and in of the app.
-// The mode must implement this in a fn loaded into the mode's fnDisp_state fn ptr.
 // Whenever an intent handler draws directly to the display,
 // it must update this display state to reflect the changes it has made.
 // The intent handler may also choose to only make changes to the display state of its mode
 // and not do any drawing to the screen of its own
-// then set ModalWindow::m_bUsrActn to false and issue a fullscreen refresh
+// then set ModalWindow::m_bUsrActn to false and issue a full-screen refresh
 // which will call fnDispState.
 // This is less efficient than updating only a part of the screen
-// but a lot simpler to implement.
+// but simpler to implement.
 typedef struct SMode {
   void init( int scrnW, int scrnH, wxFont *pFont ) {
-    // the base mode struct loads these 3 default fns that define it's default behavior
+    // the base mode struct loads these 3 default fns that define default behavior
     this->fnKey_up = mode_key_up;
     this->fnOn_load = mode_on_load;
     this->fnOn_unload = mode_on_unload;
@@ -337,11 +320,12 @@ typedef struct SMode {
     this->bCtrlDown = false;
     this->pFont = pFont;
     this->dFontScale = 1.0;
-  if (pFont != NULL)
-    this->set_font(pFont);
+    if (pFont != NULL)
+      this->set_font(pFont);
     else 
       this->dBaseFontPointSize = 0.0;
     this->bReset = true;
+    this->type = MODE_BASE;
   };
   // all of the fn ptrs below have to be assigned for a mode to be operational
   bool (*fnKey_up)( SMode *pMode, wxKeyEvent &Event, ModalWindow *pWin );
@@ -352,24 +336,29 @@ typedef struct SMode {
   bool (*fnSerialize)( SMode *pBase, wxFile &File, bool bToFrom );
   void (*fnIntent_handler[MAX_INTENTS])( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC );
   // updates the display for this mode in response to a user action
+  // called by the mode manager
   void disp_update( int phase, ModalWindow * pWin, wxDC &DC ) {
     // dispatch the current user intent for display
     this->fnIntent_handler[this->intent]( this, phase, pWin, DC );
   };
+  // set's the font but does not load it yet
   void set_font( wxFont *pFont ) {
     this->pFont = pFont;
     this->dBaseFontPointSize = pFont->GetFractionalPointSize();
   };
   // load's the currently set font with it's scale
+  // this fn must be called before using the font to do something
+  // so that the font is loaded at it's intended scale
   void load_font() {
-    if( this->pFont != NULL )
-      this->pFont->SetFractionalPointSize(this->dBaseFontPointSize * this->dFontScale);
+    if( this->pFont != NULL ) 
+      if( this->dFontScale > 1.0 )
+        this->pFont->SetFractionalPointSize(this->dBaseFontPointSize * this->dFontScale);
   };    
   void adjust_font_scale(double dFontScaleAdjust) {
     this->dFontScale = (this->dFontScale * dFontScaleAdjust);
     this->load_font();
   }
-  // set the location of this mode if it is a pop-up
+  // sets the location of this mode if it is a pop-up
   // the location is relative to the center of the screen
   // and is in pixel coordinates.
   void set_location( wxPoint Location ) {
@@ -426,8 +415,7 @@ typedef struct SMode {
 enum {
   PH_NOTIFY, PH_EXEC
 };
-// a mode link structure used to implement a stack of modes
-// such a stack is used by the ModeManager
+// a mode link structure used to implement a stack of modes (used by the ModeManager)
 typedef struct SModeLink {
   SMode *pMode;
   SModeLink *pNextLink;
@@ -448,7 +436,7 @@ typedef struct SModeManager {
   int scrnW;
   int scrnH;
   wxFont* pFont;
-  // init with the screen dimensions
+  // inits with the screen dimensions
   void init( int scrnW, int scrnH, wxFont *pFont ) {
     Stack.pMode = NULL;
     Stack.pNextLink = NULL;
@@ -461,6 +449,7 @@ typedef struct SModeManager {
     pMode->set_font(this->pFont);
     bool bLast = false;
     SModeLink *pThisLink = &(this->Stack);
+    // uninitialized stack, add the mode to the root of the stack
     if( pThisLink->pMode == NULL ) {
       pThisLink->pMode = pMode;
       pThisLink->pNextLink = NULL;
@@ -468,21 +457,22 @@ typedef struct SModeManager {
       this->pCurMode->fnOn_load( this->pCurMode, this );
       this->pCurMode->bHasFocus = true;
     }
+    // stack has been inited. Find the last link and add a new link
     else {
+      // Find the last link and add a new link
       while( !bLast ) {
-      if( pThisLink->pNextLink == NULL ) {
-        bLast = true;
-        pThisLink->pNextLink = (SModeLink *) malloc( sizeof( SModeLink ) );
-        if (pThisLink->pNextLink != NULL) {
+        // this is the last link, add a new link and exit the find
+        if( pThisLink->pNextLink == NULL ) {
+          bLast = true;
+          pThisLink->pNextLink = (SModeLink *) malloc( sizeof( SModeLink ) );
           pThisLink->pNextLink->pMode = pMode;
           pThisLink->pNextLink->pNextLink = NULL;
           this->pCurMode = pMode;
           this->pCurMode->fnOn_load(this->pCurMode, this);
           this->pCurMode->bHasFocus = true;
         }
-      }
-      else
-        pThisLink = pThisLink->pNextLink;
+        else
+          pThisLink = pThisLink->pNextLink;
       }
     }
   };
@@ -497,8 +487,9 @@ typedef struct SModeManager {
       bRetVal = false;
     // find the last link and pop it, call unload on the mode that got popped off
     else {
+      // find the last link and pop it, call unload on the mode that got popped off
       while( !bLast ) {
-        // this is the last link, pop it off
+        // this is the last link, pop it off and exit the find
         if( pThisLink->pNextLink->pNextLink == NULL ) {
           bLast = true;
           pThisLink->pNextLink->pMode->bHasFocus = false;
@@ -521,7 +512,7 @@ typedef struct SModeManager {
     SModeLink *pThisLink = &(this->Stack);
     // find the last link in the stack and replace it
     while( !bLast ) {
-      // this is the last link, replace it
+      // this is the last link, replace it and exit the find
       if( pThisLink->pNextLink == NULL ) {
         bLast = true;
         pThisLink->pMode->fnOn_unload( pThisLink->pMode, this );
@@ -564,7 +555,7 @@ typedef struct SModeManager {
           bLast = true;
           pThisLink->pMode->fnDisp_state( pThisLink->pMode, pWin, DC );
         }
-        // this is not the last link, draw it and next
+        // this is not the last link, draw it and load nextlnk
         else {
           pThisLink->pMode->fnDisp_state( pThisLink->pMode, pWin, DC );
           pThisLink = pThisLink->pNextLink;
@@ -614,11 +605,11 @@ typedef struct SModeManager {
   // Hence this fn is called by ModalWindow::OnLostFocus
   // which is called when the window gets switched out
   void reset_kybd_state() {
-    bool bNextLink = false;
-    // reset kybd state on each next link (if !NULL) starting from the first
     SModeLink* pThisLink = &(this->Stack);
     bool bLast = false;
+    // reset kybd state on each next link (if !NULL) till last link starting from first
     if (pThisLink->pMode != NULL) {
+      // reset kybd state on each next link till last link
       while (!bLast) {
         // reset kybd state 
         pThisLink->pMode->bCtrlDown = false;
@@ -634,61 +625,61 @@ typedef struct SModeManager {
   // called when a Modal app exits
   // stores the mode stack and every mode in the mode stack
   bool serialize( wxFile &File, bool bToFrom ) {
-  bool bRetVal = true;
-  bool bNextLink = false;
-  // store each next link (if !NULL) starting from the first
-  if( bToFrom ) {
-    SModeLink *pThisLink = &(this->Stack);
-    bool bLast = false;
-    // the stack is not empty, traverse throguh its links and serialize them
-    if( pThisLink->pMode != NULL ) {
-      // keep traversing ttill end of stack or link serializaation error
-      while( !bLast && bRetVal ) {
-        // this is the last link, serialize it and end the process
-        if( pThisLink->pNextLink == NULL ) {
-          bLast = true;
-          // write out a 0 for next link
-          bNextLink = false;;
-          File.Write( &bNextLink, sizeof(bool) );
-          // store tyhe state of this link's mode
-          pThisLink->pMode->serialize( File, true );
-          pThisLink->pMode->set_font(this->pFont);
-          bRetVal = pThisLink->pMode->fnSerialize( pThisLink->pMode, File, true );
+    bool bRetVal = true;
+    bool bNextLink = false;
+    // store each next link (if !NULL) starting from the first
+    if( bToFrom ) {
+      SModeLink *pThisLink = &(this->Stack);
+      bool bLast = false;
+      // the stack is not empty, traverse throguh its links and serialize them
+      if( pThisLink->pMode != NULL ) {
+        // keep traversing till end of stack or link serialization error
+        while( !bLast && bRetVal ) {
+          // this is the last link, serialize it and end the process
+          if( pThisLink->pNextLink == NULL ) {
+            bLast = true;
+            // write out a 0 for next link
+            bNextLink = false;
+            File.Write( &bNextLink, sizeof(bool) );
+            // store the state of this link's mode
+            pThisLink->pMode->serialize( File, true );
+            pThisLink->pMode->set_font(this->pFont);
+            bRetVal = pThisLink->pMode->fnSerialize( pThisLink->pMode, File, true );
+          }
+          // there are more links to traverse, serialize this link and goto next link
+          else {
+            // write out a 1 for next link
+            bNextLink = true;
+            File.Write( &bNextLink, sizeof(bool) );
+            pThisLink->pMode->serialize( File, true );
+            bRetVal = pThisLink->pMode->fnSerialize( pThisLink->pMode, File, true );
+            pThisLink = pThisLink->pNextLink;
+          }
         }
-        // there are more links to traverse, serialize this link and goto next link
+      }
+    }
+    // load the stack from the serialized data
+    else {
+      bool bNextLink = true;
+      SModeLink *pNextLink = &(this->Stack);
+      // keep loading links till the last link is reached
+      while (bNextLink) {
+        File.Read(&(bNextLink), sizeof(bool));
+        pNextLink->pMode = load_mode(scrnW, scrnH, File);
+        pNextLink->pMode->set_font(this->pFont);
+        // there are more links. Load this link and goto next link
+        if (bNextLink) {
+          pNextLink->pNextLink = (SModeLink*)malloc(sizeof(SModeLink));
+          pNextLink = pNextLink->pNextLink;
+        }
+        // there are no more links. Signal link load exit. Set curMode
         else {
-          // write out a 1 for next link
-          bNextLink = true;
-          File.Write( &bNextLink, sizeof(bool) );
-          pThisLink->pMode->serialize( File, true );
-          bRetVal = pThisLink->pMode->fnSerialize( pThisLink->pMode, File, true );
-          pThisLink = pThisLink->pNextLink;
+          pNextLink->pNextLink = NULL;
+          this->pCurMode = pNextLink->pMode;
         }
       }
     }
-  }
-  // load the stack from the serialized data
-  else {
-    bool bNextLink = true;
-    SModeLink *pNextLink = &(this->Stack);
-    // keep loading links till the last link is reached
-    while (bNextLink) {
-      File.Read(&(bNextLink), sizeof(bool));
-      pNextLink->pMode = load_mode(scrnW, scrnH, File);
-      pNextLink->pMode->set_font(this->pFont);
-      // there are more links. Load this link and goto next link
-      if (bNextLink) {
-        pNextLink->pNextLink = (SModeLink*)malloc(sizeof(SModeLink));
-        pNextLink = pNextLink->pNextLink;
-      }
-      // there are no more links. Signal link load exit. Set curMode
-      else {
-        pNextLink->pNextLink = NULL;
-        this->pCurMode = pNextLink->pMode;
-      }
-    }
-  }
-  return( bRetVal );
+    return( bRetVal );
   };
 } SModeManager;
 // allocs inits a mode manager ptr on the heap and returns it.
@@ -741,8 +732,8 @@ void free_mode_manager( SModeManager *pModeManager ) {
   delete pModeManager->pFont;
   free( pModeManager );
 }
-// SUBBLOCK: WX CLASS FUNCTION DEFINITIONS
-// This sub-block contains the definitions of wx classes
+// SUBBLOCK: WX APP & CLASS FUNCTION DEFINITIONS
+// This sub-block contains the definitions of the app and wx classes
 // and their interfaces to the Modal UI toolkit's bridge functions
 class MyFrame : public wxFrame {
 public:
@@ -759,11 +750,6 @@ public:
 // in a cross-platform way
 wxIMPLEMENT_APP(MyApp);
 // the app's entry point
-// calls wxApp:init
-// retrieves the width and height of the screen
-// creates a frame
-// which in turn creates a ModalWindow which init's Modal
-// "shows" the frame
 bool MyApp::OnInit() {
   if( !wxApp::OnInit() )
     return false;
@@ -774,7 +760,6 @@ bool MyApp::OnInit() {
   pFrame->Show(true);
   return true;
 }
-// Creates a ModalWindow which init's Modal
 MyFrame::MyFrame(const wxString& strTitle, const wxPoint& Pos, const wxSize& Size) : 
 wxFrame((wxFrame *)NULL, wxID_ANY, strTitle, Pos, Size) {
   wxSize SizeCanvas = Size;
@@ -783,26 +768,21 @@ wxFrame((wxFrame *)NULL, wxID_ANY, strTitle, Pos, Size) {
   m_pWin = new ModalWindow( this, SizeCanvas );
   return;
 }
-// Calls modal_init()
 ModalWindow::ModalWindow(MyFrame *pOwner, wxSize Size ) : wxWindow(pOwner, wxID_ANY, wxPoint( 0, 0 ), Size ) {
-  SetBackgroundStyle(wxBG_STYLE_PAINT); // this is needed by wxWidgets for implementing wxAutoBufferedDC
+  // this is needed by wxWidgets for implementing wxAutoBufferedDC
+  SetBackgroundStyle(wxBG_STYLE_PAINT); 
+  // this is needed for then the entire screen is being scaled for a HiDPI display
   double dScale = GetContentScaleFactor();
   m_pModeManager = modal_init( Size.GetWidth()/dScale, Size.GetHeight()/dScale );
   m_bUsrActn = false;
   m_pOwner = pOwner;
 }
-// Calls modal_exit()
 ModalWindow::~ModalWindow() {
   modal_exit(m_pModeManager);
 }
-// Checks to see if the event was initiated by user action
-// dispatches it to the current mode's current intent processor
-// otherwise calls the ModeManager's disp_state
 void ModalWindow::OnPaint(wxPaintEvent& event) {
   wxAutoBufferedPaintDC DC(this);
-
   // event was produced by the OS (load or relaod app) not the user
-  // an intent handler may also unset m_bUsrActn to cause a full window refesh
   if (!m_bUsrActn) 
     m_pModeManager->disp_state(this, DC);
   // event is a response to a user action
@@ -810,17 +790,15 @@ void ModalWindow::OnPaint(wxPaintEvent& event) {
     m_pModeManager->disp_update(this, DC);
   return;
 }
-// Used to reduce flicker
+// Needed by wxWidgets, helps to reduce flicker
 void ModalWindow::EraseBG(wxEraseEvent& event) {
   return;
 }
-// Dispatches the key event to the modemanager
 void ModalWindow::OnKeyDown(wxKeyEvent& event) {
   if (m_pModeManager != NULL) 
     m_pModeManager->kybd_map( event, this );
   return;
 }
-// Dispatches the key up event to the modemanager
 void ModalWindow::OnKeyUp(wxKeyEvent& event) {
   if (m_pModeManager != NULL) 
     m_pModeManager->key_up( event, this );
@@ -856,7 +834,6 @@ void ModalWindow::OnLostFocus(wxFocusEvent& event) {
 // STxtLine for representing and processing a text line
 // and STxtPage for representing and processing a page of TxtLines
 // e.g. They are used by the source editor mode implementation
-#define ABS(x) ((x)>0?(x):-(x))
 
 // struct for representing a line of txt represented as chars (not unicode)
 // and several functions to manipulate a line of text
@@ -895,8 +872,8 @@ STxtLine* new_txt_line( char *szData ) {
   // create a line with 100 chars if pcData == NULL else strlen(pcData) chars 
   // create a line with 100 chars
   if( szData == NULL ) {
-    len = 100;
-    pRetVal->maxLength = len * 2 + 1; 
+    len = 50;
+    pRetVal->maxLength = len + 1; 
     pRetVal->length = len;
     pRetVal->szBuf = (char*)malloc((pRetVal->maxLength + 1) * sizeof(char));
   }
@@ -955,20 +932,6 @@ STxtLine get_txt_line( char pcFrom[] ) {
   for (int i = 0; i < RetVal.length; i++)
     RetVal.szBuf[i] = pcFrom[i];
   RetVal.szBuf[RetVal.length] = 0;
-  return( RetVal );
-}
-// creates a txt_line on the stack using the specified wxString
-// maxLength is set to #define MAX_TXT_LINE_LENGTH
-STxtLine get_tl_from_wx( wxString & strFrom ) {
-  const char *pcFrom = static_cast<const char *>(strFrom.c_str());
-  int length = strlen( pcFrom );
-  STxtLine RetVal;
-  RetVal.maxLength = length * 2 + 1;
-  RetVal.length = length;
-  RetVal.szBuf = (char *) malloc( (RetVal.maxLength+1) * sizeof(char) );
-  wxASSERT_MSG(RetVal.szBuf != NULL, "malloc failure");
-  for( int i=0; i<RetVal.length+1; i++ )
-    RetVal.szBuf[i] = pcFrom[i];
   return( RetVal );
 }
 // creates a new txt_line ptr on the heap by cloning the specified STxtLine
@@ -1096,7 +1059,7 @@ bool tl_equals_sz(STxtLine* pThis, char *szBuf) {
   // compare for equality and set pRetVal
   else {
     // test for equality of data
-    if (pThis->length == strlen(szBuf) ) {
+    if (pThis->length == (int) strlen(szBuf) ) {
       for (int i = 0; i < pThis->length && bRetVal; i++) 
         if (pThis->szBuf[i] != szBuf[i])
           bRetVal = false;
@@ -1271,14 +1234,14 @@ STxtLine* tl_extract_word(STxtLine* pThis, char *pcSeparator) {
     char c;
     char cSep1 = ' ';
     char cSep2 = ' ';
-    // we look for ' ', non-space delim and non-space delim, ' ' combos
+    // we look for space, non-space delim and (non-space delim,space) combos
     for (int i = 0; i < pThis->length && !bFound; i++) {
       c = pThis->szBuf[i];
       if (c == ' ' || c == ',' || c == '(' || c == ')' || c == ';') {
         index = i;
         bFound = true;
         cSep1 = c;
-        // look for ' ' non-space
+        // look for (space,non-space) combo
         if (c == ' ') {
           if (i < pThis->length - 1) {
             c = pThis->szBuf[i + 1];
@@ -1288,7 +1251,7 @@ STxtLine* tl_extract_word(STxtLine* pThis, char *pcSeparator) {
             }
           }
         }
-        // look for non-space ' '
+        // look for (non-space,space) combo
         else {
           if (i < pThis->length - 1) {
             c = pThis->szBuf[i + 1];
@@ -1400,9 +1363,9 @@ STxtLine * tl_load( wxFile &File ) {
 // struct to hold a page which is an ordered collection of lines
 typedef struct STxtPage {
   void init( int maxLines ) {
-  this->maxLines = maxLines;
-  this->numLines = 0;
-  this->ppLines = (STxtLine **) malloc( maxLines * sizeof(STxtLine *) );
+    this->maxLines = maxLines;
+    this->numLines = 0;
+    this->ppLines = (STxtLine **) malloc( maxLines * sizeof(STxtLine *) );
   };
   // adds a line at the specified index in this TxtPage
   // if index == -1 adds it at the end
@@ -1570,11 +1533,11 @@ char to_upper( char c, bool bShift ) {
 
 // base fn called when a mode is loaded into the mode manager, does nothing
 void mode_on_load( SMode *pThis, SModeManager* pManager) {
-
+  // does nothing
 };
 // base fn called when a mode is unloaded from the mode manager, does nothing
 void mode_on_unload( SMode *pThis, SModeManager* pManager) {
-
+  // does nothing
 };
 // base mode keyup, sets shiftdown and ctrldown to false
 bool mode_key_up( SMode * pMode, wxKeyEvent &event, ModalWindow *pWin ) {
@@ -1586,8 +1549,8 @@ bool mode_key_up( SMode * pMode, wxKeyEvent &event, ModalWindow *pWin ) {
   return( true );
 }
 // SUBBLOCK: MESSAGE
-// This sub-block contains the definitions for mode message
-// This is a pop-up mode that displays a message
+// This sub-block contains the definitions for 
+// a pop-up mode that displays a message
 
 // a "pop-up" message mode
 typedef struct SModeMsg {
@@ -1691,7 +1654,7 @@ void msg_disp_update( SMode * pBase, int phase, ModalWindow *pWin, wxDC& DC ) {
   return;
 }
 // SUBBLOCK: LINE INPUT
-// This sub-block contains the definitions for mode line input
+// This sub-block contains the definitions for a line input pop-up
 
 // a "pop-up" line input mode
 typedef struct SModeLineInp {
@@ -1857,8 +1820,7 @@ void line_input_disp_state( SMode *pBase, ModalWindow *pWin, wxDC &DC ) {
   // determine the location of the text to be displayed
   // determine the location of the user message
   // draw framing rext, user message, user input text
-  if( pLineInp->pMsg != NULL && pLineInp->pInput != NULL )
-  {
+  if( pLineInp->pMsg != NULL && pLineInp->pInput != NULL ) {
     wxRect rectFrame;
     wxRect rectMsg;
     int widthTxt;
@@ -1871,10 +1833,10 @@ void line_input_disp_state( SMode *pBase, ModalWindow *pWin, wxDC &DC ) {
     int yMsg;
 
     // determine the width of the text input framing rect
-    // 40 max width characters
+    // maxChars width characters
     wxString strFrame("A");
     DC.GetTextExtent( strFrame, &(rectFrame.width), &(rectFrame.height) );
-    rectFrame.width *= 40;
+    rectFrame.width *= pLineInp->pInput->maxLength;
     rectFrame.height += 10;
     rectFrame.x = pBase->scrnW/2  - rectFrame.width/2;
     rectFrame.y = pBase->scrnH/2  - rectFrame.height/2;
@@ -2247,6 +2209,8 @@ typedef struct SDirPanel {
       int height = 0;
       // display the entries in this dir panel
       for (int i = 0; i < this->numDispEntries && i < this->numEntries - this->startIndex; i++) {
+        // if we are in the rootdir, display the full filename path
+        // else just the filename (GetFullName)
         if (this->pEntries[this->startIndex + i].bFileDir) {
           wxString strFileName;
           if (!this->bRootDir) {
@@ -2257,6 +2221,7 @@ typedef struct SDirPanel {
             strFileName = wxString(this->pEntries[this->startIndex + i].pName->szBuf);
           STxtLine *pLine = new_txt_line_wx(strFileName); 
           DC.GetTextExtent( wxString( pLine->szBuf ), &width, &height);
+          // clip the length of the string to the width of the panel
           while( width > this->rectDisp.width-80 ) {
             char* szTemp = tl_cut_out(pLine, pLine->length / 2, pLine->length);
             if (szTemp != NULL)
@@ -2370,13 +2335,43 @@ typedef struct SDirPanel {
   STxtLine* pDirName;
 } SDirPanel;
 // adds an entry to the specified dir panel
-void dir_panel_add_entry( SDirPanel *pDirPanel, SFileEntry Entry) {
+void dir_panel_add_entry(SDirPanel *pDirPanel, SFileEntry Entry) {
   // realloc space in pEntries if needed
   if (pDirPanel->numEntries >= pDirPanel->maxEntries) {
     pDirPanel->maxEntries *= 2;
     pDirPanel->pEntries = (SFileEntry*)realloc(pDirPanel->pEntries, pDirPanel->maxEntries * sizeof(SFileEntry));
   }
-  pDirPanel->pEntries[pDirPanel->numEntries] = Entry;
+  int index = 0;
+  bool bFound = false;
+  wxFileName EntryName(wxString(Entry.pName->szBuf));
+  wxString strEntryName;
+  if( Entry.bFileDir )
+    strEntryName = EntryName.GetFullName();
+  else {
+    int numDirs = EntryName.GetDirCount();
+    strEntryName = EntryName.GetDirs()[numDirs-1];
+  }
+
+  // determine alphabetical location of new entry and insert it there
+  for( int i=0; i<pDirPanel->numEntries &&!bFound; i++ ) {
+    wxFileName EntriesName(wxString(pDirPanel->pEntries[i].pName->szBuf));
+    wxString strEntriesName;
+    if( pDirPanel->pEntries[i].bFileDir )
+      strEntriesName = EntriesName.GetFullName();
+    else {
+      int numDirs = EntriesName.GetDirCount();
+      strEntriesName = EntriesName.GetDirs()[numDirs-1];
+    }    
+    if( strEntryName.at(0) < strEntriesName.at(0) ) { 
+      bFound = true;
+      index = i;
+      for( int j=pDirPanel->numEntries-1; j>=index; j-- )
+        pDirPanel->pEntries[j+1] = pDirPanel->pEntries[j];
+      pDirPanel->pEntries[index] = Entry;
+    }
+  }
+  if( !bFound )  
+    pDirPanel->pEntries[pDirPanel->numEntries] = Entry;
   pDirPanel->numEntries += 1;
 }
 // frees the entries allocated in the dir panel
@@ -2451,6 +2446,16 @@ typedef struct SModeFileSel {
     this->aDirPanels[2].load_dir(pDirName);
     tl_free(pDirName);
     pDirName = NULL;
+    // if curr dir is empty, load the parnet dir into it and proceed      
+    if( this->aDirPanels[2].numEntries == 0 ) {
+      int numDirs = FileName.GetDirCount();
+      wxASSERT( numDirs > 0 );
+      FileName.RemoveLastDir();
+      pDirName = new_txt_line_wx(FileName.GetPath());
+      this->aDirPanels[2].load_dir(pDirName);
+      tl_free(pDirName);
+      pDirName = NULL;
+    }
     int numDirs = FileName.GetDirCount();
     if (numDirs > 0) {
       FileName.RemoveLastDir();
@@ -2521,7 +2526,6 @@ void free_file_sel(SMode* pMode) {
 // called by the mode manager when the users inputs on the kybd
 bool file_sel_map( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
   bool bRetVal = true;
-  SModeFileSel *pFileSel = pBase->sExt.pFileSel;
 
   wxClientDC DC( pWin ); // dummy
   if( pBase->pFont != NULL ) {
@@ -2559,7 +2563,7 @@ bool file_sel_map( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
 }
 // ancillary gets the display rect of this file selector
 void file_sel_get_rect( SMode *pBase, wxRect *pRect, wxDC& DC ) {
-  SModeFileSel *pFileSel = pBase->sExt.pFileSel;
+//  SModeFileSel *pFileSel = pBase->sExt.pFileSel;
 }
 // mode :: display current state
 // called by the mode manager
@@ -2584,6 +2588,14 @@ void file_sel_disp_state( SMode *pBase, ModalWindow *pWin, wxDC& DC ) {
     pBase->bReset = false;
   }
 
+  // display the currently selected file or dir at the top
+  SDirPanel ActivePanel = pFileSel->aDirPanels[pFileSel->activePanel];
+  wxString strSelFileName = wxString(ActivePanel.pEntries[ActivePanel.selIndex].pName->szBuf);
+  int strW = 0;
+  int strH = 0;
+  DC.GetTextExtent( strSelFileName, &strW, &strH );
+  DC.DrawText( strSelFileName, pBase->scrnW/2 - strW/2, strH );
+  
   // display each of the 5 panels 
   for (int i = 0; i < 5; i++) 
     pFileSel->aDirPanels[i].display(DC);
@@ -2831,7 +2843,6 @@ void free_int_disp( SMode *pMode ) {
 // called by the mode manager when the users inputs on the kybd
 bool int_disp_map( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
   bool bRetVal = true;
-  SModeIntDisp *pIntDisp = pBase->sExt.pIntDisp;
 
   wxClientDC DC( pWin ); // dummy
   if( pBase->pFont != NULL ) {
@@ -2992,6 +3003,7 @@ void int_disp_execute( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
 // The codebase contains a symbol list
 // which is used for parsing, editing and navigation
 #define MODAL_NUMBLOCKS 7
+#define NUM_LINES_FOR_SUMMARISATION 10
 
 struct SCodeBase;
 struct SCodeElement;
@@ -4154,15 +4166,15 @@ typedef struct SCodeSection {
     case CDE_CODEBASE: {
       bRetVal = parse_codebase(this, pPage, index, length, this->pSymSet);
     }
-                     break;
+    break;
     case CDE_PREAMBLE: {
       bRetVal = parse_preamble(this, pPage, index, length, this->pSymSet);
     }
-                     break;
+    break;
     case CDE_BLOCK: {
       bRetVal = parse_block(this, pPage, index, length, this->pSymSet);
     }
-                  break;
+    break;
     case CDE_IFDEF: {
       int type = this->pBaseElem->pContainer->pBaseElem->type;
       if (type == CDE_CODEBASE || type == CDE_BLOCK || type == CDE_SUBBLOCK)
@@ -4170,17 +4182,17 @@ typedef struct SCodeSection {
       else // CDE_FNDEFN etc
         bRetVal = parse_local_scope(this, pPage, index, length, this->pSymSet, bInlineBrace);
     }
-                  break;
+    break;
     case CDE_SUBBLOCK: {
       bRetVal = parse_global_scope(this, pPage, index, length, this->pSymSet);
     }
-                     break;
+    break;
     case CDE_WX:
     case CDE_ENUM:
     case CDE_L4SECTION: {
       bRetVal = parse_not(this, pPage, index, length, this->pSymSet, bInlineBrace);
     }
-                      break;
+    break;
     case CDE_FNDEFN:
     case CDE_CLASS_FNDEFN:
     case CDE_L1SECTION:
@@ -4188,12 +4200,12 @@ typedef struct SCodeSection {
     case CDE_L3SECTION: {
       bRetVal = parse_local_scope(this, pPage, index, length, this->pSymSet, bInlineBrace);
     }
-                      break;
+    break;
     case CDE_CLASSDECL:
     case CDE_TYPEDEF: {
       bRetVal = parse_struct(this, pPage, index, length, this->pSymSet, bInlineBrace, this->symLinkType, this->symLinkIndex);
     }
-                    break;
+    break;
     default: {
       wxLogError("invalid code section type in code section parse");
     }
@@ -4500,13 +4512,9 @@ typedef struct SCodeSection {
   bool add_section(int type, int index, int length, STxtPage* pPage, bool bInlineBrace, int symLinkType, int symLinkIndex) {
     SCodeElement* pBaseElem = new_code_element(type, this, this->numElements, NULL);
     SCodeSection* pSec = new_code_section(pBaseElem, this->pSymSet, symLinkType, symLinkIndex);
+    pSec->bSummarized = true;
     // everything is summarized except the parent block of a sub-block
     // or a preamable
-    pSec->bSummarized = true;
-    if (pSec->pBaseElem->type == CDE_SUBBLOCK)
-      this->bSummarized = false;
-    if (pSec->pBaseElem->type == CDE_PREAMBLE)
-      pSec->bSummarized = false;
     // check if we have enough space in ppElements, else realloc
     if (this->numElements == this->maxElements) {
       this->maxElements = this->maxElements * 2;
@@ -4514,7 +4522,22 @@ typedef struct SCodeSection {
     }
     this->ppElements[this->numElements] = pSec->pBaseElem;
     this->numElements++;
-    return(pSec->parse(pPage, index, length, bInlineBrace));
+    bool bRetVal = pSec->parse(pPage, index, length, bInlineBrace);
+    if( bRetVal ) {
+      bool bL1L2L3L4 = false;
+      bL1L2L3L4 |= (pSec->pBaseElem->type == CDE_L1SECTION);
+      bL1L2L3L4 |= (pSec->pBaseElem->type == CDE_L2SECTION);
+      bL1L2L3L4 |= (pSec->pBaseElem->type == CDE_L3SECTION);
+      bL1L2L3L4 |= (pSec->pBaseElem->type == CDE_L4SECTION);
+      if( bL1L2L3L4 && pSec->numElements < NUM_LINES_FOR_SUMMARISATION ) 
+        pSec->bSummarized = false;
+      // if the sec is a sub-block open the *parent* block
+      if (pSec->pBaseElem->type == CDE_SUBBLOCK)
+        this->bSummarized = false;
+      if (pSec->pBaseElem->type == CDE_PREAMBLE)
+        pSec->bSummarized = false;
+    }
+    return( bRetVal );
   }
   // collapses this code-section
   // which means summarizing it
@@ -4787,23 +4810,25 @@ int check_var_type_for_ptrs(STxtLine* pLine, char* szVar, bool* pbIsPtr, bool* p
     }
     // check for var' '
     else if (pLine->szBuf[indexEnd] == ' ') {
-      if (indexEnd + 1 < pLine->length)
+      if (indexEnd + 1 < pLine->length) {
         // check for var *
         if (pLine->szBuf[indexEnd + 1] == '*') {
           *pbIsPtr = true;
           retVal = indexEnd + 2;
-          if (indexEnd + 2 < pLine->length)
+          if (indexEnd + 2 < pLine->length) {
             // check for var **
             if (pLine->szBuf[indexEnd + 2] == '*') {
               *pbIsPtrPtr = true;
               retVal = indexEnd + 3;
             }
+          }
         }
-      // check for var &
+        // check for var &
         else if (pLine->szBuf[indexEnd + 1] == '&') {
           *pbIsDeref = true;
           retVal = indexEnd + 2;
         }
+      }
     }
   }
   return(retVal);
@@ -5307,7 +5332,6 @@ bool find_L1L2(SCodeSection* pThis, STxtPage* pPage, int index, int* pnLength) {
   int idx = index;
   bool bInlineBrace = true;
   int secLength = 0;
-  int tempLength = pThis->get_length();
 
   pLine = tl_clone(pPage->ppLines[idx]);
   tl_trim(pLine);
@@ -5352,19 +5376,15 @@ bool find_L1L2(SCodeSection* pThis, STxtPage* pPage, int index, int* pnLength) {
         *pnLength = idx - index;
         if (pThis->pBaseElem->type == CDE_L3SECTION) {
           pThis->add_section(CDE_L4SECTION, index, *pnLength, pPage, bInlineBrace, 0, -1);
-          tempLength = pThis->get_length();
         }
         else if (pThis->pBaseElem->type == CDE_L2SECTION) {
           pThis->add_section(CDE_L3SECTION, index, *pnLength, pPage, bInlineBrace, 0, -1);
-          tempLength = pThis->get_length();
         }
         else if (pThis->pBaseElem->type == CDE_L1SECTION) {
           pThis->add_section(CDE_L2SECTION, index, *pnLength, pPage, bInlineBrace, 0, -1);
-          tempLength = pThis->get_length();
         }
         else {
           pThis->add_section(CDE_L1SECTION, index, *pnLength, pPage, bInlineBrace, 0, -1);
-          tempLength = pThis->get_length();
         }
       }
       else
@@ -5613,7 +5633,6 @@ bool find_class(SCodeSection* pThis, STxtPage* pPage, int index, int* pnLength, 
   if (tl_find(pLine, (char*)"class") == 0) {
     char szBraceOpen[2] = { 123, 0 };
     bool bInlineBrace = true;
-    bool bClassDefn = false;
     // its a fwd decl
     if (tl_find(pPage->ppLines[idx], (char*)";") != -1) {
       pThis->add_single(CDE_S_FWDDECL_STR, pPage->ppLines[idx]);
@@ -5774,7 +5793,6 @@ bool parse_local_scope(SCodeSection* pThis, STxtPage* pPage, int index, int leng
   // add the first line and start with the second
   pThis->add_single(CDE_S_CODELINE, pPage->ppLines[index]);
   prevSecLength = pThis->get_length();
-  int fileOffset = ce_file_offset(pThis->ppElements[pThis->numElements - 1]);
   idx++;
   // search for L1L2 section starters
   // ifdefs
@@ -6050,11 +6068,9 @@ bool find_startstring_parse(STxtPage* pPage, int index, SCodeSection* pThis, int
 // In the first case, the fns or vars are added to the struct or class 
 // in the latter they are added to the codebase symbol-set
 bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLength, SSymbolSet* pSymSet) {
-  int numLines = pPage->numLines;
   int idx = index;
   int secLength = 0;
   bool bInlineBrace = true;
-  bool bFound = false;
   bool bRetVal = false;
   bool bGlobalContext = true;
   int type = pThis->pBaseElem->type;
@@ -6069,9 +6085,6 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
   STxtLine* pVarName = NULL;
   STxtLine* pClassName = NULL;
   // it is assumed that the var fits in a single line
-  SClass* pContext = NULL;
-  if (pThis->pBaseElem->type == CDE_CLASSDECL)
-    pContext = pSymSet->pClassSet->ppClasses[pThis->symLinkIndex];
   char cSeparator;
   bool bIsVar = extract_var(pLineT, pSymSet, &pClassName, &pVarName, &pVarType, &cSeparator);
 
@@ -6092,7 +6105,6 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
       bVarDecl = true;
       pThis->add_single(CDE_S_VARDECL, pPage->ppLines[idx]);
       *pnLength = 1;
-      bFound = true;
       int fileOffset = ce_file_offset(pThis->ppElements[pThis->numElements - 1]);
       SLocation* pLocation = new_location(pThis->ppElements[pThis->numElements - 1], fileOffset);
       SVar* pVar = new_var(pVarName, pVarType, pLocation);
@@ -6120,7 +6132,6 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
       if (!(bGlobalContext || pThis->pBaseElem->type == CDE_CLASSDECL)) {
         bVarDecl = true;
         pThis->add_single(CDE_S_VARDECL, pPage->ppLines[idx]);
-        bFound = true;
         int fileOffset = ce_file_offset(pThis->ppElements[pThis->numElements - 1]);
         SLocation* pLocation = new_location(pThis->ppElements[pThis->numElements - 1], fileOffset);
         SVar* pVar = new_var(pVarName, pVarType, pLocation);
@@ -6144,7 +6155,7 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
     // check for fn defn
     else {
       char szBraceOpen[2] = { 123, 0 };
-      char szBraceClose[2] = { 125, 0 };
+//      char szBraceClose[2] = { 125, 0 };
       int idx = index;
       bool bBraceFound = false;
       // find the braceOpen
@@ -6181,11 +6192,11 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
       int idx = index;
       STxtLine* pLine = tl_clone(pPage->ppLines[idx]);
       bool bContinue = true;
-      bool bComposite = false;
+//      bool bComposite = false;
       STxtLine* pClass = NULL;
       STxtLine* pReturnType = NULL;
       STxtLine* pFuncName = NULL;
-      STxtLine* pSubName = NULL;
+//      STxtLine* pSubName = NULL;
       SVarSet* pVarSet = NULL;
       // extract the return type and name of the func
       // then extract each of the params till decl close
@@ -6243,7 +6254,7 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
         // create symfunc and add to fnset depending on context
         // depending of element type detected, add the element to pThis
         // update the location of pFunc
-        void* pSymLink = NULL;
+//        void* pSymLink = NULL;
         SSymFunc* pFunc = new_symfunc(pFuncName, pReturnType, pVarSet, NULL);
 
         if (bGlobalContext) {
@@ -6287,12 +6298,10 @@ bool find_var_decl(STxtPage* pPage, int index, SCodeSection* pThis, int* pnLengt
         if (bFnDecl)
           pThis->add_single(CDE_S_FWDDECL_FN, pPage->ppLines[index]);
         else {
-          int classIndex = -1;
           if (pClassName != NULL) {
             bool bFound = false;
             for (int i = 0; i < pSymSet->pClassSet->numClasses && !bFound; i++)
               if (tl_equals(pClassName, pSymSet->pClassSet->ppClasses[i]->pName)) {
-                classIndex = i;
                 pThis->add_section(CDE_CLASS_FNDEFN, index, *pnLength, pPage, bInlineBrace, 2, i);
                 bFound = true;
               }
@@ -6367,7 +6376,6 @@ bool parse_struct(SCodeSection* pThis, STxtPage* pPage, int index, int length, S
   // load the first line and start from the second line
   pThis->add_single(CDE_S_CODELINE, pPage->ppLines[idx]);
   idx++;
-  int temp = pThis->get_length();
 
   // check for comment lines
   // blank lines
@@ -6496,9 +6504,7 @@ bool parse_block(SCodeSection* pThis, STxtPage* pPage, int index, int length, SS
   int idx = index;
   int numLines = 0;
   bool bParsed = true;
-  bool bEOSection = false;
   bool bExit = false;
-  int blockLength = 0;
 
   // create and set the summary line for this section
   STxtLine* pLineSum = tl_clone(pPage->ppLines[idx]);
@@ -6528,7 +6534,6 @@ bool parse_block(SCodeSection* pThis, STxtPage* pPage, int index, int length, SS
           bFound = true;
           pThis->add_section(CDE_SUBBLOCK, idx, subBlockIndex, pPage, true, 0, -1);
           idx += subBlockIndex;
-          blockLength = pThis->get_length();
         }
         else {
           subBlockIndex++;
@@ -6537,21 +6542,17 @@ bool parse_block(SCodeSection* pThis, STxtPage* pPage, int index, int length, SS
           if (idx - index + subBlockIndex == length) {
             bFound = true;
             pThis->add_section(CDE_SUBBLOCK, idx, subBlockIndex, pPage, true, 0, -1);
-            bEOSection = true;
             idx += subBlockIndex;
-            blockLength = pThis->get_length();
           }
         }
       }
     }
     else if (find_startstring_parse(pPage, idx, pThis, &numLines, pSymSet)) {
       idx += numLines;
-      blockLength = pThis->get_length();
     }
 
     else if (find_var_decl(pPage, idx, pThis, &numLines, pSymSet)) {
       idx += numLines;
-      blockLength = pThis->get_length();
     }
     // fail and exit
     else {
@@ -6563,7 +6564,6 @@ bool parse_block(SCodeSection* pThis, STxtPage* pPage, int index, int length, SS
   if (subBlockIndex == 0)
     pThis->bSummarized = true;
 
-  blockLength = pThis->get_length();
   return(bParsed);
 }
 // parse out only comments in this section
@@ -6603,7 +6603,6 @@ bool parse_not(SCodeSection* pThis, STxtPage* pPage, int index, int length, SSym
 // parses the preamble to a codebase which is a block of comments
 // the preamble is a comment block that starts with a specific demarcator
 bool parse_preamble(SCodeSection* pThis, STxtPage* pPage, int index, int length, SSymbolSet* pSymSet) {
-  bool bRetVal = true;
   int idx = index;
   bool bExit = false;
   int secLength = 0;
@@ -6686,8 +6685,8 @@ bool parse_codebase(SCodeSection* pThis, STxtPage* pPage, int index, int length,
         if (!bParsed)
           wxLogMessage("error parsing the last block");
         if (numBlocks != MODAL_NUMBLOCKS) {
-          wxLogMessage("detected an invalid number of blocks in your modal codefile");
-          bParsed = false;
+          wxLogMessage("detected an unusual number of blocks in your modal codefile");
+          bParsed = true;
         }
         bEOPage = true;
       }
@@ -6713,7 +6712,6 @@ bool parse_nm_codebase(SCodeSection* pThis, STxtPage* pPage, int index, int leng
       idx += numLines;
       // signal error if accum length of this section is not idx-index
       if (pThis->get_length() != (idx - index)) {
-        int len = pThis->get_length();
         wxString msg;
         msg.Printf("parse error at %d", idx);
         wxLogMessage(msg);
@@ -6723,7 +6721,6 @@ bool parse_nm_codebase(SCodeSection* pThis, STxtPage* pPage, int index, int leng
       idx += numLines;
       // signal error if accum length of this section is not idx-index
       if (pThis->get_length() != (idx - index)) {
-        int len = pThis->get_length();
         wxString msg;
         msg.Printf("parse error at %d", idx);
         wxLogMessage(msg);
@@ -6991,7 +6988,7 @@ typedef struct SCodeBase {
       pFile->Open();
       if (pFile->IsOpened()) {
         STxtPage* pPage = new_txt_page(pFile->GetLineCount());
-        for (int i = 0; i < pFile->GetLineCount(); i++)
+        for (int i = 0; i < (int) pFile->GetLineCount(); i++)
           pPage->add_line(new_txt_line_wx(pFile->GetLine(i)), i);
         if (this->pBaseSec->parse(pPage, 0, pFile->GetLineCount(), true))
           bRetVal = true;
@@ -7014,7 +7011,7 @@ typedef struct SCodeBase {
     case OP_EDIT_CHAR: {
       //  char c = pMode->uniKey;
       char c = 0;
-      char cU = 0;
+//      char cU = 0;
       if (c != WXK_NONE) {
         if (c >= 32) {
           //      cU = to_upper( c, pSrcEdr->bShiftDown );
@@ -7268,6 +7265,8 @@ enum {
   SEI_PASTE_SEL,
   // undo the last edit operation using Ctrl-Z
   SEI_UNDO,
+  // redo the last edit operation using Shift-Ctrl-Z
+  SEI_REDO,
   // launch the mode level controls menu by pressing Ctrl
   SEI_CONTROL,
   // export the current codebase to a cpp file
@@ -7331,15 +7330,16 @@ typedef struct SModeSrcEdr {
 
   // loads the intent dispatch fns for this mode
   void load_intents( SMode *pBase ) {
-    pBase->numIntents = 20;
+    pBase->numIntents = 21;
     pBase->fnIntent_handler[SEI_EDIT_CHAR] = src_edr_edit_char;
     pBase->fnIntent_handler[SEI_UPDATE_CARET] = src_edr_update_caret;
     pBase->fnIntent_handler[SEI_START_SEL] = src_edr_start_sel;
     pBase->fnIntent_handler[SEI_UPDATE_SEL] = src_edr_update_sel;
     pBase->fnIntent_handler[SEI_UN_SEL] = src_edr_un_sel;
-    pBase->fnIntent_handler[SEI_CUT_SEL] = src_edr_cut_sel;
-    pBase->fnIntent_handler[SEI_PASTE_SEL] = src_edr_update_sel;
-    pBase->fnIntent_handler[SEI_UNDO] = src_edr_undo;
+    pBase->fnIntent_handler[SEI_CUT_SEL] = src_edr_cutpaste_sel;
+    pBase->fnIntent_handler[SEI_PASTE_SEL] = src_edr_cutpaste_sel;
+    pBase->fnIntent_handler[SEI_UNDO] = src_edr_undoredo;
+    pBase->fnIntent_handler[SEI_REDO] = src_edr_undoredo;
     pBase->fnIntent_handler[SEI_SUMMARIZE] = src_edr_summarize;
     pBase->fnIntent_handler[SEI_GOTO] = src_edr_goto;
     pBase->fnIntent_handler[SEI_CONTROL] = src_edr_control;
@@ -7428,7 +7428,6 @@ void free_src_edr(SMode* pMode) {
 // called by the mode manager when the users inputs on the kybd
 bool src_edr_map( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
   bool bRetVal = true;
-  SModeSrcEdr *pSrcEdr = pBase->sExt.pSrcEdr;
   wxClientDC DC( pWin ); // dummy
   if( pBase->pFont != NULL ) {
     pBase->load_font();
@@ -7440,15 +7439,15 @@ bool src_edr_map( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
 
   if( pBase->key == WXK_ESCAPE )
     pWin->m_pOwner->Close(true);
-    // map user kybd input to a user intent
-    // if control not down 
-    // arrows or pgup/dn dispatch to UPDATE_CARET
-    // ctrl set intent only, dispatch will happen on key-up
-    // shift set bShiftDwon
-    // else EDIT_CHAR
-    // if control down
-    // Ctrl-S dispatch to SUMMARIZE
-    // Ctrl-Right/Left dispatch to GOTO
+  // map user kybd input to a user intent
+  // if control not down 
+  // arrows or pgup/dn dispatch to UPDATE_CARET
+  // ctrl set intent only, dispatch will happen on key-up
+  // shift set bShiftDwon
+  // else EDIT_CHAR
+  // if control down
+  // Ctrl-S dispatch to SUMMARIZE
+  // Ctrl-Right/Left dispatch to GOTO
   else {
     // control not down
     // arrows or pgup/dn dispatch to UPDATE_CARET
@@ -7497,7 +7496,6 @@ bool src_edr_map( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
 // mode :: key_up
 // called by the mode manager when the users releases a key
 bool src_edr_key_up( SMode *pBase, wxKeyEvent &event, ModalWindow *pWin ) {
-  SModeSrcEdr* pSrcEdr = pBase->sExt.pSrcEdr;
   wxClientDC DC( pWin ); // dummy
   if( pBase->pFont != NULL ) {
     pBase->load_font();
@@ -7587,7 +7585,6 @@ void src_edr_disp_state( SMode *pBase, ModalWindow *pWin, wxDC& DC ) {
     // display the 3 columnar sections
     bool bEOF = false;
     int type;
-    bool bEditable = true;
     int lineOffset;
     int skip;
     int x;
@@ -7649,7 +7646,6 @@ void src_edr_disp_state( SMode *pBase, ModalWindow *pWin, wxDC& DC ) {
 
         // display the line
         type = pElem->type;
-        bEditable = pElem->bSingle;
         wxColour ColourElem = get_element_colour(pElem);
         // display the element in its designated colour
         if (type != CDE_S_BLANK) {
@@ -7713,7 +7709,6 @@ void src_edr_disp_state( SMode *pBase, ModalWindow *pWin, wxDC& DC ) {
 
             // display the line
             type = pElem->type;
-            bEditable = pElem->bSingle;
             wxColour ColourElem = get_element_colour(pElem);
             // display the element in its designated colour
             if (type != CDE_S_BLANK) {
@@ -7788,7 +7783,6 @@ void src_edr_disp_state( SMode *pBase, ModalWindow *pWin, wxDC& DC ) {
       }
 
       type = pElem->type;
-      bEditable = pElem->bSingle;
       wxColour ColourElem = get_element_colour(pElem);
       // display the element in its colour with a bg rect in bg color
       // the bg rect is for cases where the element overflows into the right display column
@@ -8106,13 +8100,11 @@ bool find_deref_varfunc( STxtLine *pLine, SVarSet *pVarSetContext, SClass* pClas
   // we maintain a static callCount in this fn
   // to ensure that has been called at least once before a terminal condition occurs
   static int callCount = 0; 
-  bool bRetVal = false;
   bool bFound = false;
   // pLine will be in the format
   // <Class/Struct Var Name><deref sym><Class/Struct member var name><deref sym>...<fn name>(...);/<var name>;
   // where deref sym is -> or .
   // We parse left to right
-  int numDerefChars = 0;
   tl_trim( pLine );
   STxtLine *pTemp = tl_before_first_deref( pLine );
   // if pLine starts with a this->, just remove it , get the next word and keep going
@@ -8155,7 +8147,6 @@ bool find_deref_varfunc( STxtLine *pLine, SVarSet *pVarSetContext, SClass* pClas
     // (for each var found verify deref sym)
     // or till a terminal var/func is found or not
     if( bFound ) {
-      bool bContinue = true;
       bool bVarFunc = true;
       // extract the next deref
       SVarSet *pVarSetContext = NULL;
@@ -8216,8 +8207,7 @@ bool find_deref_varfunc( STxtLine *pLine, SVarSet *pVarSetContext, SClass* pClas
 // gets the code element associated with the users request
 // request is in terms of the code line at caret.y, and caret.x
 // the symbol set has info about element location
-SLocation* get_requested_element(SCodeElement *pElem, int caretX, SSymbolSet *pSymSet)
-{
+SLocation* get_requested_element(SCodeElement *pElem, int caretX, SSymbolSet *pSymSet) {
   SLocation* pRetVal = NULL;
   STxtLine *pLine = tl_clone( pElem->pLine ); 
   STxtLine *pWord = tl_get_word_at(pLine, caretX);
@@ -8536,16 +8526,67 @@ void src_edr_goto( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
     }
   }
 }
-// intent handler for EDIT_CHAR
-// user wants to edit chracter by character
-// by inputting an alphanumeric, return, spacebar or backspace
-// with the conventional mappings for these operations
-void src_edr_edit_char( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
-  static int refreshLines;
-  static int startLine;
-  int chunkSize;
-  bool bEditable = true;
+
+// Codebase editing
+// Editing happens at 2 levels.
+// At the character level where the user is typing
+// or at sectional level
+// where the user is defining a section to edit
+// then cutting or pasting it.
+// Sectional level editing is higheer level
+// while characterlevel editing is low level.
+// Undo and Redo apply to codebase editing only
+// We define a single intent handler for all codebase editing related intents  
+// In this handler,
+// we detect the level of the editing or undo/redo
+// then we dispatch to a handling fn to handle the specific intent
+// intent handler for EDIT
+void src_edr_edit( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {  
+  // for now it's just a dispatcher that tracks current user activity
+  int editLevel = 0;
+  int undoRedo = 0;
+  
+  // detect the level of the editing or undo/redo
+  switch( pBase->intent ) {
+    // character level edit
+    case SEI_EDIT_CHAR: 
+      editLevel = 1;
+    break;
+    // section level edit
+    case SEI_CUT_SEL:
+    case SEI_PASTE_SEL: 
+      editLevel = 2;
+    break;
+    // undo/redo
+    case SEI_UNDO:
+      undoRedo = 1;
+    break;
+    case SEI_REDO: 
+      undoRedo = 2;
+    break;
+    default:
+      wxLogError("invalid intent in src_edr_edit");
+    break;
+  }
+  
+  if( editLevel == 1 )  
+    src_edr_edit_char( pBase, phase, pWin, DC );
+  else if( editLevel == 2 ) 
+    src_edr_cutpaste_sel( pBase, phase, pWin, DC );
+  else {
+    if( undoRedo > 0 )
+      src_edr_undoredo( pBase, phase, pWin, DC );
+  }
+}
+// intent handler
+// user wants to edit at the character level
+void src_edr_edit_char( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {  
+
+  static int refreshLines = 0;
+  static int startLine = 0;
   SCodeElement *pElem;
+  int chunkSize = 0;
+  
   // if the current element belongs to an editable section
   // check for backspace, delete the character before caret.x
   // check for return, add a new line at the current caret.x
@@ -8553,10 +8594,12 @@ void src_edr_edit_char( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
   // determine update rect based on mods made and generate a refresh
   if( phase == PH_NOTIFY ) {
     SModeSrcEdr *pSrcEdr = pBase->sExt.pSrcEdr;
+    int chunkSize;
+    bool bEditable = true;
     SOperation Op;
     Op.type = OP_EDIT_CHAR;
     pSrcEdr->CaretPrev = pSrcEdr->Caret;
-    SCodeElement *pElem = pSrcEdr->pCodeBase->pBaseSec->get_element_at( pSrcEdr->fileOffset, pSrcEdr->Caret.y, &chunkSize );
+    pElem = pSrcEdr->pCodeBase->pBaseSec->get_element_at( pSrcEdr->fileOffset, pSrcEdr->Caret.y, &chunkSize );
     // if it's a section it's editable if not summarized
     if( !(pElem->bSingle) )
       bEditable = !(pElem->pSec->bSummarized);
@@ -8568,53 +8611,54 @@ void src_edr_edit_char( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
       // delete the character before the caret location
       // if at the beginning of line cut the line and merge with previous line if possible
       if( pBase->key == WXK_BACK ) {
-      if( pSrcEdr->Caret.x > 0 ) {
-        // create a charedit delete operation
-        op_edit_char_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pBase->uniKey, pBase->key, pSrcEdr->Caret.x-1, false );
-        // add the operation to the codebase's oplist for a possible undo later,
-        pSrcEdr->pCodeBase->OpList.add( Op );
-        // execute the operation
-        pSrcEdr->pCodeBase->do_edit();
-        // update the caret
-        pSrcEdr->Caret.x -= 1;
-      }
-      else {
+        // delete the character before the caret location          
+        if( pSrcEdr->Caret.x > 0 ) {
+          // create a charedit delete operation
+          op_edit_char_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pBase->uniKey, pBase->key, pSrcEdr->Caret.x-1, false );
+          // add the operation to the codebase's oplist for a possible undo later,
+          pSrcEdr->pCodeBase->OpList.add( Op );
+          // execute the operation
+          pSrcEdr->pCodeBase->do_edit();
+          // update the caret
+          pSrcEdr->Caret.x -= 1;
+        }
         // cut the line and merge with previous line if possible
-      }
+        else {
+        }
       }
       // create a new line with the line segment after current caret location
       else if( pBase->key == WXK_RETURN ) {
-      // create a charedit insert operation
-      op_edit_char_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pBase->uniKey, pBase->key, pSrcEdr->Caret.x, true);
-      // add the operation to the codebase's oplist,
-      pSrcEdr->pCodeBase->OpList.add( Op );
-      // create a new line with the line segment after current caret location
-      pSrcEdr->Caret.y += 1;
-      pSrcEdr->Caret.x = 0;
-      pWin->m_bUsrActn = false;
-      pWin->Refresh( true );
+        // create a charedit insert operation
+        op_edit_char_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pBase->uniKey, pBase->key, pSrcEdr->Caret.x, true);
+        // add the operation to the codebase's oplist,
+        pSrcEdr->pCodeBase->OpList.add( Op );
+        // create a new line with the line segment after current caret location
+        pSrcEdr->Caret.y += 1;
+        pSrcEdr->Caret.x = 0;
+        pWin->m_bUsrActn = false;
+        pWin->Refresh( true );
       }
       // insert the entered char at the caret location
       else {
-      // create a charedit insert operation
-      op_edit_char_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pBase->uniKey, pBase->key, pSrcEdr->Caret.x, true);
-      // add the operation to the codebase's oplist,
-      pSrcEdr->pCodeBase->OpList.add( Op );
-      // insert the entered char at the caret location
-      pSrcEdr->Caret.x += 1;
+        // create a charedit insert operation
+        op_edit_char_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pBase->uniKey, pBase->key, pSrcEdr->Caret.x, true);
+        // add the operation to the codebase's oplist,
+        pSrcEdr->pCodeBase->OpList.add( Op );
+        // insert the entered char at the caret location
+        pSrcEdr->Caret.x += 1;
       }
       // determine startLine and number of refresh line for the refresh
       if( pSrcEdr->Caret.y == pSrcEdr->CaretPrev.y ) {
-      refreshLines = 1;
-      startLine = pSrcEdr->Caret.y;
+        refreshLines = 1;
+        startLine = pSrcEdr->Caret.y;
       }
       else if( pSrcEdr->Caret.y > pSrcEdr->CaretPrev.y ) {
-      refreshLines = 2;
-      startLine = pSrcEdr->CaretPrev.y;
+        refreshLines = 2;
+        startLine = pSrcEdr->CaretPrev.y;
       }
       else {
-      refreshLines = 2;
-      startLine = pSrcEdr->Caret.y;
+        refreshLines = 2;
+        startLine = pSrcEdr->Caret.y;
       }
       // create the refresh rect and call refresh
       wxRect rect;
@@ -8687,8 +8731,8 @@ void src_edr_cut_sel( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
     SModeSrcEdr *pSrcEdr = pBase->sExt.pSrcEdr;
     pSrcEdr->CaretPrev = pSrcEdr->Caret;
 
-    SOperation Op;
-    STxtPage CutPage;
+//    SOperation Op;
+//    STxtPage CutPage;
 
     //   op_cutpaste_sel_init( Op, pSrcEdr->fileOffset, pSrcEdr->Caret.y, pSrcEdr->selStart, pSrcEdr->selEnd, CutPage, true );
     //   oplist_add( pSrcEdr->pCodeBase->OpList, Op );
@@ -8706,12 +8750,12 @@ void src_edr_cut_sel( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
 }
 // intent handler for PASTE_SEL
 // user want to paste the current slection by Ctrl-V
-void src_edr_paste_sel( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
+void src_edr_cutpaste_sel( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
 
 }
 // intent handler for UNDO
 // user wants to undo the last edit using Ctrl-Z
-void src_edr_undo( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
+void src_edr_undoredo( SMode *pBase, int phase, ModalWindow *pWin, wxDC &DC ) {
 
 }
 // intent handler for CONTROL
@@ -9012,10 +9056,10 @@ SModeManager * modal_init( int scrnWidth, int scrnHeight ) {
   // the system has no way of determining screen PPI (pixels per inch)
   // which is needed to detrmine the pixel font size based on the point based size.
   // For such situations, we provide a font scaling User Intent Handler.
-  wxFont* pFont = new wxFont(wxFontInfo(12.0).FaceName("Helvetica"));
+  wxFont* pFont = new wxFont(wxFontInfo(12.0).FaceName("Ubuntu Light").Weight(100));
   bool bIsOK = pFont->IsOk();
   if (!bIsOK) 
-    pFont = new wxFont(wxFontInfo(16.0).Family(wxFONTFAMILY_SWISS).Weight(wxFONTWEIGHT_THIN) );
+    pFont = new wxFont(wxFontInfo(10.0).Family(wxFONTFAMILY_SWISS).Weight(10) );
 
   wxFile File;
   if( wxFile::Exists("State.hxp") ) {
