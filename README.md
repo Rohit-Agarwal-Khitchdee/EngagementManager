@@ -57,7 +57,7 @@ Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj
 You should be able to build and run this sample in XCode.  
 It builds the wxWidgets library from source as part of its build process.  
 Then you can edit the project settings to replace minimal.cpp with ModalWX.cpp.  
-This will build the Modal app.  
+This will build the ModalWX app.  
 
 ### Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.  
@@ -68,7 +68,7 @@ Build Debug and Release configurations (we recommend not dll but statically link
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
 to create a new VS project and add ModalWX.cpp to it.  
-This should build the Modal app.  
+This should build the ModalWX app.  
 
 ### Linux:
 We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.  
@@ -89,10 +89,10 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add ModalWX.cpp and build the project.  
 You may get several warnings but no errors.  
-Run the project. This should run Modal.  
+Run the project. This should run ModalWX.  
 
 ### Running the app (UI controls):
-The app's function is to navigate a Modal codefile.    
+The app's function is to navigate a ModalWX codefile.    
 ModalWX.cpp is an example of a Modal codefile.  
 When you run the app,  
 it will ask you for the full path of ModalWX.cpp.  
