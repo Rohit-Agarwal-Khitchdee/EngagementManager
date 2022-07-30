@@ -20,7 +20,7 @@ are direct-mapped to keystroke-sequence driven controls.
 Lower intensity interactions that are less frequently needed  
 are indirect-mapped to transient, pop-up modes.  
 
-This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app
+This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app  
 that serves 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand the source code.  
 2. Its source code serves as a template for designing a modal GUI app.  
