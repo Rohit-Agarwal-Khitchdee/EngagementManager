@@ -40,7 +40,7 @@ because all navigational controls are direct-mapped to keystroke sequences.
 ## Building and Running the ModalWX app:
 (interaction time ~1hr) 
 
-The ModalWX app is Modal GUI based navigation tool for Modal source code.  
+The ModalWX app is a Modal GUI based navigation tool for Modal source code.  
 A future version will be a standalone IDE.  
 The app is based on the wxWidgets cross-platform UI library.  
 To build this app you first have to download and build the wxWidgets library.  
