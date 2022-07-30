@@ -3,7 +3,7 @@
 
 ## Modal Overview
 Modal GUIs operate in different "modes" as a function of time.  
-The beahvior of the GUI is different in each mode of operation.  
+The behavior of the GUI is different in each mode of operation.  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it has focus.  
 A mode is time-sliced into a set a "user intents",    
