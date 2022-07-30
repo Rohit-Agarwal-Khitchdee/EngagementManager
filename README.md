@@ -2,7 +2,8 @@
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v07-29-2022)  
 
 ## Modal Overview
-Modal GUIs slice the app's interaction time temporally into "modes of operation".  
+Modal GUIs operate in different "modes" as a function of time.  
+The beahvior of the GUI is different in each mode of operation.  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it has focus.  
 A mode is time-sliced into a set a "user intents",    
@@ -343,10 +344,3 @@ Some areas where work could be done are
 1. A different approach to parsing source code files.  
 2. Dictionary based text input.
 3. More pop-up modes to simplify not-so-common or domain-specific UI tasks.  
-Some larger projects would include  
-- Modal for C/Win32, which is an implementation of the Modal toolkit  
-for the Win32 API.  
-- Modal for C/XWindows, which is an implementation of the Modal toolkit  
-for X Windows on Linux.  
-- Modal for ObjectiveC/Cocoa, an implementation of the Modal toolkit in ObjectiveC  
-targeting Cocoa on OSX.
