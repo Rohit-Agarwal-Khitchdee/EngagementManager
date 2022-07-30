@@ -16,7 +16,7 @@ which corresponds to the primary activity the user is currently involved in.
 Within this primary interaction context, transient modes may pop-up and then go away.  
 In terms of interaction "intensity"  
 all interactions that require high intensity and immediacy  
-are direct-mapped to keystroke sequence driven controls.  
+are direct-mapped to keystroke-sequence driven controls.  
 Lower intensity interactions that are less frequently needed  
 are indirect-mapped to transient, pop-up modes.  
 
