@@ -329,9 +329,6 @@ and do a lot of testing on your targeted platforms
 to make it suitable for deployment in a production environment.  
 wxWidgets, which this code uses to access platform features  
 is a fairly robust and well tested library.  
-We also have longer-term plans to create native versions of Modal  
-for C/Win32 and C/X-Windows and ObjectiveC/Cocoa  
-which will remove this dependency.  
 
 ## Contributing to ModalWX
 I've written about 9000 lines of code so far.  
