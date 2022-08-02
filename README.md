@@ -6,8 +6,8 @@ Modal GUIs operate in different "modes" as a function of time.
 The behavior of the GUI is different in each mode of operation.  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it has focus.  
-A mode is time-sliced into a set a "user intents",    
-which is the user's expression of their intent to do something   
+A mode is time-sliced into a set a "user intent" units,    
+A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the desired action, for each intent it defines.  
 
