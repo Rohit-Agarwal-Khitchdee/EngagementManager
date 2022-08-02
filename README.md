@@ -272,7 +272,7 @@ Once you are satisfied, press escape.
       Called by fnKybd_map to initiate intent handling  
     and by modemanager::disp_update to complete display update of the screen.
 
-     - The base SMode struct's init provides implementations for (i), (iv), and (v).  
+   - The base SMode struct's init provides implementations for (i), (iv), and (v).  
     A concrete mode provides for the rest and may override the base (i), (iv) and (v).  
     Now go back to new_src_edr (Ctrl-left).  
     pSrcEdr->init.  
@@ -285,7 +285,7 @@ Once you are satisfied, press escape.
     PgDn to void load_intents() {...}  
     Open it. This is where the intent handlers are loaded. Close it.
   
-    Now we'll peep inside some of these mode behavior implementation fns.  
+   - Now we'll peep inside some of these mode behavior implementation fns.  
     Scroll up to SrcEdr->init() and goto src_edr_map.  
     Open 7456.  
     Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
