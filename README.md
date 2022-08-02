@@ -338,6 +338,7 @@ Since this is an IDE, relatively simple and has a small and well-documented code
 it is amenable to customisations.  
 I welcome developers sharing their customisations with this project.  
 Some areas where work could be done are
-1. A different approach to parsing source code files.  
-2. Dictionary based text input.
-3. More pop-up modes to simplify not-so-common or domain-specific UI tasks.  
+1. Sample apps.
+2. A different approach to parsing source code files.  
+3. Dictionary based text input.
+4. More pop-up modes to simplify not-so-common or domain-specific UI tasks.  
