@@ -1,5 +1,5 @@
 # Modal GUIs
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-07-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-08-2022)  
 
 ## Modal Overview
 Modal GUIs operate in different "modes" as a function of time.  
