@@ -279,8 +279,9 @@ Once you are satisfied, press escape.
     As you can see, SModeSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
     with it's own implementation.  
     It also loads all the intent handler fns.  
-    Open the enum{...} at 7247. This is an enumeration of the intent handlers for SModeSrcEdr.  
-    They all start wiht SEI_ to make them globally unique.  
+    Open the enum{...} at 7247.  
+    This is an enumeration of the intent handlers for SModeSrcEdr.  
+    They all start with SEI_ to make them globally unique.  
     Close the enum.  
     PgDn to void load_intents() {...}  
     Open it. This is where the intent handlers are loaded. Close it.
@@ -301,9 +302,31 @@ Once you are satisfied, press escape.
 
     Finally we'll look at src_edr_disp_state.  
     You will find src_edr_disp_state inside  
-    BLOCK THIS APP'S PRIMARY MODE SUB_BLOCK MODE IMPLEMENTATION FNs.  
+    (BLOCK) THIS APP'S PRIMARY MODE (SUB_BLOCK) MODE IMPLEMENTATION FNs.  
 
-## Building your own Modal GUI App
+Note:  
+In navigating Modal source code, we only keep open  
+the section of code we're currently studying.  
+This is facilatated by the summarization mechanisms and the goto mechanisms.  
+
+## Building your own Modal GUI App  
+We suggest taking the walkthrough in the section above before reading this section.  
+A simple Modal app has a single mode of operation  
+which defnies the behavior of the app from when it's launched till it is exited.  
+Within this mode of operation's interaction time  
+pop-up modes may pop up and go away.  
+The function of these pop-ups is to take care of common extensions  
+to the base behavior of a primary mode of operation.  
+To create your own Modal app using ModalWX.cpp as a template,  
+you define data structs for the data your app will process.  
+Then you you define your primary mode of operation that will process this data.  
+As part of this definition, you may use pop-up modes provided by the toolkit.  
+So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS
+and everything in (BLOCK) THIS APP'S PRIMARY MODE  
+with you own data structs and primary mode.  
+For now, you can do this using your existing IDE.  
+Our next release due Oct 06 will make ModalWX an IDE.  
+It will containg explicit feaures to facilitate this design process.  
 
 ## Next Development Step:
 1. Modal specific navigational features and source code editing.  
