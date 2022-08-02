@@ -148,44 +148,45 @@ This is a live ajdustment.
 Once you are satisfied, press escape.  
 3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.  
    - App init  
-     - Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
-  All lines in this color are "sub-Blocks".  
-  This line is a sub-block of line WX INTERFACING BOILERPLATE.  
-  That line is a BLOCK. All lines in that color are BLOCKS.  
-  Press Ctrl-S(Command-S on OSX) at line WX APP & CLASS FUNCTION DEFINITIONS.  
-  This will open the sub-block.  
-     - Open Line: bool MyApp::OnInit(){...}  
-  Read through this code, then close it.  
-  Goto line 759 and move the caret to MyFrame (the one after the new).  
-  Press Ctrl-Right Arrow.  
-  This will take you the constructor of MyFrame.  
-  Goto line 768 move the caret over ModalWindow and goto (Ctrl-Right).  
-  ModalWindow is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
-  Goto line 776 and move the caret over modal_init and goto.  
-  modal_init is where the modal toolkit is initalised.  
-  
-  Note that goto using ctrl-right goes to the destination, expands it  
-  and collapses the previous viewing context.  
-  Also, any line that ends in {...} is summarized and can be opened.  
-  Conversely, any line that end's in a { can be summarized.
-  
-  Goto line 9072 and move the caret over load_UI_state and goto  
-  load_UI_state is an acillary fn that creates a SModeSrcEdr mode,  
-  creates a SModeManager, pushes the mode onto the mode manager,   
-  and returns the mode manager.  
-  This is returned by modal_init() to the calling ModalWindow.  
-  Now press Ctrl-Left Arrow this takes you back to modal_init.  
-  Go back again (Ctrl-left) that's ModalWindow's constructor  
-  Go back again that's MyFrame's constructor  
-  Go back again and we're at the entry point to the app.  
-  Summarize MyApp::OnInit().  
-  So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
-  which creates a ModalWindow::wxWindow, which contains a ModeManager  
-  that serves as the interface between wxWidgets and Modal.  
-  ModalWindow initializes Modal using a designated modal_init() fn.  
-  The Modal App designer initializes modal in this fn by creating a primary mode  
-  in this case SModeSrcEdr and pushing it into the ModeManager  
-  before returning the ModeManager to ModalWindow.   
+      Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
+      All lines in this color are "sub-Blocks".  
+      This line is a sub-block of line WX INTERFACING BOILERPLATE.  
+      That line is a BLOCK. All lines in that color are BLOCKS.  
+      Press Ctrl-S(Command-S on OSX) at line WX APP & CLASS FUNCTION DEFINITIONS.  
+      This will open the sub-block.  
+
+      Open Line: bool MyApp::OnInit(){...}  
+      Read through this code, then close it.  
+      Goto line 759 and move the caret to MyFrame (the one after the new).  
+      Press Ctrl-Right Arrow.  
+      This will take you the constructor of MyFrame.  
+      Goto line 768 move the caret over ModalWindow and goto (Ctrl-Right).  
+      ModalWindow is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
+      Goto line 776 and move the caret over modal_init and goto.  
+      modal_init is where the modal toolkit is initalised.  
+
+      Note that goto using ctrl-right goes to the destination, expands it  
+      and collapses the previous viewing context.  
+      Also, any line that ends in {...} is summarized and can be opened.  
+      Conversely, any line that end's in a { can be summarized.
+
+      Goto line 9072 and move the caret over load_UI_state and goto  
+      load_UI_state is an acillary fn that creates a SModeSrcEdr mode,  
+      creates a SModeManager, pushes the mode onto the mode manager,   
+      and returns the mode manager.  
+      This is returned by modal_init() to the calling ModalWindow.  
+      Now press Ctrl-Left Arrow this takes you back to modal_init.  
+      Go back again (Ctrl-left) that's ModalWindow's constructor  
+      Go back again that's MyFrame's constructor  
+      Go back again and we're at the entry point to the app.  
+      Summarize MyApp::OnInit().  
+      So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
+      which creates a ModalWindow::wxWindow, which contains a ModeManager  
+      that serves as the interface between wxWidgets and Modal.  
+      ModalWindow initializes Modal using a designated modal_init() fn.  
+      The Modal App designer initializes modal in this fn by creating a primary mode  
+      in this case SModeSrcEdr and pushing it into the ModeManager  
+      before returning the ModeManager to ModalWindow.   
 
   - App lifetime -- Paint and Kybd event handling  
       Goto line 723 ModalWindow::OnKeyDown and open it.  
