@@ -188,7 +188,7 @@ Once you are satisfied, press escape.
       in this case SModeSrcEdr and pushing it into the ModeManager  
       before returning the ModeManager to ModalWindow.   
 
-  - App lifetime -- Paint and Kybd event handling  
+   - App lifetime -- Paint and Kybd event handling  
       Goto line 723 ModalWindow::OnKeyDown and open it.  
       This is where all key down events are handled by ModalWindow.  
       Goto kybd_map  
@@ -215,7 +215,7 @@ Once you are satisfied, press escape.
       ModalWindow delegates these to the modemanager  
       which dispatches them appropriately to modes it manages.  
   
-  - App exit -- Modal shutdown and app state serialisation.    
+   - App exit -- Modal shutdown and app state serialisation.    
     When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
     which results in ~ModalWIndow being called.  
     Open 780. ModalWIndow::~ModalWindow and goto modal_exit(), study that code and return.  
