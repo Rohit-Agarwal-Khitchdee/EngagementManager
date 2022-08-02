@@ -2,33 +2,34 @@
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-08-2022)  
 
 ## Modal Overview
-Modal GUIs operate in different "modes" as a function of time.  
-The behavior of the GUI is different in each mode of operation.  
+Modal GUIs are time-sliced into "modes of operation".  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it has focus.  
+A mode can be primary which writes to the full-screen  
+or pop-up which pops up in front of a primary mode.  
 A mode is time-sliced into a set a "user intent" units,    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the desired action, for each intent it defines.  
 
-At any given time there is one primary mode of operation  
-which corresponds to the primary activity the user is currently involved in.  
+The primary mode corresponds to the user's primary activity.  
 Within this primary interaction context, transient modes may pop-up and then go away.  
 In terms of interaction "intensity"  
-all interactions that require high intensity and immediacy  
+all user intents that require high intensity and immediacy  
 are direct-mapped to keystroke-sequence driven controls.  
-Lower intensity interactions that are less frequently needed  
+Lower intensity intents that are less frequently needed  
 are indirect-mapped to transient, pop-up modes.  
 
 This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app  
 that serves 3 purposes for this source-code toolkit.  
-1. It enables the dev to navigate and understand the source code.  
+1. It enables the dev to navigate and understand the source code of this toolkit.  
 2. Its source code serves as a template for designing a modal GUI app.  
 Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
 with a primary mode designed by the dev  
 and the data structs used by SModeSrcEdr have to be replaced  
 with their app-specific data structs.
 3. It's source-code navigation efficiency can be compared with the IDE you currently use.  
+It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.   
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
