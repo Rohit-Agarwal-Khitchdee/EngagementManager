@@ -37,7 +37,7 @@ There are also no on-screen navigational controls
 because all navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
-## Building and Running the ModalWX app:
+## Building the ModalWX app:
 (interaction time ~1hr) 
 
 The ModalWX app is a Modal GUI based navigation tool for Modal source code.  
@@ -91,7 +91,7 @@ Add ModalWX.cpp and build the project.
 You may get several warnings but no errors.  
 Run the project. This should run ModalWX.  
 
-### Running the app (UI controls):
+## Running the ModalWX app (UI controls):
 The app's function is to navigate a ModalWX codefile.    
 ModalWX.cpp is an example of a Modal codefile.  
 When you run the app,  
@@ -188,45 +188,46 @@ Once you are satisfied, press escape.
   before returning the ModeManager to ModalWindow.   
 
   - App lifetime -- Paint and Kybd event handling  
-     - Goto line 723 ModalWindow::OnKeyDown and open it.  
-  This is where all key down events are handled by ModalWindow.  
-  Goto kybd_map  
-  That takes you to the modemanager's kybd_map fn.  
-  This function set's pWin->m_bUsrActn which tells Modal  
-  that the user has done something.  
-  Then, call's the kybd_map fn of the mode at the top of the mode stack  
-  which is the currently active mode.  
-     - Go Back (Ctrl-left) and close ModalWindow::OnKeyDown.  
-  Open ModalWindow::OnPaint the paint event handler for ModalWindow.  
-  This fn calls either disp_state if the event was not caused by the user  
-  in which casethe state of the entire app needs to be reloaded.  
-  or disp_update in which case the mode decides what needs to be updated.  
-  Goto disp_state.  
-  You can read the comments inside 529 then close it.  
-  The mode manager contains a stack of modes  
-  and displays each modes disp_state in back to front order (bottom to top of stack).  
-  Go back.  
-  Now goto disp_update and look that code and come back.  
-  Note that disp_update only calls the mode at the top of the mode stack, the current mode.  
+      Goto line 723 ModalWindow::OnKeyDown and open it.  
+      This is where all key down events are handled by ModalWindow.  
+      Goto kybd_map  
+      That takes you to the modemanager's kybd_map fn.  
+      This function set's pWin->m_bUsrActn which tells Modal  
+      that the user has done something.  
+      Then, call's the kybd_map fn of the mode at the top of the mode stack  
+      which is the currently active mode.  
+     
+      Go Back (Ctrl-left) and close ModalWindow::OnKeyDown.  
+      Open ModalWindow::OnPaint the paint event handler for ModalWindow.  
+      This fn calls either disp_state if the event was not caused by the user  
+      in which casethe state of the entire app needs to be reloaded.  
+      or disp_update in which case the mode decides what needs to be updated.  
+      Goto disp_state.  
+      You can read the comments inside 529 then close it.  
+      The mode manager contains a stack of modes  
+      and displays each modes disp_state in back to front order (bottom to top of stack).  
+      Go back.  
+      Now goto disp_update and look that code and come back.  
+      Note that disp_update only calls the mode at the top of the mode stack, the current mode.  
 
-  So during execution stage, wxWidgets sends key down and paint events to ModalWindow.  
-  ModalWindow delegates these to the modemanager  
-  which dispatches them appropriately to modes it manages.  
+      So during execution stage, wxWidgets sends key down and paint events to ModalWindow.  
+      ModalWindow delegates these to the modemanager  
+      which dispatches them appropriately to modes it manages.  
   
   - App exit -- Modal shutdown and app state serialisation.    
-  When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
-  which results in ~ModalWIndow being called.  
-  Open 780. ModalWIndow::~ModalWindow and goto modal_exit(), study that code and return.  
-  modal_exit serializes the mode manager and all the modes it contains to a state file.  
-  Next time the app is launched, it reads state from this file   
-  to reload the last operational state of the app.  
-  It also free's the mode manager which in turn free's all the modes it contains.  
-  The mode manager and the modes are all created on the heap.  
+    When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
+    which results in ~ModalWIndow being called.  
+    Open 780. ModalWIndow::~ModalWindow and goto modal_exit(), study that code and return.  
+    modal_exit serializes the mode manager and all the modes it contains to a state file.  
+    Next time the app is launched, it reads state from this file   
+    to reload the last operational state of the app.  
+    It also free's the mode manager which in turn free's all the modes it contains.  
+    The mode manager and the modes are all created on the heap.  
 
-  Press Escape to exit the app.  
-  Then relaunch the app. You should be back where you left off.  
-  Close all open fns and the sub-block. PgUp.  
-  You're back at the app's start-screen.  
+    Press Escape to exit the app.  
+    Then relaunch the app. You should be back where you left off.  
+    Close all open fns and the sub-block. PgUp.  
+    You're back at the app's start-screen.  
   
 4. Inside Modal -- Modes of Operation and User Intents   
    - The Modal GUI toolkit has been designed in such a way that for the most part  
