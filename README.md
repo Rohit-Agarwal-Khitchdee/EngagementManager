@@ -191,7 +191,7 @@ Once you are satisfied, press escape.
       before returning the ModeManager to ModalWindow.   
 
    - App lifetime -- Paint and Kybd event handling  
-      ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-10-2022)  
+      ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-11-2022)  
       Goto line 723 ModalWindow::OnKeyDown and open it.  
       This is where all key down events are handled by ModalWindow.  
       Goto kybd_map  
