@@ -18,6 +18,8 @@ all high-intensity user intents that are frequently used and require  immediacy
 are direct-mapped to keystroke-sequences.  
 Lower intensity intents that are less frequently needed  
 are indirect-mapped to transient, pop-up modes.  
+Direct-mapping a few high-intensity intents improves GUI efficiency  
+while indirect-mapping several low-intensity intents gives the GUI breadth.  
 
 This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app  
 that serves 3 purposes for this source-code toolkit.  
