@@ -1,15 +1,16 @@
 # Modal GUIs
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-08-2022)  
-Modal GUIs are time-sliced into interactive screens called "modes of operation".  
+A Modal GUI is a sequence of interactive screens called "modes of operation".  
 Each mode of operation paints to the entire screen   
-and has exclusive control over user-input while it has focus.  
+and has exclusive control over user-input while it is load.  
 A mode can be primary which writes to the full-screen  
-or pop-up which pops up in front of a primary mode.  
+or pop-up which is loaded by, and pops up in front of, a primary mode.  
 A mode is time-sliced into a set a "user intent" units,    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
-and an intent handler, that performs the action intended by the user.  
+and an intent handler, that performs the action intended by the user.
+User intent handling is what happens within a mode of operation.  
 
 The primary mode corresponds to the user's primary activity.  
 Within this primary interaction context, transient modes may pop-up and then go away.  
@@ -21,8 +22,8 @@ are indirect-mapped to transient, pop-up modes.
 Direct-mapping a few high-intensity intents improves GUI efficiency  
 while indirect-mapping several low-intensity intents gives the GUI breadth.  
 
-This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app  
-that serves 3 purposes for this source-code toolkit.  
+This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app.
+It serves 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand the source code of this toolkit.  
 2. Its source code serves as a template for designing a modal GUI app.  
 Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
@@ -42,7 +43,7 @@ because all navigational controls are direct-mapped to keystroke sequences.
 ## Building the ModalWX app:
 (interaction time ~1hr) 
 
-The ModalWX app is a Modal GUI based navigation tool for Modal source code.  
+The ModalWX app is a Modal-GUI based navigation tool for Modal source code.  
 A future version will be a standalone IDE.  
 The app is based on the wxWidgets cross-platform UI library.  
 To build this app you first have to download and build the wxWidgets library.  
