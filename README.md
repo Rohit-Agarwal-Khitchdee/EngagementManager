@@ -1,7 +1,7 @@
 # Modal GUIs
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-08-2022)  
-Modal GUIs are time-sliced into "modes of operation".  
+Modal GUIs are time-sliced into interactive screens called "modes of operation".  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it has focus.  
 A mode can be primary which writes to the full-screen  
@@ -9,12 +9,12 @@ or pop-up which pops up in front of a primary mode.
 A mode is time-sliced into a set a "user intent" units,    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
-and an intent handler, that performs the desired action, for each intent it defines.  
+and an intent handler, that performs the action intended by the user.  
 
 The primary mode corresponds to the user's primary activity.  
 Within this primary interaction context, transient modes may pop-up and then go away.  
 In terms of interaction "intensity"  
-all high-intensity user intents that are frequently used and require  immediacy  
+all high-intensity user intents that are frequently used and require immediacy  
 are direct-mapped to keystroke-sequences.  
 Lower intensity intents that are less frequently needed  
 are indirect-mapped to transient, pop-up modes.  
