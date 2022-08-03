@@ -216,7 +216,7 @@ Once you are satisfied, press escape.
       So during execution stage, wxWidgets sends key down and paint events to ModalWindow.  
       ModalWindow delegates these to the modemanager  
       which dispatches them appropriately to modes it manages.  
-      ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-05-2022)  
+      ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-06-2022)  
   
    - App exit -- Modal shutdown and app state serialisation.    
     When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
