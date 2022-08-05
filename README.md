@@ -51,11 +51,11 @@ All its navigational controls are direct-mapped to keystroke sequences.
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
 ## Building the ModalWX app:
+(interaction time ~1hr) 
 Should you build this app?  
 1. To evaluate the improved efficiency of a Modal app over a WIMP app.  
 In this case the task is navigating a 9000 line codebase.  
 2. If you want to evaluate Modal for your app's GUI.  
-(interaction time ~1hr) 
 
 The ModalWX app is a Modal-GUI based navigation tool for Modal source code.  
 A future version will be a standalone IDE.  
