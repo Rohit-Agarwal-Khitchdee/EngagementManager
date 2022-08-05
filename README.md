@@ -9,7 +9,9 @@ Our Land-vehicle CAD tool will be developed using Hex-map.
 
 Modal GUIs have advantages over WIMP GUIs in certain app design contexts.  
 We have posted this toolkit as an open source Github repo    
-for the benefit of developers at large.  
+for the benefit of app developers at large.  
+It gives them a viable alternative to WIMP  
+and facilitates the development of keyboard-only apps.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-11-2022)  
