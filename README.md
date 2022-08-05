@@ -7,7 +7,7 @@ We plan to use this to develop Hex-map
 which is also an internal toolkit for designing Modal apps on a hex grid.  
 Our Land-vehicle CAD tool will be developed using Hex-map.  
 
-Modal GUIs have advantages over WIMP GUIs in certain contexts.  
+Modal GUIs have advantages over WIMP GUIs in certain app design contexts.  
 We have posted this toolkit as an open source Github repo    
 for the benefit of developers at large.  
 
