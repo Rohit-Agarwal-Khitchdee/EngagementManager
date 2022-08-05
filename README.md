@@ -1,32 +1,30 @@
 # Modal GUIs
 ## Motivation
-Khitchdee is developing a land-vehicle CAD tool based on a hexaginal grid.  
-This tool will be used for the design of bicycles, cars and motorcycles.  
+Khitchdee is developing a CAD tool based on a hexaginal grid.  
 This Modal-GUIs toolkit is an internal toolkit to facilitate our CAD tool dev.  
-We are using it to develop Hex-map, a toolkit for designing Modal apps on a hex grid.  
-Our Land-vehicle CAD tool will be developed using Hex-map.  
+We are using it to develop Hex-map, a toolkit for designing Modal apps on a hex-grid.  
+Our CAD tool will be developed using Hex-map.  
 
 Modal GUIs have advantages over WIMP GUIs in certain app design contexts.  
-We have posted this toolkit as an open source Github repo    
+We have posted the Modal-GUIs toolkit as an open source Github repo    
 for the benefit of app developers at large.  
 It gives them a viable alternative to WIMP  
 and facilitates the development of keyboard-only apps.  
+This toolkit target's a solo-developer dev scenario.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-11-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it is loaded.  
-A mode can be primary which writes to the full-screen  
-or pop-up which is loaded by, and pops up in front of, a primary mode.  
+A primary mode writes to the full-screen  
+while a pop-up is loaded by, and pops up in front of, a primary mode.  
 A mode is time-sliced into a set a "user intent" units,    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the action intended by the user.
 User intent handling is what happens within a mode of operation.  
 
-The primary mode corresponds to the user's primary activity.  
-Within this primary interaction context, transient modes may pop-up and then go away.  
 High-intensity user intents that are frequently used and require immediacy  
 are direct-mapped to keystroke-sequences, improving GUI efficiency.  
 Less frequently used intents are indirect-mapped to pop-up modes.  
