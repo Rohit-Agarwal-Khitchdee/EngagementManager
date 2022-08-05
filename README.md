@@ -1,10 +1,9 @@
 # Modal GUIs
 ## Motivation
 Khitchdee is developing a land-vehicle CAD tool based on a hexaginal grid.  
-This tool will be used for the design of bicycles, cars amd motorcycles.  
+This tool will be used for the design of bicycles, cars and motorcycles.  
 This Modal-GUIs toolkit is an internal toolkit to facilitate our CAD tool dev.  
-We plan to use this to develop Hex-map  
-which is also an internal toolkit for designing Modal apps on a hex grid.  
+We are using it to develop Hex-map, a toolkit for designing Modal apps on a hex grid.  
 Our Land-vehicle CAD tool will be developed using Hex-map.  
 
 Modal GUIs have advantages over WIMP GUIs in certain app design contexts.  
