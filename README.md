@@ -52,7 +52,7 @@ All its navigational controls are direct-mapped to keystroke sequences.
 
 ## Building the ModalWX app:
 Should you build this app?  
-1. To evaluate the improved efficiency of a Modal app over a WIMP app
+1. To evaluate the improved efficiency of a Modal app over a WIMP app.  
 In this case the task is navigating a 9000 line codebase.  
 2. If you want to evaluate Modal for your app's GUI.  
 (interaction time ~1hr) 
