@@ -1,4 +1,16 @@
 # Modal GUIs
+## Motivation
+Khitchdee is developing a land-vehicle CAD tool based on a hexaginal grid.  
+This tool will be used for the design of bicycles, cars amd motorcycles.  
+This Modal-GUIs toolkit is an internal toolkit to facilitate our CAD tool dev.  
+We plan to use this to develop Hex-map  
+which is also an internal toolkit for designing Modal apps on a hex grid.  
+Our Land-vehicle CAD tool will be developed using Hex-map.  
+
+Modal GUIs have advantages over WIMP GUIs in certain contexts.  
+We have posted this toolkit as an open source Github repo    
+for the benefit of developers at large.  
+
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-11-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
