@@ -341,7 +341,7 @@ To create your own Modal app using ModalWX.cpp as a template,
 you define data structs for the data your app will process.  
 Then you you define your primary mode of operation that will process this data.  
 As part of this definition, you may use pop-up modes provided by the toolkit.  
-So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS
+So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS  
 and everything in (BLOCK) THIS APP'S PRIMARY MODE  
 with you own data structs and primary mode.  
 For now, you can do this using your existing IDE.  
