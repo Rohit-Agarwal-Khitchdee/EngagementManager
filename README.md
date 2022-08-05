@@ -16,7 +16,7 @@ and facilitates the development of keyboard-only apps.
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-11-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
 Each mode of operation paints to the entire screen   
-and has exclusive control over user-input while it is load.  
+and has exclusive control over user-input while it is loaded.  
 A mode can be primary which writes to the full-screen  
 or pop-up which is loaded by, and pops up in front of, a primary mode.  
 A mode is time-sliced into a set a "user intent" units,    
@@ -27,33 +27,33 @@ User intent handling is what happens within a mode of operation.
 
 The primary mode corresponds to the user's primary activity.  
 Within this primary interaction context, transient modes may pop-up and then go away.  
-In terms of interaction "intensity"  
-all high-intensity user intents that are frequently used and require immediacy  
-are direct-mapped to keystroke-sequences.  
-Lower intensity intents that are less frequently needed  
-are indirect-mapped to transient, pop-up modes.  
-Direct-mapping a few high-intensity intents improves GUI efficiency  
-while indirect-mapping several low-intensity intents gives the GUI breadth.  
+High-intensity user intents that are frequently used and require immediacy  
+are direct-mapped to keystroke-sequences, improving GUI efficiency.  
+Less frequently used intents are indirect-mapped to pop-up modes.  
 
-This app (ModalWX.cpp) is a Modal GUI source-code navigation/editing app.
+This app (a single file ModalWX.cpp) is a Modal-GUI source-code navigation/editing app.
 It serves 3 purposes for this source-code toolkit.  
-1. It enables the dev to navigate and understand the source code of this toolkit.  
-2. Its source code serves as a template for designing a modal GUI app.  
+1. It enables the dev to navigate and understand this source code toolkit.  
+2. 3. It's source-code navigation efficiency can be compared with the IDE you currently use.  
+It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.   
+It's source-code navigation efficiency can be compared with the IDE you currently use.  
+3. Its source code serves as a template for designing a modal GUI app.  
 Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
 with a primary mode designed by the dev  
 and the data structs used by SModeSrcEdr have to be replaced  
-with their app-specific data structs.
-3. It's source-code navigation efficiency can be compared with the IDE you currently use.  
-It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.   
+with their app-specific data structs.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 lines can be displayed at a time.  
 There are also no on-screen navigational controls  
-because all navigational controls are direct-mapped to keystroke sequences.   
+All its navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
 ## Building the ModalWX app:
+Should you build this app?  
+1. To evaluate the improved efficiency of a Modal app.  
+2. If you want to build your own Modal app.  
 (interaction time ~1hr) 
 
 The ModalWX app is a Modal-GUI based navigation tool for Modal source code.  
@@ -125,8 +125,9 @@ The file selector has upto 5 vertical panels on the screen.
 Each panel represents the contents of a directory.  
 The left most panel is closest to the root directory.  
 Each panel is the contents of a directory from the left adjacent panel. 
-The active panel has a white outline rectangle highlighting the current selection  
-while the other panels have black outline rectangles.  
+The active panel has a red outline rectangle highlighting the current selection  
+while the other panels have black outline rectangles.
+The current selection is displayed at the top-center of the window.  
 To change your selection in the active panel, use up and down arrow.  
 To open a currently selected directory, use right arrow.  
 To open or navigate to a parent directory, use left arrow.  
@@ -136,8 +137,16 @@ If you make an invalid selection, it gets you back to the file selector.
 Once you have correctly selected ModalWX.cpp,  
 it will load ModalWX.cpp, parse it and display its blocks.  
 
-If you are interested in using this toolkit to design a Modal GUI for your app,  
+If you are interested in evaluating this toolkit for your app's GUI,  
 take the code walkthough in the next section.  
+Otherwise, basic naviagational controls are as follows:
+1. Arrows and PgUp/PgDn to move the caret.  
+2. Any line ending in {...} can be opened with Ctrl(Command)-S.
+An open section can be summarized using the same command.
+3. You can jump to any symbol using Ctrl-Right and return using Ctrl-Left.  
+4. Escale exits the app.  
+5. Pressing and releasing Ctrl pops-up a small menu.  
+One of the option enables you to adjst the font size.  
 
 ## ModalWX Code Walkthrough
   (interaction time ~30min)  
