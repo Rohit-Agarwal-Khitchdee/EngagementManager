@@ -123,6 +123,9 @@ If you make an invalid selection, it gets you back to the file selector.
 Once you have correctly selected ModalWX.cpp,  
 it will load ModalWX.cpp, parse it and display its blocks.  
 
+If you are interested in using this toolkit to design a Modal GUI for your app,  
+take the code walkthough in the next section.  
+
 ## ModalWX Code Walkthrough
   (interaction time ~30min)  
 We guide you through a sequence of steps  
