@@ -32,7 +32,7 @@ Less frequently used intents are indirect-mapped to pop-up modes.
 This app (a single file ModalWX.cpp) is a Modal-GUI source-code navigation/editing app.
 It serves 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand this source code toolkit.  
-2. 3. It's source-code navigation efficiency can be compared with the IDE you currently use.  
+2. It's source-code navigation efficiency can be compared with the IDE you currently use.  
 It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.   
 It's source-code navigation efficiency can be compared with the IDE you currently use.  
 3. Its source code serves as a template for designing a modal GUI app.  
