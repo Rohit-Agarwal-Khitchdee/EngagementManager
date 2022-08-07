@@ -2,8 +2,6 @@
 ## Motivation
 Khitchdee is developing a CAD tool based on a hexagonal grid.  
 This Modal-GUIs toolkit is an internal toolkit to facilitate our CAD tool dev.  
-We are using it to develop Hex-map, a toolkit for designing Modal apps on a hex-grid.  
-Our CAD tool will be developed using Hex-map.  
 
 Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.  
 We have posted the Modal-GUIs toolkit as an open-source Github repo    
