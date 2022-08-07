@@ -6,8 +6,7 @@ This Modal-GUIs toolkit is an internal toolkit to facilitate our CAD tool dev.
 Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.  
 We have posted the Modal-GUIs toolkit as an open-source Github repo    
 for the benefit of app developers at large.  
-It gives them a viable alternative to WIMP  
-and facilitates the development of keyboard-only apps.  
+It facilitates the development of keyboard-only GUI apps.  
 This toolkit target's a solo-developer dev scenario.  
 
 ## What is a Modal GUI?
