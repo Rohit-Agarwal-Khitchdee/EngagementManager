@@ -1,10 +1,9 @@
 # Modal GUIs
 ## Motivation
-Khitchdee is developing a CAD tool based on a hexagonal grid.  
-This Modal-GUIs toolkit is an internal toolkit to facilitate our CAD tool dev.  
+This Modal-GUIs toolkit is an internal toolkit to facilitate Khitchdee's CAD tool dev.  
 
 Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.  
-We have posted the Modal-GUIs toolkit as an open-source Github repo    
+We have posted this Modal-GUIs toolkit as an open-source Github repo    
 for the benefit of app developers at large.  
 It facilitates the development of keyboard-only GUI apps.  
 The toolkit (about 9000 lines of code) target's a solo-developer dev scenario.  
