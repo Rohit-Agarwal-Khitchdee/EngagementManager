@@ -3,8 +3,9 @@
 ModalWX is an in-house app development tool  
 that Khitchdee is releasing as open source   
 for the benefit of app developers at large.  
+
 Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.    
-The toolkit (about 9000 lines of code) target's a solo-developer dev scenario.  
+The toolkit (9000 lines of documented code) target's a solo-developer dev scenario.  
 It is amenable to customization to a developer's particular coding context.  
 
 ## What is a Modal GUI?
