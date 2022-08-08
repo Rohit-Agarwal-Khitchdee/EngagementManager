@@ -1,15 +1,16 @@
 # Modal GUIs
 ## Motivation
-This Modal-GUIs toolkit is an internal toolkit to facilitate Khitchdee's CAD tool dev.  
+ModalWX is a Khitchdee internal IDE  
+that facilitates Khitchdee's app development.  
 
 Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.  
-We have posted this Modal-GUIs toolkit as an open-source Github repo    
+We have created this Modal-GUIs toolkit as an open-source Github repo    
 for the benefit of app developers at large.  
 It facilitates the development of keyboard-only GUI apps.  
 The toolkit (about 9000 lines of code) target's a solo-developer dev scenario.  
 
 ## What is a Modal GUI?
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-11-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-12-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it is loaded.  
