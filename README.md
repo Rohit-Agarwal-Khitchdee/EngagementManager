@@ -8,6 +8,8 @@ Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.
 The toolkit (9000 lines of documented code) target's a solo-developer dev scenario.  
 It is amenable to customization to a developer's particular coding context.  
 
+FWIW, a Modal GUI can also replace WIMP as a GUI for an OS.  
+
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-15-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
