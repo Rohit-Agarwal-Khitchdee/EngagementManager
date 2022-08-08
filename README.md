@@ -7,7 +7,7 @@ Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.
 We have posted the Modal-GUIs toolkit as an open-source Github repo    
 for the benefit of app developers at large.  
 It facilitates the development of keyboard-only GUI apps.  
-This toolkit (has about 9000 lines of code) target's a solo-developer dev scenario.  
+This toolkit (about 9000 lines of code) target's a solo-developer dev scenario.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-11-2022)  
