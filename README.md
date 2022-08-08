@@ -1,12 +1,11 @@
 # Modal GUIs
 ## Motivation
-ModalWX is an internal IDE that Khitchdee uses for it's app development.  
-
-Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.  
-We have created this Modal-GUIs toolkit as an open-source Github repo    
+ModalWX is an in-house app development tool  
+that Khitchdee is releasing as open source   
 for the benefit of app developers at large.  
-It facilitates the development of keyboard-only GUI apps.  
+Modal GUIs have advantages over WIMP GUIs in certain app-design contexts.    
 The toolkit (about 9000 lines of code) target's a solo-developer dev scenario.  
+It is amenable to customization to a developer's particular style of coding.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-12-2022)  
