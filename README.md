@@ -9,7 +9,7 @@ The toolkit (9000 lines of documented code) target's a solo-developer dev scenar
 It is amenable to customization to a developer's particular coding context.  
 
 ## What is a Modal GUI?
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-13-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-14-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it is loaded.  
