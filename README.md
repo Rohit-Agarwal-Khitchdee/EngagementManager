@@ -5,7 +5,7 @@ that Khitchdee is releasing as open source
 for the benefit of app developers at large.  
 
 Campared to WIMP GUIs, Modal GUIs are simpler to design and implement for the developer  
-and simpler and more efficient than WIMP GUIs for the user.    
+and simpler and more efficient for the user.    
 The toolkit (9000 lines of documented code) target's a solo-developer dev scenario.  
 It is amenable to customization to a developer's particular coding context.  
 
