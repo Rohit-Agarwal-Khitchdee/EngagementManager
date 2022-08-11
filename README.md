@@ -4,7 +4,7 @@ ModalWX is an in-house app development tool
 that Khitchdee is releasing as open source for app developers at large.  
 We want to encourage devs to evaluate modal GUIs and develop modal GUI apps.  
 
-Campared to WIMP GUIs, Modal GUIs are simpler to design and implement for the developer  
+Compared to WIMP GUIs, Modal GUIs are simpler to design and implement for the developer  
 and simpler and more efficient to use for the user.    
 Since devs use IDEs, ModalWX is a modal GUI app that is an IDE.  
 The dev as user can evaluate the simplicity and efficiency advantages of a modal GUI.    
@@ -19,12 +19,13 @@ A Modal GUI is a sequence of interactive screens called "modes of operation".
 Each mode of operation paints to the entire screen   
 and has exclusive control over user-input while it is loaded.  
 A primary mode writes to the full-screen  
-while a pop-up is loaded by, and pops up in front of, a primary mode.  
+while a pop-up mode is loaded by, and pops up in front of, a primary mode.  
 A mode is time-sliced into a set a "user intent" units,    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the action intended by the user.
 User intent handling is what happens within a mode of operation.  
+![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-11-2022)
 
 High-intensity user intents that are frequently used and require immediacy  
 are direct-mapped to keystroke-sequences, improving GUI efficiency.  
