@@ -23,7 +23,7 @@ while a pop-up mode is loaded by, and pops up in front of, a primary mode.
 A mode is time-sliced into a set a "user intent" units,    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
-and an intent handler, that performs the action intended by the user.
+and an intent handler, that performs the action intended by the user.  
 User intent handling is what happens within a mode of operation.  
 
 ![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-12-2022)
