@@ -26,7 +26,7 @@ expressed as a specific input gesture,
 and an intent handler, that performs the action intended by the user.  
 User intent handling is what happens within a mode of operation.  
 
-![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-13-2022)
+![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-14-2022)
 
 
 High-intensity user intents that are frequently used and require immediacy  
