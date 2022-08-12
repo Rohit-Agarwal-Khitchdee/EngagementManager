@@ -49,6 +49,10 @@ Should you build this app?
 1. To evaluate the improved efficiency of a Modal app over a WIMP app.  
 In this case the task is navigating a 9000 line codebase.  
 2. If you want to evaluate Modal for your app's GUI.  
+3. If you are already a wxWidgets developer.  
+The process is relatively brief in this case  
+and this toolkit gives you a GUI design alternative to WIMP  
+that you can start using right away.  
 
 The ModalWX app is a Modal-GUI based navigation tool for Modal source code.  
 A future version will be a standalone IDE.  
