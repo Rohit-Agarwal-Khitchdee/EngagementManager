@@ -4,15 +4,6 @@ ModalWX is an in-house app development tool
 that Khitchdee is releasing as open source for app developers at large.  
 We want to encourage devs to evaluate modal GUIs and develop modal GUI apps.  
 
-Compared to WIMP GUIs, Modal GUIs are simpler to design and implement for the developer  
-and simpler and more efficient to use for the user.    
-Since devs use IDEs, ModalWX is a modal GUI app that is an IDE.  
-The dev as user can evaluate the simplicity and efficiency advantages of a modal GUI.    
-The toolkit (9000 lines of documented code) target's a solo-developer dev scenario.  
-It is amenable to customization to a developer's particular coding context.  
-
-FWIW, a Modal GUI can also replace WIMP as a GUI for an OS.  
-
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-15-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
