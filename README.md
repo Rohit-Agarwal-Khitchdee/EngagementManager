@@ -142,7 +142,7 @@ Otherwise, basic naviagational controls are as follows:
 2. Any line ending in {...} can be opened with Ctrl(Command)-S.
 An open section can be summarized using the same command.
 3. You can jump to any symbol using Ctrl-Right and return using Ctrl-Left.  
-4. Escale exits the app.  
+4. Escape exits the app.  
 5. Pressing and releasing Ctrl pops-up a small menu.  
 One of the option enables you to adjst the font size.  
 
