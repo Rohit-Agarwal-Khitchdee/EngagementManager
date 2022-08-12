@@ -281,7 +281,7 @@ Once you are satisfied, press escape.
       This fn is called when a key up event occurs  
     2. fnKybd_map  
       Key down event. It maps the event to an intent and dispatches it  
-    to an entry in the fnIntentHandlers  
+    to an entry in the fnIntent_handlers array.  
     3. fnDisp_state  
       Paint event, It paints the base state of the mode asscoaited with its data.  
     4. fnOn_load  
