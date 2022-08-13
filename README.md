@@ -5,7 +5,7 @@ that Khitchdee is releasing as open source for app developers at large.
 We want to encourage devs to evaluate modal GUIs for their workstation apps.  
 
 ## What is a Modal GUI?
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-15-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
 Each mode of operation has access to the entire screen   
 and has exclusive control over user-input while it is loaded.  
