@@ -14,11 +14,10 @@ while a pop-up mode is loaded by, and pops up in front of, a primary mode.
 
 ![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-21-2022)
 
-A mode is time-sliced into a set a "user intent" units,    
+A mode consists of a set a "user intents",    
 A user intent is the user's expression of intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the action intended by the user.  
-User intent handling is what happens within a mode of operation.  
 
 This app (a single file ModalWX.cpp) is a Modal-GUI source-code navigation/editing app.
 It serves 3 purposes for this source-code toolkit.  
