@@ -14,8 +14,8 @@ while a pop-up mode is loaded by, and pops up in front of, a primary mode.
 
 ![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-21-2022)
 
-A mode consists of a set a "user intents",    
-A user intent is the user's expression of intent to do something   
+A mode consists of a set a "user intents",  
+which is the user's expression of intent to do something   
 expressed as a specific input gesture,  
 and an intent handler, that performs the action intended by the user.  
 
