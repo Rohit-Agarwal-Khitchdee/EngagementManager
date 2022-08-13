@@ -2,7 +2,7 @@
 ## Motivation
 ModalWX is an in-house app development tool  
 that Khitchdee is releasing as open source for app developers at large.  
-We want to encourage devs to evaluate modal GUIs and develop modal GUI apps.  
+We want to encourage devs to evaluate modal GUIs for their workstation apps.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-15-2022)  
