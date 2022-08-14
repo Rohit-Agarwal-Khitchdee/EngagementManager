@@ -1,6 +1,6 @@
 # Modal GUIs
 ## Motivation
-ModalWX is an in-house app development tool  
+ModalWX is an in-house PC GUI app development tool  
 that Khitchdee is releasing as open source for app developers at large.  
 We want to encourage devs to evaluate modal GUIs for their workstation apps.  
 
