@@ -24,7 +24,7 @@ and an intent handler, that performs the action intended by the user.
 ## ModalWX: The Modal GUI design toolkit
 ModalWX.cpp is a source code toolkit for designing Modal GUIs.  
 It contains source code for the classes, structs and functions  
-that comprise the core toolkit -- About 3000 LOC.
+that comprise the core toolkit -- about 3000 LOC.  
 In addition, it contains code for an IDE for producing a Modal GUI app.  
 This is about 6000 LOC.  
 The simplest way to produce a Modal app is using this IDE.  
