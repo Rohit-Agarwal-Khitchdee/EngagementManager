@@ -1,9 +1,9 @@
 # Modal GUIs
 ## Motivation
-ModalWX is Khitchdee's in-house PC app development tool  
-that uses a new way of designing a PC GUI, that we call a Modal GUI   
-that's better suited (than WIMP) for the type of apps we are developing.  
-We are releasing it open source to encourage devs to evaluate modal GUIs  
+ModalWX is Khitchdee's in-house app development toolkit  
+for producing PC apps with a new type of GUI, that we call a Modal GUI.    
+Modal GUIs are better suited (than WIMP) for the type of apps we are developing.  
+We are releasing ModalWX open source to encourage devs to evaluate modal GUIs  
 for their own PC apps.  
 
 ## What is a Modal GUI?
@@ -21,11 +21,21 @@ which is the user's expression of intent to do something
 expressed as a specific input gesture,  
 and an intent handler, that performs the action intended by the user.  
 
-This app (a single file ModalWX.cpp) is a Modal-GUI source-code navigation/editing app.
-It serves 3 purposes for this source-code toolkit.  
+## ModalWX: The Modal GUI design toolkit
+ModalWX.cpp is a source code toolkit for designing Modal GUIs.  
+It contains source code for the classes, structs and functions  
+that comprise the core toolkit.  
+In addition, it contains code for an IDE  
+for producing a Modal GUI app.
+The simplest way to produce a Modal app is using this IDE.  
+Since it has been designed specifically for producing Modal apps.  
+The IDE is a Modal app itself.  
+It does not use the mouse, all control are driven by the keyboard.
+
+ModalWX 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand this source code toolkit.  
 2. It's source-code navigation efficiency can be compared with the IDE you currently use.  
-It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.   .  
+It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.    
 3. Its source code serves as a template for designing a modal GUI app.  
 Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
 with a primary mode designed by the dev  
