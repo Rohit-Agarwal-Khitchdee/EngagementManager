@@ -59,10 +59,8 @@ The process is relatively brief in this case
 and this toolkit gives you a GUI design alternative to WIMP  
 that you can start using right away.  
 
-The ModalWX app is a Modal-GUI based navigation tool for Modal source code.  
-A future version will be a standalone IDE.  
-The app is based on the wxWidgets cross-platform UI library.  
-To build this app you first have to download and build the wxWidgets library.  
+ModalWX.cpp uses the wxWidgets cross-platform UI library.  
+To build it you first have to download and build the wxWidgets library.  
 
 We recommend using the current development version of wxWidgets which is 3.2.0.  
 You can get help for setting up wxWidgets on your PC from this forum:  
