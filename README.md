@@ -1,10 +1,10 @@
 # Modal GUIs
 ## Motivation
-ModalWX is Khitchdee's in-house PC-workstation GUI app development tool  
-that uses a new way of designing a PC-workstation GUI, that we call a Modal GUI   
-that is better suited (than WIMP) for the type of apps we are developing.  
+ModalWX is Khitchdee's in-house PC app development tool  
+that uses a new way of designing a PC GUI, that we call a Modal GUI   
+that's better suited (than WIMP) for the type of apps we are developing.  
 We are releasing it open source to encourage devs to evaluate modal GUIs  
-for their own PC-workstation apps.  
+for their own PC apps.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
@@ -156,12 +156,11 @@ This will enable you to design and produce your own Modal GUI app.
 1. Build and run the app. as described in the preceding section.  
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
-2. OSX font size adjustment.  
-If you are on OSX, the fontsize might be too small.  
-To adjust it, press the Command key once.  
+2. Font size adjustment.  
+If you find the fontsize be too small.  
+To adjust it, press the Command(OSX) or Ctrl(Win/Linux) key once.  
 This will pop-up a set of 5 options.  
 Use the down arrow key to select "Adjust Fontsize".  
-![alt text](https://hex-map.khitchdee.net/ModalWX-adjust-fontsize.png)  
 Press Enter(Return).  
 You will get a message:  
 "arrows to adjust fontsize, esc to exit"  
