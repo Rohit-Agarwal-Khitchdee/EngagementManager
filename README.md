@@ -49,7 +49,7 @@ There are also no on-screen navigational controls
 All its navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
-## Building the ModalWX app:
+## Building ModalWX:
 (interaction time ~1hr) 
 Should you build this app?  
 1. To evaluate the improved efficiency of a Modal app over a WIMP app.  
@@ -109,11 +109,8 @@ Add ModalWX.cpp and build the project.
 You may get several warnings but no errors.  
 Run the project. This should run ModalWX.  
 
-## Running the ModalWX app (UI controls):
-The app's function is to navigate a ModalWX codefile.    
-ModalWX.cpp is an example of a Modal codefile.  
-When you run the app,  
-it will ask you for the full path of ModalWX.cpp.  
+## Running ModalWX (UI controls):
+When you run the app, it will ask you for the full path of ModalWX.cpp.  
 This path will depend on your platform.  
 Examples:  
 OSX -- /Users/$username$/Modal/ModalWX.cpp  
@@ -141,7 +138,8 @@ it will load ModalWX.cpp, parse it and display its blocks.
 
 If you are interested in evaluating this toolkit for your app's GUI,  
 take the code walkthough in the next section.  
-Otherwise, basic naviagational controls are as follows:
+It explains how the code works, most of which is how wxWidgets works.    
+Otherwise, basic navigational controls are as follows:
 1. Arrows and PgUp/PgDn to move the caret.  
 2. Any line ending in {...} can be opened with Ctrl(Command)-S.
 An open section can be summarized using the same command.
@@ -151,7 +149,7 @@ An open section can be summarized using the same command.
 One of the option enables you to adjst the font size.  
 
 ## ModalWX Code Walkthrough
-  (interaction time ~30min)  
+  (interaction time ~30min)  If you are familiar with wxWidgets, goto section 4.  
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C.  
