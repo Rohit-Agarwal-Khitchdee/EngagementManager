@@ -1,4 +1,4 @@
-# Modal GUIs
+# ModalWX
 ## Motivation
 ModalWX is Khitchdee's in-house app development toolkit.  
 It is rather minimalist.  
