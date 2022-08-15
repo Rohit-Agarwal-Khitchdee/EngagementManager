@@ -1,10 +1,9 @@
 # Modal GUIs
 ## Motivation
 ModalWX is Khitchdee's in-house app development toolkit.  
+It is rather minimalist.  
 We use a new type of GUI, that we call a Modal GUI.    
-Modal GUIs are better suited (than WIMP) for the type of apps *we* are developing.  
-We are releasing ModalWX open source to encourage devs to evaluate modal GUIs  
-for their own PC apps.  
+Modal GUIs are better suited (than WIMP) for the type of apps *we* are developing.   
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
@@ -28,8 +27,8 @@ It has 2 parts:
 that comprise the core toolkit -- about 3000 LOC.  
 2. Code for an IDE for producing a Modal GUI app.  
 This is about 6000 LOC.  
-The IDE will be fully functional in our next release which is Oct 06
-As you would expect, the IDE itslef is a Modal app and uses the toolkit.    
+The IDE will be fully functional in our next release which is Oct 06.  
+As you would expect, the IDE itself is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
@@ -42,7 +41,7 @@ All its navigational controls are direct-mapped to keystroke sequences.
 ## Building ModalWX:
 (interaction time ~1hr) 
 Should you build this app?  
-1. To evaluate the improved efficiency of a Modal IDE over a WIMP IDE.  
+1. To evaluate the efficiency of this IDE.  
 2. If you are already a wxWidgets developer.  
 The process is relatively brief in this case  
 and this toolkit gives you a GUI design alternative to WIMP  
@@ -328,7 +327,7 @@ This is facilatated by the summarization mechanisms and the goto mechanisms.
 ## Building your own Modal GUI App  
 We suggest taking the walkthrough in the section above before reading this section.  
 A simple Modal app has a single mode of operation  
-which defnies the behavior of the app from when it's launched till it is exited.  
+which defines the behavior of the app from when it's launched till it is exited.  
 Within this mode of operation's interaction time  
 pop-up modes may pop up and go away.  
 The function of these pop-ups is to take care of common extensions  
@@ -342,11 +341,10 @@ and everything in (BLOCK) THIS APP'S PRIMARY MODE
 with you own data structs and primary mode.  
 For now, you can do this using your existing IDE.  
 Our next release due Oct 06 will make ModalWX an IDE.  
-It will containg explicit feaures to facilitate this design process.  
 
 ## Next Development Step:
-1. Modal specific navigational features and source code editing.  
-2. Build.  
+1. Source code editing.  
+2. Build and fix compile/link time errors and warning.  
 3. Debug.  
 This will make ModalWX a standalone IDE for building Modal apps based on wxWidgets.  
 I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
