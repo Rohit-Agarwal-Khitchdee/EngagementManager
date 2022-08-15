@@ -25,17 +25,16 @@ and an intent handler, that performs the action intended by the user.
 ModalWX.cpp is a source code toolkit for designing Modal GUIs.  
 It contains source code for the classes, structs and functions  
 that comprise the core toolkit.  
-In addition, it contains code for an IDE  
-for producing a Modal GUI app.
+In addition, it contains code for an IDE for producing a Modal GUI app.  
 The simplest way to produce a Modal app is using this IDE.  
 Since it has been designed specifically for producing Modal apps.  
 The IDE is a Modal app itself.  
-It does not use the mouse, all control are driven by the keyboard.
+It does not use the mouse, all control are driven by the keyboard.  
 
-ModalWX 3 purposes for this source-code toolkit.  
+ModalWX serves 3 purposes for this source-code toolkit.  
 1. It enables the dev to navigate and understand this source code toolkit.  
-2. It's source-code navigation efficiency can be compared with the IDE you currently use.  
-It serves as an example that demonstrates a Modal GUI's advantage over a WIMP GUI.    
+2. It serves as a demonstration of a Modal GUI's advantage over a WIMP GUI.    
+It's source-code navigation efficiency can be compared with the IDE you currently use.  
 3. Its source code serves as a template for designing a modal GUI app.  
 Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
 with a primary mode designed by the dev  
