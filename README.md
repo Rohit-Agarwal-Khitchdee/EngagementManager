@@ -1,8 +1,8 @@
 # Modal GUIs
 ## Motivation
-ModalWX is Khitchdee's in-house app development toolkit  
-for producing PC apps with a new type of GUI, that we call a Modal GUI.    
-Modal GUIs are better suited (than WIMP) for the type of apps we are developing.  
+ModalWX is Khitchdee's in-house app development toolkit.  
+We use a new type of GUI, that we call a Modal GUI.    
+Modal GUIs are better suited (than WIMP) for the type of apps *we* are developing.  
 We are releasing ModalWX open source to encourage devs to evaluate modal GUIs  
 for their own PC apps.  
 
@@ -23,24 +23,14 @@ and an intent handler, that performs the action intended by the user.
 
 ## ModalWX: The Modal GUI design toolkit
 ModalWX.cpp is a source code toolkit for designing Modal GUIs.  
-It contains source code for the classes, structs and functions  
+It has 2 parts:
+1. Source code for the classes, structs and functions  
 that comprise the core toolkit -- about 3000 LOC.  
-In addition, it contains code for an IDE for producing a Modal GUI app.  
+2. Code for an IDE for producing a Modal GUI app.  
 This is about 6000 LOC.  
-The simplest way to produce a Modal app is using this IDE.  
-Since it has been designed specifically for producing Modal apps.  
-The IDE is a Modal app itself and uses the toolkit.    
+The IDE will be fully functional in our next release which is Oct 06
+As you would expect, the IDE itslef is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
-
-ModalWX serves 3 purposes for this source-code toolkit.  
-1. It enables the dev to navigate and understand this source code toolkit.  
-2. It serves as a demonstration of a Modal GUI's advantage over a WIMP GUI.    
-It's source-code navigation efficiency can be compared with the IDE you currently use.  
-3. Its source code serves as a template for designing a modal GUI app.  
-Specifically, this app's primary mode, SModeSrcEdr has to be replaced  
-with a primary mode designed by the dev  
-and the data structs used by SModeSrcEdr have to be replaced  
-with their app-specific data structs.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
@@ -52,10 +42,8 @@ All its navigational controls are direct-mapped to keystroke sequences.
 ## Building ModalWX:
 (interaction time ~1hr) 
 Should you build this app?  
-1. To evaluate the improved efficiency of a Modal app over a WIMP app.  
-In this case the task is navigating a 9000 line codebase.  
-2. If you want to evaluate Modal for your app's GUI.  
-3. If you are already a wxWidgets developer.  
+1. To evaluate the improved efficiency of a Modal IDE over a WIMP IDE.  
+2. If you are already a wxWidgets developer.  
 The process is relatively brief in this case  
 and this toolkit gives you a GUI design alternative to WIMP  
 that you can start using right away.  
@@ -136,7 +124,7 @@ If you make an invalid selection, it gets you back to the file selector.
 Once you have correctly selected ModalWX.cpp,  
 it will load ModalWX.cpp, parse it and display its blocks.  
 
-If you are interested in evaluating this toolkit for your app's GUI,  
+If you are interested in understanding how the code works  
 take the code walkthough in the next section.  
 It explains how the code works, most of which is how wxWidgets works.    
 Otherwise, basic navigational controls are as follows:
@@ -391,7 +379,7 @@ Since this is an IDE, relatively simple and has a small and well-documented code
 it is amenable to customisations.  
 I welcome developers sharing their customisations with this project.  
 Some areas where work could be done are
-1. Sample apps.
+1. Sample apps. i.e. More primary modes.
 2. A different approach to parsing source code files.  
 3. Dictionary based text input.
-4. More pop-up modes to simplify not-so-common or domain-specific UI tasks.  
+4. More pop-up modes.  
