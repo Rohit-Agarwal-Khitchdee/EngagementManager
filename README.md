@@ -343,7 +343,7 @@ Our next release due Oct 06 will make ModalWX an IDE.
 
 ## Next Development Step:
 1. Source code editing.  
-2. Build and fix compile/link time errors and warning.  
+2. Build and fix compile/link time errors and warnings.  
 3. Debug.  
 This will make ModalWX a standalone IDE for building Modal apps based on wxWidgets.  
 I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
