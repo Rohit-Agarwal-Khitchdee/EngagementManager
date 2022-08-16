@@ -276,7 +276,7 @@ Once you are satisfied, press escape.
       Key down event. It maps the event to an intent and dispatches it  
       to an entry in the fnIntent_handlers array.  
      3. fnDisp_state  
-      Paint event, It paints the base state of the mode asscoaited with its data.  
+      Paint event, It paints the base state of the mode associated with its data.  
      4. fnOn_load  
       Called when the mode is pushed onto the modemanager.
       Any initialization code for the mode goes here. 
