@@ -270,22 +270,25 @@ Once you are satisfied, press escape.
     This is where an SMode struct is initialized.  
     Open the comment block above (311), read the comments in it then close it.  
     The base mode struct has the following fn ptrs:  
-    1. fnKey_up  
+     1. fnKey_up  
       This fn is called when a key up event occurs  
-    2. fnKybd_map  
+     2. fnKybd_map  
       Key down event. It maps the event to an intent and dispatches it  
-    to an entry in the fnIntent_handlers array.  
-    3. fnDisp_state  
+      to an entry in the fnIntent_handlers array.  
+     3. fnDisp_state  
       Paint event, It paints the base state of the mode asscoaited with its data.  
-    4. fnOn_load  
-      Called when the mode is pushed onto the modemanager
-    5. fnOn_unload
-      Called when the mode is popped off the modemanager  
-    6. fnSerialize  
-      Called by the mode manager when mode's state needs to be loaded or stored.  
-    7. fnIntentHandler[40]  
+     4. fnOn_load  
+      Called when the mode is pushed onto the modemanager.
+      Any initialization code for the mode goes here. 
+     5. fnOn_unload
+      Called when the mode is popped off the modemanager.
+      Any exit code for the mode goes here.
+     6. fnSerialize  
+      Called by the mode manager when mode's state needs to be loaded or stored.
+      The mode stores to or loads from a file it's state.
+     7. fnIntentHandler[40]  
       Called by fnKybd_map to initiate intent handling  
-    and by modemanager::disp_update to complete display update of the screen.
+      and by modemanager::disp_update to complete display update of the screen.
 
    - The base SMode struct's init provides implementations for (i), (iv), and (v).  
     A concrete mode provides for the rest and may override the base (i), (iv) and (v).  
