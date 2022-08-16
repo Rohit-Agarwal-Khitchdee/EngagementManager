@@ -150,8 +150,8 @@ This will enable you to design and produce your own Modal GUI app.
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
 2. Font size adjustment.  
-If you find the fontsize be too small.  
-To adjust it, press the Command(OSX) or Ctrl(Win/Linux) key once.  
+If you find the fontsize too small,  
+press the Command(OSX)/Ctrl(Win,Linux) key once.  
 This will pop-up a set of 5 options.  
 Use the down arrow key to select "Adjust Fontsize".  
 Press Enter(Return).  
