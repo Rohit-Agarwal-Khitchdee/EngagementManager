@@ -25,6 +25,7 @@ ModalWX.cpp is a source code toolkit for designing Modal GUIs.
 It has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the core toolkit -- about 3000 LOC.  
+We support this toolkit and it's ready for use by developers.  
 2. Code for an IDE for producing a Modal GUI app.  
 This is about 6000 LOC.  
 The IDE will be fully functional in our next release which is Oct 06.  
