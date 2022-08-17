@@ -129,7 +129,7 @@ take the code walkthough in the next section.
 It explains how the code works, most of which is how wxWidgets works.    
 Otherwise, basic navigational controls are as follows:
 1. Arrows and PgUp/PgDn to move the caret.  
-2. Any line ending in {...} can be opened with Ctrl(Command)-S.
+2. Any line ending in {...} can be opened with Ctrl(Command)-S.  
 An open section can be summarized using the same command.
 3. You can jump to any symbol using Ctrl-Right and return using Ctrl-Left.  
 4. Escape exits the app.  
@@ -137,7 +137,7 @@ An open section can be summarized using the same command.
 One of the option enables you to adjst the font size.  
 
 ## ModalWX Code Walkthrough
-  (interaction time ~30min)  If you are familiar with wxWidgets, goto section 4.  
+  (interaction time ~30min)   
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C.  
