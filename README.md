@@ -2,8 +2,7 @@
 ## Motivation
 Khitchdee is a CAD company specializing in land-vehicle ergonomics.  
 ModalWX is a rather minimalist, in-house IDE for our CAD tool development.  
-It is based on a new type of GUI, that we call a Modal GUI   
-that has several advantages over WIMP.   
+It is based on a better GUI than WIMP, that we call a Modal GUI.   
 We encourage developers to produce Modal GUI apps using ModalWX.  
 
 ## What is a Modal GUI?
