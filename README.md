@@ -36,7 +36,7 @@ Note that the entire client area is used for displaying source code.
 Using a 3 column format, ~120 LOC can be displayed at a time.  
 There are also no on-screen navigational controls  
 All navigational controls are direct-mapped to keystroke sequences.   
-![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
+![alt text](https://hex-map.khitchdee.net/ModalWX.mov)  
 
 ## Building ModalWX:
 (interaction time ~1hr) 
