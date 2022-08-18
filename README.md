@@ -3,7 +3,7 @@
 Khitchdee is a CAD company.  
 ModalWX is a minimalist, in-house IDE for our CAD tool development.  
 It is based on Modal, a better GUI paradigm than the common WIMP.   
-We have open sourced ModalWX to encourage developers to use Modal instead of WIMP.  
+We have open sourced ModalWX to encourage the use of Modal.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
