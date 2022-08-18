@@ -1,42 +1,41 @@
 # ModalWX
 ## Motivation
-Khitchdee is a CAD company specializing in land-vehicle ergonomics.  
-ModalWX is a rather minimalist, in-house IDE for our CAD tool development.  
-It is based on a better GUI than the common WIMP GUI, that we call a Modal GUI.   
-We encourage developers to produce Modal GUI apps using ModalWX.  
+Khitchdee is a CAD company.  
+ModalWX is a minimalist, in-house IDE for our CAD tool development.  
+It is based on a better GUI paradigm than the common WIMP, that we call Modal.   
+We have open sourced ModalWX to encourage developers to use Modal instead of WIMP.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
 A Modal GUI is a sequence of interactive screens called "modes of operation".  
-Each mode of operation has access to the entire screen   
-and has exclusive control over user-input while it is loaded.  
+Each mode has access to the entire screen   
+and exclusive control over user-input while it is loaded.  
 A primary mode writes to the full-screen  
 while a pop-up mode is loaded by, and pops up in front of, a primary mode.  
 
 ![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-21-2022)
 
 A mode consists of a set a "user intents",  
-which is the user's expression of intent to do something   
-expressed as a specific input gesture,  
+which is an input gesture that expresses intent to do something   
 and an intent handler, that performs the action intended by the user.  
 
 ## ModalWX: The Modal GUI design toolkit
-ModalWX.cpp is a source code toolkit for designing Modal GUIs.  
+ModalWX.cpp is a "source-code toolkit" for designing Modal GUIs.  
 It has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the core toolkit -- about 3000 LOC.  
+This code can directly be used to create a Modal app.  
 We support this toolkit and it's ready for use by developers.  
-2. Code for an IDE for producing a Modal GUI app.  
-This is about 6000 LOC.  
+2. Code for an IDE for producing a Modal GUI app (about 6000 LOC).  
 The IDE will be fully functional in our next release which is Oct 06.  
 As you would expect, the IDE itself is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 
 Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
-Using a 3 column format, ~120 lines can be displayed at a time.  
+Using a 3 column format, ~120 LOC can be displayed at a time.  
 There are also no on-screen navigational controls  
-All its navigational controls are direct-mapped to keystroke sequences.   
+All navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
 
 ## Building ModalWX:
@@ -59,8 +58,8 @@ The build process for the library depends on your platform:
 ### OSX: 
 We recommend building the library from source.  
 The simplest way is to download the source for wxWidgets.  
-Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj  
-You should be able to build and run this sample in XCode.  
+Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj in XCode.  
+You should be able to build and run this sample.  
 It builds the wxWidgets library from source as part of its build process.  
 Then you can edit the project settings to replace minimal.cpp with ModalWX.cpp.  
 This will build the ModalWX app.  
@@ -73,18 +72,18 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).  
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
-to create a new VS project and add ModalWX.cpp to it.  
+to create a new VisualStudio project and add ModalWX.cpp to it.  
 This should build the ModalWX app.  
 
 ### Linux:
-We recommend using the CodeLite IDE which comes with wxWidgets pre-installed.  
+We recommend using the CodeLite IDE.  
 After installing codelite from codelite.org,  
 Follow the instructions at:  
 https://docs.codelite.org/wxWidgets/repo320/
 to install wxWidgets 3.2.0.    
-Now, run Codelite and create a new workspace of type C++.  
+Now, run Codelite and create a new workspace of Type C++.  
 Then add a new project to the workspace of Category: GUI  
-and type: wxWidgets GUI Application (wxFrame, using wxCrafter)  
+and Type: wxWidgets GUI Application (wxFrame, using wxCrafter)  
 with Build System: Default  
 Build the project.  
 Run the project, you should see a small minimized window  
@@ -93,12 +92,10 @@ Close this window.
 Open your project and delete all the src, resource and include files.  
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
-Add ModalWX.cpp and build the project.  
-You may get several warnings but no errors.  
-Run the project. This should run ModalWX.  
+Add ModalWX.cpp and build and run the project.  
 
 ## Running ModalWX (UI controls):
-When you run the app, it will ask you for the full path of ModalWX.cpp.  
+When you first run the app, it will ask you for the full path of ModalWX.cpp.  
 This path will depend on your platform.  
 Examples:  
 OSX -- /Users/$username$/Modal/ModalWX.cpp  
@@ -123,10 +120,12 @@ press Enter(Return).
 If you make an invalid selection, it gets you back to the file selector.  
 Once you have correctly selected ModalWX.cpp,  
 it will load ModalWX.cpp, parse it and display its blocks.  
+Note: On OSX the OS ask you to give permission to ModalWX   
+to access certain folders in your home dir.  
+You should give this permission.  
 
 If you are interested in understanding how the code works  
 take the code walkthough in the next section.  
-It explains how the code works, most of which is how wxWidgets works.    
 Otherwise, basic navigational controls are as follows:
 1. Arrows and PgUp/PgDn to move the caret.  
 2. Any line ending in {...} can be opened with Ctrl(Command)-S.  
@@ -134,13 +133,13 @@ An open section can be summarized using the same command.
 3. You can jump to any symbol using Ctrl-Right and return using Ctrl-Left.  
 4. Escape exits the app.  
 5. Pressing and releasing Ctrl pops-up a small menu.  
-One of the option enables you to adjst the font size.  
+One of the options enables you to adjust the font size.  
 
 ## ModalWX Code Walkthrough
   (interaction time ~30min)   
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
-The only pre-requisite is familiarity with C.  
+The only pre-requisite is familiarity with C/C++.  
 At the end of this walkthough you will be able to evaluate  
 whether ModalWX offers a better way to navigate a codebase  
 compared to the IDE you currently use.  
@@ -152,7 +151,7 @@ At this point, your screen should look like this:
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
 2. Font size adjustment.  
 If you find the fontsize too small,  
-press the Command(OSX)/Ctrl(Win,Linux) key once.  
+press the Command(OSX) or Ctrl(Win,Linux) key once.  
 This will pop-up a set of 5 options.  
 Use the down arrow key to select "Adjust Fontsize".  
 Press Enter(Return).  
@@ -166,7 +165,7 @@ Once you are satisfied, press escape.
       Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
       All lines in this color are "sub-Blocks".  
       This line is a sub-block of line WX INTERFACING BOILERPLATE.  
-      That line is a BLOCK. All lines in that color are BLOCKS.  
+      That line is a "block". All lines in that color are BLOCKS.  
       Press Ctrl-S(Command-S on OSX) at line WX APP & CLASS FUNCTION DEFINITIONS.  
       This will open the sub-block.  
 
@@ -243,7 +242,7 @@ Once you are satisfied, press escape.
 
     Press Escape to exit the app.  
     Then relaunch the app. You should be back where you left off.  
-    Close all open fns and the sub-block. PgUp.  
+    Close all open fns and the sub-blocks. PgUp.  
     You're back at the app's start-screen.  
   
 4. Inside Modal -- Modes of Operation and User Intents   
@@ -365,11 +364,8 @@ There are a several hardcoded values in the code
 and several places where error conditions are not checked.  
 This code has not been tested and is very brittle.  
 It's posted as a proof-of-concept demo.  
-However, being a source code toolkit,  
-and since the code is small and relatively simple,  
-you can add error-checking to core parts  
-and do a lot of testing on your targeted platforms  
-to make it suitable for deployment in a production environment.  
+However, the source code toolkit part of the code is relatively stable,    
+since the code is small and relatively simple.    
 wxWidgets, which this code uses to access platform features  
 is a fairly robust and well tested library.  
 
