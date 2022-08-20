@@ -135,6 +135,9 @@ An open section can be summarized using the same command.
 5. Pressing and releasing Ctrl pops-up a small menu.  
 One of the options enables you to adjust the font size.  
 
+Here's a screen capture that demo's the controls
+![alt text](https://hex-map.khitchdee.net/ModalWXT.mov)
+
 ## ModalWX Code Walkthrough
   (interaction time ~30min)   
 We guide you through a sequence of steps  
