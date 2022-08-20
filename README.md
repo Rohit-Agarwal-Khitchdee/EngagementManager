@@ -31,12 +31,12 @@ The IDE will be fully functional in our next release which is Oct 06.
 As you would expect, the IDE itself is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 
-Screenshot of the ModalWX source code navigation app navigating ModalWX.cpp.  
+Screencapture of the ModalWX source code navigation app navigating ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 LOC can be displayed at a time.  
 There are also no on-screen navigational controls  
 All navigational controls are direct-mapped to keystroke sequences.   
-![alt text](https://hex-map.khitchdee.net/ModalWW.gif?v08-22-2022)  
+![alt text](https://hex-map.khitchdee.net/ModalWX.gif?v08-22-2022)  
 
 ## Building ModalWX:
 (interaction time ~1hr) 
