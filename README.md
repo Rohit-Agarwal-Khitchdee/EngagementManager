@@ -36,7 +36,7 @@ Note that the entire client area is used for displaying source code.
 Using a 3 column format, ~120 LOC can be displayed at a time.  
 There are also no on-screen navigational controls  
 All navigational controls are direct-mapped to keystroke sequences.   
-![alt text](https://hex-map.khitchdee.net/ModalWX_navigating_ModalWX.cpp.png)  
+![alt text](https://hex-map.khitchdee.net/ModalWW.gif?v08-22-2022)  
 
 ## Building ModalWX:
 (interaction time ~1hr) 
@@ -134,9 +134,6 @@ An open section can be summarized using the same command.
 4. Escape exits the app.  
 5. Pressing and releasing Ctrl pops-up a small menu.  
 One of the options enables you to adjust the font size.  
-
-Here's a screen capture that demo's the controls
-![alt text](https://hex-map.khitchdee.net/ModalWX.gif?v08-22-2022)
 
 ## ModalWX Code Walkthrough
   (interaction time ~30min)   
