@@ -1,6 +1,6 @@
 # ModalWX
 ## Motivation
-Khitchdee is a CAD company.  
+Khitchdee is a CAD company that is developing a CAD tool.  
 ModalWX is a minimalist, in-house IDE for our CAD tool development.  
 It is based on Modal, a better GUI paradigm than the common WIMP.   
 We have open sourced ModalWX to encourage the use of Modal.  
