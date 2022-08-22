@@ -1,9 +1,14 @@
 # ModalWX
 ## Motivation
-Khitchdee is a CAD company that is developing a CAD tool.  
-ModalWX is a minimalist, in-house IDE for our CAD tool development.  
-It is based on Modal, a better GUI paradigm than the common WIMP.   
-We have open sourced ModalWX to encourage the use of Modal.  
+ModalWX is a toolkit for building simple, keyboard driven GUI apps  
+based on the wxWidgets cross-platform GUI toolkit.  
+Emacs and VIM are examples of keyboard driven GUI apps.  
+However, unlike those 2 apps, which require the user to learn  
+a long set of keyboard commands,  
+apps designed using this toolkit need only a few commands to be learned.  
+This is because there is a mechanism provided  
+to pop-up keyboard selectable on-screen controls for less often used commands  
+that don't have to be remembered.  
 
 ## What is a Modal GUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
@@ -31,7 +36,8 @@ The IDE will be fully functional in our next release which is Oct 06.
 As you would expect, the IDE itself is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 
-Screencapture of the ModalWX source code navigation app navigating ModalWX.cpp.  
+Brief screen-capture demo of a Modal app.
+ModalWX source code navigation app is being used to navigate ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 LOC can be displayed at a time.  
 There are also no on-screen navigational controls  
@@ -41,7 +47,7 @@ All navigational controls are direct-mapped to keystroke sequences.
 ## Building ModalWX:
 (interaction time ~1hr) 
 Should you build this app?  
-1. To evaluate the efficiency of this IDE.  
+1. If you want to build a simple keyboard-driven app using wxWidgets.  
 2. If you are already a wxWidgets developer.  
 The process is relatively brief in this case  
 and this toolkit gives you a GUI design alternative to WIMP  
