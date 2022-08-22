@@ -36,7 +36,7 @@ The IDE will be fully functional in our next release which is Oct 06.
 As you would expect, the IDE itself is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 
-Brief screen-capture demo of a Modal app.
+Brief screen-capture demo of a Modal app.  
 ModalWX source code navigation app is being used to navigate ModalWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 LOC can be displayed at a time.  
