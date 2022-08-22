@@ -35,6 +35,8 @@ We support this toolkit and it's ready for use by developers.
 The IDE will be fully functional in our next release which is Oct 06.  
 As you would expect, the IDE itself is a Modal app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
+This IDE has been designed for Khitchdee's internal use.  
+It can be customized to a developer's specific code development approach.  
 
 Brief screen-capture demo of a Modal app.  
 ModalWX source code navigation app is being used to navigate ModalWX.cpp.  
