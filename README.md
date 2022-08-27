@@ -3,7 +3,7 @@
 ModalWX is a toolkit for building custom, keyboard-driven GUI apps  
 based on the wxWidgets cross-platform GUI toolkit.  
 Emacs and the VIM editor are examples of keyboard-driven GUI apps.  
-Thes 2 app suffer from the drawback that they require the user  
+These 2 app suffer from the drawback that they require the user  
 to learn a large set of keyboard commands.  
 Apps designed using ModalWX need only a handful of commands to be learned.  
 This is because there is a mechanism provided   
