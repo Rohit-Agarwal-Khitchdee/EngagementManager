@@ -1,9 +1,12 @@
 # EngageUI
 ## Motivation
-EngageUI is a new UI paradigm, a replacement for the WIMP UI paradigm  
-that focuses on user activity in the design of a UI.  
-EngageUIs do not need to use the mouse and are typically keyboard-driven.  
-They stand somewhere between CLIs and WIMP.  
+EngageUI is a new UI paradigm, a replacement for the WIMP UI paradigm.  
+WIMP stands for Windows, Icons, Menus and Pointers and is the predominant paradigm  
+used in the design of GUIS for desktop PC apps.  
+The command line interface (CLI) is another UI approach that is popular on Linux.  
+EngageUIs focus on user activity in the design of a UI and in its operation.  
+They do not need to use the mouse and are typically keyboard-driven.  
+They stand somewhere between CLIs and WIMP based GUIs.  
 Emacs and the VIM editor are examples of keyboard-driven GUI apps.  
 These 2 apps suffer from the drawback that they require the user  
 to learn a large set of keyboard commands.  
