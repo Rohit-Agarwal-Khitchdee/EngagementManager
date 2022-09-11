@@ -274,15 +274,15 @@ Once you are satisfied, press escape.
     and the user intent handlers that are part of this AC's design.  
   
    - Open INITIALIZING AND EXITING ENGAGEUI (BLOCK).  
-    Open modal_init  
+    Open engageUI_init  
     Goto load_UI_state  
     Goto new_src_edr  
-    Note we are inside the BLOCK: THIS APP'S PRIMARY MODE, THE SOURCE EDITOR  
+    Note we are inside the BLOCK: THIS APP'S PRIMARY ACTIVITY-CONTEXT, THE SOURCE EDITOR  
     and the SUB_BLOCK: BASE DEFINITIONS  
-    This is where the SModeSrcEdr struct is defined  
+    This is where the SACSrcEdr struct is defined  
     and fns to "new", free and load from a file are defined.  
     Goto pBase->init  
-    This is where an SMode struct is initialized.  
+    This is where an SActivityContext struct is initialized.  
     Open the comment block above (311), read the comments in it then close it.  
     The base mode struct has the following fn ptrs:  
      1. fnKey_up  
@@ -291,86 +291,86 @@ Once you are satisfied, press escape.
       Key down event. It maps the event to an intent and dispatches it  
       to an entry in the fnIntent_handlers array.  
      3. fnDisp_state  
-      Paint event, It paints the base state of the mode associated with its data.  
-     4. fnOn_load  
-      Called when the mode is pushed onto the modemanager.
-      Any initialization code for the mode goes here. 
-     5. fnOn_unload
-      Called when the mode is popped off the modemanager.
-      Any exit code for the mode goes here.
+      Paint event, It paints the base state of the activity-context associated with its data.  
+     4. fnOn_engage  
+      Called when the activity-context is pushed onto the ACmanager.
+      Any initialization code for the activity-context goes here. 
+     5. fnOn_disengage
+      Called when the activity-context is popped off the ACmanager.
+      Any exit code for the activity-context goes here.
      6. fnSerialize  
-      Called by the mode manager when mode's state needs to be loaded or stored.
-      The mode stores to or loads from a file it's state.
+      Called by the ACmanager when activity-context's state needs to be loaded or stored.
+      The activity-context stores to or loads from a file it's state.
      7. fnIntentHandler[40]  
       Called by fnKybd_map to initiate intent handling  
-      and by modemanager::disp_update to complete display update of the screen.
+      and by ACmanager::disp_update to complete display update of the screen.
 
-   - The base SMode struct's init provides implementations for (i), (iv), and (v).  
-    A concrete mode provides for the rest and may override the base (i), (iv) and (v).  
+   - The base SActivityContext struct's init provides implementations for (i), (iv), and (v).  
+    A concrete activity-context provides for the rest and may override the base (i), (iv) and (v).  
     Now go back to new_src_edr (Ctrl-left).  
     pSrcEdr->init.  
-    As you can see, SModeSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
+    As you can see, SACSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
     with it's own implementation.  
     It also loads all the intent handler fns.  
     Open the enum{...} at 7247.  
-    This is an enumeration of the intent handlers for SModeSrcEdr.  
+    This is an enumeration of the intent handlers for SACSrcEdr.  
     They all start with SEI_ to make them globally unique.  
     Close the enum.  
     PgDn to void load_intents() {...}  
     Open it. This is where the intent handlers are loaded. Close it.
   
-   - Now we'll peep inside some of these mode behavior implementation fns.  
+   - Now we'll peep inside some of these activity-context behavior implementation fns.  
     Scroll up to SrcEdr->init() and goto src_edr_map.  
     Open 7456.  
     Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
     Close 7456.  
     Let's look at that intent handler.  
     Go back. Go Back. Go Back. Go Back.  
-    Close modal_init().  
-    Close(BLOCK) INITIALIZING AND EXITING MODAL  
-    Open (BLOCK) THIS APP'S PRIMARY MODE, (SUB_BLOCK) INTENT_HANDLERS  
+    Close engageUI_init().  
+    Close(BLOCK) INITIALIZING AND EXITING ENGAGEUI  
+    Open (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT, (SUB_BLOCK) INTENT_HANDLERS  
     Open src_edr_update_caret   
     This is the intent handler for SEI_UPDATE_CARET.  
     You may study this code then close it and its sub-block and block.  
 
     Finally we'll look at src_edr_disp_state.  
     You will find src_edr_disp_state inside  
-    (BLOCK) THIS APP'S PRIMARY MODE (SUB_BLOCK) MODE IMPLEMENTATION FNs.  
+    (BLOCK) THIS APP'S PRIMARY ACTIVITY_CONTEXT (SUB_BLOCK) ACTIVITY-CONTEXT IMPLEMENTATION FNs.  
 
 Note:  
-In navigating Modal source code, we only keep open  
+In navigating EngageUI source code, we only keep open  
 the section of code we're currently studying.  
 This is facilatated by the summarization mechanisms and the goto mechanisms.  
 
-## Building your own Modal GUI App  
+## Building your own EngageUI App  
 We suggest taking the walkthrough in the section above before reading this section.  
-A simple Modal app has a single mode of operation  
+A simple EngageUI app has a single activity-context  
 which defines the behavior of the app from when it's launched till it is exited.  
-Within this mode of operation's interaction time  
-pop-up modes may pop up and go away.  
+Within this primary activity-context's interaction time  
+pop-up activity-contexts may pop up and go away.  
 The function of these pop-ups is to take care of common extensions  
-to the base behavior of a primary mode of operation.  
-To create your own Modal app using ModalWX.cpp as a template,  
+to the base behavior of a primary activity-context.  
+To create your own EngageUI app using EngageWX.cpp as a template,  
 you define data structs for the data your app will process.  
-Then you you define your primary mode of operation that will process this data.  
-As part of this definition, you may use pop-up modes provided by the toolkit.  
+Then you you define your primary activity-context that will process this data.  
+As part of this definition, you may use pop-up activity-contexts provided by the toolkit.  
 So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS  
-and everything in (BLOCK) THIS APP'S PRIMARY MODE  
-with you own data structs and primary mode.  
+and everything in (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT  
+with you own data structs and primary activity context.  
 For now, you can do this using your existing IDE.  
-Our next release due Oct 06 will make ModalWX an IDE.  
+Our next release due Oct 06 will make EngageWX an IDE.  
 
 ## Next Development Step:
 1. Source code editing.  
 2. Build and fix compile/link time errors and warnings.  
 3. Debug.  
-This will make ModalWX a standalone IDE for building Modal apps based on wxWidgets.  
+This will make EngageWX a standalone IDE for building EngageUI apps based on wxWidgets.  
 I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
 
-## Modal & WIMP mix and match
-Since a Modal UI is implemented entirely within a wxWindow subclass,  
-it is possible to incorporate a Modal UI window into a regular WIMP style app  
-using wxAUI with the Modal UI in one layer and a WIMP UI in another layer.  
+## EngageUI & WIMP mix and match
+Since an EngageUI is implemented entirely within a wxWindow subclass,  
+it is possible to incorporate an EngageUI window into a regular WIMP style app  
+using wxAUI with the EngageUI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
 ## A note on code quality
@@ -384,7 +384,7 @@ since the code is small and relatively simple.
 wxWidgets, which this code uses to access platform features  
 is a fairly robust and well tested library.  
 
-## Contributing to ModalWX
+## Contributing to EngageWX
 I've written about 9000 lines of code so far.  
 So I have fairly stable code design, code documentation and coding conventions.  
 I welcome all contributions.    
@@ -392,7 +392,7 @@ Since this is an IDE, relatively simple and has a small and well-documented code
 it is amenable to customisations.  
 I welcome developers sharing their customisations with this project.  
 Some areas where work could be done are
-1. Sample apps. i.e. More primary modes.
+1. Sample apps. i.e. More primary activity-contexts.
 2. A different approach to parsing source code files.  
 3. Dictionary based text input.
-4. More pop-up modes.  
+4. More pop-up activity contexts.  
