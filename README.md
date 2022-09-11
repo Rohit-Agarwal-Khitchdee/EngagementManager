@@ -16,7 +16,7 @@ to pop-up keyboard selectable on-screen controls for less often used commands
 that don't have to be remembered.  
 
 ## What is an EngageUI?
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-17-2022)  
 An EngageUI is an activity based UI paradigm that consist of  
 a sequence of interactive screens called "activity contexts".  
 Each activity context has access to the entire screen   
