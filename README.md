@@ -1,52 +1,56 @@
-# ModalWX
+# EngageUI
 ## Motivation
-ModalWX is a toolkit for building custom, keyboard-driven GUI apps  
-based on the wxWidgets cross-platform GUI toolkit.  
+EngageUI is a new UI paradigm, a replacement for the WIMP UI paradigm  
+that focuses on user activity in the design of a UI.  
+EngageUIs do not need to use the mouse and are typically keyboard-driven.  
+They stand somewhere between CLIs and WIMP.  
 Emacs and the VIM editor are examples of keyboard-driven GUI apps.  
 These 2 apps suffer from the drawback that they require the user  
 to learn a large set of keyboard commands.  
-Apps designed using ModalWX need only a handful of commands to be learned.  
+Apps designed using EngageUI need only a handful of commands to be learned.  
 This is because there is a mechanism provided   
 to pop-up keyboard selectable on-screen controls for less often used commands  
 that don't have to be remembered.  
 
-## What is a Modal GUI?
+## What is an EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-16-2022)  
-A Modal GUI is a sequence of interactive screens called "modes of operation".  
-Each mode has access to the entire screen   
+An EngageUI is an activity based UI paradigm that consist of  
+a sequence of interactive screens called "activity contexts".  
+Each activity context has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
-A primary mode writes to the full-screen  
-while a pop-up mode is loaded by, and pops up in front of, a primary mode.  
+A primary activity-context writes to the full-screen  
+while a pop-up activity-context loaded by, and pops up in front of,  
+a primary activity-context.  
 
 ![Alt Text](https://hex-map.khitchdee.net/modal-illustration.png?v08-21-2022)
 
-A mode consists of a set a "user intents",  
+An activity-context consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
 and an intent handler, that performs the action intended by the user.  
 
-## ModalWX: The Modal GUI design toolkit
-ModalWX.cpp is a "source-code toolkit" for designing Modal GUIs.  
+## EngageWX: The EngageUI design toolkit for wxWidgets
+EngageWX.cpp is a "source-code toolkit" for designing actity-based Engage UIs.  
 It has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the core toolkit -- about 3000 LOC.  
-This code can directly be used to create a Modal app.  
+This code can directly be used to create an EngageUI app.  
 We support this toolkit and it's ready for use by developers.  
-2. Code for an IDE for producing a Modal GUI app (about 6000 LOC).  
+2. Code for an IDE for producing an EngageUI app (about 6000 LOC).  
 The IDE will be fully functional in our next release which is Oct 06.  
-As you would expect, the IDE itself is a Modal app and uses the toolkit.    
+As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 This IDE has been designed for Khitchdee's internal use.  
-A developer should customize it their specific code development workflow.  
+A developer should customize it for their specific code writing workflow.  
 
-Brief screen-capture demo of a Modal app.  
-ModalWX source code navigation app is being used to navigate ModalWX.cpp.  
+Brief screen-capture demo of an EnageUI app.  
+EngageWX source code navigation app is being used to navigate EngageWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 LOC can be displayed at a time.  
 There are also no on-screen navigational controls  
 All navigational controls are direct-mapped to keystroke sequences.   
 ![alt text](https://hex-map.khitchdee.net/ModalWX.gif?v08-22-2022)  
 
-## Building ModalWX:
+## Building EngageWX:
 (interaction time ~1hr) 
 Should you build this app?  
 1. If you want to build a simple keyboard-driven app using wxWidgets.  
@@ -55,7 +59,7 @@ The process is relatively brief in this case
 and this toolkit gives you a GUI design alternative to WIMP  
 that you can start using right away.  
 
-ModalWX.cpp uses the wxWidgets cross-platform UI library.  
+EngageWX.cpp uses the wxWidgets cross-platform UI library.  
 To build it you first have to download and build the wxWidgets library.  
 
 We recommend using the current development version of wxWidgets which is 3.2.0.  
@@ -70,7 +74,7 @@ Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj in XCode.
 You should be able to build and run this sample.  
 It builds the wxWidgets library from source as part of its build process.  
 Then you can edit the project settings to replace minimal.cpp with ModalWX.cpp.  
-This will build the ModalWX app.  
+This will build the EngageWX app.  
 
 ### Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.  
@@ -80,8 +84,8 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).  
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
-to create a new VisualStudio project and add ModalWX.cpp to it.  
-This should build the ModalWX app.  
+to create a new VisualStudio project and add EngageWX.cpp to it.  
+This should build the EngageWX app.  
 
 ### Linux:
 We recommend using the CodeLite IDE.  
@@ -100,15 +104,15 @@ Close this window.
 Open your project and delete all the src, resource and include files.  
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
-Add ModalWX.cpp and build and run the project.  
+Add EngageWX.cpp and build and run the project.  
 
-## Running ModalWX (UI controls):
-When you first run the app, it will ask you for the full path of ModalWX.cpp.  
+## Running EngageWX (UI controls):
+When you first run the app, it will ask you for the full path of EngageWX.cpp.  
 This path will depend on your platform.  
 Examples:  
-OSX -- /Users/$username$/Modal/ModalWX.cpp  
-Win -- C:\Modal\ModalWX.cpp  
-Linux -- /Home/$username$/Modal/ModalWX.cpp  
+OSX -- /Users/$username$/EngageUI/EngageWX.cpp  
+Win -- C:\EngageUI\EngageWX.cpp  
+Linux -- /Home/$username$/EngageUI/EngageWX.cpp  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)  
 If you enter an incorrect path, it will bring up a file selector  
 to select the file from the file system.  
@@ -123,12 +127,12 @@ The current selection is displayed at the top-center of the window.
 To change your selection in the active panel, use up and down arrow.  
 To open a currently selected directory, use right arrow.  
 To open or navigate to a parent directory, use left arrow.  
-To commit to a selection (it has to be ModalWX.cpp in this case)  
+To commit to a selection (it has to be EngageWX.cpp in this case)  
 press Enter(Return).  
 If you make an invalid selection, it gets you back to the file selector.  
-Once you have correctly selected ModalWX.cpp,  
-it will load ModalWX.cpp, parse it and display its blocks.  
-Note: On OSX the OS ask you to give permission to ModalWX   
+Once you have correctly selected EngageWX.cpp,  
+it will load EngageWX.cpp, parse it and display its blocks.  
+Note: On OSX the OS ask you to give permission to EngageWX   
 to access certain folders in your home dir.  
 You should give this permission.  
 
@@ -143,16 +147,16 @@ An open section can be summarized using the same command.
 5. Pressing and releasing Ctrl pops-up a small menu.  
 One of the options enables you to adjust the font size.  
 
-## ModalWX Code Walkthrough
+## EngageWX Code Walkthrough
   (interaction time ~30min)   
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C/C++.  
 At the end of this walkthough you will be able to evaluate  
-whether ModalWX offers a better way to navigate a codebase  
+whether EngageWX offers a better way to navigate a codebase  
 compared to the IDE you currently use.  
 Also, it will enable you to understand the code in this toolkit.  
-This will enable you to design and produce your own Modal GUI app.  
+This will enable you to design and produce your own EngageUI app.  
 
 1. Build and run the app. as described in the preceding section.  
 At this point, your screen should look like this:  
@@ -168,7 +172,7 @@ You will get a message:
 Use the arrow keys to adjust fontsize.  
 This is a live ajdustment.  
 Once you are satisfied, press escape.  
-3. Modal's interface with wxWidgets -- ModalWindow and the ModeManager.  
+3. EngageUI's interface with wxWidgets -- EngageUIWindow and the ActivityContextManager.  
    - App init  
       Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
       All lines in this color are "sub-Blocks".  
@@ -182,10 +186,10 @@ Once you are satisfied, press escape.
       Goto line 759 and move the caret to MyFrame (the one after the new).  
       Press Ctrl-Right Arrow.  
       This will take you the constructor of MyFrame.  
-      Goto line 768 move the caret over ModalWindow and goto (Ctrl-Right).  
-      ModalWindow is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
-      Goto line 776 and move the caret over modal_init and goto.  
-      modal_init is where the modal toolkit is initalised.  
+      Goto line 768 move the caret over EngageUIWindow and goto (Ctrl-Right).  
+      EngageUIWindow is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
+      Goto line 776 and move the caret over engageUI_init and goto.  
+      engageUI_init is where the EngageUI is initalised.  
 
       Note that goto using ctrl-right goes to the destination, expands it  
       and collapses the previous viewing context.  
@@ -193,80 +197,80 @@ Once you are satisfied, press escape.
       Conversely, any line that end's in a { can be summarized.
 
       Goto line 9072 and move the caret over load_UI_state and goto  
-      load_UI_state is an acillary fn that creates a SModeSrcEdr mode,  
-      creates a SModeManager, pushes the mode onto the mode manager,   
-      and returns the mode manager.  
-      This is returned by modal_init() to the calling ModalWindow.  
-      Now press Ctrl-Left Arrow this takes you back to modal_init.  
-      Go back again (Ctrl-left) that's ModalWindow's constructor  
+      load_UI_state is an acillary fn that creates a SACSrcEdr activity-context,  
+      creates a SACManager, pushes the activity-context onto the ACManager,   
+      and returns the ACManager.  
+      This is returned by engageUI_init() to the calling EngageUIWindow.  
+      Now press Ctrl-Left Arrow this takes you back to engageUI_init.  
+      Go back again (Ctrl-left) that's EngageUIWindow's constructor  
       Go back again that's MyFrame's constructor  
       Go back again and we're at the entry point to the app.  
       Summarize MyApp::OnInit().  
       So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
-      which creates a ModalWindow::wxWindow, which contains a ModeManager  
-      that serves as the interface between wxWidgets and Modal.  
-      ModalWindow initializes Modal using a designated modal_init() fn.  
-      The Modal App designer initializes modal in this fn by creating a primary mode  
-      in this case SModeSrcEdr and pushing it into the ModeManager  
-      before returning the ModeManager to ModalWindow.   
+      which creates a EngageUIWindow::wxWindow, which contains a ACManager  
+      that serves as the interface between wxWidgets and EngageUI.  
+      EngageUIWindow initializes EngageUI using a designated engageUI_init() fn.  
+      The EngageUI App designer initializes EngageUI in this fn  
+      by creating a primary activity-context, in this case SACSrcEdr  
+      and pushing it into the ACManager before returning the ACManager to EngageUIModalWindow.   
 
    - App lifetime -- Paint and Kybd event handling  
       ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-11-2022)  
-      Goto line 723 ModalWindow::OnKeyDown and open it.  
-      This is where all key down events are handled by ModalWindow.  
+      Goto line 723 EngageUIWindow::OnKeyDown and open it.  
+      This is where all key down events are handled by EngageUIWindow.  
       Goto kybd_map  
-      That takes you to the modemanager's kybd_map fn.  
-      This function set's pWin->m_bUsrActn which tells Modal  
+      That takes you to the activity-context manager's kybd_map fn.  
+      This function set's pWin->m_bUsrActn which tells EngageUI  
       that the user has done something.  
-      Then, call's the kybd_map fn of the mode at the top of the mode stack  
-      which is the currently active mode.  
+      Then, call's the kybd_map fn of the activity-context at the top of the AC stack  
+      which is the currently active activity-context.  
      
-      Go Back (Ctrl-left) and close ModalWindow::OnKeyDown.  
-      Open ModalWindow::OnPaint the paint event handler for ModalWindow.  
+      Go Back (Ctrl-left) and close EngageUIWindow::OnKeyDown.  
+      Open EngageUIWindow::OnPaint the paint event handler for EngageUIWindow.  
       This fn calls either disp_state if the event was not caused by the user  
-      in which casethe state of the entire app needs to be reloaded.  
-      or disp_update in which case the mode decides what needs to be updated.  
+      in which case the state of the entire app needs to be reloaded.  
+      or disp_update in which case the activity-context decides what needs to be updated.  
       Goto disp_state.  
       You can read the comments inside 529 then close it.  
-      The mode manager contains a stack of modes  
-      and displays each modes disp_state in back to front order (bottom to top of stack).  
+      The activity context manager contains a stack of activity-contexts  
+      and displays each AC's disp_state in back to front order (bottom to top of stack).  
       Go back.  
       Now goto disp_update and look that code and come back.  
-      Note that disp_update only calls the mode at the top of the mode stack, the current mode.  
+      Note that disp_update only calls the AC at the top of the AC stack, the current AC.  
 
-      So during execution stage, wxWidgets sends key down and paint events to ModalWindow.  
-      ModalWindow delegates these to the modemanager  
-      which dispatches them appropriately to modes it manages.  
+      So during execution stage, wxWidgets sends key down and paint events to EngageUIWindow.  
+      EngageUIWindow delegates these to the activity-context manager  
+      which dispatches them appropriately to activity-contexts it manages.  
   
-   - App exit -- Modal shutdown and app state serialisation.    
-    When a modal app is ready to exit, it tells the wxWidgets app to shutdown  
-    which results in ~ModalWIndow being called.  
-    Open 780. ModalWIndow::~ModalWindow and goto modal_exit(), study that code and return.  
-    modal_exit serializes the mode manager and all the modes it contains to a state file.  
+   - App exit -- EngageUI shutdown and app state serialisation.    
+    When an EngageUI app is ready to exit, it tells the wxWidgets app to shutdown  
+    which results in ~EngageUIWindow being called.  
+    Open 780. EngageUIWIndow::~EngageUIWindow and goto engageUI_exit(), study that code and return.  
+    enagegUI_exit serializes the AC manager and all the ACs it contains to a state file.  
     Next time the app is launched, it reads state from this file   
-    to reload the last operational state of the app.  
-    It also free's the mode manager which in turn free's all the modes it contains.  
-    The mode manager and the modes are all created on the heap.  
+    to reloads the last operational state of the app.  
+    It also free's the ACmanager which in turn free's all the ACs it contains.  
+    The ACmanager and the ACs are all created on the heap.  
 
     Press Escape to exit the app.  
     Then relaunch the app. You should be back where you left off.  
     Close all open fns and the sub-blocks. PgUp.  
     You're back at the app's start-screen.  
   
-4. Inside Modal -- Modes of Operation and User Intents   
-   - The Modal GUI toolkit has been designed in such a way that for the most part  
+4. Inside EngageUI -- Activity Contexts and User Intents   
+   - The EngageUI toolkit has been designed in such a way that for the most part  
     the developer does not need to have anything to do with it's operational context  
     in this case the wxWidgets WIMP GUI.  
-    The GUI design of a Modal app is purely using modal constructs  
-    namely the mode of operation and the user intent handler.  
-    A modal app developer is concerned with Modal Init and Exit,  
-    their app's data and the primary mode of operation they design.  
-    This design may use UI elements from the toolkit.  
-    This app is a modal source code editor and navigator.  
-    We will walkthrough the design of SModeSrcEdr which is its primary mode of operation  
-    and the user intent handlers that are part of this mode's design.  
+    The GUI design of an EngageUI app is purely using EngageUI constructs  
+    namely the activity-context and the user intent handler.  
+    An EngageUI app developer is concerned with EnagegeUI init and exit,  
+    their app's data and the primary activity context/s they design.  
+    This design may use canned pop-up activity contexts from the toolkit.  
+    This app is a EngageUI source code editor and navigator.  
+    We will walkthrough the design of SACSrcEdr which is its primary activity context  
+    and the user intent handlers that are part of this AC's design.  
   
-   - Open INITIALIZING AND EXITING MODAL (BLOCK).  
+   - Open INITIALIZING AND EXITING ENGAGEUI (BLOCK).  
     Open modal_init  
     Goto load_UI_state  
     Goto new_src_edr  
