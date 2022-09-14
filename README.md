@@ -1,6 +1,6 @@
 # EngageUI
 ## Motivation
-EngageUI is a new UI paradigm, a replacement for the WIMP UI paradigm.  
+EngageUI is a simpler and more efficient replacement for the WIMP UI paradigm.  
 
 ### WIMP
 WIMP stands for Windows, Icons, Menus and Pointers and is the predominant paradigm  
