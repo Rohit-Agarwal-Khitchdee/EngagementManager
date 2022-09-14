@@ -13,7 +13,7 @@ Control panels with switches, displays and other controls
 were and are still used to control industrial machines.  
 The contol panel metaphor is a virtual version of this physical interface.  
 It consists of familiar controls (buttons, text input fields, data displays etc)  
-laid out inside a control panle (window).  
+laid out inside a control panel (window).  
 Different OSs such as OSX, Windows and Ubuntu  
 differentiate themselves in their choice of graphics, color schemes  
 layout approaches etc in their WIMP conformant implementations of their UIs.  
