@@ -2,8 +2,30 @@
 ## Motivation
 EngageUI is a new UI paradigm, a replacement for the WIMP UI paradigm.  
 WIMP stands for Windows, Icons, Menus and Pointers and is the predominant paradigm  
-used in the design of GUIs for desktop PC apps.  
+used in the design of OS UIs and GUIs for desktop PC apps.  
+An OS takes the WIMP UI paradigm and uses it to implement  
+the OS interface with the desktop metaphor  
+and provides a library and tool for writing apps  
+that also conform to this metaphor.
+WIMP conformant apps use the control panel metaphor.  
+Control panels with switches, displays and other controls  
+were and are still used to control industrial machines.  
+The contol panel metaphor is a virtual version of this physical interface.  
+It consists of familiar controls (buttons, text input fields, data displays etc)  
+laid out inside a control panle (window).  
+Different OSs such as OSX, Windows and Ubuntu  
+differentiate themselves in their choice of graphics, color schemes  
+layout approaches etc in their WIMP conformant implementations of their UIs.  
+What all this means to an app developer is  
+the 3 major OSs offer similar functionality when it comes to GUI design  
+and you are straghtjacketed in terms of what you can do  
+by the control panel paradigm of UI design.  
+
 The command line interface (CLI) is another UI approach that is popular on Linux.  
+Such a UI does not have a graphical component  
+but instead relies on putting together several orthogonal CLI apps   
+to achieve a desired result which is typically a data processing operation.  
+
 EngageUIs focus on user activity in the design of a UI and in its operation.  
 They do not need to use the mouse and are typically keyboard-driven.  
 They stand somewhere between CLIs and WIMP based GUIs.  
