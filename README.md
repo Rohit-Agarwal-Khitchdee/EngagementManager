@@ -20,7 +20,7 @@ layout approaches etc in their WIMP conformant implementations of their UIs.
 What all this means to an app developer is  
 the 3 major OSs offer similar functionality when it comes to GUI design  
 and you are straghtjacketed in terms of what you can do  
-by the control panel paradigm of UI design.  
+by the control panel metaphor of app UI design.  
 
 The command line interface (CLI) is another UI approach that is popular on Linux.  
 Such a UI does not have a graphical component  
