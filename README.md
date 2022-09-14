@@ -8,8 +8,7 @@ used in the design of OS UIs and GUIs for desktop PC apps.
 An OS takes the WIMP UI paradigm and uses it to implement  
 the OS interface with the desktop metaphor  
 and provides a library and tool for writing apps  
-that also conform to this metaphor.  
-WIMP conformant apps use the control panel metaphor.  
+that are based on the control panel metaphor.  
 Control panels with switches, displays and other controls  
 were and are still used to control industrial machines.  
 The contol panel metaphor is a virtual version of this physical interface.  
@@ -17,7 +16,7 @@ It consists of familiar controls (buttons, text input fields, data displays etc)
 laid out inside a control panel (window).  
 Different OSs such as OSX, Windows and Ubuntu  
 differentiate themselves in their choice of graphics, color schemes  
-layout approaches etc in their WIMP conformant implementations of their UIs.  
+layout approaches, animation effects etc in their WIMP conformant implementations of their UIs.  
 What all this means to an app developer is  
 the 3 major OSs offer similar functionality when it comes to GUI design  
 and you are straghtjacketed in terms of what you can do  
@@ -47,8 +46,8 @@ that don't have to be remembered.
 ### What is an EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 An EngageUI is an activity based UI paradigm that consist of  
-a sequence of interactive screens called "activity contexts".  
-Each activity context has access to the entire screen   
+a sequence of interactive screens called "activity context handlers".  
+Each activity context handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A primary activity-context writes to the full-screen  
 while a pop-up activity-context loaded by, and pops up in front of,  
@@ -58,7 +57,7 @@ a primary activity-context.
 
 An activity-context consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
-and an intent handler, that performs the action intended by the user.  
+and an associated intent handler, that performs the action intended by the user.  
 
 ### EngageWX: The EngageUI design toolkit for wxWidgets
 EngageWX.cpp is a "source-code toolkit" for designing actity-based Engage UIs.  
@@ -204,7 +203,7 @@ You will get a message:
 Use the arrow keys to adjust fontsize.  
 This is a live ajdustment.  
 Once you are satisfied, press escape.  
-3. EngageUI's interface with wxWidgets -- EngageUIWindow and the ActivityContextManager.  
+3. EngageUI's interface with wxWidgets -- EngageUIWindow and the UserActivityManager.  
    - App init  
       Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
       All lines in this color are "sub-Blocks".  
@@ -229,9 +228,9 @@ Once you are satisfied, press escape.
       Conversely, any line that end's in a { can be summarized.
 
       Goto line 9072 and move the caret over load_UI_state and goto  
-      load_UI_state is an acillary fn that creates a SACSrcEdr activity-context,  
-      creates a SACManager, pushes the activity-context onto the ACManager,   
-      and returns the ACManager.  
+      load_UI_state is an acillary fn that creates a SACHSrcEdr activity-context handler,  
+      creates a SUAManager, pushes the activity-context handler onto the UAManager,   
+      and returns the UAManager.  
       This is returned by engageUI_init() to the calling EngageUIWindow.  
       Now press Ctrl-Left Arrow this takes you back to engageUI_init.  
       Go back again (Ctrl-left) that's EngageUIWindow's constructor  
@@ -239,50 +238,51 @@ Once you are satisfied, press escape.
       Go back again and we're at the entry point to the app.  
       Summarize MyApp::OnInit().  
       So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
-      which creates a EngageUIWindow::wxWindow, which contains a ACManager  
+      which creates a EngageUIWindow::wxWindow, which contains a UAManager  
       that serves as the interface between wxWidgets and EngageUI.  
       EngageUIWindow initializes EngageUI using a designated engageUI_init() fn.  
       The EngageUI App designer initializes EngageUI in this fn  
-      by creating a primary activity-context, in this case SACSrcEdr  
-      and pushing it into the ACManager before returning the ACManager to EngageUIModalWindow.   
+      by creating a primary activity-context handler, in this case SACHSrcEdr  
+      and pushing it into the UAManager before returning the UAManager to EngageUIModalWindow.   
 
    - App lifetime -- Paint and Kybd event handling  
       ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-11-2022)  
       Goto line 723 EngageUIWindow::OnKeyDown and open it.  
       This is where all key down events are handled by EngageUIWindow.  
       Goto kybd_map  
-      That takes you to the activity-context manager's kybd_map fn.  
+      That takes you to the user activity manager's kybd_map fn.  
       This function set's pWin->m_bUsrActn which tells EngageUI  
       that the user has done something.  
-      Then, call's the kybd_map fn of the activity-context at the top of the AC stack  
-      which is the currently active activity-context.  
+      Then, call's the kybd_map fn of the activity-context handler 
+      at the top of the ACH stack  
+      which is the currently active activity-context handler.  
      
       Go Back (Ctrl-left) and close EngageUIWindow::OnKeyDown.  
       Open EngageUIWindow::OnPaint the paint event handler for EngageUIWindow.  
       This fn calls either disp_state if the event was not caused by the user  
       in which case the state of the entire app needs to be reloaded.  
-      or disp_update in which case the activity-context decides what needs to be updated.  
+      or disp_update in which case the activity-context handler decides what needs to be updated.  
       Goto disp_state.  
       You can read the comments inside 529 then close it.  
-      The activity context manager contains a stack of activity-contexts  
-      and displays each AC's disp_state in back to front order (bottom to top of stack).  
+      The user activity manager contains a stack of activity-context handlers  
+      and displays each handler's disp_state in back to front order (bottom to top of stack).  
       Go back.  
       Now goto disp_update and look that code and come back.  
-      Note that disp_update only calls the AC at the top of the AC stack, the current AC.  
+      Note that disp_update only calls the handler at the top of the ACH stack, the current handler.  
 
       So during execution stage, wxWidgets sends key down and paint events to EngageUIWindow.  
-      EngageUIWindow delegates these to the activity-context manager  
-      which dispatches them appropriately to activity-contexts it manages.  
+      EngageUIWindow delegates these to the user activity manager  
+      which dispatches them appropriately to activity-context handlers it manages.  
   
    - App exit -- EngageUI shutdown and app state serialisation.    
     When an EngageUI app is ready to exit, it tells the wxWidgets app to shutdown  
     which results in ~EngageUIWindow being called.  
     Open 780. EngageUIWIndow::~EngageUIWindow and goto engageUI_exit(), study that code and return.  
-    enagegUI_exit serializes the AC manager and all the ACs it contains to a state file.  
+    enagegUI_exit serializes the UA manager and all the ACHs it contains to a state file.  
     Next time the app is launched, it reads state from this file   
     to reloads the last operational state of the app.  
-    It also free's the ACmanager which in turn free's all the ACs it contains.  
-    The ACmanager and the ACs are all created on the heap.  
+    It also free's the UAmanager which in turn free's all the ACHs it contains.  
+    The UAmanager and the AC Handlers are all created on the heap.  
 
     Press Escape to exit the app.  
     Then relaunch the app. You should be back where you left off.  
@@ -294,61 +294,61 @@ Once you are satisfied, press escape.
     the developer does not need to have anything to do with it's operational context  
     in this case the wxWidgets WIMP GUI.  
     The GUI design of an EngageUI app is purely using EngageUI constructs  
-    namely the activity-context and the user intent handler.  
-    An EngageUI app developer is concerned with EnagegeUI init and exit,  
-    their app's data and the primary activity context/s they design.  
-    This design may use canned pop-up activity contexts from the toolkit.  
+    namely the activity-context handler and the user intent handler.  
+    An EngageUI app developer is concerned with EngageUI init and exit,  
+    their app's data and the primary activity context handler/s they design.  
+    This design may use canned pop-up activity context handlers from the toolkit.  
     This app is a EngageUI source code editor and navigator.  
-    We will walkthrough the design of SACSrcEdr which is its primary activity context  
-    and the user intent handlers that are part of this AC's design.  
+    We will walkthrough the design of SACHSrcEdr which is its primary activity context handler  
+    and the user intent handlers that are part of this ACH's design.  
   
    - Open INITIALIZING AND EXITING ENGAGEUI (BLOCK).  
     Open engageUI_init  
     Goto load_UI_state  
     Goto new_src_edr  
-    Note we are inside the BLOCK: THIS APP'S PRIMARY ACTIVITY-CONTEXT, THE SOURCE EDITOR  
+    Note we are inside the BLOCK: THIS APP'S PRIMARY ACTIVITY-CONTEXT HANDLER, THE SOURCE EDITOR  
     and the SUB_BLOCK: BASE DEFINITIONS  
-    This is where the SACSrcEdr struct is defined  
+    This is where the SACHSrcEdr struct is defined  
     and fns to "new", free and load from a file are defined.  
     Goto pBase->init  
-    This is where an SActivityContext struct is initialized.  
+    This is where an SACHandler struct is initialized.  
     Open the comment block above (311), read the comments in it then close it.  
-    The base mode struct has the following fn ptrs:  
+    The base ACHandler struct has the following fn ptrs:  
      1. fnKey_up  
       This fn is called when a key up event occurs  
      2. fnKybd_map  
       Key down event. It maps the event to an intent and dispatches it  
       to an entry in the fnIntent_handlers array.  
      3. fnDisp_state  
-      Paint event, It paints the base state of the activity-context associated with its data.  
+      Paint event, It paints the base state of the activity-context handler associated with its data.  
      4. fnOn_engage  
-      Called when the activity-context is pushed onto the ACmanager.
-      Any initialization code for the activity-context goes here. 
+      Called when the activity-context is pushed onto the UAmanager.
+      Any initialization code for the activity-context handler goes here. 
      5. fnOn_disengage
-      Called when the activity-context is popped off the ACmanager.
-      Any exit code for the activity-context goes here.
+      Called when the activity-context handler is popped off the UAmanager.
+      Any exit code for the activity-context handler goes here.
      6. fnSerialize  
-      Called by the ACmanager when activity-context's state needs to be loaded or stored.
-      The activity-context stores to or loads from a file it's state.
+      Called by the UAmanager when activity-context handler's state needs to be loaded or stored.
+      The activity-context handler stores to or loads from a file it's state.
      7. fnIntentHandler[40]  
       Called by fnKybd_map to initiate intent handling  
-      and by ACmanager::disp_update to complete display update of the screen.
+      and by UAmanager::disp_update to complete display update of the screen.
 
-   - The base SActivityContext struct's init provides implementations for (i), (iv), and (v).  
-    A concrete activity-context provides for the rest and may override the base (i), (iv) and (v).  
+   - The base SACHandler struct's init provides implementations for (i), (iv), and (v).  
+    A concrete activity-context handler provides for the rest and may override the base (i), (iv) and (v).  
     Now go back to new_src_edr (Ctrl-left).  
     pSrcEdr->init.  
-    As you can see, SACSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
+    As you can see, SACHSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
     with it's own implementation.  
     It also loads all the intent handler fns.  
     Open the enum{...} at 7247.  
-    This is an enumeration of the intent handlers for SACSrcEdr.  
+    This is an enumeration of the intent handlers for SACHSrcEdr.  
     They all start with SEI_ to make them globally unique.  
     Close the enum.  
     PgDn to void load_intents() {...}  
     Open it. This is where the intent handlers are loaded. Close it.
   
-   - Now we'll peep inside some of these activity-context behavior implementation fns.  
+   - Now we'll peep inside some of these activity-context handler behavior implementation fns.  
     Scroll up to SrcEdr->init() and goto src_edr_map.  
     Open 7456.  
     Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
@@ -357,14 +357,14 @@ Once you are satisfied, press escape.
     Go back. Go Back. Go Back. Go Back.  
     Close engageUI_init().  
     Close(BLOCK) INITIALIZING AND EXITING ENGAGEUI  
-    Open (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT, (SUB_BLOCK) INTENT_HANDLERS  
+    Open (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT HANDLER, (SUB_BLOCK) INTENT_HANDLERS  
     Open src_edr_update_caret   
     This is the intent handler for SEI_UPDATE_CARET.  
     You may study this code then close it and its sub-block and block.  
 
     Finally we'll look at src_edr_disp_state.  
     You will find src_edr_disp_state inside  
-    (BLOCK) THIS APP'S PRIMARY ACTIVITY_CONTEXT (SUB_BLOCK) ACTIVITY-CONTEXT IMPLEMENTATION FNs.  
+    (BLOCK) THIS APP'S PRIMARY ACTIVITY_CONTEXT HANDLER (SUB_BLOCK) ACTIVITY-CONTEXT HANDLER IMPLEMENTATION FNs.  
 
 Note:  
 In navigating EngageUI source code, we only keep open  
@@ -373,19 +373,19 @@ This is facilatated by the summarization mechanisms and the goto mechanisms.
 
 ## Building your own EngageUI App  
 We suggest taking the walkthrough in the section above before reading this section.  
-A simple EngageUI app has a single activity-context  
+A simple EngageUI app has a single activity-context handler  
 which defines the behavior of the app from when it's launched till it is exited.  
 Within this primary activity-context's interaction time  
-pop-up activity-contexts may pop up and go away.  
+pop-up activity-context handlers may pop up and go away.  
 The function of these pop-ups is to take care of common extensions  
-to the base behavior of a primary activity-context.  
+to the base behavior of a primary activity-context handler.  
 To create your own EngageUI app using EngageWX.cpp as a template,  
 you define data structs for the data your app will process.  
-Then you you define your primary activity-context that will process this data.  
-As part of this definition, you may use pop-up activity-contexts provided by the toolkit.  
+Then you you define your primary activity-context handler that will process this data.  
+As part of this definition, you may use pop-up activity-context handlers provided by the toolkit.  
 So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS  
-and everything in (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT  
-with you own data structs and primary activity context.  
+and everything in (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT HANDLER
+with you own data structs and primary activity context handler.  
 For now, you can do this using your existing IDE.  
 Our next release due Oct 06 will make EngageWX an IDE.  
 
