@@ -44,7 +44,7 @@ This is because there is a mechanism provided
 to pop-up keyboard selectable on-screen controls for less often used commands  
 that don't have to be remembered.  
 
-## What is an EngageUI?
+### What is an EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 An EngageUI is an activity based UI paradigm that consist of  
 a sequence of interactive screens called "activity contexts".  
@@ -60,7 +60,7 @@ An activity-context consists of a set a "user intents",
 which is an input gesture that expresses intent to do something   
 and an intent handler, that performs the action intended by the user.  
 
-## EngageWX: The EngageUI design toolkit for wxWidgets
+### EngageWX: The EngageUI design toolkit for wxWidgets
 EngageWX.cpp is a "source-code toolkit" for designing actity-based Engage UIs.  
 It has 2 parts:
 1. Source code for the classes, structs and functions  
