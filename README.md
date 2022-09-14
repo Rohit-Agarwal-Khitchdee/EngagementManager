@@ -7,7 +7,7 @@ used in the design of OS UIs and GUIs for desktop PC apps.
 An OS takes the WIMP UI paradigm and uses it to implement  
 the OS interface with the desktop metaphor  
 and provides a library and tool for writing apps  
-that also conform to this metaphor.
+that also conform to this metaphor.  
 WIMP conformant apps use the control panel metaphor.  
 Control panels with switches, displays and other controls  
 were and are still used to control industrial machines.  
