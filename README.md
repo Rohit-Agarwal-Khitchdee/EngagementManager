@@ -40,9 +40,9 @@ Then we set out to create an IDE (based on EngageUI) to design
 EngageUI apps.  
 That's what we are working on now.  
 
-## What is an EngageUI?
+## What is EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
-An EngageUI is an activity based UI paradigm that consist of  
+EngageUI is an activity based UI paradigm that consist of  
 a sequence of interactive screens called "activity context handlers".  
 Each activity context handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
