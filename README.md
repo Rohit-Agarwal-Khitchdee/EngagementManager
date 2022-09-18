@@ -1,6 +1,7 @@
 # EngageUI
 ## Motivation
-EngageUI is a simpler and more efficient replacement for the WIMP UI paradigm.  
+EngageUI is a simpler and more efficient way to build PC desktop app GUIs  
+than the prevalent WIMP based approach.  
 
 ## History
 After several years of using PCs,  
