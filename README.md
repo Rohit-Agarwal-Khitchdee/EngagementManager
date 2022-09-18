@@ -51,7 +51,7 @@ A primary activity-context writes to the full-screen
 while a pop-up activity-context loaded by, and pops up in front of,  
 a primary activity-context.  
 
-![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-22-2022)
+![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
 An activity-context consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
