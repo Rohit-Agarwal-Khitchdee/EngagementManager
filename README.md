@@ -2,48 +2,45 @@
 ## Motivation
 EngageUI is a simpler and more efficient replacement for the WIMP UI paradigm.  
 
-### WIMP
-WIMP stands for Windows, Icons, Menus and Pointers and is the predominant paradigm  
-used in the design of OS UIs and GUIs for desktop PC apps.  
-An OS takes the WIMP UI paradigm and uses it to implement  
-the OS interface with the desktop metaphor  
-and provides a library and tool for writing apps  
-that are based on the control panel metaphor.  
-Control panels with switches, displays and other controls  
-were and are still used to control industrial machines.  
-The contol panel metaphor is a virtual version of this physical interface.  
-It consists of familiar controls (buttons, text input fields, data displays etc)  
-laid out inside a control panel (window).  
-Different OSs such as OSX, Windows and Ubuntu  
-differentiate themselves in their choice of graphics, color schemes  
-layout approaches, animation effects etc in their WIMP conformant implementations of their UIs.  
-What all this means to an app developer is  
-the 3 major OSs offer similar functionality when it comes to GUI design  
-and you are straghtjacketed in terms of what you can do  
-by the control panel metaphor of app UI design.  
-For a large class of apps this is OK.  
-Certain types of apps such a video games break away from this metaphor  
-and design their own custom UIs.  
+## History
+After several years of using PCs,  
+we decided that the PC user interface would be better  
+if we didn't have to use the mouse in the interaction.  
+However, after DOS, all operating system UIs were designed  
+with the mouse in mind based on a paradigm known as WIMP  
+which stands for Windows, Icons, Menus and Pointers.  
+All Modern PC OSs use the desktop metaphor to organize the OSs interface  
+and for apps they use the control panel metaphor.  
+Industrial machines had control panels with a bunch of switches, gauges etc.  
+to control them.  
+The control panel metaphor for PC apps derives from that physical counterpart.  
+A WIMP app has windows (control panels)   
+with a bunch of controls laid out spatially within them.  
+Controls such as button, text input fields, info displays etc.  
+These controls are selected using the pointer (mouse).
 
-### CLIs
-The command line interface (CLI) is another UI approach that is popular on Linux.  
-Such a UI does not have a graphical component  
-but instead relies on putting together several orthogonal CLI apps   
-to achieve a desired result which is typically a data processing operation.  
+The first question we had to answer was  
+would it be possible to design an app's user interface without the use of a pointer  
+for on-screen space selection.  
+An analysis of WIMP apps showed that  
+most apps did not require fine-grained screen space selection.  
+The exceptions being graphics apps and CAD tools.  
+Using the arrow keys on a keyboard,  
+it would be possible to provide the coarse screen-space selection  
+needed by most apps.  
+A further analysis of the design of a keyboard-input only app UI  
+indicated that we could also do away with Windows  
+and replace the control-panel spatial control layout app metaphor  
+with a temporal user-activity based design metaphor.  
+The EngageUI user interface toolkit was designed at this point.  
+The design turned out to be simple and easy to implement.  
+It is described later in this document.  
 
-### The EngageUI
-EngageUIs focus on user activity in the design of a UI and in its operation.  
-They do not need to use the mouse and are typically keyboard-driven.  
-They stand somewhere between CLIs and WIMP based GUIs.  
-Emacs and the VIM editor are examples of keyboard-driven GUI apps.  
-These 2 apps suffer from the drawback that they require the user  
-to learn a large set of keyboard commands.  
-Apps designed using EngageUI need only a handful of commands to be learned.  
-This is because there is a mechanism provided   
-to pop-up keyboard selectable on-screen controls for less often used commands  
-that don't have to be remembered.  
+Then we set out to create an IDE (based on EngageUI) to design  
+EngageUI apps.  
+That's what we are working on now.  
 
-### What is an EngageUI?
+## What is an EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 An EngageUI is an activity based UI paradigm that consist of  
 a sequence of interactive screens called "activity context handlers".  
@@ -59,7 +56,7 @@ An activity-context consists of a set a "user intents",
 which is an input gesture that expresses intent to do something   
 and an associated intent handler, that performs the action intended by the user.  
 
-### EngageWX: The EngageUI design toolkit for wxWidgets
+## EngageWX: The EngageUI design toolkit for wxWidgets
 EngageWX.cpp is a "source-code toolkit" for designing actity-based Engage UIs.  
 It has 2 parts:
 1. Source code for the classes, structs and functions  
@@ -73,7 +70,7 @@ It does not use the mouse, all input controls are through the keyboard.
 This IDE has been designed for Khitchdee's internal use.  
 A developer should customize it for their specific code writing workflow.  
 
-Brief screen-capture demo of an EnageUI app.  
+Brief screen-capture demo of an EngageUI app.  
 EngageWX source code navigation app is being used to navigate EngageWX.cpp.  
 Note that the entire client area is used for displaying source code.  
 Using a 3 column format, ~120 LOC can be displayed at a time.  
