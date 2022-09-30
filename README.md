@@ -1,6 +1,7 @@
 # EngageUI
 ## Motivation
-EngageUI is a simpler, more efficient, keyboard-focused way to build PC desktop app GUIs  
+EngageUI is a simpler, more efficient, keyboard-focused way  
+to build PC desktop app GUIs     
 than the prevalent WIMP, control-panel metaphor based approach.  
 EngageUI apps get all or most of their input from the keyboard.  
 
@@ -35,10 +36,9 @@ The exceptions being graphics apps and CAD tools.
 koioi0ing the arrow keys on a keyboard,  
 it would be possible to provide the coarse screen-space selection  
 needed by most apps.  
-A further analysis of the design of a keyboard-input only app UI  
-indicated that we could also do away with Windows  
-and replace the control-panel spatial control layout app metaphor  
-with a temporal user-activity based design metaphor.  
+A further analysis indicated that  
+if we did away with the spatial control-panel metaphor  
+it could be replaced with a temporal, user-activity based design metaphor.  
 The EngageUI user interface toolkit that was designed as a result    
 turned out to be simple and easy to implement.  
 It is described later in this document.  
@@ -50,11 +50,11 @@ That's what we are working on now.
 ## What is EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 EngageUI is an activity based UI paradigm  
-that is always focused on the user's current activity when interacting with the UI.   It consists of a sequence of interactive screens called "activity handlers".  
+that is always focused on the user's current activity when interacting with the UI.     It consists of a sequence of interactive screens called "activity handlers".  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A primary activity-handler writes to the full-screen  
-while a pop-up activity-handler is loaded by, and pops up in front of,  
+while a pop-up activity-handler is loaded by, and pops-up in front of,  
 a primary activity-handler.  
 An activity manager (window) interfaces with the OSs windowing system  
 and sends events to the activity handlers it manages.  
