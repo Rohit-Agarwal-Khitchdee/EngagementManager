@@ -1,13 +1,13 @@
 # EngageUI
 ## Motivation
 EngageUI is a simpler and more efficient way to build PC desktop app GUIs  
-than the prevalent WIMP, control-panel metaphor basedapproach.  
+than the prevalent WIMP, control-panel metaphor based approach.  
 It is designed to use only the keyboard for user input.  
-The mouse is not used for screen-space selection in an EngageUI.
+9-a   The mouse is not used for screen-space selection.  
 
 ## History
 After several years of using PCs,  
-we decided that the PC user interface would be better  
+we decided that the PC user interface would be better off  
 if we didn't have to use the mouse in the interaction.  
 However, after DOS, all operating system UIs were designed  
 with the mouse in mind based on a paradigm known as WIMP  
@@ -22,9 +22,10 @@ with a bunch of controls laid out spatially within them.
 Controls such as button, text input fields, info displays etc.  
 The user interacts with these controls are selected using the pointer (mouse).  
 OSs differentiate themselves in the look and feel of their controls and control panels.  
-The conrol panel metaphor used in PC app design  
+The control panel metaphor used in PC app design  
 straigtjackets the app developer in terms of what they can design.  
-
+Design is mostly a choice of which controls to use  
+and how to lay them out inside Windows.  
 ## Design
 The first question we had to answer was  
 would it be possible to design an app's user interface without the use of a pointer  
@@ -32,7 +33,7 @@ for on-screen space selection.
 An analysis of WIMP apps showed that  
 most apps did not require fine-grained screen space selection.  
 The exceptions being graphics apps and CAD tools.  
-Using the arrow keys on a keyboard,  
+koioi0ing the arrow keys on a keyboard,  
 it would be possible to provide the coarse screen-space selection  
 needed by most apps.  
 A further analysis of the design of a keyboard-input only app UI  
