@@ -1,9 +1,9 @@
 # EngageUI
 ## Motivation
 EngageUI is a simpler and more efficient way to build PC desktop app GUIs  
-than the prevalent WIMP based approach.  
+than the prevalent WIMP, control-panel metaphor basedapproach.  
 It is designed to use only the keyboard for user input.  
-The mouse is not used in an EngageUI.
+The mouse is not used for screen-space selection in an EngageUI.
 
 ## History
 After several years of using PCs,  
@@ -20,8 +20,8 @@ The control panel metaphor for PC apps derives from that physical counterpart.
 A WIMP app has windows (control panels)   
 with a bunch of controls laid out spatially within them.  
 Controls such as button, text input fields, info displays etc.  
-These controls are selected using the pointer (mouse).  
-OSs differentiate themselves in the look and feel of thier controls and control panels.  
+The user interacts with these controls are selected using the pointer (mouse).  
+OSs differentiate themselves in the look and feel of their controls and control panels.  
 The conrol panel metaphor used in PC app design  
 straigtjackets the app developer in terms of what they can design.  
 
@@ -171,7 +171,7 @@ Go to src, right click, add an existing file.
 Add EngageIDE.cpp and build and run the project.  
 
 ## Running EngageIDE (UI controls):
-When you first run the app, it will ask you for the full path of EngageWX.cpp.  
+When you first run the app, it will ask you for the full path of EngageIDE.cpp.  
 This path will depend on your platform.  
 Examples:  
 OSX -- /Users/$username$/EngageUI/EngageWX.cpp  
