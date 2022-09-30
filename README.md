@@ -2,6 +2,8 @@
 ## Motivation
 EngageUI is a simpler and more efficient way to build PC desktop app GUIs  
 than the prevalent WIMP based approach.  
+It is designed to use only the keyboard for user input.  
+The mouse is not used in an EngageUI.
 
 ## History
 After several years of using PCs,  
@@ -10,7 +12,7 @@ if we didn't have to use the mouse in the interaction.
 However, after DOS, all operating system UIs were designed  
 with the mouse in mind based on a paradigm known as WIMP  
 which stands for Windows, Icons, Menus and Pointers.  
-All Modern PC OSs use the desktop metaphor to organize the OSs interface  
+PC OSs use the desktop metaphor to organize the OS interface  
 and for apps they use the control panel metaphor.  
 Industrial machines had control panels with a bunch of switches, gauges etc.  
 to control them.  
@@ -18,8 +20,12 @@ The control panel metaphor for PC apps derives from that physical counterpart.
 A WIMP app has windows (control panels)   
 with a bunch of controls laid out spatially within them.  
 Controls such as button, text input fields, info displays etc.  
-These controls are selected using the pointer (mouse).
+These controls are selected using the pointer (mouse).  
+OSs differentiate themselves in the look and feel of thier controls and control panels.  
+The conrol panel metaphor used in PC app design  
+straigtjackets the app developer in terms of what they can design.  
 
+## Design
 The first question we had to answer was  
 would it be possible to design an app's user interface without the use of a pointer  
 for on-screen space selection.  
@@ -33,8 +39,8 @@ A further analysis of the design of a keyboard-input only app UI
 indicated that we could also do away with Windows  
 and replace the control-panel spatial control layout app metaphor  
 with a temporal user-activity based design metaphor.  
-The EngageUI user interface toolkit was designed at this point.  
-The design turned out to be simple and easy to implement.  
+The EngageUI user interface toolkit that was designed as a result    
+turned out to be simple and easy to implement.  
 It is described later in this document.  
 
 Then we set out to create an IDE (based on EngageUI) to design  
@@ -43,22 +49,25 @@ That's what we are working on now.
 
 ## What is EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
-EngageUI is an activity based UI paradigm that consist of  
-a sequence of interactive screens called "activity context handlers".  
-Each activity context handler has access to the entire screen   
+EngageUI is an activity based UI paradigm  
+that is always focused on the user's current activity when interacting with the UI.   It consists of a sequence of interactive screens called "activity handlers".  
+Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
-A primary activity-context writes to the full-screen  
-while a pop-up activity-context loaded by, and pops up in front of,  
-a primary activity-context.  
+A primary activity-handler writes to the full-screen  
+while a pop-up activity-handler is loaded by, and pops up in front of,  
+a primary activity-handler.  
+An activity manager (window) interfaces with the OSs windowing system  
+and sends events to the activity handlers it manages.  
 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
-An activity-context consists of a set a "user intents",  
+A user activity consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
 and an associated intent handler, that performs the action intended by the user.  
+An activity handler therefore consists of a set of user intent handlers.  
 
-## EngageWX: The EngageUI design toolkit for wxWidgets
-EngageWX.cpp is a "source-code toolkit" for designing actity-based Engage UIs.  
+## EngageIDE: The EngageUI IDE for wxWidgets
+EngageIDE is an IDE for designing (activity-based) Engage UIs using wxWidgets.  
 It has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the core toolkit -- about 3000 LOC.  
@@ -69,17 +78,43 @@ The IDE will be fully functional in our next release which is Oct 06.
 As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 This IDE has been designed for Khitchdee's internal use.  
-A developer should customize it for their specific code writing workflow.  
+A developer can customize it for their specific code writing workflow.  
 
-Brief screen-capture demo of an EngageUI app.  
-EngageWX source code navigation app is being used to navigate EngageWX.cpp.  
-Note that the entire client area is used for displaying source code.  
-Using a 3 column format, ~120 LOC can be displayed at a time.  
-There are also no on-screen navigational controls  
-All navigational controls are direct-mapped to keystroke sequences.   
-![alt text](https://hex-map.khitchdee.net/ModalWX.gif?v08-22-2022)  
+We have designed this IDE to have the minimum features needed
+for our own app development,
+which is a suite of CAD tools for land-vehicle design.  
+IDE features:  
+1.
+This IDE has keyboard-only input, no mouse input is used.
+So code editing, navigation, building and debugging are all done
+using keyboard commands.
+2.
+It follows an "all in one place" approach to codebase organisation.
+We don't break our codebase into separate .cpp with associated headers.
+All the functions and classes are declared in a single .cpp file.
+This file has in the 10s of Ks of lines of code.
+How do we navigate such a large codefile?
+3.
+We introduce 2 navigational constructs above the language level
+The Block and the Sub-block.
+These demarcators for these constructs are contained inside comment blocks. 
+We make it very easy to fold code using a single keyboard command
+and blocks and sub-blocks can also be folded. 
+Large comment blocks can be included in the code
+without interfering with code readability
+by keeping them folded until they need to be read.
+This helps create an efficient process for code documentation.
+4.
+The entire display area is used to display code in a 3 column format
+with a wider active center column and read-only side columns.
+This makes it possible to view 120 lines of code on a hi-res screen.
+At any given time, only one section of code is kept open (not folded)
+and a mechanism is provided to jump to (or back from) the definition of any symbol.
+This facilitates keeping only one section of code open at a time.
+5.
+This IDE has been designed to develop EngageUI apps.  
 
-## Building EngageWX:
+## Building EngageIDE:
 (interaction time ~1hr) 
 Should you build this app?  
 1. If you want to build a simple keyboard-driven app using wxWidgets.  
@@ -88,7 +123,7 @@ The process is relatively brief in this case
 and this toolkit gives you a GUI design alternative to WIMP  
 that you can start using right away.  
 
-EngageWX.cpp uses the wxWidgets cross-platform UI library.  
+EngageIDE.cpp uses the wxWidgets cross-platform UI library.  
 To build it you first have to download and build the wxWidgets library.  
 
 We recommend using the current development version of wxWidgets which is 3.2.0.  
@@ -102,8 +137,8 @@ The simplest way is to download the source for wxWidgets.
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj in XCode.  
 You should be able to build and run this sample.  
 It builds the wxWidgets library from source as part of its build process.  
-Then you can edit the project settings to replace minimal.cpp with ModalWX.cpp.  
-This will build the EngageWX app.  
+Then you can edit the project settings to replace minimal.cpp with EngageIDE.cpp.  
+This will build the EngageIDE app.  
 
 ### Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.  
@@ -113,8 +148,8 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).  
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
-to create a new VisualStudio project and add EngageWX.cpp to it.  
-This should build the EngageWX app.  
+to create a new VisualStudio project and add EngageIDE.cpp to it.  
+This should build the EngageIDE app.  
 
 ### Linux:
 We recommend using the CodeLite IDE.  
@@ -133,9 +168,9 @@ Close this window.
 Open your project and delete all the src, resource and include files.  
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
-Add EngageWX.cpp and build and run the project.  
+Add EngageIDE.cpp and build and run the project.  
 
-## Running EngageWX (UI controls):
+## Running EngageIDE (UI controls):
 When you first run the app, it will ask you for the full path of EngageWX.cpp.  
 This path will depend on your platform.  
 Examples:  
