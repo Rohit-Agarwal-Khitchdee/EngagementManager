@@ -50,7 +50,8 @@ That's what we are working on now.
 ## What is EngageUI?
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 EngageUI is an activity based UI paradigm  
-that is always focused on the user's current activity when interacting with the UI.     It consists of a sequence of interactive screens called "activity handlers".  
+that is always focused on the user's current activity when interacting with the UI.  
+It consists of a sequence of interactive screens called "activity handlers".  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A primary activity-handler writes to the full-screen  
