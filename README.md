@@ -3,7 +3,7 @@
 EngageUI is a simpler and more efficient way to build PC desktop app GUIs  
 than the prevalent WIMP, control-panel metaphor based approach.  
 It is designed to use only the keyboard for user input.  
-9-a   The mouse is not used for screen-space selection.  
+The mouse is not used for screen-space selection.  
 
 ## History
 After several years of using PCs,  
@@ -447,7 +447,7 @@ since the code is small and relatively simple.
 wxWidgets, which this code uses to access platform features  
 is a fairly robust and well tested library.  
 
-## Contributing to EngageWX
+## Contributing to EngageIDE
 I've written about 9000 lines of code so far.  
 So I have fairly stable code design, code documentation and coding conventions.  
 I welcome all contributions.    
