@@ -10,7 +10,7 @@ After several years of using PCs,
 we decided that the PC user interface would be better off  
 if we didn't have to use the mouse in the interaction.  
 However, after DOS, all operating system UIs were designed  
-with the mouse in mind based on a paradigm known as WIMP  
+with the mouse in mind based on the use of WIMP  
 which stands for Windows, Icons, Menus and Pointers.  
 PC OSs use the desktop metaphor to organize the OS interface  
 and for apps they use the control panel metaphor.  
@@ -26,6 +26,7 @@ The control panel metaphor used in PC app design
 straigtjackets the app developer in terms of what they can design.  
 Design is mostly a choice of which controls to use  
 and how to lay them out inside Windows.  
+
 ## Design
 The first question we had to answer was  
 would it be possible to design an app's user interface without the use of a pointer  
