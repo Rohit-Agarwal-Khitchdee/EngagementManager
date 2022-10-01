@@ -1,7 +1,7 @@
 # EngageUI
 ## Motivation
-EngageUI is a simpler, more efficient, keyboard-focused way  
-to build PC desktop app GUIs     
+EngageUI is a simpler, more efficient, keyboard-focused approach   
+to building PC desktop app GUIs     
 than the prevalent WIMP, control-panel metaphor based approach.  
 EngageUI apps get all or most of their input from the keyboard.  
 
