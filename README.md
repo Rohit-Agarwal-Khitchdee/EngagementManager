@@ -33,7 +33,7 @@ for on-screen space selection.
 An analysis of WIMP apps showed that  
 most apps did not require fine-grained screen space selection.  
 The exceptions being graphics apps and CAD tools.  
-koioi0ing the arrow keys on a keyboard,  
+Using the arrow keys on a keyboard,  
 it would be possible to provide the coarse screen-space selection  
 needed by most apps.  
 A further analysis indicated that  
@@ -85,17 +85,17 @@ We have designed this IDE to have the minimum features needed
 for our own app development,
 which is a suite of CAD tools for land-vehicle design.  
 IDE features:  
-1.
+1.  
 This IDE has keyboard-only input, no mouse input is used.
 So code editing, navigation, building and debugging are all done
 using keyboard commands.
-2.
+2.  
 It follows an "all in one place" approach to codebase organisation.
 We don't break our codebase into separate .cpp with associated headers.
 All the functions and classes are declared in a single .cpp file.
 This file has in the 10s of Ks of lines of code.
 How do we navigate such a large codefile?
-3.
+3.  
 We introduce 2 navigational constructs above the language level
 The Block and the Sub-block.
 These demarcators for these constructs are contained inside comment blocks. 
@@ -105,14 +105,14 @@ Large comment blocks can be included in the code
 without interfering with code readability
 by keeping them folded until they need to be read.
 This helps create an efficient process for code documentation.
-4.
+4.  
 The entire display area is used to display code in a 3 column format
 with a wider active center column and read-only side columns.
 This makes it possible to view 120 lines of code on a hi-res screen.
 At any given time, only one section of code is kept open (not folded)
 and a mechanism is provided to jump to (or back from) the definition of any symbol.
 This facilitates keeping only one section of code open at a time.
-5.
+5.  
 This IDE has been designed to develop EngageUI apps.  
 
 ## Building EngageIDE:
