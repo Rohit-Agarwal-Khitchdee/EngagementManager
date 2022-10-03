@@ -5,10 +5,10 @@ to building PC desktop app GUIs
 than the prevalent WIMP, control-panel metaphor based approach.  
 EngageUI apps get all or most of their input from the keyboard.  
 
-EngageIDE is a literate IDE for developing EngageUI apps.  
+EngageIDE is a literate IDE for developing EngageUI based apps.  
 Instead of using Latex to document the code inline  
 and having a program to extract the documentation from the code,  
-as in Prof. Donald Knuth origional proposal of Lietrate Programming,  
+as in Prof. Donald Knuth's origional proposal of Literate Programming,  
 EngageIDE has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
