@@ -15,7 +15,7 @@ above the language level.
 This makes it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs for code.  
 4. The apps I write are all included in a single .cpp file.  
-It does not use header files except for wxWidgtes library headers.  
+MyDE does not use header files except for wxWidgtes library headers.  
 5. The entire screen is used to display code in a 3 column format.  
 With a wider primary cetner column that is used to edit code  
 and narrower right and left columns  
