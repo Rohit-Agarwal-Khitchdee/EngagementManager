@@ -25,7 +25,7 @@ to see the preceding and following code section.
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 
-I have made this open source so developers can use it to build thier own DEs.  
+I have made this open source to enable developers to build thier own DEs.  
 MyDE has about 10KLOC so it's not to big to modify.  
 It is fairly well documented based on its documentation system.
 
