@@ -21,7 +21,7 @@ MyDE does not use header files except for wxWidgets library headers.
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
 to see the preceding and following code section.  
-6. The code editor is not syntax highlighting.  
+6. The code editor is not syntax highlighting and does not parse as you code.   
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 
