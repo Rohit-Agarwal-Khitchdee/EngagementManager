@@ -5,16 +5,17 @@ Apps built using MyDE run on Linux, Windows and OSX.
 MyDE is implemented using the cross-platform wxWidgets libraries.  
 It has about 10KLOC so it's not to big to modify.  
 It is fairly well documented based on its own documentation system.  
-It serves as a template for a developer to build their own IDE.  
+Its not ready yet but will be a ready to use IDE  
+or it serves as a template for a developer to build their own IDE.  
 
 1. MyDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
-I never need to switch to the mouse while I'm typing out my code.  
+You never need to switch to the mouse while typing out your code.  
 2. Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
 to get out of the way of code readability.  
-Ican be fairly verbose in my documentation  
+You can be fairly verbose in your documentation  
 knowing that a long comment will fold down to a single line  
 to be opened when needed.  
 3. Special demarcation symbols are introduced inside comment blocks  
@@ -22,17 +23,19 @@ to create higher level navigational constructs in the code
 above the language level.  
 These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
-in the 10s of KLOCs for code.  
-4. The apps I write are all included in a single .cpp file.  
+in the 10s of KLOCs.  
+4. The apps you write are all included in a single .cpp file.  
 MyDE does not use header files except for wxWidgets library headers.  
 This "all in one place" approach makes the codebase easier to understand.  
 5. The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
-to see the preceding and following code section.  
+to see the preceding and following code sections.  
 This feature along with foldable blocks and sub-blocks  
 makes scrolling through the entire codebase very easy.  
 Also even the longest functions can entirely fit in a single screen.  
+At any given time you only keep the code you're working on open  
+everything else is kept summarized (folded).
 6. The code editor is not syntax highlighting and does not parse as you code.   
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
@@ -114,7 +117,8 @@ We support this toolkit and it's ready for use by developers.
 The IDE will be fully functional in our next release.  
 As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
-This IDE has been designed for Khitchdee's internal use.  
+This IDE has been designed for Khitchdee's internal use  
+which is to design several CAD tools.  
 
 ## Building MyDE:
 (interaction time ~1hr) 
@@ -128,7 +132,7 @@ that you can start using right away.
 MyDE.cpp uses the wxWidgets cross-platform UI library.  
 To build it you first have to download and build the wxWidgets library.  
 
-We recommend using the current development version of wxWidgets which is 3.2.0.  
+We recommend using the current development version of wxWidgets which is 3.2.1.  
 You can get help for setting up wxWidgets on your PC from this forum:  
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82.  
 The build process for the library depends on your platform:  
@@ -150,15 +154,15 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).  
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
-to create a new VisualStudio project and add EngageIDE.cpp to it.  
-This should build the EngageIDE app.  
+to create a new VisualStudio project and add MyDE.cpp to it.  
+This should build the MyDE app.  
 
 ### Linux:
 We recommend using the CodeLite IDE.  
 After installing codelite from codelite.org,  
 Follow the instructions at:  
-https://docs.codelite.org/wxWidgets/repo320/
-to install wxWidgets 3.2.0.    
+https://docs.codelite.org/wxWidgets/repo321/
+to install wxWidgets 3.2.1.    
 Now, run Codelite and create a new workspace of Type C++.  
 Then add a new project to the workspace of Category: GUI  
 and Type: wxWidgets GUI Application (wxFrame, using wxCrafter)  
@@ -170,10 +174,10 @@ Close this window.
 Open your project and delete all the src, resource and include files.  
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
-Add EngageIDE.cpp and build and run the project.  
+Add MyDE.cpp and build and run the project.  
 
 ## Running MyDE (UI controls):
-When you first run the app, it will ask you for the full path of EngageIDE.cpp.  
+When you first run the app, it will ask you for the full path of MyDE.cpp.  
 This path will depend on your platform.  
 Examples:  
 OSX -- /Users/$username$/MyDE/MyDE.cpp  
