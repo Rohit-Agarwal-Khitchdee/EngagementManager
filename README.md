@@ -1,12 +1,13 @@
 # MyDE
 MyDE is my development environment for building PC desktop GUI apps  
 based on a simple keyboard-focused GUI.  
-Apps built using MyDE run on Linux, Windows and OSX.  
 MyDE is implemented using the cross-platform wxWidgets libraries.  
+Hence apps built using MyDE run on Linux, Windows and OSX.  
 It has about 10KLOC so it's not to big to modify.  
 It is fairly well documented based on its own documentation system.  
-Its not ready yet but will be a ready to use IDE  
-or it serves as a template for a developer to build their own IDE.  
+Its not ready yet but will be a ready to use IDE.  
+We encourage individual developers and development teams  
+to develop thier own IDEs based on MyDE.  
 
 1. MyDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
@@ -67,8 +68,8 @@ and how to lay them out inside Windows.
 
 ## Design
 The first question we had to answer was  
-would it be possible to design an app's user interface without the use of a pointer  
-for on-screen space selection.  
+would it be possible to design an app's user interface  
+without the use of a pointer for on-screen space selection.  
 An analysis of WIMP apps showed that  
 most apps did not require fine-grained screen space selection.  
 The exceptions being graphics apps and CAD tools.  
@@ -82,7 +83,7 @@ The EngageUI user interface toolkit that was designed as a result
 turned out to be simple and easy to implement.  
 It is described later in this document.  
 
-Then we set out to create MyDE an IDE (based on EngageUI) to design  
+Then we set out to create MyDE an IDE (that uses EngageUI) to design  
 EngageUI apps.  
 That's what we are working on now.  
 
@@ -118,7 +119,7 @@ The IDE will be fully functional in our next release.
 As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 This IDE has been designed for Khitchdee's internal use  
-which is to design several CAD tools.  
+which is to design a few domain-specialised CAD tools.  
 
 ## Building MyDE:
 (interaction time ~1hr) 
@@ -328,12 +329,12 @@ Once you are satisfied, press escape.
     Close all open fns and the sub-blocks. PgUp.  
     You're back at the app's start-screen.  
   
-4. Inside EngageUI -- Activity Contexts and User Intents   
+4. Inside EngageUI -- Activity Handlers and User Intents   
    - The EngageUI toolkit has been designed in such a way that for the most part  
     the developer does not need to have anything to do with it's operational context  
     in this case the wxWidgets WIMP GUI.  
     The GUI design of an EngageUI app is purely using EngageUI constructs  
-    namely the activity-context handler and the user intent handler.  
+    namely the activity-handler and the (user) intent handler.  
     An EngageUI app developer is concerned with EngageUI init and exit,  
     their app's data and the primary activity context handler/s they design.  
     This design may use canned pop-up activity context handlers from the toolkit.  
@@ -373,11 +374,11 @@ Once you are satisfied, press escape.
       Called by fnKybd_map to initiate intent handling  
       and by UAmanager::disp_update to complete display update of the screen.
 
-   - The base SACHandler struct's init provides implementations for (i), (iv), and (v).  
-    A concrete activity-context handler provides for the rest and may override the base (i), (iv) and (v).  
+   - The base SActivityHandler struct's init provides implementations for (i), (iv), and (v).  
+    A concrete activity-handler provides for the rest and may override the base (i), (iv) and (v).  
     Now go back to new_src_edr (Ctrl-left).  
     pSrcEdr->init.  
-    As you can see, SACHSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
+    As you can see, SAHSrcEdr's init loads (i),(ii),(iii),(iv) and (vi) fn ptrs   
     with it's own implementation.  
     It also loads all the intent handler fns.  
     Open the enum{...} at 7247.  
@@ -388,7 +389,7 @@ Once you are satisfied, press escape.
     Open it. This is where the intent handlers are loaded. Close it.
   
    - Now we'll peep inside some of these activity-context handler behavior implementation fns.  
-    Scroll up to SrcEdr->init() and goto src_edr_map.  
+    Scroll up to pSrcEdr->init() and goto src_edr_map.  
     Open 7456.  
     Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
     Close 7456.  
@@ -412,28 +413,27 @@ This is facilatated by the summarization mechanisms and the goto mechanisms.
 
 ## Building your own EngageUI App  
 We suggest taking the walkthrough in the section above before reading this section.  
-A simple EngageUI app has a single activity-context handler  
+A simple EngageUI app has a single activity-handler  
 which defines the behavior of the app from when it's launched till it is exited.  
-Within this primary activity-context's interaction time  
-pop-up activity-context handlers may pop up and go away.  
+Within this primary activity's interaction time  
+pop-up activity-handlers may pop up and go away.  
 The function of these pop-ups is to take care of common extensions  
-to the base behavior of a primary activity-context handler.  
-To create your own EngageUI app using EngageWX.cpp as a template,  
+to the base behavior of a primary activity-handler.  
+To create your own EngageUI app using MyDE.cpp as a template,  
 you define data structs for the data your app will process.  
-Then you you define your primary activity-context handler that will process this data.  
-As part of this definition, you may use pop-up activity-context handlers provided by the toolkit.  
+Then you you define your primary activity-handler that will process this data.  
+As part of this definition, you may use pop-up activity-handlers provided by the toolkit.  
 So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS  
-and everything in (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT HANDLER
-with you own data structs and primary activity context handler.  
+and everything in (BLOCK) THIS APP'S PRIMARY ACTIVITY-HANDLER
+with you own data structs and primary activity handler.  
 For now, you can do this using your existing IDE.  
-Our next release due Oct 06 will make EngageWX an IDE.  
+Our next release will have MyDE as a functional IDE.  
 
 ## Next Development Step:
 1. Source code editing.  
 2. Build and fix compile/link time errors and warnings.  
 3. Debug.  
-This will make EngageWX a standalone IDE for building EngageUI apps based on wxWidgets.  
-I estimate this will take 3 months so next release is scheduled for Thursday, Oct 06.  
+This will make MyDE a standalone IDE for building EngageUI apps based on wxWidgets.  
 
 ## EngageUI & WIMP mix and match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
@@ -452,15 +452,15 @@ since the code is small and relatively simple.
 wxWidgets, which this code uses to access platform features  
 is a fairly robust and well tested library.  
 
-## Contributing to EngageIDE
-I've written about 9000 lines of code so far.  
+## Contributing to MyDE
+I've written about 10000 lines of code so far.  
 So I have fairly stable code design, code documentation and coding conventions.  
 I welcome all contributions.    
 Since this is an IDE, relatively simple and has a small and well-documented codebase   
 it is amenable to customisations.  
 I welcome developers sharing their customisations with this project.  
 Some areas where work could be done are
-1. Sample apps. i.e. More primary activity-contexts.
+1. Sample apps. i.e. More primary activity-handlers.
 2. A different approach to parsing source code files.  
 3. Dictionary based text input.
-4. More pop-up activity contexts.  
+4. More pop-up activity-handlers.  
