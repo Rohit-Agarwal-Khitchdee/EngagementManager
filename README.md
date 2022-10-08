@@ -4,30 +4,41 @@ based on a simple keyboard-focused GUI.
 Apps built using MyDE run on Linux, Windows and OSX.  
 MyDE is implemented using the cross-platform wxWidgets libraries.  
 It has about 10KLOC so it's not to big to modify.  
-It is fairly well documented based on its documentation system.
+It is fairly well documented based on its own documentation system.
 It serves as a template for a developer to build their own IDE.  
 
 1. MyDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
+I never need to switch to the mouse while I'm typing out my code.  
 2. Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
 to get out of the way of code readability.  
+Ican be fairly verbose in my documentation  
+knowing that a long comment will fold down to a single line  
+to be opened when needed.  
 3. Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
 above the language level.  
-These constructs can also be folded  
+These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs for code.  
 4. The apps I write are all included in a single .cpp file.  
 MyDE does not use header files except for wxWidgets library headers.  
+This "all in one place" approach makes the codebase easier to understand.  
 5. The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
 to see the preceding and following code section.  
+This feature along with foldable blocks and sub-blocks  
+makes scrolling through the entire codebase very easy.  
+Also even the longest functions can entirely fit in a single screen.  
 6. The code editor is not syntax highlighting and does not parse as you code.   
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
+All the symbol data needed to implement syntax highlighting or parse as you code  
+has been parsed and is available.  
+I don't find these features useful so I haven't implemented them.  
 
 ## History
 After several years of using PCs,  
