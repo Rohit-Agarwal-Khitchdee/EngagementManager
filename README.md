@@ -10,7 +10,7 @@ The code is documented inline using C comment blocks
 and these comment blocks are folded down to single lines  
 to get out of the way of code readability.  
 3. Special demarcation symbols are introduced inside comment blocks  
-to create higher level navigational constrcts in the code  
+to create higher level navigational constructs in the code  
 above the language level.  
 This makes it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs for code.  
