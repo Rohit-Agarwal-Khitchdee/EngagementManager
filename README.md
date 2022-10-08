@@ -1,26 +1,26 @@
 # MyDE
-## Motivation
 MyDE is my development environment for building PC desktop GUI apps  
 based on a simple keyboard-focused GUI.  
-Apps built using MyDE run on Linux Windows and OSX.  
+Apps built using MyDE run on Linux, Windows and OSX.  
 MyDE is implemented using the cross-platform wxWidgets libraries.  
-MyDE does not use the mouse.  
-Is has a very efficient way of folding code.  
+1. MyDE does not use the mouse.  
+All of it's editing building and debugging controls are keyboard based.  
+2. Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
 to get out of the way of code readability.  
-Special demarcation symbols are introduced inside comment blocks  
+3. Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constrcts in the code  
 above the language level.  
 This makes it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs for code.  
-The apps I write are all included in a single .cpp file.  
+4. The apps I write are all included in a single .cpp file.  
 It does not use header files except for wxWidgtes library headers.  
-The entire screen is used to display code in a 3 column format.  
+5. The entire screen is used to display code in a 3 column format.  
 With a wider primary cetner column that is used to edit code  
 and narrower right and left columns  
 to see the preceding and following code section.  
-The code editor is not syntax highlighting.  
+6. The code editor is not syntax highlighting.  
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 
@@ -93,7 +93,7 @@ An activity handler therefore consists of a set of user intent handlers.
 
 ## MyDE: An EngageUI IDE for wxWidgets
 MyDE is an IDE for designing (activity-based) Engage UIs using wxWidgets.  
-It has 2 parts:
+It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the core toolkit -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
