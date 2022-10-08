@@ -3,6 +3,10 @@ MyDE is my development environment for building PC desktop GUI apps
 based on a simple keyboard-focused GUI.  
 Apps built using MyDE run on Linux, Windows and OSX.  
 MyDE is implemented using the cross-platform wxWidgets libraries.  
+It has about 10KLOC so it's not to big to modify.  
+It is fairly well documented based on its documentation system.
+It serves as a template for a developer to build their own IDE.  
+
 1. MyDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
 2. Is has a very efficient way of folding code.  
@@ -24,10 +28,6 @@ to see the preceding and following code section.
 6. The code editor is not syntax highlighting and does not parse as you code.   
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
-
-I have made this open source to enable developers to build thier own DEs.  
-MyDE has about 10KLOC so it's not to big to modify.  
-It is fairly well documented based on its documentation system.
 
 ## History
 After several years of using PCs,  
