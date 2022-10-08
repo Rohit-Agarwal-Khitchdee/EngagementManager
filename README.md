@@ -95,7 +95,7 @@ An activity handler therefore consists of a set of user intent handlers.
 MyDE is an IDE for designing (activity-based) Engage UIs using wxWidgets.  
 It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
-that comprise the core toolkit -- about 3000 LOC.  
+that comprise the EngageUI toolkit -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
 We support this toolkit and it's ready for use by developers.  
 2. Code for an IDE for producing an EngageUI app (about 7000 LOC).  
@@ -103,7 +103,6 @@ The IDE will be fully functional in our next release.
 As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
 This IDE has been designed for Khitchdee's internal use.  
-A developer can customize it for their specific code writing workflow.  
 
 ## Building MyDE:
 (interaction time ~1hr) 
@@ -161,13 +160,13 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
 
-## Running EngageIDE (UI controls):
+## Running MyDE (UI controls):
 When you first run the app, it will ask you for the full path of EngageIDE.cpp.  
 This path will depend on your platform.  
 Examples:  
-OSX -- /Users/$username$/EngageUI/EngageWX.cpp  
-Win -- C:\EngageUI\EngageWX.cpp  
-Linux -- /Home/$username$/EngageUI/EngageWX.cpp  
+OSX -- /Users/$username$/MyDE/MyDE.cpp  
+Win -- C:\MyDE\MyDE.cpp  
+Linux -- /Home/$username$/MyDE/MyDE.cpp  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)  
 If you enter an incorrect path, it will bring up a file selector  
 to select the file from the file system.  
@@ -182,12 +181,12 @@ The current selection is displayed at the top-center of the window.
 To change your selection in the active panel, use up and down arrow.  
 To open a currently selected directory, use right arrow.  
 To open or navigate to a parent directory, use left arrow.  
-To commit to a selection (it has to be EngageWX.cpp in this case)  
+To commit to a selection (it has to be MyDE.cpp in this case)  
 press Enter(Return).  
 If you make an invalid selection, it gets you back to the file selector.  
-Once you have correctly selected EngageWX.cpp,  
-it will load EngageWX.cpp, parse it and display its blocks.  
-Note: On OSX the OS ask you to give permission to EngageWX   
+Once you have correctly selected MyDE.cpp,  
+it will load MyDE.cpp, parse it and display its blocks.  
+Note: On OSX the OS ask you to give permission to MyDE   
 to access certain folders in your home dir.  
 You should give this permission.  
 
@@ -196,21 +195,21 @@ take the code walkthough in the next section.
 Otherwise, basic navigational controls are as follows:
 1. Arrows and PgUp/PgDn to move the caret.  
 2. Any line ending in {...} can be opened with Ctrl(Command)-S.  
-An open section can be summarized using the same command.
+An open section can be summarized (folded) using the same command.
 3. You can jump to any symbol using Ctrl-Right and return using Ctrl-Left.  
 4. Escape exits the app.  
 5. Pressing and releasing Ctrl pops-up a small menu.  
 One of the options enables you to adjust the font size.  
 
-## EngageWX Code Walkthrough
+## MyDE Code Walkthrough
   (interaction time ~30min)   
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C/C++.  
 At the end of this walkthough you will be able to evaluate  
-whether EngageWX offers a better way to navigate a codebase  
+whether MyDE offers a better way to navigate a codebase  
 compared to the IDE you currently use.  
-Also, it will enable you to understand the code in this toolkit.  
+Also, it will enable you to understand the code in the EngageUI toolkit.  
 This will enable you to design and produce your own EngageUI app.  
 
 1. Build and run the app. as described in the preceding section.  
@@ -227,7 +226,7 @@ You will get a message:
 Use the arrow keys to adjust fontsize.  
 This is a live ajdustment.  
 Once you are satisfied, press escape.  
-3. EngageUI's interface with wxWidgets -- EngageUIWindow and the UserActivityManager.  
+3. EngageUI's interface with wxWidgets -- ActivityManagerWindow.  
    - App init  
       Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
       All lines in this color are "sub-Blocks".  
