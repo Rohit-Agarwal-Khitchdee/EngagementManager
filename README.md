@@ -12,7 +12,8 @@ to get out of the way of code readability.
 3. Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
 above the language level.  
-This makes it possible to easily navigate medium sized codebases  
+These constructs can also be folded  
+making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs for code.  
 4. The apps I write are all included in a single .cpp file.  
 MyDE does not use header files except for wxWidgets library headers.  
