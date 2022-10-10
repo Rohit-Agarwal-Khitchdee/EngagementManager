@@ -65,7 +65,19 @@ The control panel metaphor used in PC app design
 straigtjackets the app developer in terms of what they can design.  
 Design is mostly a choice of which controls to use  
 and how to lay them out inside Windows.  
-
+The latest annual developer survey by stack ovewflow:
+https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment
+shows that a iszeable number of developers use keyboard only development tools  
+such as  
+Notepad++ 29.71%.  
+VIM 24.19%.  
+Sublime Text 20.46%.  
+Emacs 5.3%.  
+Neovim 4.99%  
+This corroborates our conclusion that for text intensive tasks such as  
+writing 10s of thousands of lines of code  
+a keyboard focused GUI is more efficient than one that is based on mouse input  
+and thus requires the user to switch between keyboard and mouse input.  
 ## Design
 The first question we had to answer was  
 would it be possible to design an app's user interface  
