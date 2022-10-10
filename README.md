@@ -65,9 +65,10 @@ The control panel metaphor used in PC app design
 straigtjackets the app developer in terms of what they can design.  
 Design is mostly a choice of which controls to use  
 and how to lay them out inside Windows.  
+
 The latest annual developer survey by stack ovewflow:
 https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment.  
-shows that a sizeable number of developers use keyboard only development tools  
+shows that a sizeable number of developers use keyboard input focused development tools  
 such as  
 Notepad++ 29.71%.  
 VIM 24.19%.  
