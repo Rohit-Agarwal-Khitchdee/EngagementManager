@@ -47,7 +47,7 @@ I don't find these features useful so I haven't implemented them.
 ## History
 After several years of using PCs,  
 we decided that the PC user interface would be better off  
-if we didn't have to use the mouse in the interaction.  
+if we didn't have to constantly switch to the mouse in the interaction.  
 However, after DOS, all operating system UIs were designed  
 with the mouse in mind based on the use of WIMP  
 which stands for Windows, Icons, Menus and Pointers.  
