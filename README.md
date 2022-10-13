@@ -11,7 +11,8 @@ to develop thier own IDEs based on MyDE.
 
 1. MyDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
-You never need to switch to the mouse while typing out your code.  
+You never need to switch to the mouse while typing out your code  
+so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
 2. Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
@@ -26,17 +27,17 @@ These constructs -- blocks and sub-blocks -- can also be folded
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
 4. The apps you write are all included in a single .cpp file.  
-MyDE does not use header files except for wxWidgets library headers.  
+MyDE does not use header files except for library (such as wxWidgets) headers.  
 This "all in one place" approach makes the codebase easier to understand.  
 5. The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
 to see the preceding and following code sections.  
-This feature along with foldable blocks and sub-blocks  
-makes scrolling through the entire codebase very easy.  
 Also even the longest functions can entirely fit in a single screen.  
 At any given time you only keep the code you're working on open  
 everything else is kept summarized (folded).
+This feature along with foldable blocks and sub-blocks  
+makes scrolling through the entire codebase very easy.  
 6. The code editor is not syntax highlighting and does not parse as you code.   
 MyDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
@@ -49,7 +50,7 @@ After several years of using PCs,
 we decided that the PC user interface would be better off  
 if we didn't have to constantly switch to the mouse in the interaction.  
 However, after DOS, all operating system UIs were designed  
-with the mouse in mind based on the use of WIMP  
+focused on using a separate pointing device based on the use of WIMP  
 which stands for Windows, Icons, Menus and Pointers.  
 PC OSs use the desktop metaphor to organize the OS interface  
 and for apps they use the control panel metaphor.  
@@ -94,6 +95,7 @@ needed by most apps.
 A further analysis indicated that  
 if we did away with the spatial control-panel metaphor  
 it could be replaced with a temporal, user-activity based design metaphor.  
+We call this new UI design approach EngageUI.  
 The EngageUI user interface toolkit that was designed as a result    
 turned out to be simple and easy to implement.  
 It is described later in this document.  
