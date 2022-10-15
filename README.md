@@ -458,16 +458,9 @@ it is possible to incorporate an EngageUI window into a regular WIMP style app
 using wxAUI with the EngageUI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
-## A note on code quality
-I've only just gotten this code to work.  
-There are a several hardcoded values in the code  
-and several places where error conditions are not checked.  
-This code has not been tested and is very brittle.  
-It's posted as a proof-of-concept demo.  
-However, the source code toolkit part of the code is relatively stable,    
-since the code is small and relatively simple.    
-wxWidgets, which this code uses to access platform features  
-is a fairly robust and well tested library.  
+## Development status
+The code currently posted has only code navigational features.  
+The next version will have editing, build and debug.
 
 ## Contributing to MyDE
 I've written about 10000 lines of code so far.  
