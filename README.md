@@ -6,8 +6,6 @@ Hence apps built using MyDE run on Linux, Windows and OSX.
 It has about 10KLOC so it's not too big to modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
 Its not ready yet but will be a ready to use IDE.  
-We encourage individual developers and development teams  
-to develop thier own IDEs based on MyDE.  
 
 1. MyDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
