@@ -1,13 +1,13 @@
-# MyDE
-MyDE is my development environment for building PC desktop GUI apps  
-based on a simple keyboard-focused GUI.  
-MyDE is implemented using the cross-platform wxWidgets libraries.  
-Hence apps built using MyDE run on Linux, Windows and OSX.  
+# EngageIDE
+EngageIDE is an IDE for building PC desktop GUI apps  
+based on a simple keyboard-focused GUI called EngageUI.  
+EngageIDE is implemented using the cross-platform wxWidgets libraries.  
+Hence apps built using EngageIDE run on Linux, Windows and OSX.  
 It has about 10KLOC so it's not too big to modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
 Its not ready yet but will be a ready to use IDE.  
 
-1. MyDE does not use the mouse.  
+1. EngageIDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
 so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
@@ -25,7 +25,7 @@ These constructs -- blocks and sub-blocks -- can also be folded
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
 4. The apps you write are all included in a single .cpp file.  
-MyDE does not use header files except for library (such as wxWidgets) headers.  
+EngageIDE does not use header files except for library (such as wxWidgets) headers.  
 This "all in one place" approach makes the codebase easier to understand.  
 5. The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
@@ -37,7 +37,7 @@ everything else is kept summarized (folded).
 This feature along with foldable blocks and sub-blocks  
 makes scrolling through the entire codebase very easy.  
 6. The code editor is not syntax highlighting and does not parse as you code.   
-MyDE does connect to a command line compiler and debugger  
+EngageIDE does connect to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 All the symbol data needed to implement syntax highlighting or parse as you code  
 has been parsed and is available.  
@@ -98,7 +98,7 @@ The EngageUI user interface toolkit that was designed as a result
 turned out to be simple and easy to implement.  
 It is described later in this document.  
 
-Then we set out to create MyDE an IDE (that uses EngageUI) to design  
+Then we set out to create EngageIDE an IDE (that uses EngageUI) to design  
 EngageUI apps.  
 That's what we are working on now.  
 
@@ -122,8 +122,8 @@ which is an input gesture that expresses intent to do something
 and an associated intent handler, that performs the action intended by the user.  
 An activity handler therefore consists of a set of user intent handlers.  
 
-## MyDE: An EngageUI IDE for wxWidgets
-MyDE is an IDE for designing (activity-based) Engage UIs using wxWidgets.  
+## EngageIDE: An EngageUI IDE for wxWidgets
+EngageIDE is an IDE for designing (activity-based) Engage UIs using wxWidgets.  
 It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the EngageUI toolkit -- about 3000 LOC.  
@@ -136,7 +136,7 @@ It does not use the mouse, all input controls are through the keyboard.
 This IDE has been designed for Khitchdee's internal use  
 which is to design a few domain-specialised CAD tools.  
 
-## Building MyDE:
+## Building EngageIDE:
 (interaction time ~1hr) 
 Should you build this app?  
 1. If you want to build a simple keyboard-driven app using wxWidgets.  
@@ -145,8 +145,8 @@ The process is relatively brief in this case
 and this toolkit gives you a GUI design alternative to WIMP  
 that you can start using right away.  
 
-MyDE.cpp uses the wxWidgets cross-platform UI library.  
-To build it you first have to download and build the wxWidgets library.  
+EngageIDE.cpp uses the wxWidgets cross-platform UI libraries.  
+To build it you first have to download and build the wxWidgets libraries.  
 
 We recommend using the current development version of wxWidgets which is 3.2.1.  
 You can get help for setting up wxWidgets on your PC from this forum:  
@@ -159,8 +159,8 @@ The simplest way is to download the source for wxWidgets.
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj in XCode.  
 You should be able to build and run this sample.  
 It builds the wxWidgets library from source as part of its build process.  
-Then you can edit the project settings to replace minimal.cpp with MyDE.cpp.  
-This will build the MyDE app.  
+Then you can edit the project settings to replace minimal.cpp with EngageIDE.cpp.  
+This will build the EngageIDE app.  
 
 ### Windows:
 We recommend Visual Studio 2022 Community edition as the IDE.  
@@ -170,8 +170,8 @@ You open wx_vc17.sln in Visual Studio 2022
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).  
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
-to create a new VisualStudio project and add MyDE.cpp to it.  
-This should build the MyDE app.  
+to create a new VisualStudio project and add EngageIDE.cpp to it.  
+This should build the EngageIDE app.  
 
 ### Linux:
 We recommend using the CodeLite IDE.  
@@ -190,15 +190,15 @@ Close this window.
 Open your project and delete all the src, resource and include files.  
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
-Add MyDE.cpp and build and run the project.  
+Add EngageIDE.cpp and build and run the project.  
 
-## Running MyDE (UI controls):
-When you first run the app, it will ask you for the full path of MyDE.cpp.  
+## Running EngageIDE (UI controls):
+When you first run the app, it will ask you for the full path of EngageIDE.cpp.  
 This path will depend on your platform.  
 Examples:  
-OSX -- /Users/$username$/MyDE/MyDE.cpp  
-Win -- C:\MyDE\MyDE.cpp  
-Linux -- /Home/$username$/MyDE/MyDE.cpp  
+OSX -- /Users/$username$/EngageIDE/EngageIDE.cpp  
+Win -- C:\EngageIDE\EngageIDE.cpp  
+Linux -- /Home/$username$/EngageIDE/EngageIDE.cpp  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)  
 If you enter an incorrect path, it will bring up a file selector  
 to select the file from the file system.  
@@ -213,12 +213,12 @@ The current selection is displayed at the top-center of the window.
 To change your selection in the active panel, use up and down arrow.  
 To open a currently selected directory, use right arrow.  
 To open or navigate to a parent directory, use left arrow.  
-To commit to a selection (it has to be MyDE.cpp in this case)  
+To commit to a selection (it has to be EngageIDE.cpp in this case)  
 press Enter(Return).  
 If you make an invalid selection, it gets you back to the file selector.  
-Once you have correctly selected MyDE.cpp,  
-it will load MyDE.cpp, parse it and display its blocks.  
-Note: On OSX the OS ask you to give permission to MyDE   
+Once you have correctly selected EngageIDE.cpp,  
+it will load EngageIDE.cpp, parse it and display its blocks.  
+Note: On OSX the OS ask you to give permission to EngageIDE   
 to access certain folders in your home dir.  
 You should give this permission.  
 
@@ -233,13 +233,13 @@ An open section can be summarized (folded) using the same command.
 5. Pressing and releasing Ctrl pops-up a small menu.  
 One of the options enables you to adjust the font size.  
 
-## MyDE Code Walkthrough
+## EngageIDE Code Walkthrough
   (interaction time ~30min)   
 We guide you through a sequence of steps  
 that explain how this code works and how it is navigated.  
 The only pre-requisite is familiarity with C/C++.  
 At the end of this walkthough you will be able to evaluate  
-whether MyDE offers a better way to navigate a codebase  
+whether EngageIDE offers a better way to navigate a codebase  
 compared to the IDE you currently use.  
 Also, it will enable you to understand the code in the EngageUI toolkit.  
 This will enable you to design and produce your own EngageUI app.  
@@ -448,7 +448,7 @@ Our next release will have MyDE as a functional IDE.
 1. Source code editing.  
 2. Build and fix compile/link time errors and warnings.  
 3. Debug.  
-This will make MyDE a standalone IDE for building EngageUI apps based on wxWidgets.  
+This will make EngageIDE a standalone IDE for building EngageUI apps based on wxWidgets.  
 
 ## EngageUI & WIMP mix and match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
@@ -460,7 +460,7 @@ Effectively mixing these 2 styles of UI design.
 The code currently posted has only code navigational features.  
 The next version will have editing, build and debug.
 
-## Contributing to MyDE
+## Contributing to EngageIDE
 I've written about 10000 lines of code so far.  
 So I have fairly stable code design, code documentation and coding conventions.  
 I welcome all contributions.    
@@ -472,3 +472,4 @@ Some areas where work could be done are
 2. A different approach to parsing source code files.  
 3. Dictionary based text input.
 4. More pop-up activity-handlers.  
+5. Syntax highlighting in the IDE.
