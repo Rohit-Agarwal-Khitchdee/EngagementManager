@@ -78,7 +78,7 @@ This corroborates our conclusion that for text intensive tasks such as
 writing 10s of thousands of lines of code  
 a keyboard focused GUI is more efficient than one that is based on mouse input  
 and thus requires the user to switch between keyboard and mouse input.  
-MyDE and its keyboard-focused GUI (EngageUI) could be used to write  
+EngageIDE and its keyboard-focused GUI (EngageUI) could be used to write  
 cross-platform versions of any of the above list of tools.  
 ## Design
 The first question we had to answer was  
