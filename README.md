@@ -7,27 +7,32 @@ It has about 10KLOC so it's not too big to modify and loads instantly.
 It is fairly well documented based on its own documentation system.  
 Its not ready yet but will be a ready to use IDE.  
 
-1. EngageIDE does not use the mouse.  
+1. No mouse usage, keyboard-only interface.  
+EngageIDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
 so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
-2. Is has a very efficient way of folding code.  
+2. Very efficient code-folding.  
+Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
 to get out of the way of code readability.  
 You can be fairly verbose in your documentation  
 knowing that a long comment will fold down to a single line  
 to be opened when needed.  
-3. Special demarcation symbols are introduced inside comment blocks  
+3. Efficient code navigation.  
+Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
 above the language level.  
 These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
-4. The apps you write are all included in a single .cpp file.  
+4. Simplified codebase organisation.  
+The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
 This "all in one place" approach makes the codebase easier to understand.  
-5. The entire screen is used to display code in a 3 column format.  
+5. Efficient code display.  
+The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
 to see the preceding and following code sections.  
@@ -36,12 +41,9 @@ At any given time you only keep the code you're working on open
 everything else is kept summarized (folded).
 This feature along with foldable blocks and sub-blocks  
 makes scrolling through the entire codebase very easy.  
-6. The code editor is not syntax highlighting and does not parse as you code.   
-EngageIDE does connect to a command line compiler and debugger  
+6. Integrated compiler/debugger controls.  
+EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
-All the symbol data needed to implement syntax highlighting or parse as you code  
-has been parsed and is available.  
-I don't find these features useful so I haven't implemented them.  
 
 ## History
 After several years of using PCs,  
