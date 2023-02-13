@@ -12,7 +12,7 @@ EngageIDE does not use the mouse.
 All of it's editing building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
 so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
-2. Very efficient code-folding.  
+2. <b>Very efficient code-folding</b>.  
 Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
@@ -20,18 +20,18 @@ to get out of the way of code readability.
 You can be fairly verbose in your documentation  
 knowing that a long comment will fold down to a single line  
 to be opened when needed.  
-3. Efficient code navigation.  
+3. <b>Efficient code navigation</b>.  
 Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
 above the language level.  
 These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
-4. Simplified codebase organisation.  
+4. <b>Simplified codebase organisation</b>.  
 The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
 This "all in one place" approach makes the codebase easier to understand.  
-5. Efficient code display.  
+5. <b>Efficient code display</b>.  
 The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
@@ -41,7 +41,7 @@ At any given time you only keep the code you're working on open
 everything else is kept summarized (folded).
 This feature along with foldable blocks and sub-blocks  
 makes scrolling through the entire codebase very easy.  
-6. Integrated compiler/debugger controls.  
+6. <b>Integrated compiler/debugger controls</b>.  
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 
