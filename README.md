@@ -12,7 +12,7 @@ EngageIDE does not use the mouse.
 All of it's editing building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
 so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
-2. <b>Very efficient code-folding</b>.  
+2. <b>Efficient code-documentation system</b>.  
 Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
 and these comment blocks are folded down to single lines  
