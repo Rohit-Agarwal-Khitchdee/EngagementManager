@@ -45,7 +45,7 @@ makes scrolling through the entire codebase very easy.
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 
-## History
+## Engage-UI History
 After several years of using PCs,  
 we decided that the PC user interface would be better off  
 if we didn't have to constantly switch to the mouse in the interaction.  
@@ -69,7 +69,7 @@ and how to lay them out inside Windows.
 
 The latest annual developer survey by stack ovewflow:
 https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment.  
-shows that a sizeable number of developers use keyboard input focused development tools  
+shows that a sizeable number of developers use keyboard-input focused development tools  
 such as  
 Notepad++ 29.71%.  
 VIM 24.19%.  
@@ -82,7 +82,7 @@ a keyboard focused GUI is more efficient than one that is based on mouse input
 and thus requires the user to switch between keyboard and mouse input.  
 EngageIDE and its keyboard-focused GUI (EngageUI) could be used to write  
 cross-platform versions of any of the above list of tools.  
-## Design
+## Engage-UI Design
 The first question we had to answer was  
 would it be possible to design an app's user interface  
 without the use of a pointer for on-screen space selection.  
