@@ -7,7 +7,7 @@ It has about 10KLOC so it's not too big to modify and loads instantly.
 It is fairly well documented based on its own documentation system.  
 Its not ready yet but will be a ready to use IDE.  
 
-1. <b>No mouse usage, keyboard-only interface.  
+1. <b>No mouse usage, keyboard-only interface</b>.  
 EngageIDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
