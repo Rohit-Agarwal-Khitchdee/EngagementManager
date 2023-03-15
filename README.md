@@ -1,6 +1,26 @@
 # What is EngageUI?
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
+EngageUI consists of  
+1. A session manager that interfaces with the OSs windowing  
+system and manages the user's interaction session.  
+2. An abstract activity handler structure that the app populates  
+with the ability to handle a specific user activity  
+and pushes onto the session manager.
+3. A small set of predefined pop-up activity handlers  
+that are accessed through and managed by the session manager.  
+These pop-up activity handlers are transient and handle common interaction tasks  
+such as providing access to the OSs file system.  
+Pop-up activity handlers are utilized by the app's main activity handlers.  
+
+To create an EngageUI app  
+you determine the primary activity/activities the user will be involved with  
+in their interaction with the app.  
+Then you create an ActivityHandler for each one of those activities.  
+Then you push the first ActivityHandler onto the session manager.
+
+
+
 It consists of a sequence of interactive screens called "activity handlers".  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
