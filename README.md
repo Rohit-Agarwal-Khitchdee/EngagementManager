@@ -66,10 +66,7 @@ makes scrolling through the entire codebase very easy.
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
 
-
-## EngageIDE: An EngageUI IDE for wxWidgets
-EngageIDE is an IDE for designing (activity-based) Engage UIs using wxWidgets.  
-It's source code has 2 parts:
+EngageIDE's source code has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the EngageUI toolkit -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
