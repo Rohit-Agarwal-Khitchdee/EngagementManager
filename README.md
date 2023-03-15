@@ -10,7 +10,7 @@ Within the context of an activity handler all controls are keyboard driven
 via a set of keyboard shortcuts.  
 A standardised interface is presented for querying the current keyboard map.  
 Pressing Ctrl-H within any ActivityHandler, displays the user-input options currently available.  
-The mouse may optionally be used, but only for onscreen space selection (not for controls).
+The mouse may optionally be used, but only for onscreen space selection (not for controls).  
 The EngageUI toolkit also provides for automatic state preservation  
 between sessions of an app.  
 
