@@ -498,7 +498,6 @@ it could be replaced with a temporal, user-activity based design metaphor.
 We call this new UI design approach EngageUI.  
 The EngageUI user interface toolkit that was designed as a result    
 turned out to be simple and easy to implement.  
-It is described later in this document.  
 
 Then we set out to create EngageIDE an IDE (that uses EngageUI) to design  
 EngageUI apps.  
