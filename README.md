@@ -1,13 +1,16 @@
 # What is EngageUI?
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
+It is designed to use keyboard input for all user controls  
+with the mouse being used, if needed, for onscreen space selection only. 
+EngageUI apps have less cluttered screens and are easier to use for their users.  
+They are also easier to design and implement for the developer.  
+
 An EngageUI app consists of an app-dashboard  
 that enables the user to select from a set of activities described visually onscreen.  
-This selection process is completely keyboard-driven.  
-The app dashboard can be launched at any time within any activity by pressing Ctrl.  
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all controls are keyboard driven  
-via a set of keyboard shortcuts.  
+via a set of keyboard "shortcuts".  
 A standardised interface is presented for querying the current keyboard map.  
 Pressing Ctrl-H within any ActivityHandler, displays the user-input options currently available.  
 The mouse may optionally be used, but only for onscreen space selection (not for controls).  
@@ -50,10 +53,10 @@ An activity handler therefore consists of a set of user intent handlers.
 EngageIDE is an IDE for building PC desktop GUI apps  
 based on a simple keyboard-focused GUI called EngageUI.  
 EngageIDE is implemented using the cross-platform wxWidgets libraries.  
-Hence apps built using EngageIDE run on Linux, Windows and OSX.  
-It has about 10KLOC so it's not too big to modify and loads instantly.  
+EngageIDE can be used to produce apps in C++ using wxWidgets and the EngageUI toolkit  
+that run on Linux, Windows and OSX through a single codebase.    
+It has about 15KLOC so it's not too big to modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
-Its not ready yet but will be a ready to use IDE.  
 
 1. <b>No mouse usage, keyboard-only interface</b>.  
 EngageIDE does not use the mouse.  
@@ -102,8 +105,7 @@ We support this toolkit and it's ready for use by developers.
 The IDE will be fully functional in our next release.  
 As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
 It does not use the mouse, all input controls are through the keyboard.  
-This IDE has been designed for Khitchdee's internal use  
-which is to design a few domain-specialised CAD tools.  
+This IDE is also being used internally by Khitchdee for its app development.  
 
 ## Building EngageIDE:
 (interaction time ~1hr) 
