@@ -1,41 +1,48 @@
 # What is EngageUI?
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
-EngageUI consists of  
-1. A session manager that interfaces with the OSs windowing  
+An EngageUI app consists of an app-dashboard  
+that enables the user to select from a set of activities described visually onscreen.  
+This selection process is completely keyboard-driven.  
+The app dashboard can be launched at any time within any activity by pressing Ctrl.  
+Once an activity has been selected, an activity handler for that activity is launched.  
+Within the context of an activity handler all controls are keyboard driven  
+via a set of keyboard shortcuts.  
+A standardised interface is presented for querying the current keyboard map.  
+Pressing Ctrl-H within any ActivityHandler, displays the user-input options currently available.  
+The mouse may optionally be used, but only for onscreen space selection (not for controls).
+The EngageUI toolkit also provides for automatic state preservation  
+between sessions of an app.  
+
+The EngageUI toolkit consists of  
+1. A SessionManager that interfaces with the OSs windowing  
 system and manages the user's interaction session.  
 2. An abstract activity handler structure that the app populates  
-with the ability to handle a specific user activity  
-and pushes onto the session manager.
+with the ability to handle a specific user activity.
 3. A small set of predefined pop-up activity handlers  
 that are accessed through and managed by the session manager.  
 These pop-up activity handlers are transient and handle common interaction tasks  
-such as providing access to the OSs file system.  
-Pop-up activity handlers are utilized by the app's main activity handlers.  
+such as providing access to the OSs file system  
+and implementing an app's dashboard.  
 
-To create an EngageUI app  
-you determine the primary activity/activities the user will be involved with  
-in their interaction with the app.  
-Then you create an ActivityHandler for each one of those activities.  
-Then you push the first ActivityHandler onto the session manager.
+When the app is launched, if it's for the first time,  
+the SessionManager presents the user with the app's dashboard.  
+When the app is exited, the SessionManager serializes its state to disk.  
+Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
 
-
-
-It consists of a sequence of interactive screens called "activity handlers".  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A primary activity-handler writes to the full-screen  
 while a pop-up activity-handler is loaded by, and pops-up in front of,  
 a primary activity-handler.  
-A session manager (window) interfaces with the OSs windowing system  
-and manages the activity handlers loaded into it by the app.  
-
-![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
 A user activity consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
 and an associated "intent handler", that performs the action intended by the user.  
 An activity handler therefore consists of a set of user intent handlers.  
+
+![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
+
 
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
