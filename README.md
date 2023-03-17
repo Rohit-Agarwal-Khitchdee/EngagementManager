@@ -1,4 +1,6 @@
 # What is EngageUI?
+EngageUI is a simpler, keyboard-focused alternative  
+to the prevalent WIMP GUI paradigm.  
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
 It is designed to use keyboard input for all user controls  
@@ -6,6 +8,8 @@ with the mouse being used, if needed, for onscreen space selection only.
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
 
+EngageUI takes a temporal rather than spatial approach to the GUI.  
+It does not use windows and there are no spatial layout constructs.  
 An EngageUI app consists of an app-dashboard  
 that enables the user to select from a set of activities described visually onscreen.  
 Once an activity has been selected, an activity handler for that activity is launched.  
@@ -17,7 +21,7 @@ The mouse may optionally be used, but only for onscreen space selection (not for
 The EngageUI toolkit also provides for automatic state preservation  
 between sessions of an app.  
 
-The EngageUI toolkit consists of  
+EngageUI is provided as an MIT licences source-code toolkit that consists of  
 1. A SessionManager that interfaces with the OSs windowing  
 system and manages the user's interaction session.  
 2. An abstract activity handler structure that the app populates  
@@ -51,7 +55,7 @@ An activity handler therefore consists of a set of user intent handlers.
 
 # EngageIDE
 EngageIDE is an IDE for building PC desktop GUI apps  
-based on a simple keyboard-focused GUI called EngageUI.  
+based on the EngageUI source-code toolkit.  
 EngageIDE is implemented using the cross-platform wxWidgets libraries.  
 EngageIDE can be used to produce apps in C++ using wxWidgets and the EngageUI toolkit  
 that run on Linux, Windows and OSX through a single codebase.    
