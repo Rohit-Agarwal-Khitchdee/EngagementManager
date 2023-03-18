@@ -12,16 +12,14 @@ They are also easier to design and implement for the developer.
 <b>EngageUI apps are simple to design</b>  
 EngageUI takes a temporal rather than spatial approach to the GUI.  
 It does not use windows and there are no spatial layout constructs.  
-An EngageUI app consists of an app-dashboard  
-that enables the user to select from a set of activities described visually onscreen.  
+An EngageUI app consists of 2 components:
+1. An app-dashboard with an onscreen selection of possible user activities.  
+2. A set of activity-handlers for the user activities provided by the app.
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all controls are keyboard driven  
 via a set of keyboard "shortcuts".  
-A standardised interface is presented for querying the current keyboard map.  
-Pressing Ctrl-H within any ActivityHandler, displays the user-input options currently available.  
 The mouse may optionally be used, but only for onscreen space selection (not for controls).  
-The EngageUI toolkit also provides for automatic state preservation  
-between sessions of an app.  
+A standardised interface is presented for querying the current keyboard map.  
 
 <b>The form and contents of the EngageUI toolkit</b>  
 EngageUI is provided as an MIT licences source-code toolkit that consists of  
@@ -30,7 +28,7 @@ system and manages the user's interaction session.
 2. An abstract activity handler structure that the app populates  
 with the ability to handle a specific user activity.
 3. A small set of predefined pop-up activity handlers  
-that are accessed through and managed by the session manager.  
+that are accessed through and managed by the SessionManager.  
 These pop-up activity handlers are transient and handle common interaction tasks  
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
