@@ -9,6 +9,7 @@ with the mouse being used, if needed, for onscreen space selection only.
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
 
+<b>EngageUI apps are simple to design</b>  
 EngageUI takes a temporal rather than spatial approach to the GUI.  
 It does not use windows and there are no spatial layout constructs.  
 An EngageUI app consists of an app-dashboard  
@@ -22,6 +23,7 @@ The mouse may optionally be used, but only for onscreen space selection (not for
 The EngageUI toolkit also provides for automatic state preservation  
 between sessions of an app.  
 
+<b>The form of the EngageUI toolkit</b>  
 EngageUI is provided as an MIT licences source-code toolkit that consists of  
 1. A SessionManager that interfaces with the OSs windowing  
 system and manages the user's interaction session.  
@@ -33,17 +35,20 @@ These pop-up activity handlers are transient and handle common interaction tasks
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
+<b>Feature: Automatic app persistence across user sessions</b>  
 When the app is launched, if it's for the first time,  
 the SessionManager presents the user with the app's dashboard.  
 When the app is exited, the SessionManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
 
+<b>Basics: The Activity-Handler</b>  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A primary activity-handler writes to the full-screen  
 while a pop-up activity-handler is loaded by, and pops-up in front of,  
 a primary activity-handler.  
 
+<b>Basics: The User-Intent-Handler</b>  
 A user activity consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
 and an associated "intent handler", that performs the action intended by the user.  
