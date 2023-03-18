@@ -54,9 +54,10 @@ which is an input gesture that expresses intent to do something
 and an associated "intent handler", that performs the action intended by the user.  
 An activity handler therefore consists of a set of user intent handlers.  
 
+<b>Illustration: EngageUI in action</b>  
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
-
+<b>Illustration: A comparison of EngageUI and WIMP</b>  
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 # EngageIDE
