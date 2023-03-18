@@ -1,4 +1,5 @@
 # What is EngageUI?
+<b>A simpler, keyboard-focused alternative to WIMP</b>  
 EngageUI is a simpler, keyboard-focused alternative  
 to the prevalent WIMP GUI paradigm.  
 EngageUI is an activity based UI paradigm  
