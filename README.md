@@ -23,7 +23,7 @@ The mouse may optionally be used, but only for onscreen space selection (not for
 The EngageUI toolkit also provides for automatic state preservation  
 between sessions of an app.  
 
-<b>The form of the EngageUI toolkit</b>  
+<b>The form and contents of the EngageUI toolkit</b>  
 EngageUI is provided as an MIT licences source-code toolkit that consists of  
 1. A SessionManager that interfaces with the OSs windowing  
 system and manages the user's interaction session.  
