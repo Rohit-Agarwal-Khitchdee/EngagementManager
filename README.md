@@ -41,11 +41,11 @@ When the app is launched, if it's for the first time,
 the SessionManager presents the user with the app's dashboard.  
 When the app is exited, the SessionManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
-2. <b>Automatic app-dashboard handling</b>
+2. <b>Automatic app-dashboard handling</b>  
 The app dashboard need only be described by an app-specific descriptor.  
 It's implementation is handled by the toolkit.  
 Pressing Ctrl launches the app dashboard in its current context.  
-3. <b>Automatic help system for discovering an activity-handler's keyboard map.  
+3. <b>Automatic help system for discovering an activity-handler's keyboard map</b>    
 Pressing CTrl-H within any activity-handler context presents its keyboard map.
 
 ## Designing an app's dashboard
