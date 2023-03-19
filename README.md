@@ -9,19 +9,20 @@ with the mouse being used, if needed, for onscreen space selection only.
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
 
-<b>EngageUI apps are simple to design</b>  
+### EngageUI apps are simple to design  
 EngageUI takes a temporal rather than spatial approach to the GUI.  
 It does not use windows and there are no spatial layout constructs.  
 An EngageUI app consists of 2 components:
 1. An app-dashboard with an onscreen selection of possible user activities.  
-2. A set of activity-handlers for the user activities provided by the app.  
+[Designing an app's dashboard][] 
+3. A set of activity-handlers for the user activities provided by the app.  
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all controls are keyboard driven  
 via a set of keyboard "shortcuts".  
 The mouse may optionally be used, but only for onscreen space selection (not for controls).  
 A standardised interface is presented for querying the current keyboard map.  
 
-<b>The form and contents of the EngageUI toolkit</b>  
+### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licences source-code toolkit that consists of  
 1. A SessionManager that interfaces with the OSs windowing  
 system and manages the user's interaction session.  
@@ -33,29 +34,29 @@ These pop-up activity handlers are transient and handle common interaction tasks
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
-<b>Feature: Automatic app persistence across user sessions</b>  
+### Feature: Automatic app persistence across user sessions  
 When the app is launched, if it's for the first time,  
 the SessionManager presents the user with the app's dashboard.  
 When the app is exited, the SessionManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
 
-<b>Basics: The Activity-Handler</b>  
+## Designing an app's dashboard
+
+## Designing an Activity-Handler
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A primary activity-handler writes to the full-screen  
 while a pop-up activity-handler is loaded by, and pops-up in front of,  
 a primary activity-handler.  
-
-<b>Basics: The User-Intent-Handler</b>  
 A user activity consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
 and an associated "intent handler", that performs the action intended by the user.  
 An activity handler therefore consists of a set of user intent handlers.  
 
-<b>Illustration: EngageUI in action</b>  
+### Illustration: EngageUI in action</b>  
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
-<b>Illustration: A comparison of EngageUI and WIMP</b>  
+### Illustration: A comparison of EngageUI and WIMP</b>  
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 # EngageIDE
