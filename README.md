@@ -8,7 +8,6 @@ It is designed to use keyboard input for all user controls
 with the mouse being used, if needed, for onscreen space selection only.  
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 ### EngageUI apps are simple to design  
 EngageUI takes a temporal rather than spatial approach to the GUI.  
@@ -62,14 +61,15 @@ which is an input gesture that expresses intent to do something
 and an associated "intent handler", that performs the action intended by the user.  
 An activity handler therefore consists of a set of user intent handlers.  
 
-### Illustration: EngageUI in action</b>  
+### Illustration: EngageUI in action  
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
+### Illustration: EngageUI vs. WIMP  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 # EngageIDE
-EngageIDE is an IDE for building PC desktop GUI apps  
-based on the EngageUI source-code toolkit.  
-EngageIDE is implemented using the cross-platform wxWidgets libraries.  
-EngageIDE can be used to produce apps in C++ using wxWidgets and the EngageUI toolkit  
+EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.  
+It is implemented using the cross-platform wxWidgets libraries    
+and can be used to produce apps in C++    
 that run on Linux, Windows and OSX through a single codebase.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
