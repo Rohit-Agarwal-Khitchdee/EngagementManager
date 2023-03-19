@@ -21,6 +21,7 @@ Within the context of an activity handler all controls are keyboard driven
 via a set of keyboard "shortcuts".  
 The mouse may optionally be used, but only for onscreen space selection (not for controls).  
 A standardised interface is presented for querying the current keyboard map.  
+[Designing an activity-handler](#designing-an-activity-handler) 
 
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licences source-code toolkit that consists of  
