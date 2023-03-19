@@ -36,16 +36,16 @@ such as providing access to the OSs file system
 and implementing an app's dashboard.  
 
 ### Standard app features provided by the toolkit
-1. <b>Automatic app state persistence</b>  
+1. Automatic app state persistence    
 When the app is launched, if it's for the first time,  
 the SessionManager presents the user with the app's dashboard.  
 When the app is exited, the SessionManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
-2. <b>Automatic app-dashboard handling</b>  
+2. Automatic app-dashboard handling  
 The app dashboard need only be described by an (app-specific) descriptor.  
 It's implementation is handled by the toolkit.  
 Pressing Ctrl launches the app dashboard in its current context.  
-3. <b>Automatic help system for discovering an activity-handler's keyboard map</b>    
+3. Automatic help system for discovering an activity-handler's keyboard map       
 Pressing Ctrl-H within any activity-handler context presents its keyboard map.
 
 ## Designing an app's dashboard
