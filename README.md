@@ -14,7 +14,7 @@ EngageUI takes a temporal rather than spatial approach to the GUI.
 It does not use windows and there are no spatial layout constructs.  
 An EngageUI app consists of 2 components:
 1. An app-dashboard with an onscreen selection of possible user activities.  
-[Designing an app's dashboard][#designing-an-apps-dashboard] 
+[Designing an app's dashboard](#designing-an-apps-dashboard) 
 3. A set of activity-handlers for the user activities provided by the app.  
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all controls are keyboard driven  
