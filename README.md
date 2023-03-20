@@ -16,7 +16,7 @@ An EngageUI app consists of 2 components:
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
 3. A set of activity-handlers for the user activities provided by the app.  
 Once an activity has been selected, an activity handler for that activity is launched.  
-Within the context of an activity handler all controls are keyboard driven  
+Within the context of an activity handler all user controls are keyboard based  
 via a set of keyboard "shortcuts".  
 [Designing an activity-handler](#designing-an-activity-handler) 
 
