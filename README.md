@@ -54,7 +54,7 @@ it is implemented using a keyboard selectable set of onscreen options.
 It has 2 parts.
 1. A start-up dashboard that defines available user options  
 when the app is first launched or when there are no activity-handlers active.  
-2. An activity-specific dashboard that defines available user option  
+2. An activity-specific dashboard that defines available user options  
 within the context of an activity.  
 ## Designing an Activity-Handler
 An activity-handler within an app describes its fine-grained temporal interface.  
