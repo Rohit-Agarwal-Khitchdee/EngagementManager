@@ -88,7 +88,7 @@ by specifying a rectangular area of the screen it will update.
 b. It updates the activity-handler's data state  
 and initiates a full-screen display-state request.
 2. It is called in "EXECUTE" phase by the SessionManager  
-if it made a partial display update request.
+if it made a partial display update request.  
 In this phase it draws to a rectangular update area of the screen it had requested.  
 
 ### Illustration: EngageUI in action  
