@@ -107,6 +107,14 @@ and initiates a full-screen display-state request.
 2. It is called in "EXECUTE" phase by the SessionManager  
 if it made a partial display update request.  
 In this phase it draws to a rectangular update area of the screen it had requested.  
+### An activity-handler's activity specific data  
+An activity-handler typically has some activity specific data that it manipulates.  
+Data structures for this activity-specific data are designed  
+and stored in an ActivityHandlerExtension structure.  
+The base ActivityHandler structure contains a ptr to a union of ActivityHandlerExtension structs. A specific ActivityHandler defines their own ActivityHandlerExtension struct  
+and adds it to this union.  
+Since the base ActivityHandler struct is passed to the intent-handler functions  
+All intent-handlers of an activity-handler can access activity-specific data through it.   
 
 ### Illustration: EngageUI in action  
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
