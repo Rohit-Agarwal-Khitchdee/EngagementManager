@@ -111,7 +111,8 @@ In this phase it draws to a rectangular update area of the screen it had request
 An activity-handler typically has some activity specific data that it manipulates.  
 Data structures for this activity-specific data are designed  
 and stored in an ActivityHandlerExtension structure.  
-The base ActivityHandler structure contains a ptr to a union of ActivityHandlerExtension structs.     A specific ActivityHandler defines their own ActivityHandlerExtension struct  
+The base ActivityHandler struct contains a ptr to a union of ActivityHandlerExtension structs.  
+A specific ActivityHandler defines their own ActivityHandlerExtension struct  
 and adds it to this union.  
 Since the base ActivityHandler struct is passed to the intent-handler functions  
 All intent-handlers of an activity-handler can access activity-specific data through it.   
