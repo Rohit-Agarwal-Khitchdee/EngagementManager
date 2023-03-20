@@ -11,10 +11,12 @@ EngageUI apps have less cluttered screens and are easier to use for their users.
 They are also easier to design and implement for the developer.  
 
 ### EngageUI apps are simple to design  
-An EngageUI app consists of 2 components:
-1. An app-dashboard with an onscreen selection of possible user activities.  
+An EngageUI app is designed at 2 temporal levels:
+1. Gross temporal design.  
+An app-dashboard with an onscreen selection of possible user activities is designed.  
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
-3. A set of activity-handlers for the user activities provided by the app.  
+2. Fine-grained temporal design.  
+A set of activity-handlers for the user activities provided by the app are designed.    
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all user controls are keyboard based  
 via a set of keyboard "shortcuts".  
@@ -46,12 +48,18 @@ Pressing Ctrl launches the app dashboard in its current context.
 Pressing Ctrl-H within any activity-handler context presents its user-input map.
 
 ## Designing an app's dashboard
-An app's dashboard has 2 parts.
+An app's dashboard describes its gross level temporal interface.  
+Since it is a gross level temporal interface with low intensity interactions  
+it is implemented using a keyboard selectable set of onscreen options.   
+It has 2 parts.
 1. A start-up dashboard that defines available user options  
 when the app is first launched or when there are no activity-handlers active.  
 2. An activity-specific dashboard that defines available user option  
 within the context of an activity.  
 ## Designing an Activity-Handler
+An activity-handler within an app describes its fine-grained temporal interface.  
+Since it has high-intensity interactions,  
+it is implemented using direct-mapped keyboard or mouse input.   
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A user activity is defined as a set of possible "user intents",  
@@ -63,6 +71,9 @@ An activity-handler therefore consists of a set of intent-handlers.
 An input gesture can be a mouse move or click or a keyboard key-press or release.  
 An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
 Through these maps, user input gestures are associated with intent-handlers.  
+Since these maps have to be remembered by the user,  
+they can be discovered within any operational context by pressing Ctrl-H.  
+This is a feature provided by the toolkit.
 ### Display handling: State display and partial display updates  
 An activity-handler always has a current display state  
 and a function to display it.  
