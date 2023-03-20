@@ -1,10 +1,8 @@
 # What is EngageUI?
 ### A simpler, keyboard-focused alternative to WIMP  
-EngageUI is a simpler, keyboard-focused alternative  
-to the prevalent WIMP GUI paradigm.  
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
-It is designed to use keyboard input for all user controls  
+It uses keyboard input for all user controls  
 with the mouse being used, if needed, for onscreen space selection only.  
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
@@ -20,18 +18,17 @@ Once an activity has been selected, an activity handler for that activity is lau
 Within the context of an activity handler all controls are keyboard driven  
 via a set of keyboard "shortcuts".  
 The mouse may optionally be used, but only for onscreen space selection (not for controls).  
-A standardised interface is presented for querying the current keyboard map.  
 [Designing an activity-handler](#designing-an-activity-handler) 
 
 ### The form and contents of the EngageUI toolkit  
-EngageUI is provided as an MIT licences source-code toolkit that consists of  
+EngageUI is provided as an MIT licenced source-code toolkit that consists of  
 1. A SessionManager that interfaces with the OSs windowing  
 system and manages the user's interaction session.  
 2. An abstract activity handler structure that the app populates  
 with the ability to handle a specific user activity.
-3. A small set of predefined pop-up activity handlers  
+3. A small set of concrete activity-handlers  
 that are accessed through and managed by the SessionManager.  
-These pop-up activity handlers are transient and handle common interaction tasks  
+These activity-handlers  handle common interaction tasks  
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
@@ -53,13 +50,10 @@ Pressing Ctrl-H within any activity-handler context presents its keyboard map.
 ## Designing an Activity-Handler
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
-A primary activity-handler writes to the full-screen  
-while a pop-up activity-handler is loaded by, and pops-up in front of,  
-a primary activity-handler.  
 A user activity consists of a set a "user intents",  
 which is an input gesture that expresses intent to do something   
 and an associated "intent handler", that performs the action intended by the user.  
-An activity handler therefore consists of a set of user intent handlers.  
+An activity-handler therefore consists of a set of user intent handlers.  
 
 ### Illustration: EngageUI in action  
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -67,10 +61,10 @@ An activity handler therefore consists of a set of user intent handlers.
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 # EngageIDE
-EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.  
-It is implemented using the cross-platform wxWidgets libraries    
-and can be used to produce apps in C++    
-that run on Linux, Windows and OSX through a single codebase.    
+EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI  
+implemented using the cross-platform wxWidgets GUI toolkit.      
+It can be used to produce a single C++ app codebase     
+that runs on Linux, Windows and OSX.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
 
@@ -97,13 +91,13 @@ in the 10s of KLOCs.
 4. <b>Simplified codebase organisation</b>.  
 The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
-This "all in one place" approach makes the codebase easier to understand.  
+This "all in one place" approach makes the codebase easier to navigate and understand.  
 5. <b>Efficient code display</b>.  
 The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
 and narrower right and left columns  
 to see the preceding and following code sections.  
-Also even the longest functions can entirely fit in a single screen.  
+Even the longest functions can entirely fit in a single screen.  
 At any given time you only keep the code you're working on open  
 everything else is kept summarized (folded).
 This feature along with foldable blocks and sub-blocks  
