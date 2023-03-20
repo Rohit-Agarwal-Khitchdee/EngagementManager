@@ -56,20 +56,28 @@ Each activity handler has access to the entire screen
 and exclusive control over user-input while it is loaded.  
 A user activity is defined as a set of possible "user intents",  
 which is an input gesture that expresses intent to do something.     
-Each use-intent has an associated "intent handler", that performs the action intended by the user.  
+Each user-intent has an associated "intent handler",  
+that performs the action intended by the user.  
 An activity-handler therefore consists of a set of intent-handlers.  
 ### User input handling: The keyboard-map and mouse-map
 An input gesture can be a mouse move or click or a keyboard key-press or release.  
-An activity-handler has a key-down-map, a key-up-map, a mouse-move-map and a mouse-click-map.  
+An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
 Through these maps, user input gestures are associated with intent-handlers.  
 ### Display handling: State display and partial display updates  
-An activity-handler always has a current display state.  
-This state is displayed if the apps gets switched out and back in by the OS.  
-Or its display can be initiated by an intent-handler.  
-An activity-handler's display may also be updated partially.  
-This is done by an intent-handler.  
+An activity-handler always has a current display state  
+and a function to display it.  
+This function is always called by the SessionManager.  
+This state is displayed when the activity-handler is loaded into the app  
+or if the apps gets switched out and back in by the OS.  
+Or activity-handler state display can be initiated by an intent-handler.  
+An activity-handler's display may also be updated partially  
+by specifying a rectanguler sub-area of the screen to be updated.  
+This is done by an intent-handler function.  
 Partial display updates are more efficient  
 but require more book-keeping by the intent-handler.  
+
+wxWidgets provides a library of graphic drawing functions  
+and the activity-handler contains display parameters such as screen dimensions and fonts.  
 ### Engage and Disengage from the SessionManager
 An activity-handler may initialize itself when it is engaged by the SessionManager  
 via an engage() function  
@@ -78,7 +86,7 @@ via a disengage() function
 ### Serialization
 An activity-handler must serialize it's state to/from a file  
 when told to do so by the SessionManager via a serialize() function.
-## Designing an Intent-Handler
+### Intent-Handlers
 An intent-handler is a single function that operates in 2 phases.  
 1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
 In this phase it performs any of it's own actions and then does one of two things:  
