@@ -3,13 +3,14 @@
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
 It uses keyboard input for all user controls  
-with the mouse being used, if needed, for onscreen space selection only.  
+(the mouse may be used, if needed, for onscreen space selection only).  
+It takes a temporal rather than spatial approach to the GUI.  
+It does not use windows and there are no spatial layout constructs.  
+
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
 
 ### EngageUI apps are simple to design  
-EngageUI takes a temporal rather than spatial approach to the GUI.  
-It does not use windows and there are no spatial layout constructs.  
 An EngageUI app consists of 2 components:
 1. An app-dashboard with an onscreen selection of possible user activities.  
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
@@ -23,12 +24,12 @@ The mouse may optionally be used, but only for onscreen space selection (not for
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit that consists of  
 1. A SessionManager that interfaces with the OSs windowing  
-system and manages the user's interaction session.  
+system and manages the user's interaction session  
+via the app-dashboard and various activity-handlers. 
 2. An abstract activity handler structure that the app populates  
-with the ability to handle a specific user activity.
+with the ability to handle an app-specific user activity.
 3. A small set of concrete activity-handlers  
-that are accessed through and managed by the SessionManager.  
-These activity-handlers  handle common interaction tasks  
+that handle user-activities common across apps  
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
@@ -46,14 +47,49 @@ Pressing Ctrl launches the app dashboard in its current context.
 Pressing Ctrl-H within any activity-handler context presents its keyboard map.
 
 ## Designing an app's dashboard
-
+An app's dashboard has 2 parts.
+1. A start-up dashboard that defines available user options  
+when the app is first launched or when there are no activity-handlers active.  
+2. An activity-specific dashboard that defines available user option  
+within the context of an activity.  
 ## Designing an Activity-Handler
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
-A user activity consists of a set a "user intents",  
-which is an input gesture that expresses intent to do something   
-and an associated "intent handler", that performs the action intended by the user.  
-An activity-handler therefore consists of a set of user intent handlers.  
+A user activity is defined as a set of possible "user intents",  
+which is an input gesture that expresses intent to do something.     
+Each use-intent has an associated "intent handler", that performs the action intended by the user.  
+An activity-handler therefore consists of a set of intent-handlers.  
+### User input handling: The keyboard-map and mouse-map
+An input gesture can be a mouse move or click or a keyboard key-press or release.  
+An activity-handler has a key-down-map, a key-up-map, a mouse-move-map and a mouse-click-map.  
+Through these maps, user input gestures are associated with intent-handlers.  
+### Display handling: State display and partial display updates  
+An activity-handler always has a current display state.  
+This state is displayed if the apps gets switched out and back in by the OS.  
+Or its display can be initiated by an intent-handler.  
+An activity-handler's display may also be updated partially.
+This is done by an intent-handler.
+Partial display updates are more efficient  
+but require more book-keeping by the intent-handler.  
+### Engage and Disengage from the SessionManager
+An activity-handler may initialize itself when it is engaged by the SessionManager  
+via an engage() function  
+or wind itself up when it is disengaged by the SessionManager
+via a disengage() function
+### Serialization
+An activity-handler must serialize it's state to/from a file  
+when told to do so by the SessionManager via a serialize() function.
+## Designing an Intent-Handler
+An intent-handler is a single function that operates in 2 phases.  
+1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
+In this phase it performs any of it's own actions and then does one of two things:  
+a. It initiates a partial display udpate request  
+by specifying a rectangular area of the screen it will update.  
+b. It updates the activity-handler's data state  
+and initiates a full-screen display-state request.
+2. It is called in "EXECUTE" phase by the SessionManager  
+if it made a partial display update request.
+In this phase it draws to a rectangular update area of the screen it had requested.  
 
 ### Illustration: EngageUI in action  
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
