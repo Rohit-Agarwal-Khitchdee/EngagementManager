@@ -68,7 +68,7 @@ An activity-handler always has a current display state.
 This state is displayed if the apps gets switched out and back in by the OS.  
 Or its display can be initiated by an intent-handler.  
 An activity-handler's display may also be updated partially.  
-This is done by an intent-handler.
+This is done by an intent-handler.  
 Partial display updates are more efficient  
 but require more book-keeping by the intent-handler.  
 ### Engage and Disengage from the SessionManager
