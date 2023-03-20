@@ -18,7 +18,6 @@ An EngageUI app consists of 2 components:
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all controls are keyboard driven  
 via a set of keyboard "shortcuts".  
-The mouse may optionally be used, but only for onscreen space selection (not for controls).  
 [Designing an activity-handler](#designing-an-activity-handler) 
 
 ### The form and contents of the EngageUI toolkit  
