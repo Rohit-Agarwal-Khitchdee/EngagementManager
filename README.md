@@ -66,7 +66,7 @@ A user activity is defined as a set of possible "user intents",
 which is an input gesture that expresses intent to do something.     
 Each user-intent has an associated "intent handler",  
 that performs the action intended by the user.  
-An activity-handler therefore consists of a set of intent-handlers.  
+An activity-handler therefore contains a set of intent-handlers.  
 ### User input handling: The keyboard-map and mouse-map
 An input gesture can be a mouse move or click or a keyboard key-press or release.  
 An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
@@ -77,12 +77,13 @@ This is a feature provided by the toolkit.
 ### Display handling: State display and partial display updates  
 An activity-handler always has a current display state and a function to display it.  
 This function is always called by the SessionManager.  
-This state is displayed when the activity-handler is loaded into the app  
+This state is displayed when the activity-handler is first loaded into the app  
 or if the apps gets switched out and back in by the OS.  
-Or activity-handler state display can be initiated by an intent-handler.  
+An activity-handler's state display can also be initiated by one of its intent-handlers.
+
 An activity-handler's display may also be updated partially  
 by specifying a rectanguler sub-area of the screen to be updated.  
-This is done by an intent-handler function.  
+This is both initiated and handled by a (2-phase) intent-handler function.  
 Partial display updates are more efficient  
 but require more book-keeping by the intent-handler.  
 
@@ -90,9 +91,9 @@ wxWidgets provides a library of graphic drawing functions
 and the activity-handler contains display parameters such as screen dimensions and fonts.  
 ### Engage and Disengage from the SessionManager
 An activity-handler may initialize itself when it is engaged by the SessionManager  
-via an engage() function  
+via its engage() function  
 or wind itself up when it is disengaged by the SessionManager
-via a disengage() function
+via its disengage() function
 ### Serialization
 An activity-handler must serialize it's state to/from a file  
 when told to do so by the SessionManager via a serialize() function.
