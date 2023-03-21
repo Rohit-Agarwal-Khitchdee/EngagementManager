@@ -119,9 +119,9 @@ and adds it to this union.
 Since the base ActivityHandler struct is passed to the intent-handler functions  
 All intent-handlers of an activity-handler can access activity-specific data through it.   
 
-### Illustration: EngageUI in action  
+## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
-### Illustration: EngageUI vs. WIMP  
+
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 # EngageIDE
