@@ -74,7 +74,7 @@ Through these maps, user input gestures are associated with intent-handlers.
 Since these maps have to be remembered by the user,  
 they can be discovered within any operational context by pressing Ctrl-H.  
 This is a feature provided by the toolkit.
-### Display handling: State display and partial display updates  
+### The activity-handler's display: State display and partial display updates  
 An activity-handler always has a current display state and a function to display it.  
 This function is always called by the SessionManager.  
 This state is displayed when the activity-handler is first loaded into the app  
