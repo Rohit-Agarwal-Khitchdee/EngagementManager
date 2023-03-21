@@ -56,7 +56,7 @@ It has 2 parts.
 when the app is first launched or when there are no activity-handlers active.  
 2. An activity-specific dashboard that defines available user options  
 within the context of an activity.  
-## Designing an Activity-Handler
+## Designing an activity-handler
 An activity-handler within an app describes its fine-grained temporal interface.  
 Since it has high-intensity interactions,  
 it is implemented using direct-mapped keyboard or mouse input.   
@@ -64,7 +64,7 @@ Each activity handler has access to the entire screen
 and exclusive control over user-input while it is loaded.  
 A user activity is defined as a set of possible "user intents",  
 which is an input gesture that expresses intent to do something.     
-Each user-intent has an associated "intent handler",  
+Each user-intent has an associated "intent-handler",  
 that performs the action intended by the user.  
 An activity-handler therefore contains a set of intent-handlers.  
 ### User input handling: The keyboard-map and mouse-map
