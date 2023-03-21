@@ -24,12 +24,12 @@ via a set of keyboard "shortcuts".
 
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit that consists of  
-1. A SessionManager that interfaces with the OSs windowing  
+1. A SessionManager class that interfaces with the OSs windowing  
 system and manages the user's interaction session  
 via the app-dashboard and various activity-handlers. 
-2. An abstract activity handler structure that the app populates  
+2. An abstract SActivityHandler struct that the app populates and extends     
 with the ability to handle an app-specific user activity.
-3. A small set of concrete activity-handlers  
+3. A small set of concrete SActivityHandler extensions    
 that handle user-activities common across apps  
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
@@ -60,6 +60,9 @@ within the context of an activity.
 An activity-handler within an app describes its fine-grained temporal interface.  
 Since it has high-intensity interactions,  
 it is implemented using direct-mapped keyboard or mouse input.   
+Since these maps have to be remembered by the user,  
+they can be discovered within any operational context by pressing Ctrl-H.  
+This is a feature provided by the toolkit.
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A user activity is defined as a set of possible "user intents",  
@@ -71,9 +74,6 @@ An activity-handler therefore contains a set of intent-handlers.
 An input gesture can be a mouse move or click or a keyboard key-press or release.  
 An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
 Through these maps, user input gestures are associated with intent-handlers.  
-Since these maps have to be remembered by the user,  
-they can be discovered within any operational context by pressing Ctrl-H.  
-This is a feature provided by the toolkit.
 ### The activity-handler's display: State display and partial display updates  
 An activity-handler always has a current display state and a function to display it.  
 This function is always called by the SessionManager.  
@@ -81,14 +81,15 @@ This state is displayed when the activity-handler is first loaded into the app
 or if the apps gets switched out and back in by the OS.  
 An activity-handler's state display can also be initiated by one of its intent-handlers.
 
-An activity-handler's display may also be updated partially  
-by specifying a rectanguler sub-area of the screen to be updated.  
-This is both initiated and handled by a (2-phase) intent-handler function.  
+An activity-handler's display may also be updated partially by an intent-handler.  
+The intent-handler specifies a rectanguler sub-area of the screen  
+in an update request to the SessionManager  
+then draws the area when the request's execution is signalled by the SessionManager.  
 Partial display updates are more efficient  
 but require more book-keeping by the intent-handler.  
 
 wxWidgets provides a library of graphic drawing functions  
-and the activity-handler contains display parameters such as screen dimensions and fonts.  
+and the activity-handler stores display parameters such as screen dimensions and fonts.  
 ### Engage and Disengage from the SessionManager
 An activity-handler may initialize itself when it is engaged by the SessionManager  
 via its engage() function  
@@ -101,13 +102,13 @@ when told to do so by the SessionManager via a serialize() function.
 An intent-handler is a single function that operates in 2 phases.  
 1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
 In this phase it performs any of it's own actions and then does one of two things:  
-a. It initiates a partial display udpate request  
-by specifying a rectangular area of the screen it will update.  
+a. It initiates a partial display udpate request to the SessionManager   
+specifying a rectangular area of the screen it will update.  
 b. It updates the activity-handler's data state  
-and initiates a full-screen display-state request.
+and initiates a full-screen display-state request to the SessionManager.  
 2. It is called in "EXECUTE" phase by the SessionManager  
 if it made a partial display update request.  
-In this phase it draws to a rectangular update area of the screen it had requested.  
+In this phase it draws to the update area it had requested.  
 ### An activity-handler's activity specific data  
 An activity-handler typically has some activity specific data that it manipulates.  
 Data structures for this activity-specific data are designed  
