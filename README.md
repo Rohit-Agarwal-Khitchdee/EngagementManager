@@ -2,10 +2,10 @@
 ### A simpler, keyboard-focused alternative to WIMP  
 EngageUI is an activity based UI paradigm  
 that is always focused on the user's current activity when interacting with the UI.  
-It uses keyboard input for all user controls  
-(the mouse may be used, if needed, for onscreen space selection only).  
 It takes a temporal rather than spatial approach to the GUI.  
 It does not use windows and there are no spatial layout constructs.  
+It uses keyboard input for all user controls  
+(the mouse may be used, if needed, for onscreen space selection only).  
 
 EngageUI apps have less cluttered screens and are easier to use for their users.  
 They are also easier to design and implement for the developer.  
