@@ -174,14 +174,12 @@ EngageIDE's source code has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the EngageUI toolkit -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
-We support this toolkit and it's ready for use by developers.  
-2. Code for an IDE for producing an EngageUI app (about 7000 LOC).  
+All EngageUI apps are based on this source code.  
+2. A dashboard descriptor and an activity-handler for EngageIDE (about 7000 LOC).  
 The IDE will be fully functional in our next release.  
-As you would expect, the IDE itself is an EngageUI app and uses the toolkit.    
-It does not use the mouse, all input controls are through the keyboard.  
 This IDE is also being used internally by Khitchdee for its app development.  
 
-## Building EngageIDE:
+# Building EngageIDE:
 (interaction time ~1hr) 
 Should you build this app?  
 1. If you want to build a simple keyboard-driven app using wxWidgets.  
@@ -190,6 +188,7 @@ The process is relatively brief in this case
 and this toolkit gives you a GUI design alternative to WIMP  
 that you can start using right away.  
 
+## Building wxWidgets for your dev platform
 EngageIDE.cpp uses the wxWidgets cross-platform UI libraries.  
 To build it you first have to download and build the wxWidgets libraries.  
 
@@ -254,12 +253,12 @@ compared to the IDE you currently use.
 Also, it will enable you to understand the code in the EngageUI toolkit.  
 This will enable you to design and produce your own EngageUI app.  
 
-1. Build and run the app.  
+### Build and run the app.  
 Through the dashboard, load EngageIDE.cpp.  
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
-2. EngageUI's interface with wxWidgets -- SessionManager.  
-   - App init  
+### EngageUI's interface with wxWidgets -- The SessionManager.  
+   - wxWidgets App init  
       Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
       All lines in this color are "sub-Blocks".  
       This line is a sub-block of line WX INTERFACING BOILERPLATE.  
@@ -288,7 +287,7 @@ At this point, your screen should look like this:
       which creates a SessionManager::wxWindow, initialized with a SDashDesc
       that serves as the interface between wxWidgets and EngageUI.  
 
-   - App lifetime -- Paint and Kybd event handling  
+   - wxWidgets App lifetime -- Paint and Kybd event handling  
       ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-11-2022)  
       Goto line 723 SessionManager::OnKeyDown and open it.  
       This is where all key down events are handled by SessionManager.  
@@ -316,14 +315,14 @@ At this point, your screen should look like this:
       So during execution stage, wxWidgets sends key down and paint events to SessionManager.  
       SessionManager dispatches them appropriately to activity-handlers it manages.  
   
-   - App exit -- EngageUI shutdown and app state serialisation.    
+   - wxWidgets App exit -- EngageUI shutdown and app state serialisation.    
     When an EngageUI app is ready to exit, it tells the wxWidgets app to shutdown  
     which results in ~SessionManager being called.  
     Open 780. SessionManager::~SessionManager(), study that code and return.  
-    In its destructor, SessionManager serializes itself and all the activity-handlers it contains to a state file.  
+    In its destructor, SessionManager serializes itself and all the activity-handlers in its AHStack to a state file.  
     Next time the app is launched, it reads state from this file   
-    to reloads the last operational state of the app.  
-    It also free's all the activity-handlers in its AHStack.  
+    to reload the last operational state of the app.  
+    AFter serialization, SessionManager free's all the activity-handlers in its AHStack.  
     All activity-handlers are created on the heap.  
 
     Press Escape to exit the app.  
@@ -331,7 +330,7 @@ At this point, your screen should look like this:
     Close all open fns and the sub-blocks. PgUp.  
     You're back at the app's start-screen.  
   
-4. Inside EngageUI -- Activity Handlers and User Intents   
+### Inside EngageUI -- Activity-Handlers and (User) Intent-Handlers   
     We will walkthrough the design of SACHSrcEdr which is this app's activity-handler  
     and the (user) intent-handlers that it contains.  
   
@@ -339,14 +338,14 @@ At this point, your screen should look like this:
     Open engageUI_init  
     Goto load_UI_state  
     Goto new_src_edr  
-    Note we are inside the BLOCK: THIS APP'S PRIMARY ACTIVITY-CONTEXT HANDLER, THE SOURCE EDITOR  
+    Note we are inside the BLOCK: THIS APP'S PRIMARY ACTIVITY-HANDLER, THE SOURCE EDITOR  
     and the SUB_BLOCK: BASE DEFINITIONS  
     This is where the SACHSrcEdr struct is defined  
     and fns to "new", free and load from a file are defined.  
     Goto pBase->init  
     This is where an SACHandler struct is initialized.  
     Open the comment block above (311), read the comments in it then close it.  
-    The base ACHandler struct has the following fn ptrs:  
+    The base SActivityHandler struct has the following fn ptrs:  
      1. fnKey_up  
       This fn is called when a key up event occurs  
      2. fnKybd_map  
@@ -365,7 +364,7 @@ At this point, your screen should look like this:
       The activity-context handler stores to or loads from a file it's state.
      7. fnIntentHandler[40]  
       Called by fnKybd_map to initiate intent handling  
-      and by UAmanager::disp_update to complete display update of the screen.
+      and by SessionManager::disp_update to complete display update of the screen.
 
    - The base SActivityHandler struct's init provides implementations for (i), (iv), and (v).  
     A concrete activity-handler provides for the rest and may override the base (i), (iv) and (v).  
@@ -381,7 +380,7 @@ At this point, your screen should look like this:
     PgDn to void load_intents() {...}  
     Open it. This is where the intent handlers are loaded. Close it.
   
-   - Now we'll peep inside some of these activity-context handler behavior implementation fns.  
+   - Now we'll peep inside some of these activity-handler behavior implementation fns.  
     Scroll up to pSrcEdr->init() and goto src_edr_map.  
     Open 7456.  
     Here src_edr_map is detecting the intent SEI_UPDATE_CARET and dispatching it.  
@@ -390,43 +389,19 @@ At this point, your screen should look like this:
     Go back. Go Back. Go Back. Go Back.  
     Close engageUI_init().  
     Close(BLOCK) INITIALIZING AND EXITING ENGAGEUI  
-    Open (BLOCK) THIS APP'S PRIMARY ACTIVITY-CONTEXT HANDLER, (SUB_BLOCK) INTENT_HANDLERS  
+    Open (BLOCK) THIS APP'S PRIMARY ACTIVITY-HANDLER, (SUB_BLOCK) INTENT-HANDLERS  
     Open src_edr_update_caret   
-    This is the intent handler for SEI_UPDATE_CARET.  
+    This is the intent-handler for SEI_UPDATE_CARET.  
     You may study this code then close it and its sub-block and block.  
 
     Finally we'll look at src_edr_disp_state.  
     You will find src_edr_disp_state inside  
-    (BLOCK) THIS APP'S PRIMARY ACTIVITY_CONTEXT HANDLER (SUB_BLOCK) ACTIVITY-CONTEXT HANDLER IMPLEMENTATION FNs.  
+    (BLOCK) THIS APP'S PRIMARY ACTIVITY-HANDLER (SUB_BLOCK) ACTIVITY-HANDLER IMPLEMENTATION FNs.  
 
 Note:  
 In navigating EngageUI source code, we only keep open  
 the section of code we're currently studying.  
 This is facilatated by the summarization mechanisms and the goto mechanisms.  
-
-## Building your own EngageUI App  
-We suggest taking the walkthrough in the section above before reading this section.  
-A simple EngageUI app has a single activity-handler  
-which defines the behavior of the app from when it's launched till it is exited.  
-Within this primary activity's interaction time  
-pop-up activity-handlers may pop up and go away.  
-The function of these pop-ups is to take care of common extensions  
-to the base behavior of a primary activity-handler.  
-To create your own EngageUI app using MyDE.cpp as a template,  
-you define data structs for the data your app will process.  
-Then you you define your primary activity-handler that will process this data.  
-As part of this definition, you may use pop-up activity-handlers provided by the toolkit.  
-So, you would replace everything in (BLOCK) THIS APP's DATASTRUCTS  
-and everything in (BLOCK) THIS APP'S PRIMARY ACTIVITY-HANDLER
-with you own data structs and primary activity handler.  
-For now, you can do this using your existing IDE.  
-Our next release will have MyDE as a functional IDE.  
-
-## Next Development Step:
-1. Source code editing.  
-2. Build and fix compile/link time errors and warnings.  
-3. Debug.  
-This will make EngageIDE a standalone IDE for building EngageUI apps based on wxWidgets.  
 
 ## EngageUI & WIMP mix and match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
@@ -434,9 +409,9 @@ it is possible to incorporate an EngageUI window into a regular WIMP style app
 using wxAUI with the EngageUI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
-## Development status
-The code currently posted has only code navigational features.  
-The next version will have editing, build and debug.
+## Development Roadmap
+1. Dashboard designer activity-handler.  
+2. Activity-Handler designer activity-handler.
 
 ## Contributing to EngageIDE
 I've written about 10000 lines of code so far.  
@@ -450,7 +425,6 @@ Some areas where work could be done are
 2. A different approach to parsing source code files.  
 3. Dictionary based text input.
 4. More pop-up activity-handlers.  
-5. Syntax highlighting in the IDE.
 
 ## Engage-UI History
 After several years of using PCs,  
@@ -508,4 +482,3 @@ turned out to be simple and easy to implement.
 
 Then we set out to create EngageIDE an IDE (that uses EngageUI) to design  
 EngageUI apps.  
-That's what we are working on now.  
