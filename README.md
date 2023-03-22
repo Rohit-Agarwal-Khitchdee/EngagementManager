@@ -238,45 +238,10 @@ Go to src, right click, add an existing file.
 Add EngageIDE.cpp and build and run the project.  
 
 ## Running EngageIDE (UI controls):
-When you first run the app, it will ask you for the full path of EngageIDE.cpp.  
-This path will depend on your platform.  
-Examples:  
-OSX -- /Users/$username$/EngageIDE/EngageIDE.cpp  
-Win -- C:\EngageIDE\EngageIDE.cpp  
-Linux -- /Home/$username$/EngageIDE/EngageIDE.cpp  
-![alt text](https://hex-map.khitchdee.net/ModalWX-launch-screen.png)  
-If you enter an incorrect path, it will bring up a file selector  
-to select the file from the file system.  
-![alt text](https://hex-map.khitchdee.net/ModalWX-file-selector.png)  
-The file selector has upto 5 vertical panels on the screen.  
-Each panel represents the contents of a directory.  
-The left most panel is closest to the root directory.  
-Each panel is the contents of a directory from the left adjacent panel. 
-The active panel has a red outline rectangle highlighting the current selection  
-while the other panels have black outline rectangles.
-The current selection is displayed at the top-center of the window.  
-To change your selection in the active panel, use up and down arrow.  
-To open a currently selected directory, use right arrow.  
-To open or navigate to a parent directory, use left arrow.  
-To commit to a selection (it has to be EngageIDE.cpp in this case)  
-press Enter(Return).  
-If you make an invalid selection, it gets you back to the file selector.  
-Once you have correctly selected EngageIDE.cpp,  
-it will load EngageIDE.cpp, parse it and display its blocks.  
-Note: On OSX the OS ask you to give permission to EngageIDE   
-to access certain folders in your home dir.  
-You should give this permission.  
+When you first run the app, it will launch it's dashboard.  
 
 If you are interested in understanding how the code works  
 take the code walkthough in the next section.  
-Otherwise, basic navigational controls are as follows:
-1. Arrows and PgUp/PgDn to move the caret.  
-2. Any line ending in {...} can be opened with Ctrl(Command)-S.  
-An open section can be summarized (folded) using the same command.
-3. You can jump to any symbol using Ctrl-Right and return using Ctrl-Left.  
-4. Escape exits the app.  
-5. Pressing and releasing Ctrl pops-up a small menu.  
-One of the options enables you to adjust the font size.  
 
 ## EngageIDE Code Walkthrough
   (interaction time ~30min)   
@@ -289,21 +254,11 @@ compared to the IDE you currently use.
 Also, it will enable you to understand the code in the EngageUI toolkit.  
 This will enable you to design and produce your own EngageUI app.  
 
-1. Build and run the app. as described in the preceding section.  
+1. Build and run the app.  
+Through the dashboard, load EngageIDE.cpp.  
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)
-2. Font size adjustment.  
-If you find the fontsize too small,  
-press the Command(OSX) or Ctrl(Win,Linux) key once.  
-This will pop-up a set of 5 options.  
-Use the down arrow key to select "Adjust Fontsize".  
-Press Enter(Return).  
-You will get a message:  
-"arrows to adjust fontsize, esc to exit"  
-Use the arrow keys to adjust fontsize.  
-This is a live ajdustment.  
-Once you are satisfied, press escape.  
-3. EngageUI's interface with wxWidgets -- ActivityManagerWindow.  
+2. EngageUI's interface with wxWidgets -- SessionManager.  
    - App init  
       Use the down arrow key to goto line WX APP & CLASS FUNCTION DEFINITIONS{...}.  
       All lines in this color are "sub-Blocks".  
@@ -317,72 +272,59 @@ Once you are satisfied, press escape.
       Goto line 759 and move the caret to MyFrame (the one after the new).  
       Press Ctrl-Right Arrow.  
       This will take you the constructor of MyFrame.  
-      Goto line 768 move the caret over EngageUIWindow and goto (Ctrl-Right).  
-      EngageUIWindow is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
-      Goto line 776 and move the caret over engageUI_init and goto.  
-      engageUI_init is where the EngageUI is initalised.  
-
+      Goto line 768 move the caret over SessionManager and goto (Ctrl-Right).  
+      SessionManager is a subclass of wxWindow defined in (sub-block) WX BRIDGE STRUCTURES AND FUNCTIONS.      
       Note that goto using ctrl-right goes to the destination, expands it  
       and collapses the previous viewing context.  
       Also, any line that ends in {...} is summarized and can be opened.  
       Conversely, any line that end's in a { can be summarized.
 
-      Goto line 9072 and move the caret over load_UI_state and goto  
-      load_UI_state is an acillary fn that creates a SACHSrcEdr activity-context handler,  
-      creates a SUAManager, pushes the activity-context handler onto the UAManager,   
-      and returns the UAManager.  
-      This is returned by engageUI_init() to the calling EngageUIWindow.  
       Now press Ctrl-Left Arrow this takes you back to engageUI_init.  
-      Go back again (Ctrl-left) that's EngageUIWindow's constructor  
+      Go back again (Ctrl-left) that's SessionManager's constructor  
       Go back again that's MyFrame's constructor  
       Go back again and we're at the entry point to the app.  
       Summarize MyApp::OnInit().  
       So a wxWidgets app enters at MyApp::OnInit, creates a MyFrame::wxFrame  
-      which creates a EngageUIWindow::wxWindow, which contains a UAManager  
+      which creates a SessionManager::wxWindow, initialized with a SDashDesc
       that serves as the interface between wxWidgets and EngageUI.  
-      EngageUIWindow initializes EngageUI using a designated engageUI_init() fn.  
-      The EngageUI App designer initializes EngageUI in this fn  
-      by creating a primary activity-context handler, in this case SACHSrcEdr  
-      and pushing it into the UAManager before returning the UAManager to EngageUIModalWindow.   
 
    - App lifetime -- Paint and Kybd event handling  
       ![Alt Text](https://hex-map.khitchdee.net/Modal-operation.png?v08-11-2022)  
-      Goto line 723 EngageUIWindow::OnKeyDown and open it.  
-      This is where all key down events are handled by EngageUIWindow.  
+      Goto line 723 SessionManager::OnKeyDown and open it.  
+      This is where all key down events are handled by SessionManager.  
       Goto kybd_map  
-      That takes you to the user activity manager's kybd_map fn.  
+      That takes you to the SessionManager's kybd_map fn.  
       This function set's pWin->m_bUsrActn which tells EngageUI  
       that the user has done something.  
-      Then, call's the kybd_map fn of the activity-context handler 
-      at the top of the ACH stack  
-      which is the currently active activity-context handler.  
+      Then, call's the kybd_map fn of the activity-handler 
+      at the top of the AH stack  
+      which is the currently active activity-handler.  
      
-      Go Back (Ctrl-left) and close EngageUIWindow::OnKeyDown.  
-      Open EngageUIWindow::OnPaint the paint event handler for EngageUIWindow.  
+      Go Back (Ctrl-left) and close SessionManager::OnKeyDown.  
+      Open SessionManager::OnPaint the paint event handler for the SessionManager.  
       This fn calls either disp_state if the event was not caused by the user  
-      in which case the state of the entire app needs to be reloaded.  
-      or disp_update in which case the activity-context handler decides what needs to be updated.  
+      in which case the state of the entire app needs to be re-displayed  
+      or disp_update in which case the activity-handler decides what needs to be updated.  
       Goto disp_state.  
       You can read the comments inside 529 then close it.  
-      The user activity manager contains a stack of activity-context handlers  
+      The SessionManager contains a stack of activity-handlers  
       and displays each handler's disp_state in back to front order (bottom to top of stack).  
       Go back.  
       Now goto disp_update and look that code and come back.  
-      Note that disp_update only calls the handler at the top of the ACH stack, the current handler.  
+      Note that disp_update only calls the handler at the top of the AH stack, the current handler.  
 
-      So during execution stage, wxWidgets sends key down and paint events to EngageUIWindow.  
-      EngageUIWindow delegates these to the user activity manager  
-      which dispatches them appropriately to activity-context handlers it manages.  
+      So during execution stage, wxWidgets sends key down and paint events to SessionManager.  
+      SessionManager dispatches them appropriately to activity-handlers it manages.  
   
    - App exit -- EngageUI shutdown and app state serialisation.    
     When an EngageUI app is ready to exit, it tells the wxWidgets app to shutdown  
-    which results in ~EngageUIWindow being called.  
-    Open 780. EngageUIWIndow::~EngageUIWindow and goto engageUI_exit(), study that code and return.  
-    enagegUI_exit serializes the UA manager and all the ACHs it contains to a state file.  
+    which results in ~SessionManager being called.  
+    Open 780. SessionManager::~SessionManager(), study that code and return.  
+    In its destructor, SessionManager serializes itself and all the activity-handlers it contains to a state file.  
     Next time the app is launched, it reads state from this file   
     to reloads the last operational state of the app.  
-    It also free's the UAmanager which in turn free's all the ACHs it contains.  
-    The UAmanager and the AC Handlers are all created on the heap.  
+    It also free's all the activity-handlers in its AHStack.  
+    All activity-handlers are created on the heap.  
 
     Press Escape to exit the app.  
     Then relaunch the app. You should be back where you left off.  
@@ -390,17 +332,8 @@ Once you are satisfied, press escape.
     You're back at the app's start-screen.  
   
 4. Inside EngageUI -- Activity Handlers and User Intents   
-   - The EngageUI toolkit has been designed in such a way that for the most part  
-    the developer does not need to have anything to do with it's operational context  
-    in this case the wxWidgets WIMP GUI.  
-    The GUI design of an EngageUI app is purely using EngageUI constructs  
-    namely the activity-handler and the (user) intent handler.  
-    An EngageUI app developer is concerned with EngageUI init and exit,  
-    their app's data and the primary activity context handler/s they design.  
-    This design may use canned pop-up activity context handlers from the toolkit.  
-    This app is a EngageUI source code editor and navigator.  
-    We will walkthrough the design of SACHSrcEdr which is its primary activity context handler  
-    and the user intent handlers that are part of this ACH's design.  
+    We will walkthrough the design of SACHSrcEdr which is this app's activity-handler  
+    and the (user) intent-handlers that it contains.  
   
    - Open INITIALIZING AND EXITING ENGAGEUI (BLOCK).  
     Open engageUI_init  
