@@ -83,7 +83,7 @@ These constructs -- blocks and sub-blocks -- can also be folded
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
 EngageIDE also has EngageUI app specific mechanisms for code navigation  
-that greatly simplify code navigation udring development.  
+that greatly simplify code navigation during development.  
 Ctrl-N launches the code navigator.  
 4. <b>Simplified codebase organisation</b>.  
 The apps you write are all included in a single .cpp file.  
