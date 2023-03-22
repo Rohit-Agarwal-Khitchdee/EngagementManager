@@ -21,6 +21,7 @@ Once an activity has been selected, an activity handler for that activity is lau
 Within the context of an activity handler all user controls are keyboard based  
 via a set of keyboard "shortcuts".  
 [Designing an activity-handler](#designing-an-activity-handler)  
+
 EngageIDE is an IDE that has been specially designed for producing EngageUI apps.  
 It makes their design process very simple.  
 
