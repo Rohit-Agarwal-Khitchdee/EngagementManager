@@ -20,7 +20,9 @@ A set of activity-handlers for the user activities provided by the app are desig
 Once an activity has been selected, an activity handler for that activity is launched.  
 Within the context of an activity handler all user controls are keyboard based  
 via a set of keyboard "shortcuts".  
-[Designing an activity-handler](#designing-an-activity-handler) 
+[Designing an activity-handler](#designing-an-activity-handler)  
+EngageIDE is an IDE that has been specially designed for producing EngageUI apps.  
+It makes their design process very simple.  
 
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit that consists of  
@@ -46,78 +48,6 @@ It's implementation is handled by the toolkit.
 Pressing Ctrl launches the app dashboard in its current context.  
 3. Automatic help system for discovering an activity-handler's user-input map       
 Pressing Ctrl-H within any activity-handler context presents its user-input map.
-
-## Designing an app's dashboard
-An app's dashboard describes its gross level temporal interface.  
-Since it is a gross level temporal interface with low intensity interactions  
-it is implemented using a keyboard selectable set of onscreen options.   
-It has 2 parts.
-1. A start-up dashboard that defines available user options  
-when the app is first launched or when there are no activity-handlers active.  
-2. An activity-specific dashboard that defines available user options  
-within the context of an activity.  
-## Designing an activity-handler
-An activity-handler within an app describes its fine-grained temporal interface.  
-Since it has high-intensity interactions,  
-it is implemented using direct-mapped keyboard or mouse input.   
-Since these maps have to be remembered by the user,  
-they can be discovered within any operational context by pressing Ctrl-H.  
-This is a feature provided by the toolkit.
-Each activity handler has access to the entire screen   
-and exclusive control over user-input while it is loaded.  
-A user activity is defined as a set of possible "user intents",  
-which is an input gesture that expresses intent to do something.     
-Each user-intent has an associated "intent-handler",  
-that performs the action intended by the user.  
-An activity-handler therefore contains a set of intent-handlers.  
-### User input handling: The keyboard-map and mouse-map
-An input gesture can be a mouse move or click or a keyboard key-press or release.  
-An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
-Through these maps, user input gestures are associated with intent-handlers.  
-### The activity-handler's display: State display and partial display updates  
-An activity-handler always has a current display state and a function to display it.  
-This function is always called by the SessionManager.  
-This state is displayed when the activity-handler is first loaded into the app  
-or if the apps gets switched out and back in by the OS.  
-An activity-handler's state display can also be initiated by one of its intent-handlers.
-
-An activity-handler's display may also be updated partially by an intent-handler.  
-The intent-handler specifies a rectanguler sub-area of the screen  
-in an update request to the SessionManager  
-then draws the area when the request's execution is signalled by the SessionManager.  
-Partial display updates are more efficient  
-but require more book-keeping by the intent-handler.  
-
-wxWidgets provides a library of graphic drawing functions  
-and the activity-handler stores display parameters such as screen dimensions and fonts.  
-### Engage and Disengage from the SessionManager
-An activity-handler may initialize itself when it is engaged by the SessionManager  
-via its engage() function  
-or wind itself up when it is disengaged by the SessionManager
-via its disengage() function
-### Serialization
-An activity-handler must serialize it's state to/from a file  
-when told to do so by the SessionManager via a serialize() function.
-### Intent-Handlers
-An intent-handler is a single function that operates in 2 phases.  
-1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
-In this phase it performs any of it's own actions and then does one of two things:  
-a. It initiates a partial display udpate request to the SessionManager   
-specifying a rectangular area of the screen it will update.  
-b. It updates the activity-handler's data state  
-and initiates a full-screen display-state request to the SessionManager.  
-2. It is called in "EXECUTE" phase by the SessionManager  
-if it made a partial display update request.  
-In this phase it draws to the update area it had requested.  
-### An activity-handler's activity specific data  
-An activity-handler typically has some activity specific data that it manipulates.  
-Data structures for this activity-specific data are designed  
-and stored in an ActivityHandlerExtension structure.  
-The base ActivityHandler struct contains a ptr to a union of ActivityHandlerExtension structs.  
-A specific ActivityHandler defines their own ActivityHandlerExtension struct  
-and adds it to this union.  
-Since the base ActivityHandler struct is passed to the intent-handler functions  
-All intent-handlers of an activity-handler can access activity-specific data through it.   
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -152,6 +82,9 @@ above the language level.
 These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
+EngageIDE also has EngageUI app specific mechanisms for code navigation  
+that greatly simplify code navigation udring development.  
+Ctrl-N launches the code navigator.  
 4. <b>Simplified codebase organisation</b>.  
 The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
@@ -324,3 +257,76 @@ turned out to be simple and easy to implement.
 
 Then we set out to create EngageIDE an IDE (that uses EngageUI) to design  
 EngageUI apps.  
+
+## Designing an app's dashboard
+An app's dashboard describes its gross level temporal interface.  
+Since it is a gross level temporal interface with low intensity interactions  
+it is implemented using a keyboard selectable set of onscreen options.   
+It has 2 parts.
+1. A start-up dashboard that defines available user options  
+when the app is first launched or when there are no activity-handlers active.  
+2. An activity-specific dashboard that defines available user options  
+within the context of an activity.  
+## Designing an activity-handler
+An activity-handler within an app describes its fine-grained temporal interface.  
+Since it has high-intensity interactions,  
+it is implemented using direct-mapped keyboard or mouse input.   
+Since these maps have to be remembered by the user,  
+they can be discovered within any operational context by pressing Ctrl-H.  
+This is a feature provided by the toolkit.
+Each activity handler has access to the entire screen   
+and exclusive control over user-input while it is loaded.  
+A user activity is defined as a set of possible "user intents",  
+which is an input gesture that expresses intent to do something.     
+Each user-intent has an associated "intent-handler",  
+that performs the action intended by the user.  
+An activity-handler therefore contains a set of intent-handlers.  
+### User input handling: The keyboard-map and mouse-map
+An input gesture can be a mouse move or click or a keyboard key-press or release.  
+An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
+Through these maps, user input gestures are associated with intent-handlers.  
+### The activity-handler's display: State display and partial display updates  
+An activity-handler always has a current display state and a function to display it.  
+This function is always called by the SessionManager.  
+This state is displayed when the activity-handler is first loaded into the app  
+or if the apps gets switched out and back in by the OS.  
+An activity-handler's state display can also be initiated by one of its intent-handlers.
+
+An activity-handler's display may also be updated partially by an intent-handler.  
+The intent-handler specifies a rectanguler sub-area of the screen  
+in an update request to the SessionManager  
+then draws the area when the request's execution is signalled by the SessionManager.  
+Partial display updates are more efficient  
+but require more book-keeping by the intent-handler.  
+
+wxWidgets provides a library of graphic drawing functions  
+and the activity-handler stores display parameters such as screen dimensions and fonts.  
+### Engage and Disengage from the SessionManager
+An activity-handler may initialize itself when it is engaged by the SessionManager  
+via its engage() function  
+or wind itself up when it is disengaged by the SessionManager
+via its disengage() function
+### Serialization
+An activity-handler must serialize it's state to/from a file  
+when told to do so by the SessionManager via a serialize() function.
+### Intent-Handlers
+An intent-handler is a single function that operates in 2 phases.  
+1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
+In this phase it performs any of it's own actions and then does one of two things:  
+a. It initiates a partial display udpate request to the SessionManager   
+specifying a rectangular area of the screen it will update.  
+b. It updates the activity-handler's data state  
+and initiates a full-screen display-state request to the SessionManager.  
+2. It is called in "EXECUTE" phase by the SessionManager  
+if it made a partial display update request.  
+In this phase it draws to the update area it had requested.  
+### An activity-handler's activity specific data  
+An activity-handler typically has some activity specific data that it manipulates.  
+Data structures for this activity-specific data are designed  
+and stored in an ActivityHandlerExtension structure.  
+The base ActivityHandler struct contains a ptr to a union of ActivityHandlerExtension structs.  
+A specific ActivityHandler defines their own ActivityHandlerExtension struct  
+and adds it to this union.  
+Since the base ActivityHandler struct is passed to the intent-handler functions  
+All intent-handlers of an activity-handler can access activity-specific data through it.   
+
