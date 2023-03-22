@@ -26,7 +26,7 @@ EngageIDE is an IDE that has been specially designed for producing EngageUI apps
 It makes their design process very simple.  
 
 ### The form and contents of the EngageUI toolkit  
-EngageUI is provided as an MIT licenced source-code toolkit that consists of  
+EngageUI is provided as an MIT licenced source-code toolkit (C++) that consists of  
 1. A SessionManager class that interfaces with the OSs windowing  
 system and manages the user's interaction session  
 via the app-dashboard and various activity-handlers. 
