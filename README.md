@@ -276,7 +276,7 @@ Since it has high-intensity interactions,
 it is implemented using direct-mapped keyboard or mouse input.   
 Since these maps have to be remembered by the user,  
 they can be discovered within any operational context by pressing Ctrl-H.  
-This is a feature provided by the toolkit.
+This is a feature provided by the toolkit.  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
 A user activity is defined as a set of possible "user intents",  
