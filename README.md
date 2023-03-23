@@ -36,11 +36,10 @@ Pressing Ctrl-H within any activity-handler context
 presents a description on how to perform that activity.
 
 ### EngageUI apps have automatic state persistence
-An EngageUI app's user interface is documented at 2 levels:  
 When the app is launched, if it's for the first time,  
-the SessionManager presents the user with the app's dashboard.  
-When the app is exited, the SessionManager serializes its state to disk.  
-Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
+the EngagementManager presents the user with the app's dashboard.  
+When the app is exited, the EngagementManager serializes its state to disk.  
+Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
 
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit (C++)  
