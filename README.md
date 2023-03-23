@@ -17,9 +17,9 @@ An app-dashboard with an onscreen selection of possible user activities is desig
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
 2. Fine-grained temporal design.  
 A set of activity-handlers for the user activities provided by the app are designed.    
-Once an activity has been selected, an activity handler for that activity is launched.  
-Within the context of an activity handler all user controls are keyboard based  
-via a set of keyboard "shortcuts".  
+Once an activity has been selected (via the dashboard),   
+an activity handler for that activity is launched.  
+Within an activity handler all user controls are direct-mapped to the keyboard.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
 EngageIDE is an IDE (included in the EngageUI toolkit)  
