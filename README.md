@@ -306,9 +306,9 @@ wxWidgets provides a library of graphic drawing functions
 and the activity-handler stores display parameters such as screen dimensions and fonts.  
 ### Engage and Disengage from the SessionManager
 An activity-handler may initialize itself when it is engaged by the SessionManager  
-via its engage() function  
+via its on_engage() function  
 or wind itself up when it is disengaged by the SessionManager
-via its disengage() function
+via its on_disengage() function
 ### Serialization
 An activity-handler must serialize it's state to/from a file  
 when told to do so by the SessionManager via a serialize() function.
