@@ -271,6 +271,7 @@ when the app is first launched or when there are no activity-handlers active.
 2. An activity-specific dashboard that defines available user options  
 within the context of an activity.  
 ## Designing an activity-handler
+### What is an activity-handler?
 An activity-handler within an app describes its fine-grained temporal interface.  
 Since it has high-intensity interactions,  
 it is implemented using direct-mapped keyboard or mouse input.   
@@ -284,6 +285,15 @@ which is an input gesture that expresses intent to do something.
 Each user-intent has an associated "intent-handler",  
 that performs the action intended by the user.  
 An activity-handler therefore contains a set of intent-handlers.  
+### An activity-handler's activity specific data  
+An activity-handler typically has some activity specific data that it manipulates.  
+Data structures for this activity-specific data are designed  
+and stored in an ActivityHandlerExtension structure.  
+The base ActivityHandler struct contains a ptr to a union of ActivityHandlerExtension structs.  
+A specific ActivityHandler defines their own ActivityHandlerExtension struct  
+and adds it to this union.  
+Since the base ActivityHandler struct is passed to the intent-handler functions  
+All intent-handlers of an activity-handler can access activity-specific data through it.   
 ### User input handling: The keyboard-map and mouse-map
 An input gesture can be a mouse move or click or a keyboard key-press or release.  
 An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
@@ -323,13 +333,4 @@ and initiates a full-screen display-state request to the SessionManager.
 2. It is called in "EXECUTE" phase by the SessionManager  
 if it made a partial display update request.  
 In this phase it draws to the update area it had requested.  
-### An activity-handler's activity specific data  
-An activity-handler typically has some activity specific data that it manipulates.  
-Data structures for this activity-specific data are designed  
-and stored in an ActivityHandlerExtension structure.  
-The base ActivityHandler struct contains a ptr to a union of ActivityHandlerExtension structs.  
-A specific ActivityHandler defines their own ActivityHandlerExtension struct  
-and adds it to this union.  
-Since the base ActivityHandler struct is passed to the intent-handler functions  
-All intent-handlers of an activity-handler can access activity-specific data through it.   
 
