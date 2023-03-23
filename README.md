@@ -26,7 +26,9 @@ EngageIDE is an IDE that has been specially designed for producing EngageUI apps
 It makes their design process very simple.  
 
 ### The form and contents of the EngageUI toolkit  
-EngageUI is provided as an MIT licenced source-code toolkit (C++) that consists of  
+EngageUI is provided as an MIT licenced source-code toolkit (C++)  
+based on the wxWidgets cross-platform GUI toolkit.  
+It's source code consists of  
 1. A SessionManager class that interfaces with the OSs windowing  
 system and manages the user's interaction session  
 via the app-dashboard and various activity-handlers. 
@@ -37,7 +39,8 @@ that handle user-activities common across apps
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
-The toolkit also includes the source code for EngageIDE.  
+The toolkit also includes the source code for EngageIDE,  
+an IDE specially designed for developing EngageUI apps.   
 
 ### Standard app features provided by the toolkit
 1. Automatic app state persistence    
@@ -59,9 +62,9 @@ Pressing Ctrl-H within any activity-handler context presents its user-input map.
 
 # EngageIDE
 ### What is EngageIDE?
-EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI  
-implemented using the cross-platform wxWidgets GUI toolkit.      
-It can be used to produce a single C++ app codebase     
+EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.    
+It is an EngageUI app implemented in C++ using wxWidgets.        
+It can be used to produce a single C++ app codebase for an EngageUI app.  
 that runs on Linux, Windows and OSX.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
@@ -106,8 +109,7 @@ makes scrolling through the entire codebase very easy.
 6. <b>Integrated compiler/debugger controls</b>.  
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
-### EngageIDE implemntation
-EngageIDE is implemented in C++ as an EngageUI app using wxWidgets.  
+### EngageIDE source-code
 It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the EngageUI toolkit -- about 3000 LOC.  
