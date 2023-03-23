@@ -1,8 +1,8 @@
 # What is EngageUI?
 ### A simpler, keyboard-focused alternative to WIMP  
-EngageUI is an activity based UI paradigm  
-that is always focused on the user's current activity when interacting with the UI.  
-It takes a temporal rather than spatial approach to the GUI.  
+EngageUI is a user-engagement focused UI paradigm  
+that takes a temporal rather than spatial approach to the GUI.  
+It is always focused on handling the user's current activity when engaging with the UI.  
 It does not use windows and there are no spatial layout constructs.  
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
@@ -36,6 +36,8 @@ with the ability to handle an app-specific user activity.
 that handle user-activities common across apps  
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
+
+The toolkit also includes the source code for EngageIDE.  
 
 ### Standard app features provided by the toolkit
 1. Automatic app state persistence    
@@ -77,15 +79,15 @@ You can be fairly verbose in your documentation
 knowing that a long comment will fold down to a single line  
 to be opened when needed.  
 3. <b>Efficient code navigation</b>.  
-Special demarcation symbols are introduced inside comment blocks  
+a. Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
 above the language level.  
 These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
-EngageIDE also has EngageUI app specific mechanisms for code navigation  
+b. A goto mechanism enables jumps to any selected struct, class or function.  
+c. A global code navigator has EngageUI specific mechanisms for code navigation  
 that greatly simplify code navigation during development.  
-Ctrl-N launches the code navigator.  
 4. <b>Simplified codebase organisation</b>.  
 The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
@@ -111,15 +113,15 @@ This code can directly be used to create an EngageUI app.
 All EngageUI apps are based on this source code.  
 2. A dashboard descriptor and an activity-handler for EngageIDE (about 7000 LOC).  
 The IDE will be fully functional in our next release.  
-This IDE is also being used internally by Khitchdee for its app development.  
+This IDE will be used internally by Khitchdee to develop its X-Draft app.  
 
 # Building EngageIDE:
 (interaction time ~1hr) 
 Should you build this app?  
 1. If you want to build a simple keyboard-driven app using wxWidgets.  
 2. If you are already a wxWidgets developer.  
-The process is relatively brief in this case  
-and this toolkit gives you a GUI design alternative to WIMP  
+The process is relatively brief in this case.    
+and this toolkit gives you an easy to learn GUI design alternative to WIMP  
 that you can start using right away.  
 
 ## Building wxWidgets for your dev platform
@@ -170,13 +172,13 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
 
-## Running EngageIDE (UI controls):
+## Getting started with EngageIDE (UI controls):
 When you first run the app, it will launch it's dashboard.  
-If you are interested in understanding how the code works,  
-through the dashboard, load EngageIDE.cpp.  
+The dashboard has a set of onsreen controls accessible via the keyboard.  
+Load the EngageIDE.cpp using the dashboard.  
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)  
-Press Ctrl-H to learn the user-input maps of EngageIDE.  
+Press Ctrl-H to learn the UI-controls of EngageIDE.  
 Press Ctrl-N to launch EngageIDE's code navigator.  
 
 ## EngageUI & WIMP mix and match
