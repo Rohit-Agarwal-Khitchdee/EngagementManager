@@ -67,7 +67,7 @@ an IDE specially designed for developing EngageUI apps.
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
-![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
+![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsEngage.png?v03-23-2023)  
 
 # EngageIDE
 ### What is EngageIDE?
