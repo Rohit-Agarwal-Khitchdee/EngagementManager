@@ -58,13 +58,14 @@ Pressing Ctrl-H within any activity-handler context presents its user-input map.
 ![Less cluttered screens](https://hex-map.khitchdee.net/WIMPvsModal.png?v08-18-2022)  
 
 # EngageIDE
+### What is EngageIDE?
 EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI  
 implemented using the cross-platform wxWidgets GUI toolkit.      
 It can be used to produce a single C++ app codebase     
 that runs on Linux, Windows and OSX.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
-
+### EngageIDE features
 1. <b>No mouse usage, keyboard-only interface</b>.  
 EngageIDE does not use the mouse.  
 All of it's editing building and debugging controls are keyboard based.  
@@ -105,8 +106,9 @@ makes scrolling through the entire codebase very easy.
 6. <b>Integrated compiler/debugger controls</b>.  
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
-
-EngageIDE's source code has 2 parts:
+### EngageIDE implemntation
+EngageIDE is implemented in C++ as an EngageUI app using wxWidgets.  
+It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
 that comprise the EngageUI toolkit -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
@@ -175,13 +177,13 @@ Add EngageIDE.cpp and build and run the project.
 ## Getting started with EngageIDE (UI controls):
 When you first run the app, it will launch it's dashboard.  
 The dashboard has a set of onsreen controls accessible via the keyboard.  
-Load the EngageIDE.cpp using the dashboard.  
+Load EngageIDE.cpp using the dashboard.  
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)  
 Press Ctrl-H to learn the UI-controls of EngageIDE.  
 Press Ctrl-N to launch EngageIDE's code navigator.  
 
-## EngageUI & WIMP mix and match
+## EngageUI & WIMP mix-and-match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
 it is possible to incorporate an EngageUI window into a regular WIMP style app  
 using wxAUI with the EngageUI in one layer and a WIMP UI in another layer.  
@@ -204,7 +206,7 @@ Some areas where work could be done are
 3. Dictionary based text input.
 4. More pop-up activity-handlers.  
 
-## Engage-UI History
+## EngageUI History
 After several years of using PCs,  
 we decided that the PC user interface would be better off  
 if we didn't have to constantly switch to the mouse in the interaction.  
@@ -241,7 +243,7 @@ a keyboard focused GUI is more efficient than one that is based on mouse input
 and thus requires the user to switch between keyboard and mouse input.  
 EngageIDE and its keyboard-focused GUI (EngageUI) could be used to write  
 cross-platform versions of any of the above list of tools.  
-## Engage-UI Design
+## EngageUI Design
 The first question we had to answer was  
 would it be possible to design an app's user interface  
 without the use of a pointer for on-screen space selection.  
