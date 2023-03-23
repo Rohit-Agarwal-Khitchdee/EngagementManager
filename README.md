@@ -317,37 +317,37 @@ An activity-handler has mapping functions for key-down, key-up, mouse-move and a
 Through these maps, user input gestures are associated with intent-handlers.  
 ### The activity-handler's display: State display and partial display updates  
 An activity-handler always has a current display state and a function to display it.  
-This function is always called by the SessionManager.  
+This function is always called by the EngagementManager.  
 This state is displayed when the activity-handler is first loaded into the app  
 or if the apps gets switched out and back in by the OS.  
 An activity-handler's state display can also be initiated by one of its intent-handlers.
 
 An activity-handler's display may also be updated partially by an intent-handler.  
 The intent-handler specifies a rectanguler sub-area of the screen  
-in an update request to the SessionManager  
-then draws the area when the request's execution is signalled by the SessionManager.  
+in an update request to the EngagementManager  
+then draws the area when the request's execution is signalled by the EngagementManager.  
 Partial display updates are more efficient  
 but require more book-keeping by the intent-handler.  
 
 wxWidgets provides a library of graphic drawing functions  
 and the activity-handler stores display parameters such as screen dimensions and fonts.  
-### Engage and Disengage from the SessionManager
-An activity-handler may initialize itself when it is engaged by the SessionManager  
+### Engage and Disengage from the EngagementManager
+An activity-handler may initialize itself when it is engaged by the EngagementManager  
 via its on_engage() function  
-or wind itself up when it is disengaged by the SessionManager
+or wind itself up when it is disengaged by the EngagementManager
 via its on_disengage() function
 ### Serialization
 An activity-handler must serialize it's state to/from a file  
-when told to do so by the SessionManager via a serialize() function.
+when told to do so by the EngagementManager via a serialize() function.
 ### Intent-Handlers
 An intent-handler is a single function that operates in 2 phases.  
 1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
 In this phase it performs any of it's own actions and then does one of two things:  
-a. It initiates a partial display udpate request to the SessionManager   
+a. It initiates a partial display udpate request to the EngagementManager   
 specifying a rectangular area of the screen it will update.  
 b. It updates the activity-handler's data state  
-and initiates a full-screen display-state request to the SessionManager.  
-2. It is called in "EXECUTE" phase by the SessionManager  
+and initiates a full-screen display-state request to the EngagementManager.  
+2. It is called in "EXECUTE" phase by the EngagementManager  
 if it made a partial display update request.  
 In this phase it draws to the update area it had requested.  
 
