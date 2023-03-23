@@ -12,10 +12,16 @@ They are also easier to design and implement for the developer.
 
 ### EngageUI apps are simple to design  
 An EngageUI app is designed at 2 temporal levels:
-1. Gross temporal design.  
+1. <b>Gross temporal design</b>.  
+At a high level, an app's usage consists of low intensity (frequency) interactions  
+where the user decides what activity they want to be involved in next.  
+Since these are low intensity interactions, keyboard selectable onscreen controls are used.  
 An app-dashboard with an onscreen selection of possible user activities is designed.  
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
-2. Fine-grained temporal design.  
+2. <b>Fine-grained temporal design</b>.  
+At a lower level, an app's usage consists of high intensity interactions  
+where the user is involved a primary app-usage activity.  
+For these high-intensity interactions, direct-mapped keyboard controls are used.  
 A set of activity-handlers for the user activities provided by the app are designed.    
 Once an activity has been selected (via the dashboard),   
 an activity handler for that activity is launched.  
