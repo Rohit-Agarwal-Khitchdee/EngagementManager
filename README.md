@@ -22,14 +22,15 @@ Within the context of an activity handler all user controls are keyboard based
 via a set of keyboard "shortcuts".  
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-EngageIDE is an IDE that has been specially designed for producing EngageUI apps.  
+EngageIDE is an IDE (included in the EngageUI toolkit)  
+that has been specially designed for producing EngageUI apps.  
 It makes their design process very simple.  
 
 ### EngageUI apps contain a built-in documentation system  
 An EngageUI app's user interface is documented at 2 levels:  
 1. High-level -- The app dashboard provides high-level documentation for the app.  
 Pressing Ctrl launches the app dashboard in its current context.  
-2. Low-level-- Each activity-handler contains a documentation system    
+2. Low-level -- Each activity-handler contains a documentation system    
 implemented by the toolkit.  
 Pressing Ctrl-H within any activity-handler context  
 presents a description on how to perform that activity.
