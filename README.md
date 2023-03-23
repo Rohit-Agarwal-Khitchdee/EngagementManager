@@ -25,12 +25,28 @@ via a set of keyboard "shortcuts".
 EngageIDE is an IDE that has been specially designed for producing EngageUI apps.  
 It makes their design process very simple.  
 
+### EngageUI apps contain a built-in documentation system  
+An EngageUI app's user interface is documented at 2 levels:  
+1. High-level -- The app dashboard provides high-level documentation for the app.  
+Pressing Ctrl launches the app dashboard in its current context.  
+2. Low-level-- Each activity-handler contains a documentation system    
+implemented by the toolkit.  
+Pressing Ctrl-H within any activity-handler context  
+presents a description on how to perform that activity.
+
+### EngageUI apps have automatic state persistence
+An EngageUI app's user interface is documented at 2 levels:  
+When the app is launched, if it's for the first time,  
+the SessionManager presents the user with the app's dashboard.  
+When the app is exited, the SessionManager serializes its state to disk.  
+Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
+
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit (C++)  
 based on the wxWidgets cross-platform GUI toolkit.  
 It's source code consists of  
-1. A SessionManager class that interfaces with the OSs windowing  
-system and manages the user's interaction session  
+1. An EngagementManager class that subclasses wxWindow  
+and manages the user's engagement with the app    
 via the app-dashboard and various activity-handlers. 
 2. An abstract SActivityHandler struct that the app populates and extends     
 with the ability to handle an app-specific user activity.
@@ -41,19 +57,6 @@ and implementing an app's dashboard.
 
 The toolkit also includes the source code for EngageIDE,  
 an IDE specially designed for developing EngageUI apps.   
-
-### Standard app features provided by the toolkit
-1. Automatic app state persistence    
-When the app is launched, if it's for the first time,  
-the SessionManager presents the user with the app's dashboard.  
-When the app is exited, the SessionManager serializes its state to disk.  
-Subsequently, when the app is reloaded, the SessionManager resumes it from its previous state.  
-2. Automatic app-dashboard handling  
-The app dashboard need only be described by an (app-specific) descriptor.  
-It's implementation is handled by the toolkit.  
-Pressing Ctrl launches the app dashboard in its current context.  
-3. Automatic help system for discovering an activity-handler's user-input map       
-Pressing Ctrl-H within any activity-handler context presents its user-input map.
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -182,8 +185,7 @@ The dashboard has a set of onsreen controls accessible via the keyboard.
 Load EngageIDE.cpp using the dashboard.  
 At this point, your screen should look like this:  
 ![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)  
-Press Ctrl-H to learn the UI-controls of EngageIDE.  
-Press Ctrl-N to launch EngageIDE's code navigator.  
+Press Ctrl-H to learn how to produce an EngageUI app using EngageIDE.    
 
 ## EngageUI & WIMP mix-and-match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
@@ -289,7 +291,12 @@ which is an input gesture that expresses intent to do something.
 Each user-intent has an associated "intent-handler",  
 that performs the action intended by the user.  
 An activity-handler therefore contains a set of intent-handlers.  
+### An activity-handler's descriptor
+An activity-handler's descriptor contains a user level description  
+of how to perform that activity.  
+It is used by the EngagementManager to provide automatic activity documentation.  
 ### An activity-handler's activity specific data  
+EngageIDE is an IDE that has been specially designed for producing EngageUI apps.  
 An activity-handler typically has some activity specific data that it manipulates.  
 Data structures for this activity-specific data are designed  
 and stored in an ActivityHandlerExtension structure.  
