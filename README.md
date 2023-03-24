@@ -185,14 +185,6 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
 
-## Getting started with EngageIDE (UI controls):
-When you first run the app, it will launch it's dashboard.  
-The dashboard has a set of onsreen controls accessible via the keyboard.  
-Load EngageIDE.cpp using the dashboard.  
-At this point, your screen should look like this:  
-![alt text](https://hex-map.khitchdee.net/ModalWX-source-loaded.png)  
-Press Ctrl-H to learn how to produce an EngageUI app using EngageIDE.    
-
 ## EngageUI & WIMP mix-and-match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
 it is possible to incorporate an EngageUI window into a regular WIMP style app  
