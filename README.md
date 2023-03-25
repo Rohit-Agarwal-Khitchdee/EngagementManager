@@ -137,9 +137,11 @@ The process is relatively brief in this case.
 and this toolkit gives you an easy to learn GUI design alternative to WIMP  
 that you can start using right away.  
 
-## Building wxWidgets for your dev platform
-EngageIDE.cpp uses the wxWidgets cross-platform UI libraries.  
-To build it you first have to download and build the wxWidgets libraries.  
+## Recommended IDEs and building wxWidgets and EngageIDE for your dev platform
+EngageIDE is implemented in a single file EngageIDE.cpp  
+that uses the wxWidgets cross-platform UI libraries.  
+To build it you first have to download and build the wxWidgets libraries  
+for your development platform.  
 
 We recommend using the current development version of wxWidgets which is 3.2.1.  
 You can get help for setting up wxWidgets on your PC from this forum:  
@@ -147,31 +149,46 @@ https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b4
 The build process for the library depends on your platform:  
 
 ### OSX: 
+
+Recommended IDE: XCode  
+
+Building wxWidgets:  
 We recommend building the library from source.  
 The simplest way is to download the source for wxWidgets.  
 Then open %wxWidgetsDir%/Samples/minimal/minimal_cocoa.xcodeproj in XCode.  
 You should be able to build and run this sample.  
 It builds the wxWidgets library from source as part of its build process.  
+
+Building EngageIDE:
 Then you can edit the project settings to replace minimal.cpp with EngageIDE.cpp.  
 This will build the EngageIDE app.  
 
 ### Windows:
-We recommend Visual Studio 2022 Community edition as the IDE.  
+
+Recommended IDE: Visual Studio 2022 Community edition   
+
+Building wxWidgets:
 You download the source code for wxWidgets.  
 Then you goto %wxWidgetsDir%/build/msw/  
 You open wx_vc17.sln in Visual Studio 2022  
 Build Debug and Release configurations (we recommend not dll but statically linked libraries).  
 This places the built libraries in %wxWidgetsDir%/lib/vc_x64_lib (or vc_lib).  
+
+Building EngageIDE:
 Follow the instructions at https://forums.wxwidgets.org/viewtopic.php?p=196105#p196105  
 to create a new VisualStudio project and add EngageIDE.cpp to it.  
 This should build the EngageIDE app.  
 
 ### Linux:
-We recommend using the CodeLite IDE.  
-After installing codelite from codelite.org,  
+
+Recommended IDE: CodeLite (codelite.org)
+
+Building wxWidgets:
 Follow the instructions at:  
 https://docs.codelite.org/wxWidgets/repo321/
 to install wxWidgets 3.2.1.    
+
+Building EngageIDE:
 Now, run Codelite and create a new workspace of Type C++.  
 Then add a new project to the workspace of Category: GUI  
 and Type: wxWidgets GUI Application (wxFrame, using wxCrafter)  
