@@ -33,11 +33,11 @@ that has been specially designed for producing EngageUI apps.
 It makes their design process very simple.  
 
 ### EngageUI apps have self-documenting interfaces  
-An EngageUI app's user interface is documented at 2 levels:  
+An EngageUI app's user interface is automatically documented at 2 levels:  
 1. High-level -- The app dashboard provides high-level documentation for the app.  
 Pressing Ctrl launches the app dashboard in its current context.  
-2. Low-level -- Each activity-handler contains a documentation system    
-implemented by the toolkit.  
+2. Low-level -- Each activity-handler contains an interface descriptor    
+used by the toolkit to implement an automatic interface documentation system.    
 Pressing Ctrl-H within any activity-handler context  
 presents a description on how to perform that activity.
 
