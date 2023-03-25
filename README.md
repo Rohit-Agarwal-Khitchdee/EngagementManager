@@ -32,7 +32,7 @@ EngageIDE is an IDE (included in the EngageUI toolkit)
 that has been specially designed for producing EngageUI apps.  
 It makes their design process very simple.  
 
-### EngageUI apps contain a built-in documentation system  
+### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is documented at 2 levels:  
 1. High-level -- The app dashboard provides high-level documentation for the app.  
 Pressing Ctrl launches the app dashboard in its current context.  
@@ -274,7 +274,9 @@ It has 2 parts.
 when the app is first launched or when there are no activity-handlers active.  
 2. An activity-specific dashboard that defines available user options  
 within the context of an activity.  
+
 ## Designing an activity-handler
+
 ### What is an activity-handler?
 An activity-handler within an app describes its fine-grained temporal interface.  
 Since it has high-intensity interactions,  
@@ -289,10 +291,12 @@ which is an input gesture that expresses intent to do something.
 Each user-intent has an associated "intent-handler",  
 that performs the action intended by the user.  
 An activity-handler therefore contains a set of intent-handlers.  
+
 ### An activity-handler's descriptor
 An activity-handler's descriptor contains a user level description  
 of how to perform that activity.  
 It is used by the EngagementManager to provide automatic activity documentation.  
+
 ### An activity-handler's activity specific data  
 EngageIDE is an IDE that has been specially designed for producing EngageUI apps.  
 An activity-handler typically has some activity specific data that it manipulates.  
@@ -303,10 +307,12 @@ A specific ActivityHandler defines their own ActivityHandlerExtension struct
 and adds it to this union.  
 Since the base ActivityHandler struct is passed to the intent-handler functions  
 All intent-handlers of an activity-handler can access activity-specific data through it.   
+
 ### User input handling: The keyboard-map and mouse-map
 An input gesture can be a mouse move or click or a keyboard key-press or release.  
 An activity-handler has mapping functions for key-down, key-up, mouse-move and a mouse-click.  
 Through these maps, user input gestures are associated with intent-handlers.  
+
 ### The activity-handler's display: State display and partial display updates  
 An activity-handler always has a current display state and a function to display it.  
 This function is always called by the EngagementManager.  
@@ -323,14 +329,17 @@ but require more book-keeping by the intent-handler.
 
 wxWidgets provides a library of graphic drawing functions  
 and the activity-handler stores display parameters such as screen dimensions and fonts.  
+
 ### Engage and Disengage from the EngagementManager
 An activity-handler may initialize itself when it is engaged by the EngagementManager  
 via its on_engage() function  
 or wind itself up when it is disengaged by the EngagementManager
 via its on_disengage() function
+
 ### Serialization
 An activity-handler must serialize it's state to/from a file  
 when told to do so by the EngagementManager via a serialize() function.
+
 ### Intent-Handlers
 An intent-handler is a single function that operates in 2 phases.  
 1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
