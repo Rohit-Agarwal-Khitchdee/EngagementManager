@@ -39,7 +39,7 @@ Pressing Ctrl launches the app dashboard in its current context.
 2. Low-level -- Each activity-handler contains an interface descriptor    
 used by the toolkit to implement an automatic interface documentation system.    
 Pressing Ctrl-H within any activity-handler context  
-presents a description on how to perform that activity.
+presents a description to the user on how to perform that activity.
 
 ### EngageUI apps have automatic state persistence
 When the app is launched, if it's for the first time,  
