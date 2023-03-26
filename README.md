@@ -40,12 +40,10 @@ An app-dashboard with an onscreen selection of possible user activities is desig
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
 2. <b>Fine-grained temporal design</b>.  
 At a lower level, an app's usage consists of high intensity interactions  
-where the user is involved a primary app-usage activity.  
+where the user is involved in a primary app-usage activity.  
 For these high-intensity interactions, direct-mapped keyboard controls are used.  
-A set of activity-handlers for the user activities provided by the app are designed.    
-Once an activity has been selected (via the dashboard),   
-an activity handler for that activity is launched.  
-Within an activity handler all user controls are direct-mapped to the keyboard.    
+A set of activity-handlers for the user activities accesible via the app's dashboard  
+are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
 The EngageUI toolkit includes an IDE   
