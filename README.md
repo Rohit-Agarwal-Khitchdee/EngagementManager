@@ -14,6 +14,17 @@ They have self-documenting interfaces
 and automatic persistence across user interaction sessions.  
 
 ### EngageUI apps are simple to design  
+The EngageUI API for wxWidgets consists of 2 simple constructs:  
+1. An EngagementManager class that subclasses wxWidgets' wxWindow class  
+to interface with the native windowing system  
+and manages a set of (user) "activity-handlers" that handle the user's current activity.  
+2. SActivityHandler, an "abstract" struct for handling a particular user activity.  
+An app populates and extends this struct to create an activity-handler  
+for an app specific activity.
+A handful of concrete activity-handlers are also provided to handle user activities  
+that are common across apps such as selecting a file from the native file system  
+and implementing an app's high-level dashboard.
+
 An EngageUI app is designed at 2 temporal levels:
 1. <b>Gross temporal design</b>.  
 At a high level, an app's usage consists of low intensity (frequency) interactions  
@@ -64,8 +75,8 @@ that handle user-activities common across apps
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
-The toolkit also includes the source code for EngageIDE,  
-an IDE specially designed for developing EngageUI apps.   
+The toolkit also includes the source code for the SAHAppProducer,  
+an activity-handler specially designed for producing EngageUI apps.   
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -128,7 +139,7 @@ It's source code has 2 parts:
 that comprise the EngageUI toolkit -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
 All EngageUI apps are based on this source code.  
-2. A dashboard descriptor and an activity-handler for EngageIDE (about 7000 LOC).  
+2. A dashboard descriptor and an activity-handler for producing EngageUI apps (about 7000 LOC).  
 The IDE will be fully functional in our next release.  
 This IDE will be used internally by Khitchdee to develop its X-Draft app.  
 
