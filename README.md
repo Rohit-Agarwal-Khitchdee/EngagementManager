@@ -42,7 +42,7 @@ An app-dashboard with an onscreen selection of possible user activities is desig
 At a lower level, an app's usage consists of high intensity interactions  
 where the user is involved in a primary app-usage activity.  
 For these high-intensity interactions, direct-mapped keyboard controls are used.  
-A set of activity-handlers for the user activities accesible via the app's dashboard  
+A set of activity-handlers for the user activities accessible via the app's dashboard  
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
