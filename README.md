@@ -81,10 +81,10 @@ specially designed for producing EngageUI/wxWidgets apps.
 
 # EngageIDE
 ### What is EngageIDE?
-EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.    
+EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI and wxWidgets.    
 It is an EngageUI app implemented in C++ using wxWidgets.        
 It can be used to produce a single C++ app codebase for an EngageUI app    
-that runs on Linux, Windows and OSX.    
+that runs on Linux, Windows and OSX via wxWidgets.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
 ### EngageIDE features
