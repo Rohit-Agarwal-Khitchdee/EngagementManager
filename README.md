@@ -7,13 +7,13 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI apps are simpler to design,  
+EngageUI apps are simpler to produce,  
 have less cluttered screens  
 and are easier to use for their users.  
 They have self-documenting interfaces  
 and automatic persistence across user interaction sessions.  
 
-### EngageUI apps are simple to design  
+### EngageUI apps are simple to produce  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
 1. An EngagementManager class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
@@ -75,7 +75,7 @@ that handle user-activities common across apps
 such as providing access to the OSs file system  
 and implementing an app's dashboard.  
 
-The toolkit also includes the source code for the SAHAppProducer,  
+The toolkit also includes the source code for SAHAppProducer,  
 an activity-handler specially designed for producing EngageUI apps.   
 
 ## EngageUI Illustrations 
@@ -140,8 +140,6 @@ that comprise the EngageUI toolkit -- about 3000 LOC.
 This code can directly be used to create an EngageUI app.  
 All EngageUI apps are based on this source code.  
 2. A dashboard descriptor and an activity-handler for producing EngageUI apps (about 7000 LOC).  
-The IDE will be fully functional in our next release.  
-This IDE will be used internally by Khitchdee to develop its X-Draft app.  
 
 # Building EngageIDE:
 (interaction time ~1hr) 
@@ -223,7 +221,10 @@ it is possible to incorporate an EngageUI window into a regular WIMP style app
 using wxAUI with the EngageUI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
-## Development Roadmap
+## Development Roadmap  
+EngageIDE is not ready yet.  
+We are working on getting its first release out.  
+Subsequently, we plan to work on:  
 1. Dashboard designer activity-handler.  
 2. Activity-Handler designer activity-handler.
 
