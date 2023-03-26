@@ -19,10 +19,10 @@ and an IDE specially designed for producing EngageUI/wxWidgets apps.
 
 ### EngageUI apps are simple to produce  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
-1. An EngagementManager class that subclasses wxWidgets' wxWindow class  
+1. An <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
 and manages a set of (user) "activity-handlers" that handle the user's current activity.  
-2. SActivityHandler, an "abstract" struct for handling a particular user activity.  
+2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
 An app populates and extends this struct to create an activity-handler  
 for an app specific activity.  
 A handful of concrete activity-handlers are also provided to handle user activities  
