@@ -7,17 +7,17 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
+EngageUI is provided as a free source-code toolkit (MIT license)  
+consisting of a small C++ API that sits alongside the wxWidgets API  
+and an IDE specially designed for producing EngageUI/wxWidgets apps.   
+
 EngageUI apps are simpler to produce,  
 have less cluttered screens  
 and are easier to use for their users.  
 They have self-documenting interfaces  
 and automatic persistence across user interaction sessions.  
 
-EngageUI is provided as a free source-code toolkit (MIT license)  
-consisting of a small C++ API that sits alongside the wxWidgets API  
-and an IDE specially designed for producing EngageUI/wxWidgets apps.   
-
-### EngageUI apps are simple to produce  
+### The simple EngageUI API  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
 1. An <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
@@ -29,6 +29,7 @@ A handful of concrete activity-handlers are also provided to handle user activit
 that are common across apps such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.
 
+### EngageUI apps are simple to produce
 An EngageUI app is designed at 2 temporal levels:
 1. <b>Gross temporal design</b>.  
 At a high level, an app's usage consists of low intensity (frequency) interactions  
@@ -68,19 +69,10 @@ Subsequently, when the app is reloaded, the EngagementManager resumes it from it
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit (C++)  
 based on the wxWidgets cross-platform GUI toolkit.  
-It's source code consists of  
-1. An EngagementManager class that subclasses wxWindow  
-and manages the user's engagement with the app    
-via the app-dashboard and various activity-handlers. 
-2. An abstract SActivityHandler struct that the app populates and extends     
-with the ability to handle an app-specific user activity.
-3. A small set of concrete SActivityHandler extensions    
-that handle user-activities common across apps  
-such as providing access to the OSs file system  
-and implementing an app's dashboard.  
-
-The toolkit also includes the source code for SAHAppProducer,  
-an activity-handler specially designed for producing EngageUI apps.   
+It's source code consists of 
+1. An implementation of the EngageUI API for wxWidgets.
+2. An implementation SAHAppProducer, an activity-handler  
+specially designed for producing EngageUI/wxWidgets apps.   
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -140,7 +132,7 @@ to provide visual build error correction and debugging.
 ### EngageIDE source-code
 It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
-that comprise the EngageUI toolkit -- about 3000 LOC.  
+that comprise the EngageUI API -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app.  
 All EngageUI apps are based on this source code.  
 2. A dashboard descriptor and an activity-handler for producing EngageUI apps (about 7000 LOC).  
