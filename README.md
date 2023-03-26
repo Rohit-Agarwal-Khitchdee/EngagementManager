@@ -140,7 +140,7 @@ All EngageUI apps are based on this source code.
 # Building EngageIDE:
 (interaction time ~1hr) 
 Should you build this app?  
-1. If you want to build a simple keyboard-driven app using wxWidgets.  
+1. If you want to produce a simple keyboard-driven app using wxWidgets.  
 2. If you are already a wxWidgets developer.  
 The process is relatively brief in this case.    
 and this toolkit gives you an easy to learn GUI design alternative to WIMP  
