@@ -20,7 +20,7 @@ to interface with the native windowing system
 and manages a set of (user) "activity-handlers" that handle the user's current activity.  
 2. SActivityHandler, an "abstract" struct for handling a particular user activity.  
 An app populates and extends this struct to create an activity-handler  
-for an app specific activity.
+for an app specific activity.  
 A handful of concrete activity-handlers are also provided to handle user activities  
 that are common across apps such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.
