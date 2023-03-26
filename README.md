@@ -23,6 +23,7 @@ The EngageUI API for wxWidgets consists of 2 simple constructs:
 to interface with the native windowing system  
 and manages a set of (user) "activity-handlers" that handle the user's current activity.  
 2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
+An activity-handler handles (keyboard and mouse) user-input and draws to the screen.  
 An app populates and extends this struct to create an activity-handler  
 for an app specific activity.  
 A handful of concrete activity-handlers are also provided to handle user activities  
