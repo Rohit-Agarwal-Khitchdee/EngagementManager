@@ -7,8 +7,11 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI apps have less cluttered screens and are easier to use for their users.  
-They are also easier to design and implement for the developer.  
+EngageUI apps are simpler to design,  
+have less cluttered screens  
+and are easier to use for their users.  
+They have self-documenting interfaces  
+and automatic persistence across user interaction sessions.  
 
 ### EngageUI apps are simple to design  
 An EngageUI app is designed at 2 temporal levels:
@@ -28,9 +31,9 @@ an activity handler for that activity is launched.
 Within an activity handler all user controls are direct-mapped to the keyboard.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-EngageIDE is an IDE (included in the EngageUI toolkit)  
-that has been specially designed for producing EngageUI apps.  
-It makes their design process very simple.  
+The EngageUI toolkit includes an IDE   
+specially designed for producing EngageUI apps.  
+It simplifies the production of EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented at 2 levels:  
@@ -73,7 +76,7 @@ an IDE specially designed for developing EngageUI apps.
 ### What is EngageIDE?
 EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.    
 It is an EngageUI app implemented in C++ using wxWidgets.        
-It can be used to produce a single C++ app codebase for an EngageUI app.  
+It can be used to produce a single C++ app codebase for an EngageUI app    
 that runs on Linux, Windows and OSX.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
@@ -118,6 +121,7 @@ makes scrolling through the entire codebase very easy.
 6. <b>Integrated compiler/debugger controls</b>.  
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
+
 ### EngageIDE source-code
 It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
