@@ -13,6 +13,10 @@ and are easier to use for their users.
 They have self-documenting interfaces  
 and automatic persistence across user interaction sessions.  
 
+EngageUI is provided as a free source-code toolkit (MIT license)  
+consisting of a small C++ API that sits alongside the wxWidgets API  
+and an IDE specially designed for producing EngageUI/wxWidgets apps.   
+
 ### EngageUI apps are simple to produce  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
 1. An EngagementManager class that subclasses wxWidgets' wxWindow class  
