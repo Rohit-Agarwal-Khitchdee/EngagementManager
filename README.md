@@ -7,7 +7,7 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI's first implementation targets the wxWidgets cross-platform GUI toolkit.  
+EngageUI's first implementation targets the wxWidgets cross-platform app design toolkit.  
 It is provided as a free source-code toolkit (MIT license)  
 consisting of a small C++ API implementation based on the wxWidgets libraries    
 and an implementation of an IDE based on the EngageUI API  
@@ -153,11 +153,11 @@ that you can start using right away.
 
 ## Recommended IDEs, building wxWidgets and EngageIDE for your dev platform
 EngageIDE is implemented in a single file EngageIDE.cpp  
-that uses the wxWidgets cross-platform UI libraries.  
+that uses the wxWidgets cross-platform app design libraries.  
 To build it you first have to download and build the wxWidgets libraries  
 for your development platform.  
 
-We recommend using the current development version of wxWidgets which is 3.2.1.  
+We recommend using the current development version of wxWidgets which is 3.2.2.1.  
 You can get help for setting up wxWidgets on your PC from this forum:  
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82.  
 The build process for the library depends on your platform:  
