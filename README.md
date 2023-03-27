@@ -51,7 +51,9 @@ are designed.
 The EngageUI toolkit includes an IDE specially designed for producing EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
-An EngageUI app's user interface is automatically documented at 2 levels:  
+An EngageUI app's user interface is automatically documented  
+via documentation constructs included in the API.  
+Interface documentation is at 2 levels:  
 1. High-level -- The app dashboard provides high-level documentation for the app.  
 Pressing Ctrl launches the app dashboard in its current context.  
 2. Low-level -- Each activity-handler contains an interface descriptor    
@@ -71,7 +73,7 @@ based on the wxWidgets cross-platform GUI libraries.
 It's source code consists of 
 1. An implementation of the EngageUI API for wxWidgets.
 2. An implementation of an app-dashboard for an IDE and SAHAppProducer  
-an activity-handler specially designed for producing EngageUI/wxWidgets apps.   
+an activity-handler for producing EngageUI/wxWidgets apps.   
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
