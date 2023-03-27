@@ -137,17 +137,16 @@ All EngageUI/wxWidgets apps are based on this source code.
 2. An app-dashboard for the UDE and an activity-handler for producing EngageUI apps (about 12000 LOC).  
 
 # Building EngageIDE:
-(interaction time ~1hr) 
 Should you build this app?  
-1. If you are new to wxWidgets.
+1. If you are new to wxWidgets.  
 You will have to download and build the wxWidgets library for your platform.  
-This is a somewhat convoluted and time consuming process.  
+This is a somewhat convoluted and time consuming process. (interaction time ~1hr)  
 You will need to become somewhat familiar with wxWidgets 
 particularly its wxDC class and its graphic drawing primitives.   
 If you jump these hurdles, you can produce a simple keyboard-driven cross-platform PC app.  
 2. If you are already a wxWidgets developer.  
-The process is relatively brief in this case.  
-and this toolkit gives you an easy to learn GUI design alternative to WIMP  
+You only have to build EngageIDE.cpp which takes a few minutes    
+and you get an easy to learn GUI design alternative to WIMP  
 that you can start using right away.  
 
 ## Recommended IDEs and building wxWidgets and EngageIDE for your dev platform
