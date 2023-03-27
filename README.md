@@ -149,7 +149,7 @@ You only have to build EngageIDE.cpp which takes a few minutes
 and you get an easy to learn GUI design alternative to WIMP  
 that you can start using right away.  
 
-## Recommended IDEs and building wxWidgets and EngageIDE for your dev platform
+## Recommended IDEs, building wxWidgets and EngageIDE for your dev platform
 EngageIDE is implemented in a single file EngageIDE.cpp  
 that uses the wxWidgets cross-platform UI libraries.  
 To build it you first have to download and build the wxWidgets libraries  
