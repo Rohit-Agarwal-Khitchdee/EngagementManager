@@ -48,9 +48,7 @@ A set of activity-handlers for the user activities accessible via the app's dash
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-The EngageUI toolkit includes an IDE   
-specially designed for producing EngageUI apps.  
-It simplifies the production of EngageUI apps.  
+The EngageUI toolkit includes an IDE specially designed for producing EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented at 2 levels:  
