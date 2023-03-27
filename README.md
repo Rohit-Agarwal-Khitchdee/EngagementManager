@@ -132,7 +132,7 @@ to provide visual build error correction and debugging.
 
 ### EngageIDE source-code
 It's source code has 2 parts:
-1. Source code for the classes, structs and functions  
+1. Source code implementations for the classes, structs and functions  
 that comprise the EngageUI API for wxWidgets -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app based on wxWidgets.  
 All EngageUI/wxWidgets apps are based on this source code.  
