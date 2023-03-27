@@ -21,7 +21,7 @@ and automatic persistence across user interaction sessions.
 
 ### The simple EngageUI API  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
-1. An <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
+1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
 and manages a set of (user) "activity-handlers" that handle the user's current activity.  
 2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
