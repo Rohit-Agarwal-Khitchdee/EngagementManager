@@ -7,9 +7,11 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI is provided as a free source-code toolkit (MIT license)  
-consisting of a small C++ API that sits alongside the wxWidgets API  
-and an IDE specially designed for producing EngageUI/wxWidgets apps.   
+EngageUI's first implementation targets the wxWidgets cross-platform GUI toolkit.
+It is provided as a free source-code toolkit (MIT license)  
+consisting of a small C++ API implementation based on the wxWidgets libraries    
+and an implementation of an IDE based on the EngageUI API  
+specially designed for producing EngageUI based wxWidgets apps.   
 
 EngageUI apps are simpler to produce,  
 have less cluttered screens  
@@ -67,11 +69,11 @@ Subsequently, when the app is reloaded, the EngagementManager resumes it from it
 
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit (C++)  
-based on the wxWidgets cross-platform GUI toolkit.  
+based on the wxWidgets cross-platform GUI libraries.  
 It's source code consists of 
 1. An implementation of the EngageUI API for wxWidgets.
-2. An implementation SAHAppProducer, an activity-handler  
-specially designed for producing EngageUI/wxWidgets apps.   
+2. An implementation of an app-dashboard for an IDE and SAHAppProducer  
+an activity-handler specially designed for producing EngageUI/wxWidgets apps.   
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -131,17 +133,22 @@ to provide visual build error correction and debugging.
 ### EngageIDE source-code
 It's source code has 2 parts:
 1. Source code for the classes, structs and functions  
-that comprise the EngageUI API -- about 3000 LOC.  
-This code can directly be used to create an EngageUI app.  
-All EngageUI apps are based on this source code.  
-2. A dashboard descriptor and an activity-handler for producing EngageUI apps (about 7000 LOC).  
+that comprise the EngageUI API for wxWidgets -- about 3000 LOC.  
+This code can directly be used to create an EngageUI app based on wxWidgets.  
+All EngageUI/wxWidgets apps are based on this source code.  
+2. An app-dashboard for the UDE and an activity-handler for producing EngageUI apps (about 12000 LOC).  
 
 # Building EngageIDE:
 (interaction time ~1hr) 
 Should you build this app?  
-1. If you want to produce a simple keyboard-driven app using wxWidgets.  
+1. If you are new to wxWidgets.
+You will have to download and build the wxWidgets library for your platform.  
+This is a somewhat convoluted and time consuming process.  
+You will need to become somewhat familiar with wxWidgets 
+particularly its wxDC class and its graphic drawing primitives.   
+If you jump these hurdles, you can produce a simple keyboard-driven cross-platform PC app.  
 2. If you are already a wxWidgets developer.  
-The process is relatively brief in this case.    
+The process is relatively brief in this case.  
 and this toolkit gives you an easy to learn GUI design alternative to WIMP  
 that you can start using right away.  
 
@@ -213,7 +220,8 @@ Add EngageIDE.cpp and build and run the project.
 ## EngageUI & WIMP mix-and-match
 Since an EngageUI is implemented entirely within a wxWindow subclass,  
 it is possible to incorporate an EngageUI window into a regular WIMP style app  
-using wxAUI with the EngageUI in one layer and a WIMP UI in another layer.  
+using a wxWidgets class called wxAUI  
+with the EngageUI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
 ## Development Roadmap  
@@ -224,7 +232,7 @@ Subsequently, we plan to work on:
 2. Activity-Handler designer activity-handler.
 
 ## Contributing to EngageIDE
-I've written about 10000 lines of code so far.  
+I've written about 15000 lines of code so far.  
 So I have fairly stable code design, code documentation and coding conventions.  
 I welcome all contributions.    
 Since this is an IDE, relatively simple and has a small and well-documented codebase   
