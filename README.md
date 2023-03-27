@@ -7,7 +7,7 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI's first implementation targets the wxWidgets cross-platform GUI toolkit.
+EngageUI's first implementation targets the wxWidgets cross-platform GUI toolkit.  
 It is provided as a free source-code toolkit (MIT license)  
 consisting of a small C++ API implementation based on the wxWidgets libraries    
 and an implementation of an IDE based on the EngageUI API  
