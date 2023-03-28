@@ -143,8 +143,9 @@ Should you build this app?
 1. If you are new to wxWidgets.  
 You will have to download and build the wxWidgets library for your platform.  
 This is a somewhat convoluted and time consuming process. (interaction time ~1hr)  
-You will need to become somewhat familiar with wxWidgets 
+You will need to become somewhat familiar with wxWidgets  
 particularly its wxDC class and its graphic drawing primitives.   
+This is a reltively simple process.  
 If you jump these hurdles, you can produce a simple keyboard-driven cross-platform PC app.  
 2. If you are already a wxWidgets developer.  
 You only have to build EngageIDE.cpp which takes a few minutes    
