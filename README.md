@@ -223,12 +223,10 @@ using a wxWidgets class called wxAUI
 with the EngageUI in one layer and a WIMP UI in another layer.  
 Effectively mixing these 2 styles of UI design.  
 
-## Development Roadmap  
+## Development Status  
 EngageIDE is not ready yet.  
 We are working on getting its first release out.  
-Subsequently, we plan to work on:  
-1. Dashboard designer activity-handler.  
-2. Activity-Handler designer activity-handler.
+We estimate this will happen by June 2023.  
 
 ## Contributing to EngageIDE
 I've written about 15000 lines of code so far.  
