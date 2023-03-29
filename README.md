@@ -229,19 +229,6 @@ EngageIDE is not ready yet.
 We are working on getting its first release out.  
 We estimate this will happen by June 2023.  
 
-## Contributing to EngageIDE
-I've written about 15000 lines of code so far.  
-So I have fairly stable code design, code documentation and coding conventions.  
-I welcome all contributions.    
-Since this is an IDE, relatively simple and has a small and well-documented codebase   
-it is amenable to customisations.  
-I welcome developers sharing their customisations with this project.  
-Some areas where work could be done are
-1. Sample apps. i.e. More primary activity-handlers.
-2. A different approach to parsing source code files.  
-3. Dictionary based text input.
-4. More pop-up activity-handlers.  
-
 ## EngageUI History
 After several years of using PCs,  
 we decided that the PC user interface would be better off  
@@ -296,7 +283,7 @@ We call this new UI design approach EngageUI.
 The EngageUI user interface toolkit that was designed as a result    
 turned out to be simple and easy to implement.  
 
-Then we set out to create EngageIDE an IDE (that uses EngageUI) to design  
+Then we set out to create EngageIDE to simplify the process of designing  
 EngageUI apps.  
 
 ## Designing an app's dashboard
@@ -320,7 +307,7 @@ they can be discovered within any operational context by pressing Ctrl-H.
 This is a feature provided by the toolkit.  
 Each activity handler has access to the entire screen   
 and exclusive control over user-input while it is loaded.  
-A user activity is defined as a set of possible "user intents",  
+A user activity is designed as a set of possible "user intents",  
 which is an input gesture that expresses intent to do something.     
 Each user-intent has an associated "intent-handler",  
 that performs the action intended by the user.  
