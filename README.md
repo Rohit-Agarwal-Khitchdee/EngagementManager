@@ -365,9 +365,9 @@ when told to do so by the EngagementManager via a serialize() function.
 An intent-handler is a single function that operates in 2 phases.  
 1. It is called in "NOTIFY" phase by a user-input-map to initiate intent handling.  
 In this phase it performs any of it's own actions and then does one of two things:  
-a. It initiates a partial display udpate request to the EngagementManager   
+   a. It initiates a partial display udpate request to the EngagementManager   
 specifying a rectangular area of the screen it will update.  
-b. It updates the activity-handler's data state  
+   b. It updates the activity-handler's data state  
 and initiates a full-screen display-state request to the EngagementManager.  
 2. It is called in "EXECUTE" phase by the EngagementManager  
 if it made a partial display update request.  
