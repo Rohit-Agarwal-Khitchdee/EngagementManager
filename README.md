@@ -7,11 +7,8 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI's first implementation targets the wxWidgets cross-platform app design toolkit.  
-It is provided as a free source-code toolkit (MIT license)  
-consisting of a small C++ API implementation based on the wxWidgets libraries    
-and an implementation of an IDE based on the EngageUI API  
-specially designed for producing EngageUI based wxWidgets apps.   
+EngageUI has been implemented as a small C++ API  
+that targets the wxWidgets cross-platform app design toolkit.  
 
 EngageUI apps are simpler to produce,  
 have less cluttered screens  
@@ -48,7 +45,7 @@ A set of activity-handlers for the user activities accessible via the app's dash
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-The EngageUI toolkit includes an IDE specially designed for producing EngageUI apps.  
+EngageIDE is an IDE for producing EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented  
@@ -69,11 +66,11 @@ Subsequently, when the app is reloaded, the EngagementManager resumes it from it
 
 ### The form and contents of the EngageUI toolkit  
 EngageUI is provided as an MIT licenced source-code toolkit (C++)  
-based on the wxWidgets cross-platform GUI libraries.  
+based on the wxWidgets cross-platform app design libraries.  
 It's source code consists of 
 1. An implementation of the EngageUI API for wxWidgets.
 2. An implementation of an app-dashboard for an IDE and SAHAppProducer  
-an activity-handler for producing EngageUI/wxWidgets apps.   
+an activity-handler for producing EngageUI apps.   
 
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
@@ -82,16 +79,16 @@ an activity-handler for producing EngageUI/wxWidgets apps.
 
 # EngageIDE
 ### What is EngageIDE?
-EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI and wxWidgets.    
+EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.    
 It is an EngageUI app implemented in C++ using wxWidgets.        
-It can be used to produce a single C++ app codebase for an EngageUI app    
-that runs on Linux, Windows and OSX via wxWidgets.    
+It can be used to produce a single C++ app codebase     
+that can be built to run on Linux, Windows and OSX.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
 It is fairly well documented based on its own documentation system.  
 ### EngageIDE features
 1. <b>No mouse usage, keyboard-only interface</b>.  
 EngageIDE does not use the mouse.  
-All of it's editing building and debugging controls are keyboard based.  
+All of it's editing, building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
 so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
 2. <b>Efficient code-documentation system</b>.  
@@ -103,15 +100,15 @@ You can be fairly verbose in your documentation
 knowing that a long comment will fold down to a single line  
 to be opened when needed.  
 3. <b>Efficient code navigation</b>.  
-a. Special demarcation symbols are introduced inside comment blocks  
+   a. Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
 above the language level.  
 These constructs -- blocks and sub-blocks -- can also be folded  
 making it possible to easily navigate medium sized codebases  
 in the 10s of KLOCs.  
-b. A goto mechanism enables jumps to any selected struct, class or function.  
-c. A global code navigator has EngageUI specific mechanisms for code navigation  
-that greatly simplify code navigation during development.  
+   b. A goto mechanism enables jumps to any selected struct, class or function.  
+   c. A global code navigator has EngageUI specific mechanisms for code navigation.  
+
 4. <b>Simplified codebase organisation</b>.  
 The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
