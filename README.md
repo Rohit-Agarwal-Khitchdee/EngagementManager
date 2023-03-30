@@ -120,7 +120,7 @@ and narrower right and left columns
 to see the preceding and following code sections.  
 Even the longest functions can entirely fit in a single screen.  
 At any given time you only keep the code you're working on open  
-everything else is kept summarized (folded).
+everything else is kept summarized (folded).  
 This feature along with foldable blocks and sub-blocks  
 makes scrolling through the entire codebase very easy.  
 6. <b>Integrated compiler/debugger controls</b>.  
@@ -132,8 +132,8 @@ It's source code has 2 parts:
 1. Source code implementations for the classes, structs and functions  
 that comprise the EngageUI API for wxWidgets -- about 3000 LOC.  
 This code can directly be used to create an EngageUI app based on wxWidgets.  
-All EngageUI/wxWidgets apps are based on this source code.  
-2. An app-dashboard for the UDE and an activity-handler for producing EngageUI apps (about 12000 LOC).  
+All EngageUI apps are based on this source code.  
+2. An app-dashboard for the IDE and an activity-handler for producing EngageUI apps (about 12000 LOC).  
 
 # Building EngageIDE:
 Should you build this app?  
@@ -142,7 +142,7 @@ You will have to download and build the wxWidgets library for your platform.
 This is a somewhat convoluted and time consuming process. (interaction time ~1hr)  
 You will need to become somewhat familiar with wxWidgets  
 particularly its wxDC class and its graphic drawing primitives.   
-This is a reltively simple process.  
+This is a relatively simple process.  
 If you jump these hurdles, you can produce a simple keyboard-driven cross-platform PC app.  
 2. If you are already a wxWidgets developer.  
 You only have to build EngageIDE.cpp which takes a few minutes    
