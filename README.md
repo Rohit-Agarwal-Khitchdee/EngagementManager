@@ -24,7 +24,7 @@ and manages a set of (user) "activity-handlers" that handle the user's current a
 2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
 An activity-handler handles (keyboard and mouse) user-input and draws to the screen.  
 An app populates and extends SActivityHandler to create activity-handlers  
-for app specific user activities.  
+for app-specific user activities.  
 A handful of concrete activity-handlers are also provided for user activities  
 that are common across apps such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.
@@ -34,13 +34,13 @@ An EngageUI app is designed at 2 temporal levels:
 1. <b>Gross temporal design</b>.  
 At a high level, an app's usage consists of low intensity (frequency) interactions  
 where the user decides what activity they want to be involved in next.  
-Since these are low intensity interactions, keyboard selectable onscreen controls are used.  
+Since these are low intensity interactions, (slower) keyboard selectable onscreen controls are used.  
 An app-dashboard with an onscreen selection of possible user activities is designed.  
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
 2. <b>Fine-grained temporal design</b>.  
 At a lower level, an app's usage consists of high intensity interactions  
 where the user is involved in a primary app-usage activity.  
-For these high-intensity interactions, direct-mapped keyboard controls are used.  
+For these high-intensity interactions, (faster) direct-mapped keyboard controls are used.  
 A set of activity-handlers for the user activities accessible via the app's dashboard  
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
