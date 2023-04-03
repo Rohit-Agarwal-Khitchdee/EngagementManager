@@ -47,7 +47,7 @@ A set of activity-handlers for the user activities accessible via the app's dash
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-EngageIDE is an IDE for producing EngageUI apps.  
+The toolkit contains source code for a free IDE for producing EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented  
@@ -81,7 +81,7 @@ an activity-handler for producing EngageUI apps.
 
 # EngageIDE
 ### What is EngageIDE?
-EngageIDE is an IDE for building PC desktop GUI apps based on EngageUI.    
+EngageIDE is a free IDE for building PC desktop GUI apps based on EngageUI.    
 It is an EngageUI app implemented in C++ using wxWidgets.        
 It can be used to produce a single C++ app codebase     
 that can be built to run on Linux, Windows and OSX.    
