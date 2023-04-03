@@ -32,7 +32,7 @@ and implementing an app's high-level dashboard.
 ### EngageUI apps are simple to produce
 An EngageUI app is designed at 2 temporal levels:
 1. <b>Gross temporal design</b>.  
-At a high level, an user's engagement consists of low intensity (frequency) interactions  
+At a high level, a user's engagement consists of low intensity (frequency) interactions  
 where the user decides what activity they want to be involved in next.  
 Since these are low intensity interactions,  
 (slower, documented) keyboard selectable onscreen controls are used.  
