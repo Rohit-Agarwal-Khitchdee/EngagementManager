@@ -30,15 +30,15 @@ that are common across apps such as selecting a file from the native file system
 and implementing an app's high-level dashboard.
 
 ### EngageUI apps are simple to produce
-An EngageUI app is designed at 2 temporal levels:
-1. <b>Gross temporal design</b>.  
+An EngageUI app is designed at 2 temporal levels of user-engagement:
+1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
 where the user decides what activity they want to be involved in next.  
 Since these are low intensity interactions,  
 (slower, documented) keyboard selectable onscreen controls are used.  
 An app-dashboard with an onscreen selection of possible user activities is designed.  
 [Designing an app's dashboard](#designing-an-apps-dashboard) 
-2. <b>Fine-grained temporal design</b>.  
+2. <b>Fine-grained user engagement</b>.  
 At a lower level, a user's engagement consists of high intensity interactions  
 where the user is engaged in a primary app-usage activity.  
 For these high-intensity interactions,  
