@@ -34,7 +34,7 @@ A handful of concrete activity-handlers are also provided for user activities
 that are common across apps such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.
 
-### EngageUI app design
+### EngageUI app design -- a simple process
 An EngageUI app is designed at 2 temporal levels of user-engagement:
 1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
