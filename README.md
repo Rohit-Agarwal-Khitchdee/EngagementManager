@@ -34,7 +34,7 @@ A handful of concrete activity-handlers are also provided for user activities
 that are common across apps such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.
 
-### EngageUI apps design
+### EngageUI app design
 An EngageUI app is designed at 2 temporal levels of user-engagement:
 1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
@@ -52,7 +52,7 @@ A set of activity-handlers for the user activities accessible via the app's dash
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-The toolkit's free IDE makes it easy to produce EngageUI apps.  
+The toolkit's free IDE makes it easy to design and produce EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented  
@@ -78,7 +78,7 @@ Subsequently, when the app is reloaded, the EngagementManager resumes it from it
 # EngageIDE
 ### What is EngageIDE?
 EngageIDE is a free IDE for building PC desktop GUI apps based on EngageUI.    
-It is an EngageUI app implemented in C++ using wxWidgets.        
+It is itself an EngageUI PC desktop GUI app.        
 It can be used to produce a single C++ app codebase     
 that can be built to run on Linux, Windows and OSX.    
 It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
@@ -124,14 +124,6 @@ makes scrolling through the entire codebase very easy.
 6. <b>Integrated compiler/debugger controls</b>.  
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
-
-### EngageIDE source-code
-It's source code has 2 parts:
-1. Source code implementations for the classes, structs and functions  
-that comprise the EngageUI API for wxWidgets -- about 3000 LOC.  
-This code can directly be used to create an EngageUI app based on wxWidgets.  
-All EngageUI apps are based on this source code.  
-2. An app-dashboard for the IDE and an activity-handler for producing EngageUI apps (about 12000 LOC).  
 
 # Building EngageIDE:
 Should you build this app?  
