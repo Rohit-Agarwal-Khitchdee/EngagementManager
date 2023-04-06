@@ -21,7 +21,7 @@ It contains C++ source-code for:
 the wxWidgets cross-platform app design toolkit.
 2. An IDE (based on EngageUI) for developing EngageUI apps.  
 
-### The simple EngageUI API  
+### The EngageUI API -- 2 simple constructs  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
