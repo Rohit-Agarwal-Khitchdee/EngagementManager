@@ -1,5 +1,5 @@
 # What is EngageUI?
-### A simpler, keyboard-focused alternative to WIMP  
+### A user-engagement focused UI paradigm alternative to WIMP  
 EngageUI is a user-engagement focused UI paradigm  
 that takes a temporal rather than spatial approach to the GUI.  
 It is always focused on handling the user's current activity when engaging with the UI.  
@@ -7,14 +7,19 @@ It does not use windows and there are no spatial layout constructs.
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
-EngageUI has been implemented as a small C++ API  
-that targets the wxWidgets cross-platform app design toolkit.  
-
+### Apps are simpler to produce and simpler to use 
 EngageUI apps are simpler to produce,  
 have less cluttered screens  
 and are easier to use for their users.  
 They have self-documenting interfaces  
 and automatic persistence across user interaction sessions.  
+
+### Provided as a free source-code toolkit
+EngageUI is provided to developers as a free source-code toolkit.
+It contains C++ source-code for:
+1. The implementation of a small API that targets  
+the wxWidgets cross-platform app design toolkit.
+2. An IDE (based on EngageUI) for developing EngageUI apps.  
 
 ### The simple EngageUI API  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
@@ -47,7 +52,7 @@ A set of activity-handlers for the user activities accessible via the app's dash
 are designed.    
 [Designing an activity-handler](#designing-an-activity-handler)  
 
-The toolkit contains source code for a free IDE for producing EngageUI apps.  
+The toolkit's free IDE makes it easy to produce EngageUI apps.  
 
 ### EngageUI apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented  
@@ -65,15 +70,6 @@ When the app is launched, if it's for the first time,
 the EngagementManager presents the user with the app's dashboard.  
 When the app is exited, the EngagementManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
-
-### The form and contents of the EngageUI toolkit  
-EngageUI is provided as an MIT licenced source-code toolkit (C++)  
-based on the wxWidgets cross-platform app design libraries.  
-It's source code consists of 
-1. An implementation of the EngageUI API for wxWidgets.
-2. An implementation of an app-dashboard for an IDE and SAHAppProducer  
-an activity-handler for producing EngageUI apps.   
-
 ## EngageUI Illustrations 
 ![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
 
