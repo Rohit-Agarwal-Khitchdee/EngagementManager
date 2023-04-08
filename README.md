@@ -1,27 +1,29 @@
 # What is EngageUI?
 ### A user-engagement focused UI paradigm alternative to WIMP  
-EngageUI is a user-engagement focused UI paradigm  
-that takes a temporal rather than spatial approach to the GUI.  
-It is always focused on handling the user's current activity when engaging with the UI.  
+EngageUI is always focused on handling the user's current activity  
+when engaging with the UI  
+which is a temporal rather than spatial approach to the GUI.  
 It does not use windows and there are no spatial layout constructs.  
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 
 ### Apps are simpler to produce and simpler to use 
 EngageUI apps are simpler to produce,  
-have less cluttered screens  
-and are easier to use for their users.  
-They have self-documenting interfaces  
+have less cluttered screens,    
+self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
 ### Provided as a free source-code toolkit
-EngageUI is provided to developers as a free source-code toolkit.
-It contains C++ source-code for:
-1. The implementation of a small API that targets  
+The free EngageUI source-code toolkit contains C++ source-code for:
+1. The implementation of a small API designed to work with    
 the wxWidgets cross-platform app design toolkit.
 2. An IDE (based on EngageUI) for developing EngageUI apps.  
 
-### The EngageUI API -- 2 simple constructs  
+There are no libraries involved,  
+the source code for EngageUI API is small (about 3KLOC),
+it is easy to understand how everything works and make modifications if needed.  
+
+### The API is 2 simple constructs  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
@@ -34,7 +36,7 @@ A handful of concrete activity-handlers are also provided for user activities
 that are common across apps such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.
 
-### EngageUI app design -- a simple process
+### App design is a simple process
 An EngageUI app is designed at 2 temporal levels of user-engagement:
 1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
@@ -54,7 +56,7 @@ are designed.
 
 The toolkit's free IDE makes it easy to design and produce EngageUI apps.  
 
-### EngageUI apps have self-documenting interfaces  
+### Apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented  
 via documentation constructs included in the API.  
 Interface documentation is at 2 levels:  
@@ -65,15 +67,19 @@ used by the toolkit to implement an automatic interface documentation system.
 Pressing Ctrl-H within any activity-handler context  
 presents a description to the user on how to perform that activity.
 
-### EngageUI apps have automatic state persistence
+### Apps have automatic state persistence
 When the app is launched, if it's for the first time,  
 the EngagementManager presents the user with the app's dashboard.  
 When the app is exited, the EngagementManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
-## EngageUI Illustrations 
-![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
-
+## EngageUI Illustrations
+### Less cluttered screens
 ![Less cluttered screens](https://www.khitchdee.net/WIMPvsEngage.png?v03-23-2023)  
+### Automatic app state persistence
+![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
+### Built-in app interface documentation
+The app dashboard  
+The activity handlers interface doc.  
 
 # EngageIDE
 ### What is EngageIDE?
@@ -81,14 +87,13 @@ EngageIDE is a free IDE for building PC desktop GUI apps based on EngageUI.
 It is itself an EngageUI PC desktop GUI app.        
 It can be used to produce a single C++ app codebase     
 that can be built to run on Linux, Windows and OSX.    
-It has about 15KLOC so it's not too big to understand/modify and loads instantly.  
-It is fairly well documented based on its own documentation system.  
 ### EngageIDE features
 1. <b>No mouse usage, keyboard-only interface</b>.  
 EngageIDE does not use the mouse.  
-All of it's editing, building and debugging controls are keyboard based.  
+All of it's editing, navigation, building and debugging controls are keyboard based.  
 You never need to switch to the mouse while typing out your code  
 so it's efficient like Vim, Emacs, Sublime Text and Notepad++.  
+
 2. <b>Efficient code-documentation system</b>.  
 Is has a very efficient way of folding code.  
 The code is documented inline using C comment blocks  
@@ -97,6 +102,7 @@ to get out of the way of code readability.
 You can be fairly verbose in your documentation  
 knowing that a long comment will fold down to a single line  
 to be opened when needed.  
+
 3. <b>Efficient code navigation</b>.  
    a. Special demarcation symbols are introduced inside comment blocks  
 to create higher level navigational constructs in the code  
@@ -111,6 +117,7 @@ in the 10s of KLOCs.
 The apps you write are all included in a single .cpp file.  
 EngageIDE does not use header files except for library (such as wxWidgets) headers.  
 This "all in one place" approach makes the codebase easier to navigate and understand.  
+
 5. <b>Efficient code display</b>.  
 The entire screen is used to display code in a 3 column format.  
 With a wider primary center column that is used to edit code  
@@ -121,6 +128,7 @@ At any given time you only keep the code you're working on open
 everything else is kept summarized (folded).  
 This feature along with foldable blocks and sub-blocks  
 makes scrolling through the entire codebase very easy.  
+
 6. <b>Integrated compiler/debugger controls</b>.  
 EngageIDE connects to a command line compiler and debugger  
 to provide visual build error correction and debugging.  
