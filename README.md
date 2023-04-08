@@ -212,74 +212,10 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
 
-## EngageUI & WIMP mix-and-match
-Since an EngageUI is implemented entirely within a wxWindow subclass,  
-it is possible to incorporate an EngageUI window into a regular WIMP style app  
-using a wxWidgets class called wxAUI  
-with the EngageUI in one layer and a WIMP UI in another layer.  
-Effectively mixing these 2 styles of UI design.  
-
 ## Development Status  
 EngageIDE is not ready yet.  
 We are working on getting its first release out.  
 We estimate this will happen by June 2023.  
-
-## EngageUI History
-After several years of using PCs,  
-we decided that the PC user interface would be better off  
-if we didn't have to constantly switch to the mouse in the interaction.  
-However, after DOS, all operating system UIs were designed  
-focused on using a separate pointing device based on the use of WIMP  
-which stands for Windows, Icons, Menus and Pointers.  
-PC OSs use the desktop metaphor to organize the OS interface  
-and for apps they use the control panel metaphor.  
-Industrial machines had control panels with a bunch of switches, gauges etc.  
-to control them.  
-The control panel metaphor for PC apps derives from that physical counterpart.  
-A WIMP app has windows (control panels)   
-with a bunch of controls laid out spatially within them.  
-Controls such as button, text input fields, info displays etc.  
-The user interacts with these controls are selected using the pointer (mouse).  
-OSs differentiate themselves in the look and feel of their controls and control panels.  
-The control panel metaphor used in PC app design  
-straigtjackets the app developer in terms of what they can design.  
-Design is mostly a choice of which controls to use  
-and how to lay them out inside Windows.  
-
-The latest annual developer survey by stack ovewflow:
-https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment.  
-shows that a sizeable number of developers use keyboard-input focused development tools  
-such as  
-Notepad++ 29.71%.  
-VIM 24.19%.  
-Sublime Text 20.46%.  
-Emacs 5.3%.  
-Neovim 4.99%  
-This corroborates our conclusion that for text intensive tasks such as  
-writing 10s of thousands of lines of code  
-a keyboard focused GUI is more efficient than one that is based on mouse input  
-and thus requires the user to switch between keyboard and mouse input.  
-EngageIDE and its keyboard-focused GUI (EngageUI) could be used to write  
-cross-platform versions of any of the above list of tools.  
-## EngageUI Design
-The first question we had to answer was  
-would it be possible to design an app's user interface  
-without the use of a pointer for on-screen space selection.  
-An analysis of WIMP apps showed that  
-most apps did not require fine-grained screen space selection.  
-The exceptions being graphics apps and CAD tools.  
-Using the arrow keys on a keyboard,  
-it would be possible to provide the coarse screen-space selection  
-needed by most apps.  
-A further analysis indicated that  
-if we did away with the spatial control-panel metaphor  
-it could be replaced with a temporal, user-activity based design metaphor.  
-We call this new UI design approach EngageUI.  
-The EngageUI user interface toolkit that was designed as a result    
-turned out to be simple and easy to implement.  
-
-Then we set out to create EngageIDE to simplify the process of designing  
-EngageUI apps.  
 
 ## Designing an app's dashboard
 An app's dashboard describes its gross level temporal interface.  
