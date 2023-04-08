@@ -13,14 +13,14 @@ have less cluttered screens,
 self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
-### Provided as a free source-code toolkit
+### Provided as a free 'source-code toolkit'
 The free EngageUI source-code toolkit contains C++ source-code for:
 1. The implementation of a small API designed to work with    
 the wxWidgets cross-platform app design toolkit.
 2. An IDE (based on EngageUI) for developing EngageUI apps.  
 
 There are no libraries involved,  
-the source code for EngageUI API is small (about 3KLOC),  
+the source code for the API is small (about 3KLOC) and well documented,  
 it is easy to understand how everything works and make modifications if needed.  
 
 ### The API is 2 simple constructs  
