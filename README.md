@@ -44,7 +44,7 @@ where the user decides what activity they want to be involved in next.
 Since these are low intensity interactions,  
 (slower, documented) keyboard selectable onscreen controls are used.  
 An app-dashboard with an onscreen selection of possible user activities is designed.  
-[Designing an app's dashboard](#designing-an-apps-dashboard) 
+[Designing an app's dashboard](https://github.com/Rohit-Agarwal-Khitchdee/EngageIDE/wiki/#designing-an-apps-dashboard) 
 2. <b>Fine-grained user engagement</b>.  
 At a lower level, a user's engagement consists of high intensity interactions  
 where the user is engaged in a primary app-usage activity.  
