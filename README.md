@@ -52,7 +52,7 @@ For these high-intensity interactions,
 (faster, undocumented) direct-mapped keyboard controls are used.  
 A set of activity-handlers for the user activities accessible via the app's dashboard  
 are designed.    
-[Designing an activity-handler](Wiki/#designing-an-activity-handler)  
+[Designing an activity-handler](wiki/#designing-an-activity-handler)  
 
 The toolkit's free IDE makes it easy to design and produce EngageUI apps.  
 
