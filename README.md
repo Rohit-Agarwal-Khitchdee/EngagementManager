@@ -212,7 +212,7 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
 
-## Development Status  
+# Development Status  
 EngageIDE is not ready yet.  
 We are working on getting its first release out.  
 We estimate this will happen by June 2023.  
