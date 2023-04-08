@@ -20,7 +20,7 @@ the wxWidgets cross-platform app design toolkit.
 2. An IDE (based on EngageUI) for developing EngageUI apps.  
 
 There are no libraries involved,  
-the source code for EngageUI API is small (about 3KLOC),
+the source code for EngageUI API is small (about 3KLOC),  
 it is easy to understand how everything works and make modifications if needed.  
 
 ### The API is 2 simple constructs  
