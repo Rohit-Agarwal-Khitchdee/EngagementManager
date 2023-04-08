@@ -1,3 +1,10 @@
+# Development Status  
+EngageIDE is not ready yet.  
+We are working on getting its first release out.  
+We estimate this will happen by June 2023.  
+The code posted builds to a code-navigator  
+that lacks editing and build features.
+
 # Building EngageIDE:
 Should you build this app?  
 1. If you are new to wxWidgets.  
@@ -76,11 +83,6 @@ Open your project and delete all the src, resource and include files.
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
-
-# Development Status  
-EngageIDE is not ready yet.  
-We are working on getting its first release out.  
-We estimate this will happen by June 2023.  
 
 # What is EngageUI?
 ### A user-engagement focused UI paradigm alternative to WIMP  
