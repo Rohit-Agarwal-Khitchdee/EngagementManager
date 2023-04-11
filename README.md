@@ -99,16 +99,6 @@ have less cluttered screens,
 self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
-### Provided as a free 'source-code toolkit'
-The free EngageUI source-code toolkit contains C++ source-code for:
-1. The implementation of a small API designed to work with    
-the wxWidgets cross-platform app design toolkit.
-2. An IDE (based on EngageUI) for developing EngageUI apps.  
-
-There are no libraries involved,  
-the source code for the API is small (about 3KLOC) and well documented,  
-it is easy to understand how everything works and make modifications if needed.  
-
 ### The API is 2 simple constructs  
 The EngageUI API for wxWidgets consists of 2 simple constructs:  
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
@@ -140,7 +130,8 @@ A set of activity-handlers for the user activities accessible via the app's dash
 are designed.    
 [Designing an activity-handler](https://github.com/Rohit-Agarwal-Khitchdee/EngageIDE/wiki/#designing-an-activity-handler)  
 
-The toolkit's free IDE makes it easy to design and produce EngageUI apps.  
+The EngageUI toolkit includes a free IDE  
+that makes it easy to design and produce EngageUI apps.  
 
 ### Apps have self-documenting interfaces  
 An EngageUI app's user interface is automatically documented  
@@ -158,6 +149,16 @@ When the app is launched, if it's for the first time,
 the EngagementManager presents the user with the app's dashboard.  
 When the app is exited, the EngagementManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
+### Provided as a free 'source-code toolkit'
+The free EngageUI source-code toolkit contains C++ source-code for:
+1. The implementation of a small API designed to work with    
+the wxWidgets cross-platform app design toolkit.
+2. An IDE (based on EngageUI) for developing EngageUI apps.  
+
+There are no libraries involved,  
+the source code for the API is small (about 3KLOC) and well documented,  
+it is easy to understand how everything works and make modifications if needed.  
+
 ## EngageUI Illustrations
 ### Less cluttered screens
 ![Less cluttered screens](https://www.khitchdee.net/WIMPvsEngage.png?v03-23-2023)  
