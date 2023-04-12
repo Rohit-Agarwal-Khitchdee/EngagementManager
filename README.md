@@ -89,7 +89,7 @@ Add EngageIDE.cpp and build and run the project.
 All PC UIs are based on the WIMP UI paradigm.  
 WIMP stands for Windows, Icons, Menus and Pointers.  
 Apps are designed using a control-panel metaphor.  
-The UI includes a bunch of spatially laid out control panels (called controls)
+The UI includes a bunch of spatially laid out control panels (called controls)  
 each one of which is designed to handle some user activity.  
 The design consists of selecting which controls to use  
 and where to place them on the screen.  
