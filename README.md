@@ -85,20 +85,23 @@ Go to src, right click, add an existing file.
 Add EngageIDE.cpp and build and run the project.  
 
 # What is EngageUI?
-### A user-engagement focused UI paradigm alternative to WIMP  
+### What is WIMP?
 All PC UIs are based on the WIMP UI paradigm.  
 WIMP stands for Windows, Icons, Menus and Pointers.  
 Apps are designed using a control-panel metaphor.  
-The UI includes a bunch of spatially laid out control panels  
+The UI includes a bunch of spatially laid out control panels (called controls)
 each one of which is designed to handle some user activity.  
-The design consists of selecting which controls to use where (spatially) in the UI.  
-EngageUI is always focused on handling the user's current activity  
+The design consists of selecting which controls to use  
+and where to place them on the screen.  
+
+### A user-engagement focused alternative to WIMP  
+EngageUI, instead, is always focused on handling the user's current activity  
 when engaging with the UI  
 which is a temporal rather than spatial approach to the UI.  
 Instead of being layout centric, it is activity centric.  
 It treats a user activity as a whole and provides mechanisms for handling it.  
 WIMP instead provides a palette of controls  
-which serve as are the building blocks for handling a user activity.  
+which serve as the building blocks for handling a user activity.  
 It does not address user activity at a high level.  
 EngageUI does not use windows and does not define any spatial layout constructs.  
 It uses keyboard input for all user controls  
