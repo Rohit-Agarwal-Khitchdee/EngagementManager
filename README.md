@@ -99,10 +99,10 @@ EngageUI, instead, is always focused on handling the user's <i>current</i> activ
 when engaging with the UI  
 which is a temporal rather than spatial approach to the UI.  
 Instead of being layout centric, it is activity centric.  
-It treats a user activity as a whole and provides mechanisms for handling it.  
-WIMP instead provides a palette of controls  
+It treats a user activity as a temporal unit and provides mechanisms for handling it.  
+WIMP instead provides a palette of (spatial) controls  
 which serve as the building blocks for handling a user activity.  
-It does not address user activity at a high level.  
+It does not address user activity at a temporal level.  
 EngageUI does not use windows and does not define any spatial layout constructs.  
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
