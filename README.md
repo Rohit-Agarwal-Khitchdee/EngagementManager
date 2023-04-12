@@ -95,7 +95,7 @@ The design consists of selecting which controls to use
 and where to place them on the screen.  
 
 ### A user-engagement focused alternative to WIMP  
-EngageUI, instead, is always focused on handling the user's current activity  
+EngageUI, instead, is always focused on handling the user's <i>current</i> activity  
 when engaging with the UI  
 which is a temporal rather than spatial approach to the UI.  
 Instead of being layout centric, it is activity centric.  
