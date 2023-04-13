@@ -103,7 +103,7 @@ It treats a user activity as a temporal (and not spatial) unit
 and provides mechanisms for handling it.  
 While WIMP provides a palette of (spatial) controls  
 which serve as the building blocks for handling a user activity    
-it does not treat user activity as a temporal level.  
+it does not treat user activity as a temporal unit.  
 EngageUI does not use windows or define any spatial layout constructs.  
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
