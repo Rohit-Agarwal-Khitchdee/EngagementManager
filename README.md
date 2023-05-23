@@ -1,11 +1,11 @@
 # Development Status  
-EngageIDE is not ready yet.  
+The EngagementManager SDK is not ready yet.  
 We are working on getting its first release out.  
-We estimate this will happen by June 2023.  
+We estimate this will happen by the end of June 2023.  
 The code posted builds to a code-navigator  
 that lacks editing and build features.
 
-# Building EngageIDE:
+# Building EngageIDE the IDE included with the EngagementManager SDK:
 Should you build this app?  
 1. If you are new to wxWidgets.  
 You will have to download and build the wxWidgets library for your platform.  
@@ -84,7 +84,7 @@ At this point your project is empty but configured for wxWidgets.
 Go to src, right click, add an existing file.  
 Add EngageIDE.cpp and build and run the project.  
 
-# What is EngageUI?
+# What is the EngagementManager SDK?
 ### What is WIMP?
 All PC UIs are based on the WIMP UI paradigm.  
 WIMP stands for Windows, Icons, Menus and Pointers.  
@@ -95,7 +95,7 @@ The design consists of selecting which controls to use
 and where to place them on the screen.  
 
 ### A user-engagement focused alternative to WIMP  
-EngageUI, instead, is always focused on handling the user's <i>current</i> activity  
+The EngagementManager, instead, is always focused on handling the user's <i>current</i> activity  
 when engaging with the UI  
 which is a temporal rather than spatial approach to the UI.  
 Instead of being layout centric, it is activity centric.  
@@ -104,7 +104,7 @@ and provides mechanisms for handling it.
 While WIMP provides a palette of (spatial) controls  
 which serve as the building blocks for handling a user activity    
 it does not treat user activity as a temporal unit.  
-EngageUI does not use windows or define any spatial layout constructs.  
+The EngagementManager does not use windows or define any spatial layout constructs.  
 It uses keyboard input for all user controls  
 (the mouse may be used, if needed, for onscreen space selection only).  
 It does define a palette of user activity handlers  
@@ -112,13 +112,13 @@ for activities that are common across apps.
 But these are temporal and not spatial constructs.  
 
 ### Apps are simpler to produce and simpler to use 
-EngageUI apps are simpler to produce,  
+EngagementManager apps are simpler to produce,  
 have less cluttered screens,    
 self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
 ### The API is 2 simple constructs  
-The EngageUI API for wxWidgets consists of 2 simple constructs:  
+The EngagementManager API for wxWidgets consists of 2 simple constructs:  
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
 and manages a set of (user) "activity-handlers" that handle the user's current activity.  
@@ -131,14 +131,14 @@ that are common across apps such as selecting a file from the native file system
 and implementing an app's high-level dashboard.
 
 ### App design is a simple process
-An EngageUI app is designed at 2 temporal levels of user-engagement:
+An EngagementManager app is designed at 2 temporal levels of user-engagement:
 1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
 where the user decides what activity they want to be involved in next.  
 Since these are low intensity interactions,  
 (slower, documented) keyboard selectable onscreen controls are used.  
 An app-dashboard with an onscreen selection of possible user activities is designed.  
-[Designing an app's dashboard](https://github.com/Rohit-Agarwal-Khitchdee/EngageIDE/wiki/#designing-an-apps-dashboard) 
+[Designing an app's dashboard](https://github.com/Rohit-Agarwal-Khitchdee/EngagementManager/wiki/#designing-an-apps-dashboard) 
 2. <b>Fine-grained user engagement</b>.  
 At a lower level, a user's engagement consists of high intensity interactions  
 where the user is engaged in a primary app-usage activity.  
@@ -146,13 +146,13 @@ For these high-intensity interactions,
 (faster, undocumented) direct-mapped keyboard controls are used.  
 A set of activity-handlers for the user activities accessible via the app's dashboard  
 are designed.    
-[Designing an activity-handler](https://github.com/Rohit-Agarwal-Khitchdee/EngageIDE/wiki/#designing-an-activity-handler)  
+[Designing an activity-handler](https://github.com/Rohit-Agarwal-Khitchdee/EngagementManager/wiki/#designing-an-activity-handler)  
 
-The EngageUI toolkit includes a free IDE  
-that makes it easy to design and produce EngageUI apps.  
+The EngagementManager SDK includes a free IDE  
+that makes it easy to design and produce EngagementManager apps.  
 
 ### Apps have self-documenting interfaces  
-An EngageUI app's user interface is automatically documented  
+An EngagementManager app's user interface is automatically documented  
 via documentation constructs included in the API.  
 Interface documentation is at 2 levels:  
 1. High-level -- The app dashboard provides high-level documentation for the app.  
@@ -168,16 +168,16 @@ the EngagementManager presents the user with the app's dashboard.
 When the app is exited, the EngagementManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
 ### Provided as a free 'source-code toolkit'
-The free EngageUI source-code toolkit contains C++ source-code for:
+The free EngagementManager source-code SDK contains C++ source-code for:
 1. The implementation of a small API designed to work with    
 the wxWidgets cross-platform app design toolkit.
-2. An IDE (based on EngageUI) for developing EngageUI apps.  
+2. An IDE (built using the EngagementManager SDK) for developing EngagementManager apps.  
 
 There are no libraries involved,  
 the source code for the API is small (about 3KLOC) and well documented,  
 it is easy to understand how everything works and make modifications if needed.  
 
-## EngageUI Illustrations
+## EngagementManager Illustrations
 ### Less cluttered screens
 ![Less cluttered screens](https://www.khitchdee.net/WIMPvsEngage.png?v03-23-2023)  
 ### Automatic app state persistence
@@ -188,8 +188,8 @@ The activity handlers interface doc.
 
 # EngageIDE
 ### What is EngageIDE?
-EngageIDE is a free IDE for building PC desktop GUI apps based on EngageUI.    
-It is itself an EngageUI PC desktop GUI app.        
+EngageIDE is a free IDE for building PC desktop GUI apps based on the EngagementManager API.    
+It is itself an EngagementManager PC desktop GUI app.        
 It can be used to produce a single C++ app codebase     
 that can be built to run on Linux, Windows and OSX.    
 ### EngageIDE features
