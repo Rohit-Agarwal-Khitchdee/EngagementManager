@@ -59,11 +59,11 @@ and manage the user's engagement with the app.
 The EngagementManager tracks the state of the user  
 in terms of whether they are a first time user  
 what aspects of the app they have already explored and what they have not etc.  
-On the app side, the EngagementManaer manages
+On the app side, the EngagementManaer manages  
 a set of (user) "activity-handlers" that handle the user's current activity.  
-These are defined by the app designer.  
-In effect, the EngagementManager acts as an interface between  
-the app's designer and the app's user.   
+These are defined by the app designer and are app specific.  
+In effect, the EngagementManager acts as a go-between  
+between the app's designer and the app's user.   
 2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
 An activity-handler handles (keyboard and mouse) user-input and draws to the screen.  
 An app designer populates and extends SActivityHandler to create activity-handlers  
