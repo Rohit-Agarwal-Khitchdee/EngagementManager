@@ -5,15 +5,18 @@ the temporal aspects of the interaction must be well defined.
 Existing UI design approaches such as WIMP  
 only define spatial and layout related aspects of a UI.  
 The EngagementManager is a new approach to UI design  
-that focuses on managing user-engagement.  
+that focuses on tracking and managing user-engagement.  
 User-engagement starts when a new user first starts using an app.  
 At this point they have to be broadly introduced to  
-what the app does and how the user may control its execution.  
+what the app does and how they may access its capabilities.  
 Subsequently, once the user starts using the app  
 the user may have queries regarding details about the app's fine-grained usage.  
 If the user exits the app and relaunches it  
 the app's previous data state needs to be stored at exit and retrieved at relaunch.  
-All these aspects of user engagement have to be managed in this new UI approach.  
+All these aspects of user engagement are tracked and managed in this new UI approach.  
+In effect the UI acts as a go-between between the user and the designer.  
+Such a go-between does not exist in existing WIMP based UI library implementations  
+such as Win32, Cocoa and X-Windows.  
 
 ### What is WIMP?
 All PC UIs are based on the WIMP UI paradigm.  
