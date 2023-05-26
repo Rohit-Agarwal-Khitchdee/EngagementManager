@@ -10,7 +10,7 @@ User-engagement starts when a new user first starts using an app.
 At this point they have to be broadly introduced to  
 what the app does and how the user may control its execution.  
 Subsequently, once the user starts using the app  
-the user may have queries regarding details about the app's fine-grained usage.
+the user may have queries regarding details about the app's fine-grained usage.  
 If the user exits the app and relaunches it  
 the app's previous data state needs to be stored at exit and retrieved at relaunch.  
 All these aspects of user engagement have to be managed in this new UI approach.  
