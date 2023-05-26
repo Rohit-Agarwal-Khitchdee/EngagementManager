@@ -1,4 +1,20 @@
-# What is the EngagementManager SDK?
+# The EngagementManager SDK
+### What is the EngagementManager?
+In the interaction between a user and a PC app  
+the temporal aspects of the interaction must be well defined.  
+Existing UI design approaches such as WIMP  
+only define spatial and layout related aspects of a UI.  
+The EngagementManager is a new approach to UI design  
+that focuses on managing user-engagement.  
+User-engagement starts when a new user first starts using an app.  
+At this point they have to be broadly introduced to  
+what the app does and how the user may control its execution.  
+Subsequently, once the user starts using the app  
+the user may have queries regarding details about the app's fine-grained usage.
+If the user exits the app and relaunches it  
+the app's previous data state needs to be stored at exit and retrieved at relaunch.  
+All these aspects of user engagement have to be managed in this new UI approach.  
+
 ### What is WIMP?
 All PC UIs are based on the WIMP UI paradigm.  
 WIMP stands for Windows, Icons, Menus and Pointers.  
@@ -7,6 +23,10 @@ The UI includes a bunch of spatially laid out control panels (called controls)
 each one of which is designed to handle some user activity.  
 The design consists of selecting which controls to use  
 and where to place them on the screen.  
+The approach to the UI is to provide the user access  
+to all the available features of the app  
+and let them choose when and what they want to do with it.  
+The "when" or temporal aspects of the UI are not defined by WIMP.   
 
 ### A user-engagement focused alternative to WIMP  
 The EngagementManager, instead, is always focused on handling the user's <i>current</i> activity  
