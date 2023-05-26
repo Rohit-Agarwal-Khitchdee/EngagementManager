@@ -1,4 +1,4 @@
-# The EngagementManager SDK
+# The EngagementManager UI SDK
 ### What is the EngagementManager?
 In the interaction between a user and a PC app  
 the temporal aspects of the interaction must be well defined.  
