@@ -43,9 +43,11 @@ and provides mechanisms for handling it.
 While WIMP provides a palette of (spatial) controls  
 which serve as the building blocks for handling a user activity    
 it does not treat user activity as a temporal unit.  
-The EngagementManager does not use windows or define any spatial layout constructs.  
+As a consequence, 
+the EngagementManager does not use windows or any spatial layout constructs.  
 It uses keyboard input for all user controls  
-(the mouse may be used, if needed, for onscreen space selection only).  
+(the mouse may be used, if needed, for onscreen space selection only)  
+and an activity-handler draws to the entire screen when it is invoked.  
 It does define a palette of user activity handlers  
 for activities that are common across apps.  
 But these are temporal and not spatial constructs.  
@@ -57,7 +59,8 @@ self-documenting interfaces
 and automatic persistence across user interaction sessions.  
 
 ### The API is 2 simple constructs  
-The EngagementManager API for wxWidgets consists of 2 simple constructs:  
+The EngagementManager API for wxWidgets consists of 2 simple constructs:
+
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
 and manage the user's engagement with the app.  
@@ -69,6 +72,7 @@ a set of (user) "activity-handlers" that handle the user's current activity.
 These are defined by the app designer and are app specific.  
 In effect, the EngagementManager acts as a go-between  
 between the app's designer and the app's user.   
+
 2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
 An activity-handler handles (keyboard and mouse) user-input and draws to the screen.  
 An app designer populates and extends SActivityHandler to create activity-handlers  
@@ -89,6 +93,7 @@ Since these are low intensity interactions,
 (slower, documented) keyboard selectable onscreen controls are used.  
 An app-dashboard with an onscreen selection of possible user activities is designed.  
 [Designing an app's dashboard](https://github.com/Rohit-Agarwal-Khitchdee/EngagementManager/wiki/#designing-an-apps-dashboard) 
+
 2. <b>Fine-grained user engagement</b>.  
 At a lower level, a user's engagement consists of high intensity interactions  
 where the user is engaged in a primary app-usage activity.  
@@ -105,8 +110,10 @@ that makes it easy to design and produce EngagementManager apps.
 An EngagementManager app's user interface is automatically documented  
 via documentation constructs included in the API.  
 Interface documentation is at 2 levels:  
+
 1. High-level -- The app dashboard provides high-level documentation for the app.  
 Pressing Ctrl launches the app dashboard in its current context.  
+
 2. Low-level -- Each activity-handler contains an interface descriptor    
 used by the toolkit to implement an automatic interface documentation system.    
 Pressing Ctrl-H within any activity-handler context  
@@ -119,8 +126,10 @@ When the app is exited, the EngagementManager serializes its state to disk.
 Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
 ### Provided as a free 'source-code toolkit'
 The free EngagementManager source-code SDK contains C++ source-code for:
+
 1. The implementation of a small API designed to work with    
 the wxWidgets cross-platform app design toolkit.
+
 2. An IDE (built using the EngagementManager SDK) for developing EngagementManager apps.  
 
 There are no libraries involved,  
@@ -145,6 +154,7 @@ that lacks editing and build features.
 
 # Building EngageIDE the IDE included with the EngagementManager SDK:
 Should you build this app?  
+
 1. If you are new to wxWidgets.  
 You will have to download and build the wxWidgets library for your platform.  
 This is a somewhat convoluted and time consuming process. (interaction time ~1hr)  
@@ -152,6 +162,7 @@ You will need to become somewhat familiar with wxWidgets
 particularly its wxDC class and its graphic drawing primitives.   
 This is a relatively simple process.  
 If you jump these hurdles, you can produce a simple keyboard-driven cross-platform PC app.  
+
 2. If you are already a wxWidgets developer.  
 You only have to build EngageIDE.cpp which takes a few minutes    
 and you get an easy to learn GUI design alternative to WIMP  
@@ -229,6 +240,7 @@ It is itself an EngagementManager PC desktop GUI app.
 It can be used to produce a single C++ app codebase     
 that can be built to run on Linux, Windows and OSX.    
 ### EngageIDE features
+
 1. <b>No mouse usage, keyboard-only interface</b>.  
 EngageIDE does not use the mouse.  
 All of it's editing, navigation, building and debugging controls are keyboard based.  
