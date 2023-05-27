@@ -14,8 +14,8 @@ Subsequently, once the user starts using the app
 the user may have queries regarding details about the app's fine-grained usage.  
 If the user exits the app and relaunches it  
 the app's previous data state needs to be stored at exit and retrieved at relaunch.  
+All these aspects of user engagement are tracked and managed in this new UI approach.
 
-All these aspects of user engagement are tracked and managed in this new UI approach.  
 In effect the UI acts as a go-between between the user and the designer.  
 Such a go-between does not exist in existing WIMP based UI library implementations  
 such as Win32, Cocoa and X-Windows.  
