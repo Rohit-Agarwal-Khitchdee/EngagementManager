@@ -1,24 +1,25 @@
-# The InterUnit Desktop UI
++# The InterUnit Desktop UI
 ### What is InterUnit?
+InterUnit is a temporal approach to UI design that replaces WIMP.
 In the interaction between a user and a PC app  
 the temporal aspects of the interaction need to be well defined.  
-The existing UI design approach, WIMP,
-does not do that. 
+WIMP does not do that. 
 It only defines spatial and layout related aspects of a GUI.  
-InterUnit is a temporal approach to UI design  
-that defines (temporal) interface units 
+InterUnit that defines (temporal) interface units 
 and focuses on tracking and managing user-engagement 
-(in the user's interaction with the app).
+as the user interacts with different InterUnits.
 
+### The Engagement Manager
 User-engagement starts when a new user first starts using an app.  
 At this point they have to be broadly introduced to what the app does and how they may access its capabilities.  
-Subsequently, once the user starts using the app the user may have queries regarding details about the app's fine-grained usage.  
+Subsequently, the user may have queries regarding details about the app's fine-grained usage.  
 If the user exits the app and relaunches it  
 the app's previous data state needs to be stored at exit and retrieved at relaunch.  
-All these aspects of user engagement are tracked and managed in this new UI approach.
+All these aspects of user engagement are tracked and managed by a class called the EngagementManager.
+The EngagementManager interfaces with the platforms windowing system.
 
-In effect the UI acts as a go-between between the user and the designer.  
-Such a go-between does not exist in existing WIMP based UI library implementations  
+In effect the InterUnit UI acts as a go-between between the user and the app designer.  
+Such a go-between does not exist in any WIMP based GUI library implementations  
 such as Win32, Cocoa and X-Windows.  
 
 ### What is WIMP?
@@ -34,29 +35,30 @@ to all the available features of the app
 and let them choose when and what they want to do with it.  
 The "when" or temporal aspects of the UI are not defined by WIMP.   
 
-### A user-engagement focused alternative to WIMP  
-The InterUnit UI, instead, is always focused on handling the user's <i>current</i> activity  
-when engaging with the UI  
-which is a temporal rather than spatial approach to the UI.  
-Instead of being layout centric, it is activity centric.  
+### User-engagement focus  
+The InterUnit UI, is always focused on handling the user's <i>current</i> activity  
+when engaging with the app.  
 It treats a user activity as a temporal (and not spatial) unit  
 and provides mechanisms for handling it.  
-While WIMP provides a palette of (spatial) controls  
-which serve as the building blocks for handling a user activity    
-it does not treat user activity as a temporal unit.  
-As a consequence, to remove this design complexity and constraint,
-the InterUnit UI does not use windows or any spatial layout constructs. Instead it defines a unit of the interface -- InterUnit
-An InterUnit uses keyboard input for all text input, selection and action UI functions. It uses other input modalities, such as a mouse, trackpad or pen, for description related UI functions.
+The InterUnit UI does not use windows or any spatial layout constructs. 
+Instead it defines a unit of the interface -- InterUnit, that handles a user activity.
+An InterUnit uses keyboard input (for text input, selection and action UI functions)
+and other input modalities, such as a mouse, trackpad or pen (for description related UI functions).
 It controls the entire screen for output.  
-The InterUnit UI does define a palette of InterUnits for activities that are common across apps -- text input, selection, level adjustment, file selection.
+The InterUnit UI API defines 5 InterUnits for common app activities
+-text input
+-selection from a list of option
+-(continuous) level adjustment
+-file selection from the platform file system
+-an app dashboard -- a high level app interface that can be customized for a particular app
 
-### Apps are simpler to produce and simpler to use 
+### InterUnit Benefits: Apps are simpler to produce and simpler to use 
 InterUnit apps are simpler to produce,  
 have less cluttered screens,    
 self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
-### The API is 2 simple constructs  
+### Simple API to develop for -- 2 simple constructs  
 
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
@@ -74,12 +76,9 @@ between the app's designer and the app's user.
 An InterUnit handles (keyboard and mouse) user-input and draws to the screen.  
 An app designer populates and extends SInterUnit to create an InterUnit  
 for app-specific user activities.  
-A handful of concrete InterUnits are also provided by the SDK  
-for user activities that are common across apps  
-such as selecting a file from the native file system  
-and implementing an app's high-level dashboard.  
-These serve as a design palette for the app designer  
-that users (over time) become familiar with.
+5 concrete InterUnits are also provided by the SDK  
+for user activities that are common across apps.
+Users of InterUnit apps become familiar with.
 
 ### App design is a simple process.
 An EngagementManager app is designed at 2 temporal levels of user-engagement:
@@ -96,8 +95,6 @@ At a lower level, a user's engagement consists of high intensity interactions
 where the user is engaged in a primary app-usage activity.  
 For these high-intensity interactions,  
 (faster, undocumented) direct-mapped keyboard controls are used.  
-A set of InterUnits for the user activities accessible via the app's dashboard  
-are designed.    
 [Designing an activity-handler](https://github.com/Rohit-Agarwal-Khitchdee/EngagementManager/wiki/#designing-an-activity-handler)  
 
 ### Apps have self-documenting interfaces  
