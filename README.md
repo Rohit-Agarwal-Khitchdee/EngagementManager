@@ -8,7 +8,7 @@ InterUnit is a temporal approach to UI design
 that defines (temporal) interface units and focuses on tracking and managing user-engagement in the user's interaction with the app.
 
 User-engagement starts when a new user first starts using an app.  
-At this point they have to be broadly introduced to ehat the app does and how they may access its capabilities.  
+At this point they have to be broadly introduced to what the app does and how they may access its capabilities.  
 Subsequently, once the user starts using the app the user may have queries regarding details about the app's fine-grained usage.  
 If the user exits the app and relaunches it  
 the app's previous data state needs to be stored at exit and retrieved at relaunch.  
