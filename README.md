@@ -3,9 +3,12 @@
 In the interaction between a user and a PC app  
 the temporal aspects of the interaction need to be well defined.  
 The existing UI design approach, WIMP,
-does not do that. It only defines spatial and layout related aspects of a GUI.  
+does not do that. 
+It only defines spatial and layout related aspects of a GUI.  
 InterUnit is a temporal approach to UI design  
-that defines (temporal) interface units and focuses on tracking and managing user-engagement in the user's interaction with the app.
+that defines (temporal) interface units 
+and focuses on tracking and managing user-engagement 
+(in the user's interaction with the app).
 
 User-engagement starts when a new user first starts using an app.  
 At this point they have to be broadly introduced to what the app does and how they may access its capabilities.  
