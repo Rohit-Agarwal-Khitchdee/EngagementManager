@@ -8,10 +8,8 @@ InterUnit is a new approach to UI design
 that focuses on tracking and managing user-engagement.  
 
 User-engagement starts when a new user first starts using an app.  
-At this point they have to be broadly introduced to  
-what the app does and how they may access its capabilities.  
-Subsequently, once the user starts using the app  
-the user may have queries regarding details about the app's fine-grained usage.  
+At this point they have to be broadly introduced to ehat the app does and how they may access its capabilities.  
+Subsequently, once the user starts using the app the user may have queries regarding details about the app's fine-grained usage.  
 If the user exits the app and relaunches it  
 the app's previous data state needs to be stored at exit and retrieved at relaunch.  
 All these aspects of user engagement are tracked and managed in this new UI approach.
@@ -43,7 +41,7 @@ and provides mechanisms for handling it.
 While WIMP provides a palette of (spatial) controls  
 which serve as the building blocks for handling a user activity    
 it does not treat user activity as a temporal unit.  
-As a consequence, to remove this design complexity and constraint 
+As a consequence, to remove this design complexity and constraint,
 the InterUnit UI does not use windows or any spatial layout constructs. Instead it defines a unit of the interface -- InterUnit
 An InterUnit uses keyboard input for all text input, selection and action UI functions. It uses other input modalities, such as a mouse, trackpad or pen, for description related UI functions.
 It controls the entire screen for output.  
@@ -69,18 +67,18 @@ A primary InterUnit is defined by the app designer and this InterUnit may use ot
 In effect, the EngagementManager acts as a go-between  
 between the app's designer and the app's user.   
 
-2. <b>SActivityHandler</b>, an "abstract" struct for handling a particular user activity.  
-An activity-handler handles (keyboard and mouse) user-input and draws to the screen.  
-An app designer populates and extends SActivityHandler to create activity-handlers  
+2. <b>SInterUnit</b>, an "abstract" struct for handling a particular user activity.  
+An InterUnit handles (keyboard and mouse) user-input and draws to the screen.  
+An app designer populates and extends SInterUnit to create an InterUnit  
 for app-specific user activities.  
-A handful of concrete activity-handlers are also provided by the SDK  
+A handful of concrete InterUnits are also provided by the SDK  
 for user activities that are common across apps  
 such as selecting a file from the native file system  
 and implementing an app's high-level dashboard.  
 These serve as a design palette for the app designer  
 that users (over time) become familiar with.
 
-### App design is a simple process
+### App design is a simple process.
 An EngagementManager app is designed at 2 temporal levels of user-engagement:
 1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
@@ -95,21 +93,21 @@ At a lower level, a user's engagement consists of high intensity interactions
 where the user is engaged in a primary app-usage activity.  
 For these high-intensity interactions,  
 (faster, undocumented) direct-mapped keyboard controls are used.  
-A set of activity-handlers for the user activities accessible via the app's dashboard  
+A set of InterUnits for the user activities accessible via the app's dashboard  
 are designed.    
 [Designing an activity-handler](https://github.com/Rohit-Agarwal-Khitchdee/EngagementManager/wiki/#designing-an-activity-handler)  
 
 ### Apps have self-documenting interfaces  
-An EngagementManager app's user interface is automatically documented  
+An InterUnit UI app's user interface is automatically documented  
 via documentation constructs included in the API.  
 Interface documentation is at 2 levels:  
 
 1. High-level -- The app dashboard provides high-level documentation for the app.  
 Pressing Ctrl launches the app dashboard in its current context.  
 
-2. Low-level -- Each activity-handler contains an interface descriptor    
+2. Low-level -- Each InterUnit contains an interface descriptor    
 used by the toolkit to implement an automatic interface documentation system.    
-Pressing Ctrl-H within any activity-handler context  
+Pressing Ctrl-H within any InterUnit context  
 presents a description to the user on how to perform that activity.
 
 ### Apps have automatic state persistence
@@ -136,11 +134,9 @@ The app dashboard
 The activity handlers interface doc.  
 
 # Development Status  
-The launch version of the EngagementManager API is almost ready.  
-We are working on getting its first release out.  
-We estimate this will happen by the end of June 2023.  
+We are working on getting first release of  the InterUnit UI API for wxWidgets out.  
 
-# Building the EngagementManager API:
+# Building the InterUnit UI API:
 Should you build this API?  
 
 1. If you are new to wxWidgets.  
@@ -157,13 +153,13 @@ You only have to build the API which takes a few minutes
 and you get an easy to learn GUI design alternative to WIMP  
 that you can start using right away.  
 
-## Recommended IDEs, building wxWidgets and EngageIDE
-The EngagementManager API is implemented in a single file EngagementManager.cpp  
+## Recommended IDEs, building wxWidgets and the InterUnit UI API
+The API is implemented in a single file EngagementManager.cpp  
 that uses the wxWidgets cross-platform app design libraries.  
 To build it you first have to download and build the wxWidgets libraries  
 for your development platform.  
 
-We recommend using the current development version of wxWidgets which is 3.2.2.1.  
+We recommend using the current development version of wxWidgets which is 3.3.1.  
 You can get help for setting up wxWidgets on your PC from this forum:  
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82.  
 The build process for the library depends on your platform:  
@@ -221,5 +217,5 @@ Open your project and delete all the src, resource and include files.
 At this point your project is empty but configured for wxWidgets.   
 Go to src, right click, add an existing file.  
 Add EngagementManager.cpp and build and run the project.  
-This will build a minimal app using the EngagementManager API.    
+This will build a minimal app using the InterUnit UI API.    
 
