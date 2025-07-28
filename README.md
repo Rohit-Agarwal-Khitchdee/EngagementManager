@@ -1,4 +1,18 @@
 ## The InterUnit Desktop UI
+
+### What is WIMP?
+All PC UIs are based on the WIMP UI paradigm.  
+WIMP stands for Windows, Icons, Menus and Pointers.  
+Apps are designed using a control-panel metaphor.  
+The UI includes a bunch of spatially laid out control panels (called controls)  
+each one of which is designed to handle some user activity.  
+The design consists of selecting which controls to use  
+and where to place them on the screen.  
+The approach to the UI is to provide the user access  
+to all the available features of the app  
+and let them choose when and what they want to do with it.  
+The "when" or temporal aspects of the UI are not defined by WIMP.   
+
 ### What is InterUnit?
 InterUnit is a temporal approach to UI design that replaces WIMP.
 In the interaction between a user and a PC app  
@@ -21,19 +35,6 @@ The EngagementManager interfaces with the platforms windowing system.
 In effect the InterUnit UI acts as a go-between between the user and the app designer.  
 Such a go-between does not exist in any WIMP based GUI library implementations  
 such as Win32, Cocoa and X-Windows.  
-
-### What is WIMP?
-All PC UIs are based on the WIMP UI paradigm.  
-WIMP stands for Windows, Icons, Menus and Pointers.  
-Apps are designed using a control-panel metaphor.  
-The UI includes a bunch of spatially laid out control panels (called controls)  
-each one of which is designed to handle some user activity.  
-The design consists of selecting which controls to use  
-and where to place them on the screen.  
-The approach to the UI is to provide the user access  
-to all the available features of the app  
-and let them choose when and what they want to do with it.  
-The "when" or temporal aspects of the UI are not defined by WIMP.   
 
 ### User-engagement focus  
 The InterUnit UI, is always focused on handling the user's <i>current</i> activity  
@@ -58,7 +59,7 @@ have less cluttered screens,
 self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
-### Simple API to develop for -- 2 simple constructs  
+#### Simple API to develop for -- 2 simple constructs  
 
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
@@ -80,7 +81,7 @@ for app-specific user activities.
 for user activities that are common across apps.
 Users of InterUnit apps become familiar with.
 
-### App design is a simple process.
+#### App design is a simple process.
 An EngagementManager app is designed at 2 temporal levels of user-engagement:
 1. <b>Gross user engagement</b>.  
 At a high level, a user's engagement consists of low intensity (frequency) interactions  
@@ -97,7 +98,7 @@ For these high-intensity interactions,
 (faster, undocumented) direct-mapped keyboard controls are used.  
 [Designing an activity-handler](https://github.com/Rohit-Agarwal-Khitchdee/EngagementManager/wiki/#designing-an-activity-handler)  
 
-### Apps have self-documenting interfaces  
+#### Apps have self-documenting interfaces  
 An InterUnit UI app's user interface is automatically documented  
 via documentation constructs included in the API.  
 Interface documentation is at 2 levels:  
@@ -110,12 +111,12 @@ used by the toolkit to implement an automatic interface documentation system.
 Pressing Ctrl-H within any InterUnit context  
 presents a description to the user on how to perform that activity.
 
-### Apps have automatic state persistence
+#### Apps have automatic state persistence
 When the app is launched, if it's for the first time,  
 the EngagementManager presents the user with the app's dashboard.  
 When the app is exited, the EngagementManager serializes its state to disk.  
 Subsequently, when the app is reloaded, the EngagementManager resumes it from its previous state.  
-### Provided as free source-code for an API
+#### Provided as free source-code for an API
 The EngagementManager is provided as  
 the implementation of a small API designed to work with    
 the wxWidgets cross-platform app design toolkit.
@@ -124,17 +125,8 @@ There are no libraries involved,
 the source code for the API is small (about 3KLOC) and well documented,  
 it is easy to understand how everything works and make modifications if needed.  
 
-## EngagementManager Illustrations
-### Less cluttered screens
-![Less cluttered screens](https://www.khitchdee.net/WIMPvsEngage.png?v03-23-2023)  
-### Automatic app state persistence
-![Alt Text](https://hex-map.khitchdee.net/EngageUI-illustration.png?v08-23-2022)
-### Built-in app interface documentation
-The app dashboard  
-The activity handlers interface doc.  
-
 # Development Status  
-We are working on getting first release of  the InterUnit UI API for wxWidgets out.  
+We are working on getting first release of the InterUnit UI SDK for wxWidgets out.  
 
 # Building the InterUnit UI API:
 Should you build this API?  
@@ -164,7 +156,7 @@ You can get help for setting up wxWidgets on your PC from this forum:
 https://forums.wxwidgets.org/viewforum.php?f=19&sid=0083f4684647607be2aef5bc34b48d82.  
 The build process for the library depends on your platform:  
 
-### OSX: 
+### MacOS: 
 
 Recommended IDE: XCode  
 
