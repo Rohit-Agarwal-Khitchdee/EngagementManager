@@ -1,10 +1,10 @@
-# The EngagementManager UI API
-### What is the EngagementManager?
+# The InterUnit Desktop UI
+### What is InterUnit?
 In the interaction between a user and a PC app  
 the temporal aspects of the interaction must be well defined.  
 Existing UI design approaches such as WIMP  
 only define spatial and layout related aspects of a UI.  
-The EngagementManager is a new approach to UI design  
+InterUnit is a new approach to UI design  
 that focuses on tracking and managing user-engagement.  
 
 User-engagement starts when a new user first starts using an app.  
@@ -34,7 +34,7 @@ and let them choose when and what they want to do with it.
 The "when" or temporal aspects of the UI are not defined by WIMP.   
 
 ### A user-engagement focused alternative to WIMP  
-The EngagementManager, instead, is always focused on handling the user's <i>current</i> activity  
+The InterUnit UI, instead, is always focused on handling the user's <i>current</i> activity  
 when engaging with the UI  
 which is a temporal rather than spatial approach to the UI.  
 Instead of being layout centric, it is activity centric.  
@@ -44,13 +44,10 @@ While WIMP provides a palette of (spatial) controls
 which serve as the building blocks for handling a user activity    
 it does not treat user activity as a temporal unit.  
 As a consequence, 
-the EngagementManager does not use windows or any spatial layout constructs.  
-It uses keyboard input for all user controls  
-(the mouse may be used, if needed, for onscreen space selection only)  
-and an activity-handler draws to the entire screen when it is invoked.  
-It does define a palette of user activity handlers  
-for activities that are common across apps.  
-But these are temporal and not spatial constructs.  
+the InterUnit UI does not use windows or any spatial layout constructs. Instead it defines a Unit of the Interface -- InterUnit
+An InterUnit uses keyboard input for all text input, selection and action UI functions. It uses other inputs such as a mouse, trackpad or pen for description related UI functions.
+It controls the entire screen for output.  
+The InterUnit UI does define a palette of InterUnits for activities that are common across apps. Text input, selection, level adjustment, file selection.
 
 ### Apps are simpler to produce and simpler to use 
 EngagementManager apps are simpler to produce,  
