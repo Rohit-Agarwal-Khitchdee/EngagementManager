@@ -43,30 +43,29 @@ and provides mechanisms for handling it.
 While WIMP provides a palette of (spatial) controls  
 which serve as the building blocks for handling a user activity    
 it does not treat user activity as a temporal unit.  
-As a consequence, 
-the InterUnit UI does not use windows or any spatial layout constructs. Instead it defines a Unit of the Interface -- InterUnit
-An InterUnit uses keyboard input for all text input, selection and action UI functions. It uses other inputs such as a mouse, trackpad or pen for description related UI functions.
+As a consequence, to remove this design complexity and constraint 
+the InterUnit UI does not use windows or any spatial layout constructs. Instead it defines a unit of the interface -- InterUnit
+An InterUnit uses keyboard input for all text input, selection and action UI functions. It uses other input modalities, such as a mouse, trackpad or pen, for description related UI functions.
 It controls the entire screen for output.  
-The InterUnit UI does define a palette of InterUnits for activities that are common across apps. Text input, selection, level adjustment, file selection.
+The InterUnit UI does define a palette of InterUnits for activities that are common across apps -- text input, selection, level adjustment, file selection.
 
 ### Apps are simpler to produce and simpler to use 
-EngagementManager apps are simpler to produce,  
+InterUnit apps are simpler to produce,  
 have less cluttered screens,    
 self-documenting interfaces   
 and automatic persistence across user interaction sessions.  
 
 ### The API is 2 simple constructs  
-The EngagementManager API for wxWidgets consists of 2 simple constructs:
 
 1. A (user) <b>EngagementManager</b> class that subclasses wxWidgets' wxWindow class  
 to interface with the native windowing system  
 and manage the user's engagement with the app.  
 The EngagementManager tracks the state of the user  
-in terms of whether they are a first time user  
+in terms of whether they are a first time user,  
 what aspects of the app they have already explored and what they have not etc.  
 On the app side, the EngagementManaer manages  
-a set of (user) "activity-handlers" that handle the user's current activity.  
-These are defined by the app designer and are app specific.  
+a set of InterUnits that handle the user's current activity.  
+A primary InterUnit is defined by the app designer and this InterUnit may use other general purpose InterUnits to perform its function.
 In effect, the EngagementManager acts as a go-between  
 between the app's designer and the app's user.   
 
